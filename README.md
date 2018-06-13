@@ -1,4 +1,4 @@
-#SyntaxError-UTSA
+# SyntaxError-UTSA
 
 Folder Structure
 ------
