@@ -1,0 +1,13 @@
+mat-card{
+	margin:10px;
+	width:50%;
+}
+
+img{
+	max-height:auto;
+	width:auto;
+}
+
+mat-checkbox{
+	margin:5px;
+}
