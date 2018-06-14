@@ -13,8 +13,9 @@ Folder Structure
 Build Instructions
 ------
 ### Client
-`cd SyntaxError-UTSA\client`
-`ng serve`
+`cd SyntaxError-UTSA\client`\
+`npm install` <- First time only\
+`ng serve`\
 
 ### Server
 `Not Yet Available`
