@@ -1,8 +1,18 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center" align="center">
-  <mat-toolbar class="myToolbar">
-    <span>{{title}}</span>
-  </mat-toolbar>
 
-  <app-form></app-form>
+	<mat-toolbar class="myToolbar">
+		<span>
+			<button mat-icon-button [routerLink]="['/']">
+				<mat-icon>home</mat-icon>
+			</button>
+		</span>
+		<span class="spacer"></span>
+		<span>
+			{{title}}
+		</span>
+		<span class="spacer"></span>
+	</mat-toolbar>
+
+	<router-outlet></router-outlet>
 </div>

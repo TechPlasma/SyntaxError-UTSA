@@ -1,30 +1,44 @@
 <div align="center">
 	<mat-card>
 		<mat-card-title>Test Form</mat-card-title>
-		<img mat-card-image src="http://3.bp.blogspot.com/-sAVs9Bo8IqQ/UE4jWcG599I/AAAAAAAAVD0/wDqHaWvGbhU/s640/cute-sleeping-puppies-017.jpg" alt="Sleeping Dog">
+		<mat-card-subtitle>Form ID: {{FID}} </mat-card-subtitle>
 		<mat-card-content>
 			Which Forms are needed?<br>
-			<mat-checkbox [(ngModel)]="testForm.CardForm.needed">Card Form</mat-checkbox>
+			<mat-checkbox [(ngModel)]="testForm.IDForm.needed">Card Form</mat-checkbox>
 			<mat-checkbox [(ngModel)]="testForm.UserForm.needed">User Form</mat-checkbox>
 			<mat-checkbox [(ngModel)]="testForm.HardSoftForm.needed">HardSoft Form</mat-checkbox>
 			<br>
 			<mat-checkbox [(ngModel)]="testForm.PCardForm.needed">P-Card Form</mat-checkbox>
-			<mat-checkbox [(ngModel)]="testForm.FuelingForm.needed">Fueling Form</mat-checkbox>
+			<mat-checkbox [(ngModel)]="testForm.FuelForm.needed">Fueling Form</mat-checkbox>
 			<mat-checkbox [(ngModel)]="testForm.SAPForm.needed">SAP Form</mat-checkbox>
 			<br>
 			<br>
-			<mat-expansion-panel *ngIf="testForm.CardForm.needed">
+			<mat-expansion-panel expanded="true">
 				<mat-expansion-panel-header>
 					<mat-panel-title>
-						{{testForm.CardForm.name}}
+						Common Information
 					</mat-panel-title>
 					<mat-panel-description>
-						{{testForm.CardForm.summary}}
+						Common Information
 					</mat-panel-description>
 				</mat-expansion-panel-header>
-				<p>
-					Form Content Here
-				</p>
+				<div>
+					Default Information<br>
+					Goes Here
+				</div>
+			</mat-expansion-panel>
+			<mat-expansion-panel *ngIf="testForm.IDForm.needed">
+				<mat-expansion-panel-header>
+					<mat-panel-title>
+						{{testForm.IDForm.name}}
+					</mat-panel-title>
+					<mat-panel-description>
+						{{testForm.IDForm.summary}}
+					</mat-panel-description>
+				</mat-expansion-panel-header>
+				<div>
+					<app-id-form></app-id-form>
+				</div>
 			</mat-expansion-panel>
 			<mat-expansion-panel *ngIf="testForm.UserForm.needed">
 				<mat-expansion-panel-header>
@@ -35,9 +49,9 @@
 						{{testForm.UserForm.summary}}
 					</mat-panel-description>
 				</mat-expansion-panel-header>
-				<p>
-					Form Content Here
-				</p>
+				<div>
+					<app-user-form></app-user-form>
+				</div>
 			</mat-expansion-panel>
 			<mat-expansion-panel *ngIf="testForm.HardSoftForm.needed">
 				<mat-expansion-panel-header>
@@ -48,9 +62,9 @@
 						{{testForm.HardSoftForm.summary}}
 					</mat-panel-description>
 				</mat-expansion-panel-header>
-				<p>
-					Form Content Here
-				</p>
+				<div>
+					<app-hard-soft-form></app-hard-soft-form>
+				</div>
 			</mat-expansion-panel>
 			<mat-expansion-panel *ngIf="testForm.PCardForm.needed">
 				<mat-expansion-panel-header>
@@ -61,22 +75,22 @@
 						{{testForm.PCardForm.summary}}
 					</mat-panel-description>
 				</mat-expansion-panel-header>
-				<p>
-					Form Content Here
-				</p>
+				<div>
+					<app-pcard-form></app-pcard-form>
+				</div>
 			</mat-expansion-panel>
-			<mat-expansion-panel *ngIf="testForm.FuelingForm.needed">
+			<mat-expansion-panel *ngIf="testForm.FuelForm.needed">
 				<mat-expansion-panel-header>
 					<mat-panel-title>
-						{{testForm.FuelingForm.name}}
+						{{testForm.FuelForm.name}}
 					</mat-panel-title>
 					<mat-panel-description>
-						{{testForm.FuelingForm.summary}}
+						{{testForm.FuelForm.summary}}
 					</mat-panel-description>
 				</mat-expansion-panel-header>
-				<p>
-					Form Content Here
-				</p>
+				<div>
+					<app-fuel-form></app-fuel-form>
+				</div>
 			</mat-expansion-panel>
 			<mat-expansion-panel *ngIf="testForm.SAPForm.needed">
 				<mat-expansion-panel-header>
@@ -87,9 +101,9 @@
 						{{testForm.SAPForm.summary}}
 					</mat-panel-description>
 				</mat-expansion-panel-header>
-				<p>
-					Form Content Here
-				</p>
+				<div>
+					<app-sap-form></app-sap-form>
+				</div>
 			</mat-expansion-panel>
 		</mat-card-content>
 	</mat-card>

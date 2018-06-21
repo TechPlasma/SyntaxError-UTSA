@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-form',
@@ -7,41 +9,48 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormComponent implements OnInit {
 
+	FID;
+
 	testForm ={
 		formName:"",
-		CardForm:{
-			needed:false,
+		IDForm:{
+			needed:true, 
 			name:"CoSA ID Card Request",
 			summary:"Fufillment By: ITSD"
 		},
 		UserForm:{
-			needed:false,
+			needed:true,
 			name:"User Provisioning Request",
 			summary:"Fufillment By: ITSD"
 		},
 		HardSoftForm:{
-			needed:false,
+			needed:true,
 			name:"Hardware/Software Request",
 			summary:"Fufillment By: ITSD"
 		},
 		PCardForm:{
-			needed:false,
+			needed:true,
 			name:"Pcard Setup/Maintenance",
 			summary:"Fufillment By: FIN"
 		},
-		FuelingForm:{
-			needed:false,
+		FuelForm:{
+			needed:true,
 			name:"Fueling Authorization Request",
 			summary:"Fufillment By: BES"
 		},	
 		SAPForm:{
-			needed:false,
+			needed:true,
 			name:"SAP Security Request",
 			summary:"Fufillment By: SEC"
 		}
 	}
 
-	constructor() { }
+	constructor(
+		private route: ActivatedRoute,
+		private location: Location
+	) {
+		this.FID = +this.route.snapshot.paramMap.get('FID');
+	}
 
 	ngOnInit() {
 	}

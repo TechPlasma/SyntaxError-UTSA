@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+
 @Component({
   selector: 'app-department',
   templateUrl: './department.component.html',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DepartmentComponent implements OnInit {
 
-  constructor() { }
+	DID;
 
-  ngOnInit() {
-  }
+	constructor(
+		private route: ActivatedRoute,
+		private location: Location
+	) {
+		this.DID = +this.route.snapshot.paramMap.get('DID');
+	}
+
+	ngOnInit() {
+	}
 
 }
