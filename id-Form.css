@@ -1,0 +1,39 @@
+h1 {
+	text-align:center;
+}
+h2{
+	text-align:center;
+}
+h3 {
+	background-color:yellow;
+	text-align:center;
+}
+
+h4 {
+	background-color:yellow;
+	text-align:center;
+	font-size: 150%;
+}
+
+div.choices{
+	text-align:center;
+}
+
+form{
+	text-align:left;
+	}
+h5 {
+	background-color:yellow;
+	text-align:center;
+	font-size: 150%;
+  }
+
+h6 {
+	background-color:yellow;
+	text-align:center;
+	font-size: 150%;
+}
+
+p {
+	background-color: yellow;
+	text-align:center;}
