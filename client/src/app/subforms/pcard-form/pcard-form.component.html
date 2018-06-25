@@ -1,3 +1,129 @@
 <p>
-  pcard-form works!
+   <!--  pcard-form works brah! firstName variable is {{pcard.firstName}} -->
 </p>
+<!-- three checkboxes left to right. -->
+<!-- 
+<div>
+  <label> testing JESSE here </label>
+  <input type="checkbox" name="xxx" onchange> 
+</div>
+  -->
+
+<!-- CHECKBOXES DON'T WORK -->
+<!-- checkboxes MUST call a function to change default value to true. -->
+<!--x- can't ignore out how??? --> 
+<mat-checkbox>CEO Website Access </mat-checkbox>
+
+<mat-checkbox> New Credit Card Request  </mat-checkbox>
+
+<mat-checkbox>Cardholder Maintenance  </mat-checkbox>
+
+
+
+<!-- can't get formating right. Want rows(left to right) text fields. -->
+
+<!-- first row of Personal Information field. 
+  <p>and last name variable is {{pcard.lastName}}</p>
+  <p>Testing: middle name is {{pcard.middleName }} </p>
+-->
+
+	<div class="Personal Information">
+    <h3> Personal Information </h3>
+    	<label for="field1">*First: </label>
+      <input [(ngModel)]="pcard.firstName" placeholder="Enter first name">
+
+      <label for="field2"> *Last Name: </label>
+      <input [(ngModel)]="pcard.lastName" placeholder="enter last name">
+      <!-- for formating, add a newline via the br tag. -->
+       <br/>
+
+      <label for="field3">MI: </label>
+      <input [(ngModel)]="pcard.middleName" placeholder="middle name (optional)">
+
+      <label for="field4">Suffix: </label>
+      <input [(ngModel)]="pcard.suffix" placeholder="enter suffix (optional)">
+
+      <br/>
+      <label for="field5">User Name: </label>
+      <input [(ngModel)]="pcard.userName" placeholder="enter user name">
+
+      <label for="field6">*COSA Email:</label>
+      <input [(ngModel)]="pcard.cosaEmail" placeholder="enter COSA email">
+
+      <br/>
+      <label for="field7"> SAP Employee ID</label>
+      <input [(ngModel)]="pcard.sapEmpId" placeholder="enter sap Employee ID">
+
+      <br/>
+
+      <label for="field8">*Department </label>
+      <input [(ngModel)]="pcard.dept" placeholder="enter deptartment">
+
+      <h3>*Department Approver for this CardHolder(CH)</h3>
+
+      <label for="field9"> *Name: </label>
+      <input [(ngModel)]="pcard.deptAppChName" placeholder="enter name">
+
+      <label for="field10"> *SAP Nr: </label>
+      <input [(ngModel)]="pcard.deptAppChSapNm" placeholder="enter sap number">
+
+      <h3> Card Setup </h3>
+      <p>*CardHolder Name(as it is to appear on card-25 characters total):</p>
+
+      <label for="field11"> First: </label>
+      <input [(ngModel)]="pcard.chFirstName" placeholder="enter CH first name">
+
+      <label for="field12"> Last: </label>
+      <input [(ngModel)]="pcard.chLastName" placeholder="enter CH last name">
+
+      <h3> Accounting Codes </h3>
+      <label for="field13">Default Cost Type: </label>
+      <input [(ngModel)]="pcard.defCostType" placeholder="def cost type">
+      <br/>
+      <label for="field14"> Default Code: </label>
+      <input [(ngModel)]="pcard.defCode" placeholder="code type">
+      <br/>
+      <label for="field15">Description: </label>
+      <input [(ngModel)]="pcard.description" placeholder="description">
+
+      <h3> Set Cardholder Limits</h3>
+      
+      <label for="field16"> *Limits Requested: </label>
+      <input [(ngModel)]="pcard.limitsRequested" placeholder="enter requested limits">
+      <br/>
+      <label for="field17"> *Comments: </label>
+      <input [(ngModel)]="pcard.formComments" placeholder="any comments?">      
+
+      <h3> <b><i>Signature </i></b></h3>
+      <mat-checkbox> I swear to affirm that the information contained on this form, to the best<br/> of my knowledge and belief is true, and correct and complete. </mat-checkbox>
+
+      <!-- Kinda weird. Many need further revision. -->
+
+      <p>Enter your credential information and select the <b><i>Sign</i></b> button:</p>
+      <label for="field18"> *User ID: </label>
+      <input [(ngModel)]="pcard.userID" placeholder="enter ID">  
+
+      <label for="field19"> *Password: </label>
+      <input [(ngModel)]="pcard.password" placeholder="enter password">    
+      <br/>
+
+      <label for="field19">*Department Approver/Site Adminstrator: </label>
+      <input [(ngModel)]="pcard.deptAdmin" placeholder="enter Approver">   
+      <br/>
+      <label for="field19"> Date" </label>
+      <input [(ngModel)]="pcard.date" placeholder="enter date">        
+
+      <!-- jumped some values at first. Come back to this. -->
+
+    	<!-- changed.trying something different. -->
+    </div>
+
+ <div class="buttonTest">
+ 	<!-- we added this button for testing.-->
+  <!-- Just to prove we can pass data along to where ever -->
+  <button (click)="addToLog(pcard)"
+        class="ui positive right floated button"> <!-- button tags opens and closes. "Submit Link" is its text -->
+    Sign and Submit Test
+  </button>
+ </div>
+
