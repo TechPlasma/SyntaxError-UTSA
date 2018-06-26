@@ -47,17 +47,27 @@ export class PCardFormComponent implements OnInit {
    ngOnInit() {
    }
 
+   /*
+        CHECKBOX FIXED.
+        - Checkbox can be set to [(ngModel)]="pcard.sigBox".
+        - this means that box is checked, it changes the default value
+          of the pcard.variable to true.
+        - If box is unchecked, then it returns to a false.
+        - I tested this via the console prints in "addToLog".
+        - it works!
+   */
    addToLog(pcard: pCard){
      console.log(`Hello there, from pcard-form. ${pcard.firstName}`);
      console.log(`And last name is: ${pcard.lastName}`);
      console.log(`email test is: ${pcard.cosaEmail}`);
-   }
-   /*  // FOR CHECKBOXES: Need to call this function if first checkbox is chosen. 
-   toCallCheck1(pcard: pCard){
-     console.log(`Hey you pressed the checkbox! Good old boy.`);
-   }
-   */ 
+     
+     console.log(`CHECKBOX 1: CEO Website Access is ${pcard.webAccessOnly}`);
+     console.log(`CHECKBOX 2: New Card Request is ${pcard.newCardRequest}`);
+     console.log(`CHECKBOX 3: Cardholder Maintenance is ${pcard.chMaintenance}`);
 
-  // idea for calling function to get back when user typed into fields. ????????? See book. 
+     console.log(`boolean test. Checkbox. Sig is ${pcard.sigBox}`);
+
+     console.log(`RADIO button: testing. value is ${pcard.reconcilerBoolean}`);
+   }
 
 }

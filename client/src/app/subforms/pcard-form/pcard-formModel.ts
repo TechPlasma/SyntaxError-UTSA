@@ -14,7 +14,7 @@ export class pCard {
 
 	// Personal information
 	firstName: string;
-	middleName: string;
+	middleName: string;	
 	lastName: string;
 	suffix: string;
 

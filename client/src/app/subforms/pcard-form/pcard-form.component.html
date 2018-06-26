@@ -1,121 +1,145 @@
+<!-- DATE PICKER DOESN'T WORK. Consult team. -->
 <p>
    <!--  pcard-form works brah! firstName variable is {{pcard.firstName}} -->
 </p>
-<!-- three checkboxes left to right. -->
-<!-- 
-<div>
-  <label> testing JESSE here </label>
-  <input type="checkbox" name="xxx" onchange> 
-</div>
-  -->
 
-<!-- CHECKBOXES DON'T WORK -->
-<!-- checkboxes MUST call a function to change default value to true. -->
-<!--x- can't ignore out how??? --> 
-<mat-checkbox>CEO Website Access </mat-checkbox>
+<mat-checkbox class="example-margin" [(ngModel)]="pcard.webAccessOnly"> 
+  <p>CEO Website Access</p> 
+</mat-checkbox>
 
-<mat-checkbox> New Credit Card Request  </mat-checkbox>
+<mat-checkbox class="example-margin" [(ngModel)]="pcard.newCardRequest"> 
+  <p>New Credit Card Request</p>  
+</mat-checkbox>
 
-<mat-checkbox>Cardholder Maintenance  </mat-checkbox>
-
-
-
-<!-- can't get formating right. Want rows(left to right) text fields. -->
-
-<!-- first row of Personal Information field. 
-  <p>and last name variable is {{pcard.lastName}}</p>
-  <p>Testing: middle name is {{pcard.middleName }} </p>
--->
+<mat-checkbox class="example-margin" [(ngModel)]="pcard.chMaintenance">
+  <p>CardHolder Maintenance</p>  
+</mat-checkbox>
 
 	<div class="Personal Information">
-    <h3> Personal Information </h3>
-    	<label for="field1">*First: </label>
-      <input [(ngModel)]="pcard.firstName" placeholder="Enter first name">
+    <h3> <b> Personal Information </b> </h3>
+    <p>Please fill out the following information: </p>
+    <p> NOTE: fields with the * symbol MUST be filled out to continue. </p>
+    <mat-form-field class="example-form">
+      <input matInput placeholder="*Enter your first name" [(ngModel)]="pcard.firstName" >
+    </mat-form-field>
 
-      <label for="field2"> *Last Name: </label>
-      <input [(ngModel)]="pcard.lastName" placeholder="enter last name">
-      <!-- for formating, add a newline via the br tag. -->
-       <br/>
+    <mat-form-field class="example-form">
+      <input matInput placeholder="*Enter your last name" [(ngModel)]="pcard.lastName" >
+    </mat-form-field>
+      <!-- for formating, add a newline via the br tag. 
+       <br/> 
+     -->
+    <mat-form-field class="example-form">
+      <input matInput placeholder="Enter your middle name (optional)" [(ngModel)]="pcard.middleName" >
+    </mat-form-field>
 
-      <label for="field3">MI: </label>
-      <input [(ngModel)]="pcard.middleName" placeholder="middle name (optional)">
+     <mat-form-field class="example-form">
+      <input matInput placeholder="Enter your suffix (optional)" [(ngModel)]="pcard.suffix" >
+    </mat-form-field>
 
-      <label for="field4">Suffix: </label>
-      <input [(ngModel)]="pcard.suffix" placeholder="enter suffix (optional)">
+    <mat-form-field class="example-form">  
+      <input matInput placeholder="*Enter your user name" [(ngModel)]="pcard.userName" >
+    </mat-form-field>
 
-      <br/>
-      <label for="field5">User Name: </label>
-      <input [(ngModel)]="pcard.userName" placeholder="enter user name">
+    <mat-form-field class="example-form">
+      <input matInput placeholder="*Enter your COSA email" [(ngModel)]="pcard.cosaEmail" >
+    </mat-form-field>
 
-      <label for="field6">*COSA Email:</label>
-      <input [(ngModel)]="pcard.cosaEmail" placeholder="enter COSA email">
+    <mat-form-field class="example-form">
+      <input matInput placeholder="*Enter your SAP Employee ID" [(ngModel)]="pcard.sapEmpId" >
+    </mat-form-field>
 
-      <br/>
-      <label for="field7"> SAP Employee ID</label>
-      <input [(ngModel)]="pcard.sapEmpId" placeholder="enter sap Employee ID">
+    <mat-form-field class="example-form">
+      <input matInput placeholder="*Department" [(ngModel)]="pcard.dept" >
+    </mat-form-field> 
 
-      <br/>
+      <p> <b>*Department Approver for this CardHolder(CH)</b> </p>
 
-      <label for="field8">*Department </label>
-      <input [(ngModel)]="pcard.dept" placeholder="enter deptartment">
+    <mat-form-field class="example-form">
+      <input matInput placeholder="*Name" [(ngModel)]="pcard.deptAppChName">
+    </mat-form-field>
 
-      <h3>*Department Approver for this CardHolder(CH)</h3>
+    <mat-form-field class="example-form">
+      <input matInput placeholder="*SAP Nr:" [(ngModel)]="pcard.deptAppChSapNm" >
+    </mat-form-field>
 
-      <label for="field9"> *Name: </label>
-      <input [(ngModel)]="pcard.deptAppChName" placeholder="enter name">
+  <br>
+  <!-- whatever radioButton returns(True or False) = pcard.reconcilerBoolean-->
+  <mat-radio-group [(ngModel)]="pcard.reconcilerBoolean"> 
+    <label> Does CardHolder require a Reconciler? </label>
+    <mat-radio-button value=true> Yes </mat-radio-button>
+    <mat-radio-button value=false> No </mat-radio-button>
+  </mat-radio-group>
 
-      <label for="field10"> *SAP Nr: </label>
-      <input [(ngModel)]="pcard.deptAppChSapNm" placeholder="enter sap number">
+  <br>
 
-      <h3> Card Setup </h3>
-      <p>*CardHolder Name(as it is to appear on card-25 characters total):</p>
+  <h3> Card Setup </h3>
+    <p> <b>*CardHolder Name</b> (as it is to appear on card--25 characters total):</p>
 
-      <label for="field11"> First: </label>
-      <input [(ngModel)]="pcard.chFirstName" placeholder="enter CH first name">
+    <mat-form-field class="example-form">
+      <input matInput placeholder="*First name" [(ngModel)]="pcard.chFirstName" >
+    </mat-form-field>
 
-      <label for="field12"> Last: </label>
-      <input [(ngModel)]="pcard.chLastName" placeholder="enter CH last name">
+    <mat-form-field class="example-form">
+      <input matInput placeholder="*Last name" [(ngModel)]="pcard.chLastName" >
+    </mat-form-field>
 
-      <h3> Accounting Codes </h3>
-      <label for="field13">Default Cost Type: </label>
-      <input [(ngModel)]="pcard.defCostType" placeholder="def cost type">
-      <br/>
-      <label for="field14"> Default Code: </label>
-      <input [(ngModel)]="pcard.defCode" placeholder="code type">
-      <br/>
-      <label for="field15">Description: </label>
-      <input [(ngModel)]="pcard.description" placeholder="description">
+   <h3> <b>Accounting Codes </b> </h3>
+    <mat-form-field class="example-form">
+      <input matInput placeholder="Defaut Cost Type" [(ngModel)]="pcard.defCostType" >
+    </mat-form-field>
 
-      <h3> Set Cardholder Limits</h3>
+    <mat-form-field class="example-form">
+      <input matInput placeholder="Default Code" [(ngModel)]="pcard.defCode" >
+    </mat-form-field>
+    
+    <mat-form-field class="example-form">
+      <input matInput placeholder="Description" [(ngModel)]="pcard.description">
+    </mat-form-field>
+
+    <h3> Set Cardholder Limits</h3>
       
-      <label for="field16"> *Limits Requested: </label>
-      <input [(ngModel)]="pcard.limitsRequested" placeholder="enter requested limits">
-      <br/>
-      <label for="field17"> *Comments: </label>
-      <input [(ngModel)]="pcard.formComments" placeholder="any comments?">      
+    <mat-form-field class="example-form">
+      <input matInput placeholder="*Limits Requested:" [(ngModel)]="pcard.limitsRequested">
+    </mat-form-field>
 
-      <h3> <b><i>Signature </i></b></h3>
-      <mat-checkbox> I swear to affirm that the information contained on this form, to the best<br/> of my knowledge and belief is true, and correct and complete. </mat-checkbox>
+    <mat-form-field class="example-form">
+      <!-- <textarea matInput placeholder="Leave a comment"></textarea> -->
+      <textarea matInput placeholder="Comments: "[(ngModel)]="pcard.formComments" ></textarea>  
+    </mat-form-field>    
 
-      <!-- Kinda weird. Many need further revision. -->
+    <h3> <b><i>Signature </i></b></h3>
 
-      <p>Enter your credential information and select the <b><i>Sign</i></b> button:</p>
-      <label for="field18"> *User ID: </label>
-      <input [(ngModel)]="pcard.userID" placeholder="enter ID">  
+    <mat-checkbox class="example-form" [(ngModel)]="pcard.sigBox"> <p class="example-form"><i>By checking this box, I swear to affirm that the information contained on this form, to the <br>best of my knowledge and belief is true, and correct and complete.</i></p> 
+    </mat-checkbox>
 
-      <label for="field19"> *Password: </label>
-      <input [(ngModel)]="pcard.password" placeholder="enter password">    
-      <br/>
+    <p>Enter your credential information and select the <b><i>Sign</i></b> button:</p>
 
-      <label for="field19">*Department Approver/Site Adminstrator: </label>
-      <input [(ngModel)]="pcard.deptAdmin" placeholder="enter Approver">   
-      <br/>
-      <label for="field19"> Date" </label>
-      <input [(ngModel)]="pcard.date" placeholder="enter date">        
+    <mat-form-field class="example-form">      
+      <input matInput placeholder="*Enter User ID"[(ngModel)]="pcard.userID" >  
+    </mat-form-field>
 
-      <!-- jumped some values at first. Come back to this. -->
+    <mat-form-field class="example-form"> 
+      <input matInput placeholder="*Enter Password" [(ngModel)]="pcard.password"> 
+    </mat-form-field>   
+      
+    <mat-form-field class="example-form"> 
+      <input matInput placeholder="*Department Approver/Site Adminstrator:" [(ngModel)]="pcard.deptAdmin" > 
+    </mat-form-field>
 
-    	<!-- changed.trying something different. -->
+    <!-- problems with date values. -->  
+    <mat-form-field class="example-form"> 
+      <input matInput placeholder="Date" [(ngModel)]="pcard.date">   
+    </mat-form-field>     
+  
+    <!--
+  <mat-form-field>
+    <input matInput [matDatepicker]="pcard.date" placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="pcard.date"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+-->
+     
     </div>
 
  <div class="buttonTest">
