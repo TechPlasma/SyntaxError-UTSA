@@ -1,4 +1,103 @@
-<p>
-  user-form works!
-  Clayton was here!
-</p>
+<!-- 
+ Department Request
+ 	- Department         : Input
+ 	- Department Request : Input
+ 	- Date				 : Input (for now)
+ 	- Phone Ext.         : Input
+ 	- Request Type       : Radio Button
+-->
+<h3><b>Department Request</b></h3>
+<mat-form-field class = "example-form">
+    <input matInput placeholder = "Department">
+</mat-form-field>
+<mat-form-field class = "example-form">
+    <input matInput placeholder = "Date">
+</mat-form-field>
+<br>
+<mat-form-field class = "example-form">
+    <input matInput placeholder = "Department Requestor">
+</mat-form-field>
+<mat-form-field class = "example-form">
+    <input matInput placeholder = "Phone Ext.">
+</mat-form-field>
+<br>
+
+<mat-radio-group>
+  <p><b>Request Type</b></p>
+  <mat-radio-button value = "1">Provision User</mat-radio-button>
+  <mat-radio-button value = "2">Disable User Account</mat-radio-button>
+</mat-radio-group>
+
+<!--
+User Provisioning
+	- User Type         : Radio Button
+	- Date of Hire      : Input (dependent on Usr. Type)
+	- User Name         : Input
+	- Emp SAP #         : Input
+	- Work Location     : Input
+	- Device Assignment : Radio Button
+	- Device Asset #    : Input (dependent on Dev. Assign.)
+	- Phone Assignment  : Radio Button x2
+-->
+<h3><b><br>User Provisioning</b></h3>
+<mat-radio-group>
+  <p><b>User Type</b></p>
+  <mat-radio-button value = "1">New</mat-radio-button>
+  <mat-radio-button value = "2">Transfer</mat-radio-button>
+  <mat-radio-button value = "3">Rehire</mat-radio-button>
+  <mat-radio-button value = "4">CoSA Temp/Inter</mat-radio-button>
+</mat-radio-group>
+
+<mat-form-field class = "example-form">
+    <input matInput placeholder = "Date of Hire">
+</mat-form-field>
+<mat-form-field class = "example-form">
+    <input matInput placeholder = "User Name">
+</mat-form-field>
+<mat-form-field class = "example-form">
+    <input matInput placeholder = "Employee SAP #">
+</mat-form-field>
+<mat-form-field class = "example-form">
+    <input matInput placeholder = "Work Location">
+</mat-form-field>
+<br>
+
+<p><b><u>Device Assigntment:</u></b> *Is an existing device being assigned to this user?</p>
+<mat-radio-group>
+  <mat-radio-button value = "1">Yes</mat-radio-button>
+  <mat-radio-button value = "2">No</mat-radio-button>
+</mat-radio-group>
+<mat-form-field class = "example-form">
+    <input matInput placeholder = "Device Asset #">
+</mat-form-field>
+
+<p><b><u>Phone Assigntment:</u></b> *Will you be assigning an existing Cisco IP phone and Extension?</p>
+<mat-radio-group>
+  <mat-radio-button value = "1">Yes</mat-radio-button>
+  <mat-radio-button value = "2">No</mat-radio-button>
+</mat-radio-group>
+
+<p>*Does this employee extension need to be set up as a Service Center Agent or Supervisor?</p>
+<mat-radio-group>
+  <mat-radio-button value = "1">Yes</mat-radio-button>
+  <mat-radio-button value = "2">No</mat-radio-button>
+</mat-radio-group>
+
+<!--
+User Access
+ - Home Drive                 : Checkbox
+ - Dept. Share Drive          : Checkbox
+ - Email                      : Checkbox
+ - Name                       : Input
+ - SAP#                       : Input
+ - Additional Requirements x2 : Checkbox x2 + Input
+ - Mainframe Acces x 2        : Checkbox x2 + Input
+-->
+
+<!--
+	Signatures
+		- Requestor           : Input
+		- Date                : Input
+		- Dept. Head/Designee : Input
+		- Date                : Input
+-->
