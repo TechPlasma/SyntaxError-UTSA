@@ -1,0 +1,38 @@
+h2{
+  font-size: 200%;
+}
+h3{
+  font-size: 200%;
+}
+h4{
+  font-size: 200%;
+}
+h5 {
+font-size: 150%;
+}
+div.Requests{
+  margin: 0 5px 0 30px;
+}
+.Personnel {
+  display:flex;
+  flex-direction:column;
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+.facultyInfo {
+  display:flex;
+  flex-direction:column;
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+
+}
+.departmentApprov {
+  display:flex;
+  flex-direction:column;
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+
+}
