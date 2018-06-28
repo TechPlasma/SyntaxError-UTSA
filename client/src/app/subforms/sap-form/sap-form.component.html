@@ -1,1 +1,8 @@
-Getting Ready for Form View
+<mat-radio-group [(ngModel)]="testObject.section1.value">
+	<mat-radio-button *ngFor="let choice of testObject.section1.items" [value]="choice.value">
+		{{choice.name}}
+	</mat-radio-button>
+</mat-radio-group>
+<br>
+{{testObject.section1.value}}
+<button mat-raised-button color="primary" (click)="alert('Fuck you');">Don't Press Me!</button>
