@@ -7,34 +7,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SAPFormComponent implements OnInit {
 
-	testObject={
+	tempObject={
 		section1:{
-			value:"",
-			items: [
-				{
-					name:"Add New User",
-					value:"Add New User"
-				},
-				{
-					name:"Modify Existing User (Add Roles)",
-					value:"Modify Existing User (Add Roles)"
-				},
-
-				{
-					name:"Delimt Roles",
-					value:"Delimt Roles"
-				},
-				{
-					name:"Deactivate Uer",
-					value:"Deactivate Uer"
-				},
-				{
-					name:"New Field",
-					value:"Deactivate"
-				}
-			]
+			formReason:'',
+			userName:'',
+			userCOSAID:'',
+			date:'',
+			department:'',
+			userSAPNum:'',
+			jobDesc:'',
+			emailAddr:'',
+			managerName:'',
+			workLocation:'',
+			tempEmp:false,
+			IDExpStart:'',
+			IDExpEnd:'',
+			tempRoleAssn:false,
+			tempRoleExp:''
 		}
 	}
+
 
 	alert(value){
 		console.log(value);
