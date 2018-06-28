@@ -1,43 +1,48 @@
-<body ng-app="fuelForm">
-	<div ng-controller="myCtrl">
-		<p>
-			{{ fuel.department }}<br>
-			  Department:<br>
-			  <input [(ngModel)]="fuel.department" placeholder="Department"><br>
-			  Division:<br>
-			  <input [(ngModel)]="fuel.division" placeholder="Division"><br>
-			  Cost Center:<br>
-			  <input [(ngModel)]="fuel.costcenter" placeholder="Cost Center"><br>
-			  Dept. Requester:<br>
-			  <input [(ngModel)]="fuel.deptreq" placeholder="Name"><br>
-			  Phone Ext.<br>
-			  <input [(ngModel)]="fuel.phoneext" placeholder="5555"><br>
+<p>
+	{{ fuel.department }}<br>
+		Department:<br>
+		<mat-form-field>
+		<input matInput [(ngModel)]="fuel.department" placeholder="Department">
+		</mat-form-field><br>
+		Division:<br>
+		<mat-form-field>
+		<input matInput [(ngModel)]="fuel.division" placeholder="Division">
+		</mat-form-field><br>
+		Cost Center:<br>
+		<mat-form-field>
+		<input matInput [(ngModel)]="fuel.costcenter" placeholder="Cost Center">
+		</mat-form-field><br>
+		Dept. Requester:<br>
+		<mat-form-field>
+		<input matInput [(ngModel)]="fuel.deptreq" placeholder="Name">
+		</mat-form-field><br>
+		Phone Ext.<br>
+		<mat-form-field>
+		<input matInput [(ngModel)]="fuel.phoneext" placeholder="5555">
+		</mat-form-field><br>
 			
-			  Employee(s) Requesting Fueling Authorization<br>
-			  Employee:<br>
-			  <input [(ngModel)]="fuel.samemp.name" placeholder="Name"><br>
-			   SAP#:<br>
-			  <input [(ngModel)]="fuel.samemp.sap" placeholder="SAP#"><br>
-			   Work Phone:<br>
-			  <input [(ngModel)]="fuel.samemp.phone" placeholder="(123)4567890"><br>
-			  <button ng-click="addEmployee(fuel.samemp.name, fuel.samemp.sap, fuel.samemp.phone)">
-			  Add Employee</button><br>
-			  <li *ngFor="let fuelemployee of fuel.emparray ">
-			  <span class="badge">{{samemp.name}}</span> {{samemp.sap}}
-			  </li>
+		Employee(s) Requesting Fueling Authorization<br>
+		Employee:<br>
+		<mat-form-field>
+		<input matInput [(ngModel)]="fuel.samemp.name" placeholder="Name">
+		</mat-form-field><br>
+		SAP#:<br>
+		<mat-form-field>
+		<input matInput [(ngModel)]="fuel.samemp.sap" placeholder="SAP#">
+		</mat-form-field>
+		<br>Work Phone:<br>
+		<mat-form-field>
+		<input matInput [(ngModel)]="fuel.samemp.phone" placeholder="(123)4567890">
+		</mat-form-field><br>
+		<button mat-raised-button ng-click="addEmployee()">
+		Add Employee</button><br>
+		<li *ngFor="let FuelEmployee of fuel.emparray ">
+		<span class="badge">{{samemp.name}}</span> {{samemp.sap}}
+		</li>
 			  
-			  <input type="checkbox" name="fuelacknowledgement1" value="1">I acknowledge that I have reviewed AD1.8 Vehicle Use with the above-listed employee(s).<br>
-			  <input type="checkbox" name="fuelacknowledgement2" value="2">I will ensure the above-listed employee(s) attend the City 
-			  driving safety training course in accordance with AD 4.8 Driver Safety Program.<br>
-			  {{ fuel.test}}
-			</p>
-		</div>
-	<script>
-	var app =angular.module('fuelForm', []);
-	app.controller('myCtrl', function($scope) {
-	    $scope.myFunc = function() {
-	       $scope.fuel.test++;
-	    };
-	}]);
-	</script>
-</body>
+		<mat-checkbox >I acknowledge that I have reviewed AD1.8 Vehicle Use with the above-listed employee(s).</mat-checkbox><br>
+		<mat-checkbox >I will ensure the above-listed employee(s) attend the City </mat-checkbox>
+		driving safety training course in accordance with AD 4.8 Driver Safety Program.<br>
+		{{ fuel.test}}
+</p>
+	

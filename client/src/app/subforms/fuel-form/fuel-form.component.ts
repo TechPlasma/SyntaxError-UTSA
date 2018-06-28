@@ -17,13 +17,18 @@ export class FuelFormComponent implements OnInit {
   division: '',
   costcenter: '',
   deptreq: '',
-  phoneext: '0',
+  phoneext: '',
   samemp: this.fred,
   emparray: []
  
   };
+  
+  
   constructor() { }
   ngOnInit() {
+  }
+  function addEmployee(){
+  console.log("hello world");
   }
 
 }
