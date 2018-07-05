@@ -8,7 +8,7 @@
 -->
 <h3><b>Department Request</b></h3>
 <mat-form-field class = "example-form">
-    <input matInput placeholder = "Department">
+    <input matInput placeholder = "Department" [(ngModel)] = "UPR.department">
 </mat-form-field>
 <mat-form-field class = "example-form">
     <input matInput placeholder = "Date">
@@ -22,7 +22,7 @@
 </mat-form-field>
 <br>
 
-<mat-radio-group>
+<mat-radio-group [(ngModel)] = "UPR.reqType">
   <p><b>Request Type</b></p>
   <mat-radio-button value = "1">Provision User</mat-radio-button>
   <mat-radio-button value = "2">Disable User Account</mat-radio-button>
@@ -95,7 +95,7 @@ User Access
 -->
 <h3><b><br>User Access</b></h3>
 
-<mat-checkbox>Home Drive(H)</mat-checkbox>
+<mat-checkbox [(ngModel)] = "UPR.homeDr">Home Drive(H)</mat-checkbox>
 <br>
 <mat-checkbox>Department Share Drive(K)</mat-checkbox>
 <br>
@@ -150,3 +150,10 @@ User Access
 <mat-form-field class = "example-form">
     <input matInput placeholder = "Date">
 </mat-form-field>
+
+<!-- Logging over here for testing purposes -->
+<div class = "testing">
+	<button (click) = "addToLog(UPR)">
+	Save and Log
+	</button>
+</div>
