@@ -13,7 +13,7 @@ export class userProvForm{
 	empSapNr: number;
 	workLoc: string;
 	deviceAssign: boolean;
-	deviceAssetNr: boolean;
+	deviceAssetNr: number;
 	phoneAssign: boolean;
 	phoneAssign2: boolean;
 
@@ -25,14 +25,14 @@ export class userProvForm{
 	sapNr: number;
 	addReq: boolean;
 	addReqList: boolean;
-	// something else is needed to record stuff based off of previous 2 boolean variables
+	addReqText: string;
 	mfAccess: boolean;
 	mfAppAccList: boolean;
-	// something else is needed to record stuff based off of previous 2 boolean variables
+	mfText: string;
 
 	// Signatures
-	requestor: string;
-	requestorDt: string;
+	requester: string;
+	requesterDt: string;
 	deptHd_Designee: string;
 	dHdDt: string;
 }

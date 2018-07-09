@@ -11,14 +11,14 @@
     <input matInput placeholder = "Department" [(ngModel)] = "UPR.department">
 </mat-form-field>
 <mat-form-field class = "example-form">
-    <input matInput placeholder = "Date">
+    <input matInput placeholder = "Date" [(ngModel)] = "UPR.deptDate">
 </mat-form-field>
 <br>
 <mat-form-field class = "example-form">
-    <input matInput placeholder = "Department Requestor">
+    <input matInput placeholder = "Department Requester" [(ngModel)] = "UPR.deptRequester">
 </mat-form-field>
 <mat-form-field class = "example-form">
-    <input matInput placeholder = "Phone Ext.">
+    <input matInput placeholder = "Phone Ext." [(ngModel)] = "UPR.phoneExt">
 </mat-form-field>
 <br>
 
@@ -40,7 +40,7 @@ User Provisioning
 	- Phone Assignment  : Radio Button x2
 -->
 <h3><b><br>User Provisioning</b></h3>
-<mat-radio-group>
+<mat-radio-group [(ngModel)] = "UPR.userType">
   <p><b>User Type</b></p>
   <mat-radio-button value = "1">New</mat-radio-button>
   <mat-radio-button value = "2">Transfer</mat-radio-button>
@@ -49,38 +49,39 @@ User Provisioning
 </mat-radio-group>
 
 <mat-form-field class = "example-form">
-    <input matInput placeholder = "Date of Hire">
+    <input matInput placeholder = "Date of Hire" [(ngModel)] = "UPR.dtOfHire">
 </mat-form-field>
 <mat-form-field class = "example-form">
-    <input matInput placeholder = "User Name">
+    <input matInput placeholder = "User Name" [(ngModel)] = "UPR.userName">
 </mat-form-field>
 <mat-form-field class = "example-form">
-    <input matInput placeholder = "Employee SAP #">
+    <input matInput placeholder = "Employee SAP #" [(ngModel)] = "UPR.empSapNr">
 </mat-form-field>
 <mat-form-field class = "example-form">
-    <input matInput placeholder = "Work Location">
+    <input matInput placeholder = "Work Location" [(ngModel)] = "UPR.workLoc">
 </mat-form-field>
 <br>
 
 <p><b><u>Device Assigntment:</u></b> *Is an existing device being assigned to this user?</p>
-<mat-radio-group>
-  <mat-radio-button value = "1">Yes</mat-radio-button>
-  <mat-radio-button value = "2">No</mat-radio-button>
+<mat-radio-group [(ngModel)] = "UPR.deviceAssign">
+  <mat-radio-button value = "true">Yes</mat-radio-button>
+  <mat-radio-button value = "false">No</mat-radio-button>
 </mat-radio-group>
+
 <mat-form-field class = "example-form">
-    <input matInput placeholder = "Device Asset #">
+    <input matInput placeholder = "Device Asset #" [(ngModel)] = "UPR.deviceAssetNr">
 </mat-form-field>
 
 <p><b><u>Phone Assigntment:</u></b> *Will you be assigning an existing Cisco IP phone and Extension?</p>
-<mat-radio-group>
-  <mat-radio-button value = "1">Yes</mat-radio-button>
-  <mat-radio-button value = "2">No</mat-radio-button>
+<mat-radio-group [(ngModel)] = "UPR.phoneAssign">
+  <mat-radio-button value = "true">Yes</mat-radio-button>
+  <mat-radio-button value = "false">No</mat-radio-button>
 </mat-radio-group>
 
 <p>*Does this employee extension need to be set up as a Service Center Agent or Supervisor?</p>
-<mat-radio-group>
-  <mat-radio-button value = "1">Yes</mat-radio-button>
-  <mat-radio-button value = "2">No</mat-radio-button>
+<mat-radio-group [(ngModel)] = "UPR.phoneAssign2">
+  <mat-radio-button value = "true">Yes</mat-radio-button>
+  <mat-radio-button value = "false">No</mat-radio-button>
 </mat-radio-group>
 
 <!--
@@ -97,37 +98,41 @@ User Access
 
 <mat-checkbox [(ngModel)] = "UPR.homeDr">Home Drive(H)</mat-checkbox>
 <br>
-<mat-checkbox>Department Share Drive(K)</mat-checkbox>
+<mat-checkbox [(ngModel)] = "UPR.deptShareDr">Department Share Drive(K)</mat-checkbox>
 <br>
-<mat-checkbox>Email</mat-checkbox>
+<mat-checkbox [(ngModel)] = "UPR.email">Email</mat-checkbox>
 <br>
 
 <mat-form-field class = "example-form">
-    <input matInput placeholder = "Name">
+    <input matInput placeholder = "Name" [(ngModel)] = "UPR.name">
 </mat-form-field>
 <mat-form-field class = "example-form">
-    <input matInput placeholder = "SAP #">
+    <input matInput placeholder = "SAP #" [(ngModel)] = "UPR.sapNr">
 </mat-form-field>
 <p><b>
 	Note: for SAP Roles, please coordinate those requirements with your <br>
 	designated Department Access Provision Specialist.
 </b></p>
 
-<mat-checkbox>Additional requirements (<i>Shared folders, Distributed Lists, etc.</i>)</mat-checkbox>
+<mat-checkbox [(ngModel)] = "UPR.addReq">
+	Additional requirements (<i>Shared folders, Distributed Lists, etc.</i>)</mat-checkbox>
 <br>
-<mat-checkbox>Additional requirements list is attatched</mat-checkbox>
+<mat-checkbox [(ngModel)] = "UPR.addReqList">
+	Additional requirements list is attatched</mat-checkbox>
 <br>
 <mat-form-field class = "example-form">
-    <input matInput placeholder = "requirements go here">
+    <input matInput placeholder = "requirements go here" [(ngModel)] = "UPR.addReqText">
 </mat-form-field>
 
-<mat-checkbox>Mainframe Access 
+<mat-checkbox [(ngModel)] = "UPR.mfAccess">
+	Mainframe Access
 	(<i>Id needing access to an application within the mainframe, please list</i>)</mat-checkbox>
 <br>
-<mat-checkbox>Mainframe application access list is attatched</mat-checkbox>
+<mat-checkbox [(ngModel)] = "UPR.mfAccessList">
+	Mainframe application access list is attatched</mat-checkbox>
 <br>
 <mat-form-field class = "example-form">
-    <input matInput placeholder = "Mainrame Information Here">
+    <input matInput placeholder = "Mainrame Information Here" [(ngModel)] = "UPR.mfText">
 </mat-form-field>
 
 <!--
@@ -139,16 +144,16 @@ User Access
 -->
 <h3><b><br>Signatures</b></h3>
 <mat-form-field class = "example-form">
-    <input matInput placeholder = "Requestor">
+    <input matInput placeholder = "Requestor" [(ngModel)] = "UPR.requester">
 </mat-form-field>
 <mat-form-field class = "example-form">
-    <input matInput placeholder = "Date">
+    <input matInput placeholder = "Date" [(ngModel)] = "UPR.requesterDt">
 </mat-form-field>
 <mat-form-field class = "example-form">
-    <input matInput placeholder = "Department Head / Designee">
+    <input matInput placeholder = "Department Head / Designee" [(ngModel)] = "UPR.deptHd_Designee">
 </mat-form-field>
 <mat-form-field class = "example-form">
-    <input matInput placeholder = "Date">
+    <input matInput placeholder = "Date" [(ngModel)] = "UPR.dHdDt">
 </mat-form-field>
 
 <!-- Logging over here for testing purposes -->
