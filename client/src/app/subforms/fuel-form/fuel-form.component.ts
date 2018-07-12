@@ -27,8 +27,6 @@ export class FuelFormComponent implements OnInit {
   constructor() { }
   ngOnInit() {
   }
-  function addEmployee(){
-  console.log("hello world");
-  }
+  
 
 }
