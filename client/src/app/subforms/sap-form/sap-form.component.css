@@ -9,3 +9,8 @@ mat-radio-button{
 .thirds{
 	width:30%;
 }
+
+.thirdsSelect{
+	margin:5px;
+	width:30%;
+}

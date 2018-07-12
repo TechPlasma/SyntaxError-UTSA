@@ -28,8 +28,8 @@ Process Files for Interface - DCI Dept. Only
  - Fire
  - All Other
 Sales Order Specialist
-Departmental Billing Specialist 
-AR Post Clearing Items 
+Departmental Billing Specialist
+AR Post Clearing Items
 Deposit Payment Post – Special Events
 Create Benefits Billing (HR Only)
 Revenue Contract Specialist
@@ -54,9 +54,9 @@ Dept Time Self Entry Uniform Police – Master
 Departmental Time Administrator (Uniformed Off Duty)
 
 ### Inventory
- - Police
- - Fire
- - All Other
+Police
+Fire
+All Other
 Warehouse Manager
 Warehouse Maintainer
 Enter Inventory Counts
@@ -68,6 +68,67 @@ Departmental Travel Plan & Reimbursement Approver
 Departmental Travel Coordinator
 
 ### Controlling (CO)
+Departmental Internal Order Master Data Maintainer
+Departmental Performance Measures Maintainer
+DPT Internal Order Master Data Maintainer Special Events
+
+### Finance
+Departmental Accounting Transactions Initiator
+Departmental Off Cycle Workbench
+Departmental EOD (End of Day) Coordinator
+Departmental User's Access in SAP (APS)
+
+### Fixed Assets
+Departmental Asset Master Data Administrator
+
+### Funds Management
+Departmental Budget Specialist
+
+### Projects
+Project Systems Department
+Project Builder Display
+
+### Business Information Warehouse (BW)
+Dept. Budget Coordinator
+Dept. Budget Submitter
+COSA Budget
+BW Dept. Budget Prep
+City Services Report Card Display (access via COSAWEB)
+City Services Report Card Analyst (includes Display)
+
+### Aviation Only – Airline Statistics
+Aviation Dept. Maintain operating Stats
+
+### Plant Maintenance
+Departmental PM Notification Creation
+Departmental PM Process notification
+Departmental PM Work Order Notification
+Departmental PM Work Order Update Maintainer
+Departmental PM Plan Administration
+Departmental PM Planned Maintenance Scheduler
+Departmental PM General Display
+Departmental Analysis Reports
+
+### Grants Management
+Display Departmental Grant Management
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

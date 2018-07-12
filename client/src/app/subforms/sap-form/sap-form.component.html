@@ -1,5 +1,5 @@
 <div>
-	<h2>Section 1</h2>
+	<h2>Section 1: General Info</h2>
 	<mat-radio-group [(ngModel)]="tempObject.section1.formReason">
 		<mat-radio-button value="AddUser">
 			Add New User
@@ -92,9 +92,47 @@
 		</mat-form-field>
 	</div>
 </div>
-
+<br>
 <div>
-	<h2>Section 2</h2>
+	<h2>Section 2: Department Roles</h2>
+	<h4>
+		Department roles incude all departments except Police and Fire departments
+	</h4>
+	<h3>General Display</h3>
+	<table style="width:100%;">
+		<tr align="center">
+			<th>
+				Departmental
+			</th>
+			<th>
+				Central (Assigned w/ Central Function Roles)
+			</th>
+		</tr>
+		<tr align="center">
+			<td>
+				<mat-checkbox [(ngModel)]="tempObject.section2.DGD" matTooltip="also granted as Department Cost Center Manager">Department General Display</mat-checkbox>
+			</td>
+			<td>
+				<mat-checkbox [(ngModel)]="tempObject.section2.CGD">Central General Display(All Departments)</mat-checkbox>
+			</td>
+		</tr>
+	</table>
+	<h4>!!!! General Display includes Procurement/Sales/Project Systems/Finance/Controlling/Fixed Assets/Funds Mgmt !!!! </h4>
 	
+	
+
+	<br>
+	<h3>All Roles</h3>
+    <mat-form-field *ngFor="let departments of section1Choices" class="thirdsSelect">
+      <mat-select [(ngModel)]="tempObject.section2[departments.dept]" placeholder="{{departments.dept}}" multiple>
+        <mat-option *ngFor="let item of departments.items" [value]="item">{{ item }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
 </div>
 <br>
+<div>
+	<h2>Section 3: Training Record</h2>
+	<h3>SAP Training Record</h3>
+	
+</div>
