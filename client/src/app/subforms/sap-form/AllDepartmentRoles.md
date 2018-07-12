@@ -118,6 +118,26 @@ Display Departmental Grant Management
 
 
 
+Risk
+Police/Fire Incentives
+Purchasing
+Time
+DHSI Only
+Accounts Receivable/Sales & Distribution
+Permit Printing (Dept)
+Collections
+Police Department Off Duty
+Inventory
+Accounts Payable/Travel
+Controlling (CO)
+Finance
+Fixed Assets
+Funds Management
+Projects
+Business Information Warehouse (BW)
+Aviation Only – Airline Statistics
+Plant Maintenance
+Grants Management
 
 
 

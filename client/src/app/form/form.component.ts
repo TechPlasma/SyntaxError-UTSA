@@ -5,9 +5,12 @@ import { Location } from '@angular/common';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.css']
+  styleUrls: ['./form.component.css'],
+  inputs:['userName']
 })
 export class FormComponent implements OnInit {
+
+	userName:"";
 
 	FID;
 
