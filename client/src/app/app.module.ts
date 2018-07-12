@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
 import { AppComponent } from './app.component';
 import { FormComponent } from './form/form.component';
@@ -34,6 +34,7 @@ import { ViewComponent } from './view/view.component';
   imports: [
     BrowserModule,
     MaterialModule,
+    FormsModule,
     AppRoutingModule
   ],
   providers: [],
