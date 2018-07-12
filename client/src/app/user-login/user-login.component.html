@@ -1,22 +1,48 @@
 <div align="center">
 	<mat-card>
-		<mat-card-title>Temporary User Login Page</mat-card-title>
+		<mat-card-title>Login</mat-card-title>
 		<mat-card-content>
+			
+			<mat-form-field class="thirds">
+				<input matInput autocomplete="off" placeholder="Username" 
+				[(ngModel)]="username" focus>
+			</mat-form-field>
+			<br>
+			<mat-form-field class="thirds">
+				<input matInput autocomplete="off" placeholder="Password" type="password"
+				[(ngModel)]="password">
+			</mat-form-field>
+			<br>
+			<div align="right"  class="thirds" >
+				<button mat-raised-button (click)="login()" color="primary">
+					Login
+				</button>
+			</div>	
+			
+
+			
+			
+			
+
 			<p>
 				This is a tempoarary solution untill we have<br>
-				a proper User Login Page either as a Dummy<br>
-				or through a test system.
+				a proper Implememntation of a User Login page<br>
 			</p>
 		</mat-card-content>
 		<mat-card-footer>
-			<button mat-raised-button [routerLink]="['/department/0']" color="primary">
+			<h2>Backup Buttons</h2>
+			<button mat-raised-button [routerLink]="['/department/0']" color="primary" matTooltip="Avoid Using This">
 				Department Page
 			</button>
 			<button mat-raised-button [routerLink]="['/form']" color="primary">
 				The Master Form Page
 			</button>
-			<button mat-raised-button  [routerLink]="['/user/0']" color="primary">
+			<button mat-raised-button  [routerLink]="['/user/0']" color="primary" matTooltip="Avoid Using This">
 				User Page
+			</button>
+			<br>
+			<button mat-raised-button  [routerLink]="['/view/']" color="primary">
+				Primary View (Uses Default User and Department)
 			</button>
 		</mat-card-footer>
 	</mat-card>
