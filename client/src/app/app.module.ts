@@ -14,6 +14,7 @@ import { HardSoftFormComponent } from './subforms/hard-soft-form/hard-soft-form.
 import { PCardFormComponent } from './subforms/pcard-form/pcard-form.component';
 import { FuelFormComponent } from './subforms/fuel-form/fuel-form.component';
 import { SAPFormComponent } from './subforms/sap-form/sap-form.component';
+import { ViewComponent } from './view/view.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { SAPFormComponent } from './subforms/sap-form/sap-form.component';
     HardSoftFormComponent,
     PCardFormComponent,
     FuelFormComponent,
-    SAPFormComponent
+    SAPFormComponent,
+    ViewComponent
   ],
   imports: [
     BrowserModule,

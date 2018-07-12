@@ -11,6 +11,9 @@ import { Location } from '@angular/common';
 export class DepartmentComponent implements OnInit {
 
 	DID;
+	isFulfilmentDepartment:false;
+
+	
 
 	constructor(
 		private route: ActivatedRoute,

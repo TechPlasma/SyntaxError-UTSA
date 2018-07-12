@@ -4,10 +4,13 @@ import { RouterModule,Routes } from '@angular/router';
 import { DepartmentComponent } 	from './department/department.component';
 import { FormComponent } 		from './form/form.component';
 import { UserComponent }		from './user/user.component';
-import { UserLoginComponent }	from './user-login/user-login.component'
+import { UserLoginComponent }	from './user-login/user-login.component';
+import { ViewComponent }		from './view/view.component';
 
 const routes: Routes = [
 	{ path: '', component: UserLoginComponent },
+
+	{ path: 'view', component: ViewComponent },
 
 	{ path: 'department/:DID', component: DepartmentComponent },
 	{ path: 'department', component: DepartmentComponent },
