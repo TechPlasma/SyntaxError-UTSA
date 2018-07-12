@@ -41,9 +41,22 @@
 {{IDForm.personnelInfo.Last}} <textarea matInput> </textarea>
 </mat-form-field>
 
+
 <mat-form-field>
-{{IDForm.personnelInfo.jobStatus}} <textarea matInput> </textarea>
+
+ <mat-select [(value)] = "jobPosition" placeholder = "Job Status">
+   <mat-option value = "Cont.temp"> Contract temporary </mat-option>
+   <mat-option value = "contractor"> Contractor </mat-option>
+   <mat-option value = "fullTime"> CoSA Full-Time </mat-option>
+   <mat-option value = "partTime"> CoSA Part-Time </mat-option>
+   <mat-option value = "temp"> Temporary </mat-option>
+   <mat-option value = "getPaid"> Paid Intern </mat-option>
+   <mat-option value = "unPaid"> Unpaid Intern </mat-option>
+   <mat-option value = "vendor"> Vendor </mat-option>
+   <mat-option value = "helper"> Volunteer </mat-option>
+ </mat-select>
 </mat-form-field>
+
 
 <mat-form-field>
 {{IDForm.personnelInfo.workPhone}} <textarea matInput> </textarea>
@@ -54,7 +67,49 @@
 </mat-form-field>
 
 <mat-form-field>
-{{IDForm.personnelInfo.Department}} <textarea matInput> </textarea>
+
+ <mat-select [(value)] = "findDepart" placeholder = "Department">
+   <mat-option value = "Animal"> Animal Care Services </mat-option>
+   <mat-option value = "Arts"> Arts & Culture </mat-option>
+   <mat-option value = "Flying"> Aviation </mat-option>
+   <mat-option value = "Building"> Building and Equipment Services </mat-option>
+   <mat-option value = "Center City"> Center City Developement and Operations </mat-option>
+   <mat-option value = "Attorney"> City Attorney </mat-option>
+   <mat-option value = "Auditor"> City Auditor </mat-option>
+   <mat-option value = "Clerk"> City Clerk </mat-option>
+   <mat-option value = "Manager"> City Manager's Office </mat-option>
+   <mat-option value = "Convention"> Convention & Sports Facilities </mat-option>
+  <mat-option value = "Development"> Development Services  </mat-option>
+      <mat-option value = "EastPoint"> EastPoint </mat-option>
+      <mat-option value = "Economy"> Economic Development </mat-option>
+      <mat-option value = "Econ Mangement"> Economic Management </mat-option>
+      <mat-option value = "Equity"> Equity </mat-option>
+      <mat-option value = "Finance"> Finance </mat-option>
+      <mat-option value = "Fire"> Fire </mat-option>
+      <mat-option value = "Government"> Government & Public Affairs  </mat-option>
+      <mat-option value = "Health"> Health </mat-option>
+      <mat-option value = "History"> Historic Preservation </mat-option>
+      <mat-option value = "Human Resources"> Human Resources </mat-option>
+      <mat-option value = "Human Services"> Human Services </mat-option>
+      <mat-option value = "Info Tech"> Information & Technology Services </mat-option>
+      <mat-option value = "Innovate"> Innovation </mat-option>
+      <mat-option value = "Library"> Library  </mat-option>
+      <mat-option value = "Budget"> Management & Budget </mat-option>
+      <mat-option value = "Mayor"> Mayor's office </mat-option>
+      <mat-option value = "Municipal"> Municipal Court </mat-option>
+      <mat-option value = "Neighborhood"> Neighborhood & Housing Services </mat-option>
+      <mat-option value = "Parks"> Parks & Recreation </mat-option>
+      <mat-option value = "Planning"> Planning </mat-option>
+      <mat-option value = "Police"> Police </mat-option>
+      <mat-option value = "Pre-k"> Pre-k 4 SA </mat-option>
+      <mat-option value = "Risk Manage"> Office of Risk Management </mat-option>
+      <mat-option value = "Waste Management"> Solid Waste Management </mat-option>
+      <mat-option value = "Sustainability"> Sustainability </mat-option>
+      <mat-option value = "Transportation"> Transportation & Capital Improvements </mat-option>
+      <mat-option value = "Tricentennial"> Tricentennial & Capital Improvements </mat-option>
+      <mat-option value = "World Heritage"> World Heritage </mat-option>
+
+    </mat-select>
 </mat-form-field>
 
 <mat-form-field>
@@ -123,9 +178,10 @@
 <br>
 
 <mat-form-field>
-{{IDForm.departmentApprov.date}} <textarea matInput> </textarea>
+  <input matInput [matDatepicker]= "chooseDate" placeholder={{IDForm.departmentApprov.date}}>
+  <mat-datepicker-toggle matSuffix [for] = "chooseDate"> </mat-datepicker-toggle>
+  <mat-datepicker #chooseDate> </mat-datepicker> 
 </mat-form-field>
-
 
 
 
