@@ -1,3 +1,23 @@
 <p>
-  hard-soft-form works!
+  hard-soft-form works! Trying something here.
+  <br>
+  Can you see this, Jesse? {{hsForm.userName}} <br>
+
+
 </p>
+
+<div>
+	<mat-form-field>
+		<input matInput placeholder="*Department: " [(ngModel)]="hsForm.department">
+	</mat-form-field>
+
+	<mat-form-field>
+		<input matInput placeholder="*Department Requestor: " [(ngModel)]="hsForm.department">
+	</mat-form-field>
+
+
+	<p> Your dept is: {{hsForm.department}}</p> 
+
+</div>
+
+
