@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { hardSoftForm  } from './hard-softModel'
+import { hardSoftForm, SpecialSoftware  } from './hard-softModel'
 
 @Component({	
   selector: 'app-hard-soft-form',
@@ -26,7 +26,8 @@ export class HardSoftFormComponent implements OnInit {
 		softCostCenterIO: ``,
 		softGlAcc: ``,
 
-		userName: `testing object!`,
+		//Hardware -- Provisioning (assigned) Fields. 
+		userName: ``,
 		SAPLogonId: ``,
 		formPosition: ``,
 
@@ -51,17 +52,54 @@ export class HardSoftFormComponent implements OnInit {
 		monitorInput: ``,
 		//monitor checkbox unlocks a 'Mode' dropdown menu. 
 		monitorMode: ``,
-
+		
 		printerBox: false,
 		printerInput: ``,
 		ipDeskPhoneBox: false,
 		ipDeskPhoneInput: ``,
+
+		otherBox: false,
+		otherInput: ``,
+
+		softwareOtherBox: false,
+		softwareOtherInput: ``,
+
+		specialSoftware: [],
+
+		userId: ``,
+		userPassword: ``,
+
+		requestor: ``,
+		requestorDate: null,
+		deptDFA: ``,
+		dfaDate: null,
+		deptHead: ``,
+		headDate: null,
+
+	// (string|number)[] = [ 1, "message" ];
 	}//end hardSoftForm
+
+	remove(array,element){
+		return array.filter(e => e !== element);
+	}
+
+	delete(element){
+		this.hsForm.specialSoftware = this.remove(this.hsForm.specialSoftware,element);
+	}
+
 
   constructor() { }
 
   ngOnInit() { }
 
+  addSoftware(){
+  	console.log(this.hsForm);
+  	let newEntry = new SpecialSoftware();
+  	newEntry.softDesc = '';
+  	newEntry.loginID = '';
+  	this.hsForm.specialSoftware.push(newEntry);
+
+  }
 
 
 }

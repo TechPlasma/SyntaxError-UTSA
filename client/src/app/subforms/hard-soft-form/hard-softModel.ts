@@ -49,4 +49,27 @@ export class hardSoftForm{
 	ipDeskPhoneBox: boolean;
 	ipDeskPhoneInput: string;
 
+	otherBox: boolean;
+	otherInput: string;
+
+	softwareOtherBox: boolean;
+	softwareOtherInput: string;
+	specialSoftware: any[];
+
+	userId: string;
+	userPassword: string;
+
+	requestor: string;
+	requestorDate: any;
+	deptDFA: string;
+	dfaDate: any;
+	deptHead: string;
+	headDate: any;
+	
+
 }
+export class SpecialSoftware {
+		softDesc:string;
+		loginID:string;
+	}
+
