@@ -16,15 +16,24 @@
 
 <h2> Request Type(s) (check all that apply) </h2>
 <div class = "Requests">
-<mat-checkbox> {{IDForm.requestType.IDCard}}</mat-checkbox>
+<mat-checkbox class = "getID" [(ngModel)]= "getNewIDCard">
+<label> {{IDForm.requestType.IDCard}} </label></mat-checkbox>
 
-<mat-checkbox> {{IDForm.requestType.facultyAccess}}</mat-checkbox>
+<mat-checkbox class = "getAccess" [(ngModel)]="facAccess">
+  <label>{{IDForm.requestType.facultyAccess}}</label>
+  </mat-checkbox>
 
-<mat-checkbox> {{IDForm.requestType.cjisAccess}}</mat-checkbox>
+<mat-checkbox class ="cijsAccess" [(ngModel)]="CIJS">
+  <label>{{IDForm.requestType.cjisAccess}}</label>
+</mat-checkbox>
 
-<mat-checkbox> {{IDForm.requestType.facultyAccChange}}</mat-checkbox>
+<mat-checkbox class = "accessChange" [(ngModel)]= "facChange">
+  <label>{{IDForm.requestType.facultyAccChange}}</label>
+</mat-checkbox>
 
-<mat-checkbox> {{IDForm.requestType.issueID}}</mat-checkbox>
+<mat-checkbox class = "IssueID" [(ngModel)] = "issueNewID">
+  <label>{{IDForm.requestType.issueID}}</label>
+</mat-checkbox>
 </div>
 
 <h3> Personnel Information </h3>
@@ -58,9 +67,10 @@
 </mat-form-field>
 
 
-<mat-form-field>
-{{IDForm.personnelInfo.workPhone}} <textarea matInput> </textarea>
+<mat-form-field hintLabel = "(999) 999-9999">
+  <input matInput #input matInput maxLength = "13" placeholder={{IDForm.personnelInfo.workPhone}}>
 </mat-form-field>
+
 
 <mat-form-field>
 {{IDForm.personnelInfo.jobTitle}} <textarea matInput> </textarea>
@@ -124,12 +134,49 @@
 {{IDForm.personnelInfo.superNm}} <textarea matInput> </textarea>
 </mat-form-field>
 
-<mat-form-field>
-{{IDForm.personnelInfo.contactPhone}} <textarea matInput> </textarea>
+<mat-form-field hintLabel = "(999) 999-9999">
+  <input matInput #input matInput maxLength = "13" placeholder={{IDForm.personnelInfo.contactPhone}}>
 </mat-form-field>
+
 
 </div>
 
+<div *ngIf = "jobPosition == 'contractor' || jobPosition == 'vendor'">
+  <h4> Contractor/Vendor Information </h4>
+  <p> Note: Contractors requiring a CoSA ID Card must complete all fields applicable above, in addition to company detail information below </p>
+  <div class = "contractorVendor">
+    <mat-form-field>
+      {{IDForm.contractorVendorInfo.companyName}} <textarea matInput> </textarea>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field>
+      {{IDForm.contractorVendorInfo.pointOfContact}} <textarea size=100 matInput> </textarea>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field>
+      {{IDForm.contractorVendorInfo.contactNum}} <textarea matInput> </textarea>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field>
+      {{IDForm.contractorVendorInfo.ContractNum}} <textarea matInput> </textarea>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field>
+      {{IDForm.contractorVendorInfo.contractExpr}} <textarea matInput> </textarea>
+    </mat-form-field>
+    <br>
+
+
+</div>
+</div>
+
+
+
+<div *ngIf = "getNewIDCard && facAccess || getNewIDCard && CIJS ||  getNewIDCard && facChange && jobPosition != 'contractor' && jobPosition != 'vendor'">
 <h4> Faculty Access Information </h4>
 
 <div class ="Faculty Access">
@@ -143,6 +190,10 @@
 </mat-form-field>
 
 <br>
+
+<u> Faculty Access Point(s) Requested:</u>
+<br>
+
 
 <mat-form-field>
 {{IDForm.facultyInfo.facultyEntry}} <textarea matInput> </textarea>
@@ -168,9 +219,19 @@
 
 <br>
 </div>
+</div>
 
 <h5> Department Approval Coordination  (Completed by Supervisor or above) </h5>
 <div class = "departmentApprov">
+  <p>Enter your network creditials in the spaces required </p>
+  <mat-form-field>
+    User ID: <textarea matInput> </textarea>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput placeholder = "Password:" [type] = "hide ? 'password' : 'text' ">
+    <mat-icon matSuffix (click) = "hide = !hide"> {{hide ? 'visibility' : 'visibility_off'}} </mat-icon>
+  </mat-form-field>
   <mat-form-field>
 {{IDForm.departmentApprov.superSign}} <textarea matInput> </textarea>
 </mat-form-field>
@@ -180,7 +241,7 @@
 <mat-form-field>
   <input matInput [matDatepicker]= "chooseDate" placeholder={{IDForm.departmentApprov.date}}>
   <mat-datepicker-toggle matSuffix [for] = "chooseDate"> </mat-datepicker-toggle>
-  <mat-datepicker #chooseDate> </mat-datepicker> 
+  <mat-datepicker #chooseDate> </mat-datepicker>
 </mat-form-field>
 
 

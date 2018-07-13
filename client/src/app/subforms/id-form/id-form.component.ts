@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./id-form.component.css']
 })
 export class IDFormComponent implements OnInit {
+  hide = true;
   IDForm = {
 	requestType: {
       IDCard:'CoSA ID Card',
@@ -24,9 +25,16 @@ export class IDFormComponent implements OnInit {
         jobTitle: 'Job Title:',
         Department:' Department:',
         hrSAP:'CoSA/HR SAP#:',
-        Division: 'Division',
+        Division: 'Division:',
         superNm: 'Supervisor/Manager Name:',
         contactPhone: 'Contact Phone Number:',
+      },
+    contractorVendorInfo: {
+        companyName:'Company Name:',
+        pointOfContact: 'Point of Contact Name',
+        contactNum: 'Contact Number:',
+        ContractNum: 'Contract Number:',
+        contractExpr: 'Contract Expiration Date:',
       },
       facultyInfo: {
         facultyNm:'Faculty Name:',
