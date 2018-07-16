@@ -39,20 +39,27 @@
 
 <h3> Personnel Information </h3>
 
-<div class = "Personnel">
-<mat-form-field>
-  {{IDForm.personnelInfo.First}} <textarea matInput> </textarea>
+
+<mat-form-field class ="FirstName">
+    {{IDForm.personnelInfo.First}} <textarea  matInput> </textarea>
 </mat-form-field>
-<mat-form-field>
+<br>
+
+<mat-form-field class = "middleInitial">
   {{IDForm.personnelInfo.middleNm}} <textarea matInput> </textarea>
 </mat-form-field>
+<br>
 
-<mat-form-field>
+<mat-form-field class = "LastName">
 {{IDForm.personnelInfo.Last}} <textarea matInput> </textarea>
 </mat-form-field>
+<br>
 
-
-<mat-form-field>
+<mat-form-field class = "getSuffix">
+{{IDForm.personnelInfo.Suffix}} <textarea matInput> </textarea>
+</mat-form-field>
+<br>
+<mat-form-field class = "JobPositions">
 
  <mat-select [(value)] = "jobPosition" placeholder = "Job Status">
    <mat-option value = "Cont.temp"> Contract temporary </mat-option>
@@ -66,18 +73,21 @@
    <mat-option value = "helper"> Volunteer </mat-option>
  </mat-select>
 </mat-form-field>
+<br>
 
 
-<mat-form-field hintLabel = "(999) 999-9999">
+<mat-form-field hintLabel = "(999) 999-9999" class ="contactPhone">
   <input matInput #input matInput maxLength = "13" placeholder={{IDForm.personnelInfo.workPhone}}>
 </mat-form-field>
+<br>
 
 
-<mat-form-field>
+<mat-form-field class = "getJobs">
 {{IDForm.personnelInfo.jobTitle}} <textarea matInput> </textarea>
 </mat-form-field>
+<br>
 
-<mat-form-field>
+<mat-form-field class = "FindDep">
 
  <mat-select [(value)] = "findDepart" placeholder = "Department">
    <mat-option value = "Animal"> Animal Care Services </mat-option>
@@ -122,52 +132,54 @@
 
     </mat-select>
 </mat-form-field>
+<br>
 
-<mat-form-field>
+<mat-form-field class = "getSAP">
 {{IDForm.personnelInfo.hrSAP}} <textarea matInput> </textarea>
 </mat-form-field>
+<br>
 
-<mat-form-field>
+<mat-form-field class = "getDivision">
 {{IDForm.personnelInfo.Division}} <textarea matInput> </textarea>
 </mat-form-field>
-
-<mat-form-field>
+<br>
+<mat-form-field class = "bossName">
 {{IDForm.personnelInfo.superNm}} <textarea matInput> </textarea>
 </mat-form-field>
+<br>
 
-<mat-form-field hintLabel = "(999) 999-9999">
+<mat-form-field hintLabel = "(999) 999-9999" class = "getTelephone">
   <input matInput #input matInput maxLength = "13" placeholder={{IDForm.personnelInfo.contactPhone}}>
 </mat-form-field>
+<br>
 
-
-</div>
 
 <div *ngIf = "jobPosition == 'contractor' || jobPosition == 'vendor'">
   <h4> Contractor/Vendor Information </h4>
   <p> Note: Contractors requiring a CoSA ID Card must complete all fields applicable above, in addition to company detail information below </p>
   <div class = "contractorVendor">
-    <mat-form-field>
+    <mat-form-field class = "companyNm">
       {{IDForm.contractorVendorInfo.companyName}} <textarea matInput> </textarea>
     </mat-form-field>
     <br>
 
-    <mat-form-field>
+    <mat-form-field class = "contactPoint">
       {{IDForm.contractorVendorInfo.pointOfContact}} <textarea size=100 matInput> </textarea>
     </mat-form-field>
     <br>
 
-    <mat-form-field>
+    <mat-form-field class = "contactNumber" >
       {{IDForm.contractorVendorInfo.contactNum}} <textarea matInput> </textarea>
     </mat-form-field>
     <br>
 
-    <mat-form-field>
+    <mat-form-field class = "contractNumber">
       {{IDForm.contractorVendorInfo.ContractNum}} <textarea matInput> </textarea>
     </mat-form-field>
     <br>
 
-    <mat-form-field>
-      {{IDForm.contractorVendorInfo.contractExpr}} <textarea matInput> </textarea>
+    <mat-form-field hintLabel = "MM/DD/YYYY" class = "contractExpr">
+    <input matInput #input matInput maxLength = "13" placeholder={{IDForm.contractorVendorInfo.contractExpr}}>
     </mat-form-field>
     <br>
 
@@ -181,12 +193,12 @@
 <h4> Faculty Access Information </h4>
 
 <div class ="Faculty Access">
-<mat-form-field>
+<mat-form-field class ="FacultyNm">
 {{IDForm.facultyInfo.facultyNm}} <textarea matInput> </textarea>
 </mat-form-field>
 <br>
 
-<mat-form-field>
+<mat-form-field class = "FacultyAddr">
 {{IDForm.facultyInfo.facultyAddr}} <textarea matInput> </textarea>
 </mat-form-field>
 
@@ -196,25 +208,25 @@
 <br>
 
 
-<mat-form-field>
+<mat-form-field class = "facEntry">
 {{IDForm.facultyInfo.facultyEntry}} <textarea matInput> </textarea>
 </mat-form-field>
 
 <br>
 
-<mat-form-field>
+<mat-form-field class = "getSuite">
 {{IDForm.facultyInfo.suiteEntry}} <textarea matInput> </textarea>
 </mat-form-field>
 
 <br>
 
-<mat-form-field>
+<mat-form-field class = "findRoom">
 {{IDForm.facultyInfo.roomEntry}} <textarea matInput> </textarea>
 </mat-form-field>
 
 <br>
 
-<mat-form-field>
+<mat-form-field class = "otherInfo">
 {{IDForm.facultyInfo.other}} <textarea matInput> </textarea>
 </mat-form-field>
 
@@ -223,22 +235,35 @@
 </div>
 
 
+
 <h5> Department Approval Coordination  (Completed by Supervisor or above) </h5>
 <div class = "departmentApprov">
   <p>Enter your network creditials in the spaces required </p>
-  <mat-form-field>
-    User ID: <textarea matInput> </textarea>
+
+  <p> When typing the UserID or Password press the "X" icon on the right corner to clear </p>
+
+  <mat-form-field class= "UserIDField">
+    <input matInput type = "text" placeholder="UserID:" [(ngModel)]="getUserID">
+    <button mat-button *ngIf= "getUserID" matSuffix mat-icon button aria-label="Clear" (click)="getUserID=''">
+      <mat-icon>close</mat-icon>
+    </button>
   </mat-form-field>
   <br>
-  <mat-form-field>
-    <input matInput placeholder = "Password:" [type] = "hide ? 'password' : 'text' ">
-    <mat-icon matSuffix (click) = "hide = !hide"> {{hide ? 'visibility' : 'visibility_off'}} </mat-icon>
+
+
+  <mat-form-field class = "typePassword">
+    <input matInput placeholder = "Password:" [type] = "hide ? 'password' : 'text' "[(ngModel)]="getPassword">
+    <button mat-button *ngIf="getPassword" matSuffix mat-icon button aria-label="Clear" (click)="getPassword=''">
+    <mat-icon> close </mat-icon>
+  </button>
   </mat-form-field>
-  <mat-form-field>
+  <br>
+
+<mat-form-field class = "getSign">
 {{IDForm.departmentApprov.superSign}} <textarea matInput> </textarea>
 </mat-form-field>
-
 <br>
+
 
 <mat-form-field>
   <input matInput [matDatepicker]= "chooseDate" placeholder={{IDForm.departmentApprov.date}}>

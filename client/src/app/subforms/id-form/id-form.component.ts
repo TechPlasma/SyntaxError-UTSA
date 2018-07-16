@@ -8,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./id-form.component.css']
 })
 export class IDFormComponent implements OnInit {
+  getUserID= ''
   hide = true;
+
   IDForm = {
+    IDFormInfo:[],
 	requestType: {
       IDCard:'CoSA ID Card',
       facultyAccess: 'CoSA Faculty Access',
@@ -48,10 +51,15 @@ export class IDFormComponent implements OnInit {
       },
      departmentApprov: {
      superSign: 'Supervisor/Manager Signature: ',
+     userID:"UserID:",
+     password:"password:",
      date: ' Date:'
    }
 
-  }
+ }
+
+
+
 
   constructor() { }
 
