@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import {Section2Choices} from './SapFormChoices';
+import {Section2Choices,Section3Choices,Section4Choices} from './SapFormChoices';
 
 @Component({
   selector: 'app-sap-form',
@@ -16,7 +16,9 @@ export class SAPFormComponent implements OnInit {
     selectedHoliday: string;
 
     selectedChoices: string[];
-    section1Choices: Object;
+    section2Choices: Object;
+    section3Choices: Object;
+    section4Choices: Object;
     
     eventSelection(event){
      this.selectedHoliday = event.date
@@ -63,6 +65,33 @@ export class SAPFormComponent implements OnInit {
 			'Aviation Only – Airline Statistics':[],
 			'Plant Maintenance':[],
 			'Grants Management':[]
+		},
+		section3:{
+			'Purchasing':[],
+			'Grants Management':[]
+		},
+		section4:{
+			creditMemoChoice:'',
+			'Human Resources / HR Designee Approval':[],
+			'Department Roles Purchasing Designee Approval':[],
+			'Emergency Operations':[],
+			'Accounts Receivable':[],
+			'Accounts Payable/Travel':[],
+			'Finance':[],
+			'Treasury':[],
+			'Payroll':[],
+			'Grants Management':[],
+			'Time and Attendance':[],
+			'Projects':[],
+			'Budget Department (Funds Management)':[]
+		}
+	}
+
+	checkCreditMemo(){
+		if('Credit Memo Sales Order Approver (Select option below)' in this.tempObject.section4['Accounts Receivable']){
+			return true;
+		}else{
+			return false;
 		}
 	}
 
@@ -72,7 +101,9 @@ export class SAPFormComponent implements OnInit {
 	}
 
   constructor() {
-  	this.section1Choices = Section2Choices;
+  	this.section2Choices = Section2Choices;
+  	this.section3Choices = Section3Choices;
+  	this.section4Choices = Section4Choices;
   }
 
   ngOnInit() {
