@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
+import { MasterForm, Approver } from './MasterFormTesting';
+
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -11,6 +13,8 @@ import { Location } from '@angular/common';
 export class FormComponent implements OnInit {
 
 	userName:"";
+
+	masterForm;
 
 	FID;
 
@@ -50,9 +54,13 @@ export class FormComponent implements OnInit {
 
 	constructor(
 		private route: ActivatedRoute,
-		private location: Location
+		private location: Location,
 	) {
 		this.FID = +this.route.snapshot.paramMap.get('FID');
+		this.masterForm = new MasterForm();
+		this.masterForm.SubForm1.Approvers.push(new Approver("8273982673"));
+
+		console.log(this.masterForm);
 	}
 
 	ngOnInit() {
