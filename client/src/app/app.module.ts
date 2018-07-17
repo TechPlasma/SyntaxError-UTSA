@@ -15,6 +15,7 @@ import { PCardFormComponent } from './subforms/pcard-form/pcard-form.component';
 import { FuelFormComponent } from './subforms/fuel-form/fuel-form.component';
 import { SAPFormComponent } from './subforms/sap-form/sap-form.component';
 import { ViewComponent } from './view/view.component';
+import { DefaultInfoComponent } from './subforms/default-info/default-info.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ViewComponent } from './view/view.component';
     PCardFormComponent,
     FuelFormComponent,
     SAPFormComponent,
-    ViewComponent
+    ViewComponent,
+    DefaultInfoComponent
   ],
   imports: [
     BrowserModule,

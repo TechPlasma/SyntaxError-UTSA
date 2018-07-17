@@ -123,7 +123,7 @@
 
 	<br>
 	<h3>All Roles</h3>
-    <mat-form-field *ngFor="let departments of section1Choices" class="thirdsSelect">
+    <mat-form-field *ngFor="let departments of section2Choices" class="thirdsSelect">
       <mat-select [(ngModel)]="tempObject.section2[departments.dept]" placeholder="{{departments.dept}}" multiple>
         <mat-option *ngFor="let item of departments.items" [value]="item">{{ item }}</mat-option>
       </mat-select>
@@ -134,5 +134,32 @@
 <div>
 	<h2>Section 3: Training Record</h2>
 	<h3>SAP Training Record</h3>
+	<mat-form-field *ngFor="let departments of section3Choices" class="thirdsSelect">
+      <mat-select [(ngModel)]="tempObject.section3[departments.dept]" placeholder="{{departments.dept}}" multiple>
+        <mat-option *ngFor="let item of departments.items" [value]="item">{{ item }}</mat-option>
+      </mat-select>
+    </mat-form-field>
 	
+
+
+    <h2>Section 4: Non-Central Roles</h2>
+    <mat-form-field *ngFor="let departments of section4Choices" class="thirdsSelect">
+      <mat-select [(ngModel)]="tempObject.section4[departments.dept]" placeholder="{{departments.dept}}" multiple>
+        <mat-option *ngFor="let item of departments.items" [value]="item">{{ item }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <br>
+
+    <div *ngIf="this.tempObject.section4['Accounts Receivable'].indexOf('Credit Memo Sales Order Approver (Select option below)') != -1">
+    	<h4>Credit Memo Sales Order Approver (Select Option Below)</h4>
+    	<mat-form-field class="thirdsSelect">
+	      <mat-select [(ngModel)]="tempObject.section4.creditMemoChoice" placeholder="Please Select One" multiple>
+	        <mat-option [value]="Dept">Dept</mat-option>
+	        <mat-option [value]="Police">Police</mat-option>
+	        <mat-option [value]="Fire">Fire</mat-option>
+	        <mat-option [value]="Central">Central</mat-option>
+	      </mat-select>
+	    </mat-form-field>
+    </div>
 </div>
