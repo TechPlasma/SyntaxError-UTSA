@@ -1,0 +1,85 @@
+
+
+h3{
+  font-size: 200%;
+}
+h4{
+  font-size: 200%;
+}
+h5 {
+font-size: 150%;
+}
+div.Requests{
+  margin: 0 5px 0 30px;
+}
+
+.FirstName{
+  width:500px;
+}
+.middleInitial{
+  width:50px;
+}
+.LastName{
+  width:500px;
+}
+.getSuffix{
+  width:90px;
+}
+.JobPositions{
+  width:400px;
+}
+.getJobs{
+  width:600px;
+}
+.FindDep{
+  width:550px;
+
+}
+.getDivision{
+  width:550px;
+}
+.bossName{
+  width:550px;
+}
+.UserIDField{
+  width:250px;
+}
+.typePassword{
+  width:250px;
+}
+.getSign{
+  width:400px;
+}
+.FacultyNm{
+  width:900px;
+}
+.FacultyAddr{
+  width:900px;
+}
+.facEntry{
+  width:300px;
+}
+.getSuite{
+  width:300px;
+}
+.findRoom{
+  width:300px;
+}
+.otherInfo{
+  width:900px;
+}
+.companyNm{
+  width:900px;
+}
+.contactPoint{
+  width:450px;
+}
+.contactNum{
+  width:250px;
+}
+.contractNumber{
+  width:480px;
+}
+.contractExpr{
+  width:250px;
+}
