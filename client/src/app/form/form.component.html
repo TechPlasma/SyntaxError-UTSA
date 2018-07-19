@@ -1,22 +1,42 @@
-<div align="center">
+<div align="center" *ngIf="masterForm != undefined">
 	<mat-card>
-		<mat-card-title>Test Form</mat-card-title>
-		<mat-card-subtitle>Form ID: {{FID}} </mat-card-subtitle>
+		<mat-card-title>City of San Antonio Employee Requisition Form</mat-card-title>
+		<mat-card-subtitle>Form ID: {{masterForm.FID}} </mat-card-subtitle>
 		<mat-card-content>
 			Which Forms are needed?<br>
-			<mat-checkbox [(ngModel)]="testForm.IDForm.needed">Card Form</mat-checkbox>
-			<mat-checkbox [(ngModel)]="testForm.UserForm.needed">User Form</mat-checkbox>
-			<mat-checkbox [(ngModel)]="testForm.HardSoftForm.needed">HardSoft Form</mat-checkbox>
+			<table>
+				<tr>
+					<td>
+						<mat-checkbox [(ngModel)]="masterForm.SubForm1.Needed">Card Form</mat-checkbox>
+					</td>
+					<td>
+						<mat-checkbox [(ngModel)]="masterForm.SubForm2.Needed">User Form</mat-checkbox>
+					</td>
+					<td>
+						<mat-checkbox [(ngModel)]="masterForm.SubForm3.Needed">HardSoft Form</mat-checkbox>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<mat-checkbox [(ngModel)]="masterForm.SubForm4.Needed">P-Card Form</mat-checkbox>
+					</td>
+					<td>
+						<mat-checkbox [(ngModel)]="masterForm.SubForm5.Needed">Fueling Form</mat-checkbox>
+					</td>
+					<td>
+						<mat-checkbox [(ngModel)]="masterForm.SubForm6.Needed">SAP Form</mat-checkbox>
+					</td>
+				</tr>
+			</table>
+
 			<br>
-			<mat-checkbox [(ngModel)]="testForm.PCardForm.needed">P-Card Form</mat-checkbox>
-			<mat-checkbox [(ngModel)]="testForm.FuelForm.needed">Fueling Form</mat-checkbox>
-			<mat-checkbox [(ngModel)]="testForm.SAPForm.needed">SAP Form</mat-checkbox>
 			<br>
-			<br>
+
 			<mat-expansion-panel expanded="true">
 				<mat-expansion-panel-header>
 					<mat-panel-title>
-						<mat-icon color="warn" *ngIf="!userName">error_outline</mat-icon>&nbsp;
+						<mat-icon color="warn" *ngIf="!masterForm.SubForm0.Completed">priority_high</mat-icon>&nbsp;
+						<mat-icon style="color:forestgreen;" *ngIf="masterForm.SubForm0.Completed">done</mat-icon>&nbsp;
 						Common Information
 					</mat-panel-title>
 					<mat-panel-description>
@@ -24,94 +44,130 @@
 					</mat-panel-description>
 				</mat-expansion-panel-header>
 				<div>
-					<app-default-info [(ngModel)]="userName"></app-default-info>
+					<app-default-info [(ngModel)]="masterForm.SubForm0"></app-default-info>
+					
+					
+					<br>
+					<mat-slide-toggle [(ngModel)]="masterForm.SubForm0.Completed"></mat-slide-toggle>
 				</div>
 			</mat-expansion-panel>
-			<mat-expansion-panel *ngIf="testForm.IDForm.needed">
+			<mat-expansion-panel *ngIf="masterForm.SubForm1.Needed">
 				<mat-expansion-panel-header>
 					<mat-panel-title>
-						<mat-icon color="warn">error_outline</mat-icon>&nbsp;
-						{{testForm.IDForm.name}}
+						<mat-icon color="warn" *ngIf="!masterForm.SubForm1.Completed">priority_high</mat-icon>&nbsp;
+						<mat-icon style="color:forestgreen;" *ngIf="masterForm.SubForm1.Completed">done</mat-icon>&nbsp;
+						{{masterForm.SubForm1.FormName}}
 					</mat-panel-title>
 					<mat-panel-description>
-						{{testForm.IDForm.summary}}
+						Fufillment By: {{masterForm.SubForm1.Fufillment}}
 					</mat-panel-description>
 				</mat-expansion-panel-header>
 				<div>
 					<app-id-form></app-id-form>
 				</div>
 			</mat-expansion-panel>
-			<mat-expansion-panel *ngIf="testForm.UserForm.needed">
+			<mat-expansion-panel *ngIf="masterForm.SubForm2.Needed">
 				<mat-expansion-panel-header>
 					<mat-panel-title>
-						<mat-icon color="warn">error_outline</mat-icon>&nbsp;
-						{{testForm.UserForm.name}}
+						<mat-icon color="warn" *ngIf="!masterForm.SubForm2.Completed">priority_high</mat-icon>&nbsp;
+						<mat-icon style="color:forestgreen;" *ngIf="masterForm.SubForm2.Completed">done</mat-icon>&nbsp;
+						{{masterForm.SubForm2.FormName}}
 					</mat-panel-title>
 					<mat-panel-description>
-						{{testForm.UserForm.summary}}
+						Fufillment By: {{masterForm.SubForm2.Fufillment}}
 					</mat-panel-description>
 				</mat-expansion-panel-header>
 				<div>
 					<app-user-form></app-user-form>
 				</div>
 			</mat-expansion-panel>
-			<mat-expansion-panel *ngIf="testForm.HardSoftForm.needed">
+			<mat-expansion-panel *ngIf="masterForm.SubForm3.Needed">
 				<mat-expansion-panel-header>
 					<mat-panel-title>
-						<mat-icon color="warn">error_outline</mat-icon>&nbsp;
-						{{testForm.HardSoftForm.name}}
+						<mat-icon color="warn" *ngIf="!masterForm.SubForm3.Completed">priority_high</mat-icon>&nbsp;
+						<mat-icon style="color:forestgreen;" *ngIf="masterForm.SubForm3.Completed">done</mat-icon>&nbsp;
+						{{masterForm.SubForm3.FormName}}
 					</mat-panel-title>
 					<mat-panel-description>
-						{{testForm.HardSoftForm.summary}}
+						Fufillment By: {{masterForm.SubForm3.Fufillment}}
 					</mat-panel-description>
 				</mat-expansion-panel-header>
 				<div>
 					<app-hard-soft-form></app-hard-soft-form>
 				</div>
 			</mat-expansion-panel>
-			<mat-expansion-panel *ngIf="testForm.PCardForm.needed">
+			<mat-expansion-panel *ngIf="masterForm.SubForm4.Needed">
 				<mat-expansion-panel-header>
 					<mat-panel-title>
-						<mat-icon color="warn">error_outline</mat-icon>&nbsp;
-						{{testForm.PCardForm.name}}
+						<mat-icon color="warn" *ngIf="!masterForm.SubForm4.Completed">priority_high</mat-icon>&nbsp;
+						<mat-icon style="color:forestgreen;" *ngIf="masterForm.SubForm4.Completed">done</mat-icon>&nbsp;
+						{{masterForm.SubForm4.FormName}}
 					</mat-panel-title>
 					<mat-panel-description>
-						{{testForm.PCardForm.summary}}
+						Fufillment By: {{masterForm.SubForm4.Fufillment}}
 					</mat-panel-description>
 				</mat-expansion-panel-header>
 				<div>
 					<app-pcard-form></app-pcard-form>
 				</div>
 			</mat-expansion-panel>
-			<mat-expansion-panel *ngIf="testForm.FuelForm.needed">
+			<mat-expansion-panel *ngIf="masterForm.SubForm5.Needed">
 				<mat-expansion-panel-header>
 					<mat-panel-title>
-						<mat-icon color="warn">error_outline</mat-icon>&nbsp;
-						{{testForm.FuelForm.name}}
+						<mat-icon color="warn" *ngIf="!masterForm.SubForm5.Completed">priority_high</mat-icon>&nbsp;
+						<mat-icon style="color:forestgreen;" *ngIf="masterForm.SubForm5.Completed">done</mat-icon>&nbsp;
+						{{masterForm.SubForm5.FormName}}
 					</mat-panel-title>
 					<mat-panel-description>
-						{{testForm.FuelForm.summary}}
+						Fufillment By: {{masterForm.SubForm5.Fufillment}}
 					</mat-panel-description>
 				</mat-expansion-panel-header>
 				<div>
 					<app-fuel-form></app-fuel-form>
 				</div>
 			</mat-expansion-panel>
-			<mat-expansion-panel *ngIf="testForm.SAPForm.needed">
+			<mat-expansion-panel *ngIf="masterForm.SubForm6.Needed">
 				<mat-expansion-panel-header>
 					<mat-panel-title>
-						<mat-icon color="warn">error_outline</mat-icon>&nbsp;
-						{{testForm.SAPForm.name}}
+						<mat-icon color="warn" *ngIf="!masterForm.SubForm6.Completed">priority_high</mat-icon>&nbsp;
+						<mat-icon style="color:forestgreen;" *ngIf="masterForm.SubForm6.Completed">done</mat-icon>&nbsp;
+						{{masterForm.SubForm6.FormName}}
 					</mat-panel-title>
 					<mat-panel-description>
-						{{testForm.SAPForm.summary}}
+						Fufillment By: {{masterForm.SubForm6.Fufillment}}
 					</mat-panel-description>
 				</mat-expansion-panel-header>
 				<div>
 					<app-sap-form></app-sap-form>
 				</div>
 			</mat-expansion-panel>
+
+			<br>
+			<br>
+
+			<mat-expansion-panel>
+				<mat-expansion-panel-header>
+					<mat-panel-title>
+						SubForm Data Views
+					</mat-panel-title>
+					<mat-panel-description>
+						This is Temporary. To view Progress.
+					</mat-panel-description>
+				</mat-expansion-panel-header>
+				<div>
+					<app-default-view [SubFormData]="masterForm.SubForm0"></app-default-view>
+					<app-id-view [SubFormData]="masterForm.SubForm1"></app-id-view>
+					<app-user-view [SubFormData]="masterForm.SubForm2"></app-user-view>
+					<app-hard-soft-view [SubFormData]="masterForm.SubForm3"></app-hard-soft-view>
+					<app-pcard-view [SubFormData]="masterForm.SubForm4"></app-pcard-view>
+					<app-fuel-view [SubFormData]="masterForm.SubForm5"></app-fuel-view>
+					<app-sap-view [SubFormData]="masterForm.SubForm6"></app-sap-view>
+				</div>
+			</mat-expansion-panel>
 		</mat-card-content>
 	</mat-card>
 </div>
-	
+
+<div *ngIf="masterForm == undefined">
+	<h1>Please Wait...</h1>
+</div>

@@ -156,6 +156,14 @@ User Access
     <input matInput placeholder = "Date" [(ngModel)] = "UPR.dHdDt">
 </mat-form-field>
 
+<br>
+<button mat-stroked-button color="warn" (click)="verifySubForm();">
+  Verify SubForm
+</button>
+<button mat-stroked-button [style.color]="'forestgreen'" disabled>
+  SubForm Verified
+</button>
+
 <!-- Logging over here for testing purposes -->
 <div class = "testing">
 	<button (click) = "addToLog(UPR)">

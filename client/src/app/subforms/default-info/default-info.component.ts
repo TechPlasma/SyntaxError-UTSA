@@ -1,6 +1,8 @@
 import { Component, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
+import { departments } from '../../Departments';
+
 const noop = () => {
 };
 
@@ -17,6 +19,8 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
   providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
 })
 export class DefaultInfoComponent implements ControlValueAccessor {
+
+    departments = departments;
 
 	//The internal data model
     private innerValue: any = '';
@@ -59,6 +63,10 @@ export class DefaultInfoComponent implements ControlValueAccessor {
     //From ControlValueAccessor interface
     registerOnTouched(fn: any) {
         this.onTouchedCallback = fn;
+    }
+
+    verifySubForm(){
+        this.value.Completed = true;
     }
 
 	

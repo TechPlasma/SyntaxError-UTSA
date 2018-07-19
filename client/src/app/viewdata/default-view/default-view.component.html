@@ -1,0 +1,115 @@
+
+<mat-card *ngIf="SubFormData != null">
+	<mat-card-title>
+		{{SubFormData.FormName}} Data View
+	</mat-card-title>
+	<mat-card-content>
+		<table>
+			<tr>
+				<td colspan="2" align="center">
+					<h4>
+						Requisition Information
+					</h4>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Requesting Department
+				</td>
+				<td>
+					{{deptLookup[SubFormData.requestingDepartment]}}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Division
+				</td>
+				<td>
+					{{SubFormData.division}}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Department Requestor
+				</td>
+				<td>
+					{{SubFormData.departmentRequstor}}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Phone Ext.
+				</td>
+				<td>
+					{{SubFormData.phoneExt}}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Date
+				</td>
+				<td>
+					{{SubFormData.date}}
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<h4>
+						Personnel Information
+					</h4>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					First Name
+				</td>
+				<td>
+					{{SubFormData.firstName}}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					MI
+				</td>
+				<td>
+					{{SubFormData.middleInitial}}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Last Name
+				</td>
+				<td>
+					{{SubFormData.lastName}}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Suffix
+				</td>
+				<td>
+					{{SubFormData.suffix}}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					SAP ID#
+				</td>
+				<td>
+					{{SubFormData.Sap}}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Job Title
+				</td>
+				<td>
+					{{SubFormData.jobTitle}}
+				</td>
+			</tr>
+			
+		</table>
+
+
+	</mat-card-content>
+</mat-card>

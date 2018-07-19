@@ -482,8 +482,13 @@
      Once completed, use the <b>Submit</b> button to return this request to Requestor for attachment to provisioning work order. 
  </p>
 
-     <button> Submit </button>
-     <button> Print </button>
+     <br>
+	<button mat-stroked-button color="warn" (click)="verifySubForm();">
+		Verify SubForm
+	</button>
+	<button mat-stroked-button [style.color]="'forestgreen'" disabled>
+		SubForm Verified
+	</button>
 
 </div> <!-- End main container. -->
 

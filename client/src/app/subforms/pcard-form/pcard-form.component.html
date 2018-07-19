@@ -8,7 +8,7 @@
 -->
 
 <!-- START: First prompts for form type. CEO website Acess, New Credit Card Request, and CardHolder Maintencae. -->
-<mat-radio-group [(ngModel)]="pcard.requestFormType" >
+<mat-radio-group [(ngModel)]="pcard.requestFormType">
   <mat-radio-button value="CEO Website Access">CEO Website Access</mat-radio-button>
   <mat-radio-button value="New Credit Card Request">New Credit Card Request</mat-radio-button>
   <mat-radio-button value="CardHolder Maintenance">CardHolder Maintenance</mat-radio-button>
@@ -367,6 +367,14 @@
       </mat-form-field>
 
 </div> <!-- END for block. Form Reactive fields.  -->
+
+<br>
+<button mat-stroked-button color="warn" (click)="verifySubForm();">
+  Verify SubForm
+</button>
+<button mat-stroked-button [style.color]="'forestgreen'" disabled>
+  SubForm Verified
+</button>
 
 <!-- BUTTON here for testing purposes. Used to print IO variables to the console and check data flow. -->
  <div class="buttonTest">

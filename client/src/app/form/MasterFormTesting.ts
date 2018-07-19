@@ -15,9 +15,9 @@ export class MasterForm{
 		this.SubForm3 = new SubForm3();
 		this.SubForm4 = new SubForm4();
 		this.SubForm5 = new SubForm5();
-		this.SubForm6 = new SubForm5();
+		this.SubForm6 = new SubForm6();
+		this.FID = "New Form";
 	}
-
 	SubForm0:SubForm0;
 	SubForm1:SubForm1;
 	SubForm2:SubForm2;
@@ -25,6 +25,8 @@ export class MasterForm{
 	SubForm4:SubForm4;
 	SubForm5:SubForm5;
 	SubForm6:SubForm6;
+
+	FID:string;
 }
 
 
@@ -54,12 +56,48 @@ class SubForm0{
 	constructor(){
 		this.FormName = "Common Infomation";
 		this.Completed = false;
+		this.Needed = true;
 		this.Fufillment = "Common Information";
+
+
+
+		this.requestingDepartment = '';
+		this.division = '';
+		this.departmentRequester = '';
+		this.phoneExt = '';
+		this.date = '';
+
+		this.firstName = '';
+		this.middleInitial = '';
+		this.lastName = '';
+		this.suffix = '';
+		this.sap = '';
+		this.jobTitle = '';
 	}
 
 	FormName:string;
 	Completed:boolean;
+	Needed = true;
 	Fufillment:string;
+
+	//Common Fields Between All Forms
+	
+	requestingDepartment:string;
+	division:string;
+	departmentRequester:string;
+	phoneExt:string;
+	date:string;
+
+
+	firstName:string;
+	middleInitial:string;
+	lastName:string;
+	suffix:string;
+	sap:string;
+	jobTitle:string;
+
+
+
 
 }
 
@@ -67,6 +105,7 @@ class SubForm1{
 	constructor(){
 		this.FormName = "CoSA ID Card Request";
 		this.Completed = false;
+		this.Needed = false;
 		this.ApprovalStatus = 'Pending';
 		this.Fufillment = 'ITSD';
 		this.Approvers = [];
@@ -74,6 +113,7 @@ class SubForm1{
 
 	FormName:string;
 	Completed:boolean;
+	Needed:boolean;
 	ApprovalStatus:ApprovalStatus;
 	Fufillment:string;
 	Approvers:Approver[];
@@ -84,6 +124,7 @@ class SubForm2{
 	constructor(){
 		this.FormName = "User Provisioning Request";
 		this.Completed = false;
+		this.Needed = false;
 		this.ApprovalStatus = 'Pending';
 		this.Fufillment = 'ITSD';
 		this.Approvers = [];
@@ -91,6 +132,7 @@ class SubForm2{
 
 	FormName:string;
 	Completed:boolean;
+	Needed:boolean;
 	ApprovalStatus:ApprovalStatus;
 	Fufillment:string;
 	Approvers:Approver[];
@@ -101,6 +143,7 @@ class SubForm3{
 	constructor(){
 		this.FormName = "Hardware/Software Request";
 		this.Completed = false;
+		this.Needed = false;
 		this.ApprovalStatus = 'Pending';
 		this.Fufillment = 'ITSD';
 		this.Approvers = [];
@@ -108,6 +151,7 @@ class SubForm3{
 
 	FormName:string;
 	Completed:boolean;
+	Needed:boolean;
 	ApprovalStatus:ApprovalStatus;
 	Fufillment:string;
 	Approvers:Approver[];
@@ -118,6 +162,7 @@ class SubForm4{
 	constructor(){
 		this.FormName = "P-Card Setup/Maintenance";
 		this.Completed = false;
+		this.Needed = false;
 		this.ApprovalStatus = 'Pending';
 		this.Fufillment = 'ITSD';
 		this.Approvers = [];
@@ -125,6 +170,7 @@ class SubForm4{
 
 	FormName:string;
 	Completed:boolean;
+	Needed:boolean;
 	ApprovalStatus:ApprovalStatus;
 	Fufillment:string;
 	Approvers:Approver[];
@@ -135,6 +181,7 @@ class SubForm5{
 	constructor(){
 		this.FormName = "Fueling Authorization Request";
 		this.Completed = false;
+		this.Needed = false;
 		this.ApprovalStatus = 'Pending';
 		this.Fufillment = 'BES';
 		this.Approvers = [];
@@ -142,6 +189,7 @@ class SubForm5{
 
 	FormName:string;
 	Completed:boolean;
+	Needed:boolean;
 	ApprovalStatus:ApprovalStatus;
 	Fufillment:string;
 	Approvers:Approver[];
@@ -152,6 +200,7 @@ class SubForm6{
 	constructor(){
 		this.FormName = "SAP Security Request";
 		this.Completed = false;
+		this.Needed = false;
 		this.ApprovalStatus = 'Pending';
 		this.Fufillment = 'SEC';
 		this.Approvers = [];
@@ -159,6 +208,7 @@ class SubForm6{
 
 	FormName:string;
 	Completed:boolean;
+	Needed:boolean;
 	ApprovalStatus:ApprovalStatus;
 	Fufillment:string;
 	Approvers:Approver[];
