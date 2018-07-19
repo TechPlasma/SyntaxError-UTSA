@@ -42,6 +42,8 @@ export class Approver{
 		}
 		this.Approved = false;
 	}
+	//ID:string;
+	//DependantIDs:string[];
 	Approved:boolean;
 }
 

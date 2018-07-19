@@ -22,6 +22,7 @@ export class User{
 		this.PWD = '';
 		this.MI = '';
 		this.EMAIL = '';
+		this.FORMS = [];
 	}
 
 	//DEPT:string;
@@ -33,5 +34,6 @@ export class User{
 	// LASTNAME:string;
 	MI:string;
 	EMAIL:string;
+	FORMS:string[];
 
 }
