@@ -1,75 +1,12 @@
-<div>
-	<mat-form-field class="example-margin">
-        <mat-select [(value)]="hsForm.department" placeholder="*Department">
-          <mat-option value="ANIMAL CARE SERVICES"> ANIMAL CARE SERVICES </mat-option>
-          <mat-option value="ARTS & CULTURE">ARTS & CULTURE</mat-option>
-          <mat-option value="AVIATION">AVIATION</mat-option>
-
-          <mat-option value="BUILDING AND EQUIPMENT SERVICES">BUILDING AND EQUIPMENT SERVICES</mat-option>
-          <mat-option value="CENTER CITY DEVELOPMENT AND OPERATIONS">CENTER CITY DEVELOPMENT AND OPERATIONS</mat-option>
-          <mat-option value="CITY ATTORNEY">CITY ATTORNEY</mat-option>
-          <mat-option value="CITY AUDITOR">CITY AUDITOR</mat-option>
-          <mat-option value="CITY CLERK">CITY CLERK</mat-option>
-
-          <mat-option value="CITY MANAGER'S OFFICE">CITY MANAGER'S OFFICE</mat-option>
-          <mat-option value="CONVENTION & SPORTS FACILITIES">CONVENTION & SPORTS FACILITIES</mat-option>
-          <mat-option value="DEVELOPMENT SERVICES">DEVELOPMENT SERVICES</mat-option>
-          <mat-option value="EASTPOINT">EASTPOINT</mat-option>
-          <mat-option value="ECONOMIC DEVELOPMENT">ECONOMIC DEVELOPMENT</mat-option>
-          <mat-option value="EMERGENCY MANAGEMENT">EMERGENCY MANAGEMENT</mat-option>
-          <mat-option value="EQUITY">EQUITY</mat-option>
-
-          <mat-option value="FINANCE">FINANCE</mat-option>
-          <mat-option value="FIRE">FIRE</mat-option>
-          <mat-option value="GOVERNMENT & PUBLIC AFFAIRS">GOVERNMENT & PUBLIC AFFAIRS</mat-option>
-          <mat-option value="HEALTH">HEALTH</mat-option>
-          <mat-option value="HISTORIC PRESERVATION">HISTORIC PRESERVATION</mat-option>
-          <mat-option value="HUMAN RESOURCES">HUMAN RESOURCES</mat-option>
-          <mat-option value="HUMAN SERVICES">HUMAN SERVICES</mat-option>
-
-          <mat-option value="INFORMATION TECHNOLOGY SERVICES">INFORMATION TECHNOLOGY SERVICES</mat-option>
-          <mat-option value="INNOVATION">INNOVATION</mat-option>
-          <mat-option value="LIBRARY">LIBRARY</mat-option>
-          <mat-option value="MANAGEMENT & BUDGET">MANAGEMENT & BUDGET</mat-option>
-          <mat-option value="MAYOR'S OFFICE">MAYOR'S OFFICE</mat-option>
-          <mat-option value="MUNICIPAL COURT">MUNICIPAL COURT</mat-option>
-
-          <mat-option value="NEIGHBORHOOD & HOUSING SERVICES">NEIGHBORHOOD & HOUSING SERVICES</mat-option>
-          <mat-option value="PARKS & RECREATION">PARKS & RECREATION</mat-option>
-          <mat-option value="PLANNING">PLANNING</mat-option>
-          <mat-option value="POLICE">POLICE</mat-option>
-          <mat-option value="PRE-K 4 SA">PRE-K 4 SA</mat-option>
-          <mat-option value="RISK MANAGEMENT">RISK MANAGEMENT</mat-option>
-          <mat-option value="SOLID WASTE MANAGEMENT">SOLID WASTE MANAGEMENT</mat-option>
-
-          <mat-option value="SUSTAINABILITY">SUSTAINABILITY</mat-option> 
-          <mat-option value="TRANSPORTATION & CAPITAL IMPROVEMENTS">TRANSPORTATION & CAPITAL IMPROVEMENTS</mat-option>
-          <mat-option value="TRICENTENNIAL COMMISSION">TRICENTENNIAL COMMISSION</mat-option> 
-          <mat-option value="WORLD HERITAGE">WORLD HERITAGE</mat-option>         
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field>
-        <input matInput [matDatepicker]="picker" [(ngModel)]="hsForm.date" placeholder="Choose a date">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-
-	<mat-form-field class="example-margin">
-		<input matInput placeholder="*Department Requestor: " [(ngModel)]="hsForm.depRequestor">
-	</mat-form-field>
+<div *ngIf="SubFormData != undefined">
 	
-	<mat-form-field class="example-margin">
-		<input matInput placeholder="Phone ext: " [(ngModel)]="hsForm.phoneExt">
-	</mat-form-field>
-
 	<!-- TWO CHECKBOXES WITH REACTIVE FIELDS. -->
 	<p><b>Request Category(ies):</b> </p>
-	      <mat-checkbox class="example-margin" [(ngModel)]="hsForm.provHardware"> 
+	      <mat-checkbox class="example-margin" [(ngModel)]="SubFormData.provHardware"> 
             <label>Provisioning(Assigned) Hardware</label>  
          </mat-checkbox>
 
-         <mat-checkbox class="example-margin" [(ngModel)]="hsForm.provSoftware"> 
+         <mat-checkbox class="example-margin" [(ngModel)]="SubFormData.provSoftware"> 
             <label>Specialized Software</label>  
          </mat-checkbox>
 
@@ -80,63 +17,51 @@
 	original form.
 -->
 	<!-- HARDWARE PROVISIONING. First block. -->
-	<div *ngIf="hsForm.provHardware">
+	<div *ngIf="SubFormData.provHardware">
 		<p> Hardware Procurement Info: </p>
 		<mat-form-field class="example-margin">
-			<input matInput placeholder="*Cost Center / I/O: " [(ngModel)]="hsForm.hardCostCenterIO">
+			<input matInput placeholder="*Cost Center / I/O: " [(ngModel)]="SubFormData.hardCostCenterIO">
 		</mat-form-field>
 
 		<mat-form-field class="example-margin">
-			<input matInput placeholder="*GL Acct: " [(ngModel)]="hsForm.hardGlAcc">
+			<input matInput placeholder="*GL Acct: " [(ngModel)]="SubFormData.hardGlAcc">
 		</mat-form-field>
 		<br> 
 	</div>
 
-	<div *ngIf="hsForm.provSoftware">
+	<div *ngIf="SubFormData.provSoftware">
 	<p> Software Procurement Info: </p>
 		<mat-form-field class="example-margin">
-			<input matInput placeholder="*Cost Center / I/O: " [(ngModel)]="hsForm.softCostCenterIO">
+			<input matInput placeholder="*Cost Center / I/O: " [(ngModel)]="SubFormData.softCostCenterIO">
 		</mat-form-field>
 
 		<mat-form-field class="example-margin">
-			<input matInput placeholder="*GL Acct: " [(ngModel)]="hsForm.softGlAcc">
+			<input matInput placeholder="*GL Acct: " [(ngModel)]="SubFormData.softGlAcc">
 		</mat-form-field>
 		<br> 
 	</div>
 
 <!--CODE BLOCK: HARDWARE PROVISIONING fields start here. 2nd(main) block. -->
-	<div *ngIf="hsForm.provHardware">
+	<div *ngIf="SubFormData.provHardware">
 		<h3>Hardware -- Provisioning (Assigned) </h3>
 		<p>Enter any/all information related to the hardware that is to be provisioned(assigned) to a specific User<br>
 		 </p> <!-- We do one employee at a time in our master(centeralized) form, so no 'add' feature here. -->
 
 		<mat-form-field class="example-margin">
-			<input matInput placeholder="*User Name: " [(ngModel)]="hsForm.userName">
-		</mat-form-field>		 
-
-		<mat-form-field class="example-margin">
-			<input matInput placeholder="*SAP/Logon ID: " [(ngModel)]="hsForm.SAPLogonId">
+			<input matInput placeholder="*Bldg Location: " [(ngModel)]="SubFormData.BldgLoc">
 		</mat-form-field>
 
 		<mat-form-field class="example-margin">
-			<input matInput placeholder="Position: " [(ngModel)]="hsForm.formPosition">
+			<input matInput placeholder="Floor: " [(ngModel)]="SubFormData.floor">
 		</mat-form-field>
 
 		<mat-form-field class="example-margin">
-			<input matInput placeholder="*Bldg Location: " [(ngModel)]="hsForm.BldgLoc">
-		</mat-form-field>
-
-		<mat-form-field class="example-margin">
-			<input matInput placeholder="Floor: " [(ngModel)]="hsForm.floor">
-		</mat-form-field>
-
-		<mat-form-field class="example-margin">
-			<input matInput placeholder="Office #: " [(ngModel)]="hsForm.office">
+			<input matInput placeholder="Office #: " [(ngModel)]="SubFormData.office">
 		</mat-form-field>
 		<br>
 
 		<mat-form-field class="example-margin">
-		  <mat-select [(value)]="hsForm.requestType" placeholder="*Request Type: ">
+		  <mat-select [(value)]="SubFormData.requestType" placeholder="*Request Type: ">
 		    <mat-option>None</mat-option>
 		    <mat-option value="New">New</mat-option>
 		    <mat-option value="Replacement">Replacement</mat-option>
@@ -146,18 +71,18 @@
 		</mat-form-field>
 
 		<mat-form-field class="example-form">
-			<input matInput placeholder="Current Device('Asset Tag')ID: " [(ngModel)]="hsForm.currentDeviceId">
+			<input matInput placeholder="Current Device('Asset Tag')ID: " [(ngModel)]="SubFormData.currentDeviceId">
 		</mat-form-field> 
 		<br>
 
 		<!-- Various checkboxs. Reactive fields per box selected. &quot; for quotaion -->
-		<mat-checkbox class="example-form" [(ngModel)]="hsForm.desktopBox"> 
+		<mat-checkbox class="example-form" [(ngModel)]="SubFormData.desktopBox"> 
             <label>Desktop:</label>  
          </mat-checkbox>
 <!-- CODE BLOCK: reactive fields for desktop checkbox -->
-         	<div *ngIf="hsForm.desktopBox">
+         	<div *ngIf="SubFormData.desktopBox">
          		<mat-form-field class="example-full-width">
-				  <mat-select [(value)]="hsForm.desktopInput" placeholder="Desktop">
+				  <mat-select [(value)]="SubFormData.desktopInput" placeholder="Desktop">
 				    <mat-option value="Apple Mac Mini, i5 Pro, 8GB RAM, 1TB HD, Mac OSX & Warranty">Apple Mac Mini, i5 Pro, 8GB RAM, 1TB HD, Mac OSX & Warranty
 				    </mat-option>
 
@@ -182,13 +107,13 @@
  <!-- END BLOCK: desktop -->
          <br>
 
-        <mat-checkbox class="example-margin" [(ngModel)]="hsForm.laptopBox"> 
+        <mat-checkbox class="example-margin" [(ngModel)]="SubFormData.laptopBox"> 
             <label>Laptop:</label>  
          </mat-checkbox>
 <!-- CODE BLOCK: reactive fields for Laptop checkbox. -->
-        	<div *ngIf="hsForm.laptopBox">
+        	<div *ngIf="SubFormData.laptopBox">
          		<mat-form-field class="example-full-width">
-         			<mat-select [(value)]="hsForm.laptopInput" placeholder="Laptop">
+         			<mat-select [(value)]="SubFormData.laptopInput" placeholder="Laptop">
          				<mat-option value="Dell Latitude 5290 2-in-1, 12.0', i7 processor, 16GB RAM, Win 10 64 bit O/S">
          				Dell Latitude 5290 2-in-1, 12.0', i7 processor, 16GB RAM, Win 10 64 bit O/S
          				</mat-option>
@@ -225,29 +150,29 @@
          		</mat-form-field>
          		<!-- CHECKBOXES that follow the dropdown menu. -->
          		<label>Select Extra: </label>
-         		  <mat-checkbox class="example-margin" [(ngModel)]="hsForm.dockingStation"> 
+         		  <mat-checkbox class="example-margin" [(ngModel)]="SubFormData.dockingStation"> 
 		            <label>Docking Station:</label>  
 		         </mat-checkbox>
 
-		         <mat-checkbox class="example-margin" [(ngModel)]="hsForm.keyMouse"> 
+		         <mat-checkbox class="example-margin" [(ngModel)]="SubFormData.keyMouse"> 
 		            <label>Keyboard/Mouse </label>  
 		         </mat-checkbox>
 
-		          <mat-checkbox class="example-margin" [(ngModel)]="hsForm.addMonitor"> 
+		          <mat-checkbox class="example-margin" [(ngModel)]="SubFormData.addMonitor"> 
 		            <label>Additional Monitor </label>  
 		         </mat-checkbox>
          	</div>
 <!-- END BLOCK: Laptop. -->
          <br>
 
-         <mat-checkbox class="example-margin" [(ngModel)]="hsForm.monitorBox"> 
+         <mat-checkbox class="example-margin" [(ngModel)]="SubFormData.monitorBox"> 
             <label>Monitor:</label>  
          </mat-checkbox>
 <!-- CODE BLOCK: Monitor reactive fields. -->
-		<div *ngIf="hsForm.monitorBox">
+		<div *ngIf="SubFormData.monitorBox">
 			<!-- Dropdown menu for Monitor(Single or Double) -->
 			<mat-form-field class="example-margin" >
-			  <mat-select [(value)]="hsForm.monitorMode" placeholder="Mode">
+			  <mat-select [(value)]="SubFormData.monitorMode" placeholder="Mode">
 			    <mat-option value="Single">Single</mat-option>
 			    <mat-option value="Dual">Dual</mat-option>
 			  </mat-select>
@@ -255,7 +180,7 @@
 
 			<!-- Dropdown menu for Monitor itself. -->
 			<mat-form-field class="example-margin">
-			  <mat-select [(value)]="hsForm.monitorInput" placeholder="Monitor">
+			  <mat-select [(value)]="SubFormData.monitorInput" placeholder="Monitor">
 				    <mat-option value="option1">
 				    Dell 24" Monitor - U2417H/ w Display, Mini Display Cables
 					</mat-option>
@@ -279,18 +204,18 @@
 
 <!-- CLIENT says that printer is no longer a dropdown menu. Just a checkbox now. -->
 		<br>
-          <mat-checkbox class="example-margin" [(ngModel)]="hsForm.printerBox"> 
+          <mat-checkbox class="example-margin" [(ngModel)]="SubFormData.printerBox"> 
             <label>Printer:</label>  
          </mat-checkbox>
          <br>
 
-         <mat-checkbox class="example-margin" [(ngModel)]="hsForm.ipDeskPhoneBox"> 
+         <mat-checkbox class="example-margin" [(ngModel)]="SubFormData.ipDeskPhoneBox"> 
             <label>IP Desk Phone:</label>  
          </mat-checkbox>
 <!-- CODE BLOCK: for ip Desk Phone dropdown menu. -->
-			<div *ngIf="hsForm.ipDeskPhoneBox">
+			<div *ngIf="SubFormData.ipDeskPhoneBox">
 				<mat-form-field>
-				  <mat-select [(value)]="hsForm.ipDeskPhoneInput" placeholder ="choose phone">
+				  <mat-select [(value)]="SubFormData.ipDeskPhoneInput" placeholder ="choose phone">
 				    <mat-option value="Cisco 8841">Cisco 8841</mat-option>
 				    <mat-option value="Cisco 8851 with Expansion Module">Cisco 8851 with Expansion Module</mat-option>
 				  </mat-select>
@@ -301,13 +226,13 @@
 <!-- END CODE BLOCK: for IP Desk Phone dropdown menu. -->
          <br>
 
-          <mat-checkbox class="example-margin" [(ngModel)]="hsForm.otherBox"> 
+          <mat-checkbox class="example-margin" [(ngModel)]="SubFormData.otherBox"> 
             <label>Other:</label>  
          </mat-checkbox>
          	<!-- Text field that appears when "Other" is checked.-->
-         		<div *ngIf="hsForm.otherBox">
+         		<div *ngIf="SubFormData.otherBox">
          			<mat-form-field class="example-form">
-						<input matInput placeholder="Type 'Other' here" [(ngModel)]="hsForm.otherInput">
+						<input matInput placeholder="Type 'Other' here" [(ngModel)]="SubFormData.otherInput">
 					</mat-form-field>
          		</div>
          <br>
@@ -316,7 +241,7 @@
 
 
 <!-- CODE BLOCK: Paragraph for "Standard CoSA Software" needed. MOVE. IN WRONG SPOT. -->
-	<div *ngIf="hsForm.provSoftware || hsForm.provHardware">	
+	<div *ngIf="SubFormData.provSoftware || SubFormData.provHardware">	
 		<h3> Standard CoSA Software</h3>
 		<p>
 			With the purchase of New hardware components, the Standard CoSA Software Image will be included. Software items which are bundled in the standard image will be registered, licensed, and certified. Any New hardware components(s) that is/are replacing Existing hardware component(s) and all assigned licensed software will be transferred over to the New hardware component tocomplete the standard image.<br> 
@@ -328,17 +253,17 @@
 			If something other than the standard package is required/desired, please indicate that below. Additional information may be added to clarify how and on which hardware component(s) non-standard images are to be distributed. An Exception to Policy form may also be required for final approval.<br>
 		</p>
 
-		<mat-checkbox class="example-margin" [(ngModel)]="hsForm.softwareOtherBox"> 
+		<mat-checkbox class="example-margin" [(ngModel)]="SubFormData.softwareOtherBox"> 
             <label>Something <b> OTHER THAN</b> Standard CoSA Software(OS) Image requested.</label>
          </mat-checkbox>
-			<div *ngIf="hsForm.softwareOtherBox">
+			<div *ngIf="SubFormData.softwareOtherBox">
 				<mat-form-field class="example-form">
-					<input matInput placeholder="Type 'Something Other Than' request" [(ngModel)]="hsForm.softwareOtherInput">
+					<input matInput placeholder="Type 'Something Other Than' request" [(ngModel)]="SubFormData.softwareOtherInput">
 				</mat-form-field>
 			</div>
 	</div>
 <!-- END BLOCK. End of paragraph + checkbox and input field. -->
-	<div *ngIf="hsForm.provSoftware">
+	<div *ngIf="SubFormData.provSoftware">
 		
 		<h3>Software</h3>
 		<p>Enter any/all information related to the software that is to be acquired. Use the <b> Add</b> button to place additional rows to this section, then select the software requested, and to whom the software will be assigned. The quantity will always be 1. <br>
@@ -374,7 +299,7 @@
 				</th>
 			</tr>
 
-			<tr *ngFor="let softItem of hsForm.specialSoftware">
+			<tr *ngFor="let softItem of SubFormData.specialSoftware">
 
 				<td>
 					Specialized Software
@@ -428,65 +353,14 @@
 	</div> <!-- END of the software table requests. -->
 
 
-	<h3> Signatures </h3>
-	<p>To sign: Enter your network credentials (User ID and Password) below.
-	<br>and then press <b>Sign</b> button next to the corresponding signature. </p>
 
-	<mat-form-field class="example-margin">
-		<input matInput placeholder="*User ID: " [(ngModel)]="hsForm.userId">
-	</mat-form-field>
-
-	<mat-form-field class="example-margin">
-		<input matInput placeholder="*password: " [(ngModel)]="hsForm.userPassword">
-	</mat-form-field>
-	<br>
-
-	<button>
-		Sign
-	</button>
-
-	<mat-form-field class="example-margin">
-		<input matInput placeholder="Requestor: " [(ngModel)]="hsForm.requestor">
-	</mat-form-field>
-	<!-- datepicker-->
-	 <mat-form-field class="example-margin">
-       <input matInput [matDatepicker]="pickerA" [(ngModel)]="hsForm.requestorDate" placeholder="Date">
-       <mat-datepicker-toggle matSuffix [for]="pickerA"></mat-datepicker-toggle>
-       <mat-datepicker #pickerA></mat-datepicker>
-     </mat-form-field>
+    <br>
 
 	<br>
-	<mat-form-field class="example-margin">
-		<input matInput placeholder="Department DFA: " [(ngModel)]="hsForm.deptDFA">
-	</mat-form-field>
-		<!-- datepicker-->
-	 <mat-form-field class="example-margin">
-       <input matInput [matDatepicker]="pickerB" [(ngModel)]="hsForm.dfaDate" placeholder="Date">
-       <mat-datepicker-toggle matSuffix [for]="pickerB"></mat-datepicker-toggle>
-       <mat-datepicker #pickerB></mat-datepicker>
-     </mat-form-field>
-
-	<br>
-	<mat-form-field class="example-margin">
-		<input matInput placeholder="Department Head/Designee: " [(ngModel)]="hsForm.deptHead">
-	</mat-form-field>
-	<!-- datepicker -->
-	 <mat-form-field class="example-margin">
-       <input matInput [matDatepicker]="pickerC" [(ngModel)]="hsForm.headDate" placeholder="Date">
-       <mat-datepicker-toggle matSuffix [for]="pickerC"></mat-datepicker-toggle>
-       <mat-datepicker #pickerC></mat-datepicker>
-     </mat-form-field>
-
-     <p>Use the <b>Print</b> button to make a copy for your records.<br>
-     Use the <b>Submit</b> button to forward this request for department review.<br>
-     Once completed, use the <b>Submit</b> button to return this request to Requestor for attachment to provisioning work order. 
- </p>
-
-     <br>
-	<button mat-stroked-button color="warn" (click)="verifySubForm();">
+	<button mat-stroked-button color="warn" (click)="verifySubForm();" *ngIf="!SubFormData.Completed">
 		Verify SubForm
 	</button>
-	<button mat-stroked-button [style.color]="'forestgreen'" disabled>
+	<button mat-stroked-button [style.color]="'forestgreen'" *ngIf="SubFormData.Completed" disabled>
 		SubForm Verified
 	</button>
 

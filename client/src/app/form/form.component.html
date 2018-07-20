@@ -29,6 +29,10 @@
 				</tr>
 			</table>
 
+			<button mat-stroked-button color="warn" (click)="resetForms();">
+				Reset All Form Completions
+			</button>
+
 			<br>
 			<br>
 
@@ -48,9 +52,12 @@
 					
 					
 					<br>
-					<mat-slide-toggle [(ngModel)]="masterForm.SubForm0.Completed"></mat-slide-toggle>
+					<!-- <mat-slide-toggle [(ngModel)]="masterForm.SubForm0.Completed"></mat-slide-toggle> -->
 				</div>
 			</mat-expansion-panel>
+
+
+
 			<mat-expansion-panel *ngIf="masterForm.SubForm1.Needed">
 				<mat-expansion-panel-header>
 					<mat-panel-title>
@@ -63,9 +70,12 @@
 					</mat-panel-description>
 				</mat-expansion-panel-header>
 				<div>
-					<app-id-form></app-id-form>
+					<app-id-form [(ngModel)]="masterForm.SubForm1"></app-id-form>
 				</div>
 			</mat-expansion-panel>
+
+
+
 			<mat-expansion-panel *ngIf="masterForm.SubForm2.Needed">
 				<mat-expansion-panel-header>
 					<mat-panel-title>
@@ -78,9 +88,12 @@
 					</mat-panel-description>
 				</mat-expansion-panel-header>
 				<div>
-					<app-user-form></app-user-form>
+					<app-user-form [(ngModel)]="masterForm.SubForm2"></app-user-form>
 				</div>
 			</mat-expansion-panel>
+
+
+
 			<mat-expansion-panel *ngIf="masterForm.SubForm3.Needed">
 				<mat-expansion-panel-header>
 					<mat-panel-title>
@@ -93,9 +106,12 @@
 					</mat-panel-description>
 				</mat-expansion-panel-header>
 				<div>
-					<app-hard-soft-form></app-hard-soft-form>
+					<app-hard-soft-form [(ngModel)]="masterForm.SubForm3"></app-hard-soft-form>
 				</div>
 			</mat-expansion-panel>
+
+
+
 			<mat-expansion-panel *ngIf="masterForm.SubForm4.Needed">
 				<mat-expansion-panel-header>
 					<mat-panel-title>
@@ -108,9 +124,12 @@
 					</mat-panel-description>
 				</mat-expansion-panel-header>
 				<div>
-					<app-pcard-form></app-pcard-form>
+					<app-pcard-form [(ngModel)]="masterForm.SubForm4"></app-pcard-form>
 				</div>
 			</mat-expansion-panel>
+
+
+
 			<mat-expansion-panel *ngIf="masterForm.SubForm5.Needed">
 				<mat-expansion-panel-header>
 					<mat-panel-title>
@@ -123,9 +142,12 @@
 					</mat-panel-description>
 				</mat-expansion-panel-header>
 				<div>
-					<app-fuel-form></app-fuel-form>
+					<app-fuel-form [(ngModel)]="masterForm.SubForm5"></app-fuel-form>
 				</div>
 			</mat-expansion-panel>
+
+
+
 			<mat-expansion-panel *ngIf="masterForm.SubForm6.Needed">
 				<mat-expansion-panel-header>
 					<mat-panel-title>
@@ -138,7 +160,7 @@
 					</mat-panel-description>
 				</mat-expansion-panel-header>
 				<div>
-					<app-sap-form></app-sap-form>
+					<app-sap-form [(ngModel)]="masterForm.SubForm6"></app-sap-form>
 				</div>
 			</mat-expansion-panel>
 

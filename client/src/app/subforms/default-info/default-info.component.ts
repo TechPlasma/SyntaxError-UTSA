@@ -1,4 +1,4 @@
-import { Component, forwardRef } from '@angular/core';
+import { Component, forwardRef, OnInit } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 import { departments } from '../../Departments';
@@ -31,12 +31,12 @@ export class DefaultInfoComponent implements ControlValueAccessor {
     private onChangeCallback: (_: any) => void = noop;
 
     //get accessor
-    get value(): any {
+    get SubFormData(): any {
         return this.innerValue;
     };
 
     //set accessor including call the onchange callback
-    set value(v: any) {
+    set SubFormData(v: any) {
         if (v !== this.innerValue) {
             this.innerValue = v;
             this.onChangeCallback(v);
@@ -66,12 +66,19 @@ export class DefaultInfoComponent implements ControlValueAccessor {
     }
 
     verifySubForm(){
-        this.value.Completed = true;
+        this.SubFormData.Completed = true;
+        console.log(this.SubFormData);
     }
 
 	
 
-	constructor() { }
+	constructor() {
+
+    }
+
+    ngOnInit(){
+
+    }
 
 
 }

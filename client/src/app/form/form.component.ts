@@ -29,6 +29,14 @@ export class FormComponent implements OnInit {
 		console.log(this.masterForm);
 	}
 
+	resetForms(){
+		for(let subForm in this.masterForm){
+			if(/SubForm\d/.test(subForm)){
+				this.masterForm[subForm].Completed = false;
+			}
+		}
+	}
+
 	existingForm(){
 
 	}
