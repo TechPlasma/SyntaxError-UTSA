@@ -62,7 +62,7 @@
 <mat-form-field class = "JobPositions">
 
  <mat-select [(value)] = "jobPosition" placeholder = "Job Status">
-   <mat-option value = "Cont.temp"> Contract temporary </mat-option>
+   <mat-option value = "ContractTemp"> Contract Temporary </mat-option>
    <mat-option value = "contractor"> Contractor </mat-option>
    <mat-option value = "fullTime"> CoSA Full-Time </mat-option>
    <mat-option value = "partTime"> CoSA Part-Time </mat-option>
@@ -154,7 +154,7 @@
 <br>
 
 
-<div *ngIf = "jobPosition == 'contractor' || jobPosition == 'vendor'">
+<div *ngIf = "jobPosition == 'contractor' || jobPosition == 'vendor' || jobPosition == 'ContractTemp'">
   <h4> Contractor/Vendor Information </h4>
   <p> Note: Contractors requiring a CoSA ID Card must complete all fields applicable above, in addition to company detail information below </p>
   <div class = "contractorVendor">
