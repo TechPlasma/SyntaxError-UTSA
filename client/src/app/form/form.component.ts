@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { MasterForm, Approver } from './MasterFormTesting';
+import { MasterForm, Approver } from '../MasterForm';
 
 @Component({
   selector: 'app-form',
