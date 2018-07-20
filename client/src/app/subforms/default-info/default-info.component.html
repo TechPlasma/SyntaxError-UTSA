@@ -1,3 +1,61 @@
-<mat-form-field >
-    <input matInput placeholder = "User Name" [(ngModel)]="value" autocomplete="off">
-</mat-form-field>
+<div *ngIf="SubFormData != undefined">
+		
+	<h4>Requisition Information</h4>
+	<mat-form-field class="thirds">
+		<mat-select [(ngModel)]="SubFormData.requestingDepartment" placeholder="Requesting Department">
+			<mat-option *ngFor="let dept of departments" [value]='dept.code'>{{dept.dept}}</mat-option>
+		</mat-select>
+	</mat-form-field>
+	<mat-form-field class="thirds">
+	    <input matInput placeholder="Division" [(ngModel)]="SubFormData.division" autocomplete="off">
+	</mat-form-field>
+	<mat-form-field class="thirds">
+	    <input matInput placeholder="Department Requestor" [(ngModel)]="SubFormData.departmentRequester" autocomplete="off">
+	</mat-form-field>
+	<br>
+	<mat-form-field class="tenth">
+	    <input matInput placeholder="Phone Ext." [(ngModel)]="SubFormData.phoneExt" autocomplete="off">
+	</mat-form-field>
+	<mat-form-field class="thirds">
+		<input matInput [matDatepicker]="picker" placeholder="Choose a date"
+				[(ngModel)]="SubFormData.date">
+		<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+		<mat-datepicker #picker></mat-datepicker>
+	</mat-form-field>
+
+
+	<h4>Personnel Information</h4>
+	<mat-form-field class="thirds">
+	    <input matInput placeholder="First Name" [(ngModel)]="SubFormData.firstName" autocomplete="off">
+	</mat-form-field>
+	<mat-form-field class="tenth">
+	    <input matInput placeholder="MI" [(ngModel)]="SubFormData.middleInitial" autocomplete="off">
+	</mat-form-field>
+	<mat-form-field class="thirds">
+	    <input matInput placeholder="Last Name" [(ngModel)]="SubFormData.lastName" autocomplete="off">
+	</mat-form-field>
+	<mat-form-field class="tenth">
+	    <input matInput placeholder="Suffix" [(ngModel)]="SubFormData.suffix" autocomplete="off">
+	</mat-form-field>
+	<br>
+	<mat-form-field class="thirds">
+	    <input matInput placeholder="Phone Number" [(ngModel)]="SubFormData.phoneNumber" autocomplete="off">
+	</mat-form-field>
+	<mat-form-field class="thirds">
+	    <input matInput placeholder="Job Title" [(ngModel)]="SubFormData.jobTitle" autocomplete="off">
+	</mat-form-field>
+	<mat-form-field class="thirds">
+	    <input matInput placeholder="SAP #" [(ngModel)]="SubFormData.sap" autocomplete="off">
+	</mat-form-field>
+	<br>
+
+
+
+	<br>
+	<button mat-stroked-button color="warn" (click)="verifySubForm();" *ngIf="!SubFormData.Completed">
+		Verify SubForm
+	</button>
+	<button mat-stroked-button [style.color]="'forestgreen'" *ngIf="SubFormData.Completed" disabled>
+		SubForm Verified
+	</button>
+</div>

@@ -16,6 +16,13 @@ import { FuelFormComponent } from './subforms/fuel-form/fuel-form.component';
 import { SAPFormComponent } from './subforms/sap-form/sap-form.component';
 import { ViewComponent } from './view/view.component';
 import { DefaultInfoComponent } from './subforms/default-info/default-info.component';
+import { DefaultViewComponent } from './viewdata/default-view/default-view.component';
+import { FuelViewComponent } from './viewdata/fuel-view/fuel-view.component';
+import { HardSoftViewComponent } from './viewdata/hard-soft-view/hard-soft-view.component';
+import { IDViewComponent } from './viewdata/id-view/id-view.component';
+import { PCardViewComponent } from './viewdata/pcard-view/pcard-view.component';
+import { SAPViewComponent } from './viewdata/sap-view/sap-view.component';
+import { UserViewComponent } from './viewdata/user-view/user-view.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +38,14 @@ import { DefaultInfoComponent } from './subforms/default-info/default-info.compo
     FuelFormComponent,
     SAPFormComponent,
     ViewComponent,
-    DefaultInfoComponent
+    DefaultInfoComponent,
+    DefaultViewComponent,
+    FuelViewComponent,
+    HardSoftViewComponent,
+    IDViewComponent,
+    PCardViewComponent,
+    SAPViewComponent,
+    UserViewComponent
   ],
   imports: [
     BrowserModule,

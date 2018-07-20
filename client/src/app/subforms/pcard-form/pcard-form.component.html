@@ -1,380 +1,279 @@
-<!-- FIXED VERSION: Should be okay from here on out:
-  - Major form types are radio buttons instead of checkboxes(only one allowed at a time)
-  - Checkboxes are tied to boolean values that default to 'false' and turn 'true' when checked.
-  - Reactive feilds exist, they appear dynamically when certain conditions are meet.
-    
-    NOTE: had to reuse some HTML and bindings, no other way to have it appear again in the right location.
-    So code is little longer than I wanted. But it works.
--->
-
-<!-- START: First prompts for form type. CEO website Acess, New Credit Card Request, and CardHolder Maintencae. -->
-<mat-radio-group [(ngModel)]="pcard.requestFormType" >
-  <mat-radio-button value="CEO Website Access">CEO Website Access</mat-radio-button>
-  <mat-radio-button value="New Credit Card Request">New Credit Card Request</mat-radio-button>
-  <mat-radio-button value="CardHolder Maintenance">CardHolder Maintenance</mat-radio-button>
-</mat-radio-group>
-
-<!-- UNVERISAL: PERSONAL INFORMATION: Shows up when ANY form type is selected.  -->
-  <div *ngIf="pcard.requestFormType">
-
-    <!-- Basic Personal Information. Used in every single type of request. So universal fields. --> 
-    <div class="Personal Information">
-      <h3> <b> Personal Information </b> </h3>
-      <p>Please fill out the following information: </p>
-      <p> NOTE: fields with the * symbol MUST be filled out to continue. </p>
-      <mat-form-field class="example-form">
-        <input matInput placeholder="*Enter your first name" [(ngModel)]="pcard.firstName" >
-      </mat-form-field>
-
-      <mat-form-field class="example-form">
-        <input matInput placeholder="*Enter your last name" [(ngModel)]="pcard.lastName" >
-      </mat-form-field>
+<div *ngIf="SubFormData != undefined">
+    <!-- FIXED VERSION: Should be okay from here on out:
+    - Major form types are radio buttons instead of checkboxes(only one allowed at a time)
+    - Checkboxes are tied to boolean values that default to 'false' and turn 'true' when checked.
+    - Reactive feilds exist, they appear dynamically when certain conditions are meet.
       
-      <mat-form-field class="example-form">
-        <input matInput placeholder="Enter your middle name (optional)" [(ngModel)]="pcard.middleName" >
-      </mat-form-field>
+      NOTE: had to reuse some HTML and bindings, no other way to have it appear again in the right location.
+      So code is little longer than I wanted. But it works.
+  -->
 
-       <mat-form-field class="example-form">
-        <input matInput placeholder="Enter your suffix (optional)" [(ngModel)]="pcard.suffix" >
-      </mat-form-field>
+  <!-- START: First prompts for form type. CEO website Acess, New Credit Card Request, and CardHolder Maintencae. -->
+  <mat-radio-group [(ngModel)]="SubFormData.requestFormType">
+    <mat-radio-button value="CEO Website Access">CEO Website Access</mat-radio-button>
+    <mat-radio-button value="New Credit Card Request">New Credit Card Request</mat-radio-button>
+    <mat-radio-button value="CardHolder Maintenance">CardHolder Maintenance</mat-radio-button>
+  </mat-radio-group>
 
-      <mat-form-field class="example-form">  
-        <input matInput placeholder="*Enter your user name" [(ngModel)]="pcard.userName" >
-      </mat-form-field>
+  <!-- UNVERISAL: PERSONAL INFORMATION: Shows up when ANY form type is selected.  -->
+    <div *ngIf="SubFormData.requestFormType">
 
-      <mat-form-field class="example-form">
-        <input matInput placeholder="*Enter your COSA email" [(ngModel)]="pcard.cosaEmail" >
-      </mat-form-field>
+      <!-- Basic Personal Information. Used in every single type of request. So universal fields. --> 
+      <div class="Personal Information">
+        <h3> <b> Personal Information </b> </h3>
+        <p>Please fill out the following information: </p>
+        <p> NOTE: fields with the * symbol MUST be filled out to continue. </p>
 
-      <mat-form-field class="example-form">
-        <input matInput placeholder="*Enter your SAP Employee ID" [(ngModel)]="pcard.sapEmpId" >
-      </mat-form-field>
-      <!-- department is a dropdown menu. LONG. Gonna take time. -->
+        <mat-form-field class="example-form">
+          <input matInput placeholder="*Enter your COSA email" [(ngModel)]="SubFormData.cosaEmail" >
+        </mat-form-field>
 
-      <mat-form-field class="example-form">
-        <mat-select [(value)]="pcard.dept" placeholder="*Department">
-          <mat-option value="ANIMAL CARE SERVICES"> ANIMAL CARE SERVICES </mat-option>
-          <mat-option value="ARTS & CULTURE">ARTS & CULTURE</mat-option>
-          <mat-option value="AVIATION">AVIATION</mat-option>
+      </div>
+  <!-- END of department drop down menu. -->
+  <!-- END of PERSONAL INFORMATION section. This applies to all three major checkboxes. -->
 
-          <mat-option value="BUILDING AND EQUIPMENT SERVICES">BUILDING AND EQUIPMENT SERVICES</mat-option>
-          <mat-option value="CENTER CITY DEVELOPMENT AND OPERATIONS">CENTER CITY DEVELOPMENT AND OPERATIONS</mat-option>
-          <mat-option value="CITY ATTORNEY">CITY ATTORNEY</mat-option>
-          <mat-option value="CITY AUDITOR">CITY AUDITOR</mat-option>
-          <mat-option value="CITY CLERK">CITY CLERK</mat-option>
+  <!-- CODE BLOCK: ONLY for fields that appear with "CEO Website Access Only "-->
+        <!-- STUFF for role in an if statement for CEO Website Access ONLY. As in the checkbox only-->
+          <div *ngIf="SubFormData.requestFormType == 'CEO Website Access'" >
+            <p> <u>Choose from roles listed:</u><br>
+            <b>View Only</b> allow users to pull reports only(all departments).<br> 
+                <b>Approver</b> allow users to allocate transactions and approve for the department.
+            <br><b>Reconciler</b> allows users to allocate transactions and approve transactions and review statements(s)
+             for assigned cardholder(s).  
+            </p>
 
-          <mat-option value="CITY MANAGER'S OFFICE">CITY MANAGER'S OFFICE</mat-option>
-          <mat-option value="CONVENTION & SPORTS FACILITIES">CONVENTION & SPORTS FACILITIES</mat-option>
-          <mat-option value="DEVELOPMENT SERVICES">DEVELOPMENT SERVICES</mat-option>
-          <mat-option value="EASTPOINT">EASTPOINT</mat-option>
-          <mat-option value="ECONOMIC DEVELOPMENT">ECONOMIC DEVELOPMENT</mat-option>
-          <mat-option value="EMERGENCY MANAGEMENT">EMERGENCY MANAGEMENT</mat-option>
-          <mat-option value="EQUITY">EQUITY</mat-option>
+            <mat-form-field class="example-form">
+              <mat-select [(value)]="SubFormData.role" placeholder="*Role ">
+                <mat-option value="View Only">View Only</mat-option>
+                <mat-option value="Approver">Approver</mat-option>
+                <mat-option value="Reconciler">Reconciler</mat-option>
+              </mat-select>
+            </mat-form-field>
 
-          <mat-option value="FINANCE">FINANCE</mat-option>
-          <mat-option value="FIRE">FIRE</mat-option>
-          <mat-option value="GOVERNMENT & PUBLIC AFFAIRS">GOVERNMENT & PUBLIC AFFAIRS</mat-option>
-          <mat-option value="HEALTH">HEALTH</mat-option>
-          <mat-option value="HISTORIC PRESERVATION">HISTORIC PRESERVATION</mat-option>
-          <mat-option value="HUMAN RESOURCES">HUMAN RESOURCES</mat-option>
-          <mat-option value="HUMAN SERVICES">HUMAN SERVICES</mat-option>
-
-          <mat-option value="INFORMATION TECHNOLOGY SERVICES">INFORMATION TECHNOLOGY SERVICES</mat-option>
-          <mat-option value="INNOVATION">INNOVATION</mat-option>
-          <mat-option value="LIBRARY">LIBRARY</mat-option>
-          <mat-option value="MANAGEMENT & BUDGET">MANAGEMENT & BUDGET</mat-option>
-          <mat-option value="MAYOR'S OFFICE">MAYOR'S OFFICE</mat-option>
-          <mat-option value="MUNICIPAL COURT">MUNICIPAL COURT</mat-option>
-
-          <mat-option value="NEIGHBORHOOD & HOUSING SERVICES">NEIGHBORHOOD & HOUSING SERVICES</mat-option>
-          <mat-option value="PARKS & RECREATION">PARKS & RECREATION</mat-option>
-          <mat-option value="PLANNING">PLANNING</mat-option>
-          <mat-option value="POLICE">POLICE</mat-option>
-          <mat-option value="PRE-K 4 SA">PRE-K 4 SA</mat-option>
-          <mat-option value="RISK MANAGEMENT">RISK MANAGEMENT</mat-option>
-          <mat-option value="SOLID WASTE MANAGEMENT">SOLID WASTE MANAGEMENT</mat-option>
-
-          <mat-option value="SUSTAINABILITY">SUSTAINABILITY</mat-option> 
-          <mat-option value="TRANSPORTATION & CAPITAL IMPROVEMENTS">TRANSPORTATION & CAPITAL IMPROVEMENTS</mat-option>
-          <mat-option value="TRICENTENNIAL COMMISSION">TRICENTENNIAL COMMISSION</mat-option> 
-          <mat-option value="WORLD HERITAGE">WORLD HERITAGE</mat-option>         
-        </mat-select>
-      </mat-form-field>
-    </div>
-<!-- END of department drop down menu. -->
-<!-- END of PERSONAL INFORMATION section. This applies to all three major checkboxes. -->
-
-<!-- CODE BLOCK: ONLY for fields that appear with "CEO Website Access Only "-->
-      <!-- STUFF for role in an if statement for CEO Website Access ONLY. As in the checkbox only-->
-        <div *ngIf="pcard.requestFormType == 'CEO Website Access'" >
-          <p> <u>Choose from roles listed:</u><br>
-          <b>View Only</b> allow users to pull reports only(all departments).<br> 
-              <b>Approver</b> allow users to allocate transactions and approve for the department.
-          <br><b>Reconciler</b> allows users to allocate transactions and approve transactions and review statements(s)
-           for assigned cardholder(s).  
-          </p>
-
-          <mat-form-field class="example-form">
-            <mat-select [(value)]="pcard.role" placeholder="*Role ">
-              <mat-option value="View Only">View Only</mat-option>
-              <mat-option value="Approver">Approver</mat-option>
-              <mat-option value="Reconciler">Reconciler</mat-option>
-            </mat-select>
-          </mat-form-field>
-
-        <!-- IF role is approver or reonciler, new field appears. -->
-            <div *ngIf="pcard.role == 'Approver' || pcard.role == 'Reconciler'">
-              <p> <b>*Enter details of those accounts which are being Approved/Reconciled by this Approver/Reconciler</b> </p>
-              <mat-form-field class="example-form">
-                <textarea matInput placeholder="Type details here" [(ngModel)]="pcard.roleDetails" ></textarea>  
-              </mat-form-field> 
-            </div>
-        </div> 
-<!-- END of CEO Web Access Only reactive fields. --> 
-
-<!-- CODE BLOCK: ONLY for fields that appear with "New Credit Card Request" -->
-        <div *ngIf="pcard.requestFormType == 'New Credit Card Request'">
-          <p> <b>*Department Approver for this CardHolder(CH)</b> </p>
-
-          <mat-form-field class="example-form">
-            <input matInput placeholder="*Name" [(ngModel)]="pcard.deptAppChName">
-          </mat-form-field>
-
-          <mat-form-field class="example-form">
-            <input matInput placeholder="*SAP Nr:" [(ngModel)]="pcard.deptAppChSapNm" >
-          </mat-form-field>
-
-          <br>
-          <!-- whatever radioButton returns(True or False) = pcard.reconcilerBoolean-->
-          <mat-radio-group [(ngModel)]="pcard.reconcilerBoolean"> 
-            <label> Does CardHolder require a Reconciler? </label>
-            <mat-radio-button value=true> Yes </mat-radio-button>
-            <mat-radio-button value=false> No </mat-radio-button>
-          </mat-radio-group>
-          <br>
-
-            <!-- New Branch off. If CardHolder does require a Reconciler. New Fields. Weird boolean logic here. -->
-              <div *ngIf="pcard.reconcilerBoolean == 'true' ">
+          <!-- IF role is approver or reonciler, new field appears. -->
+              <div *ngIf="SubFormData.role == 'Approver' || SubFormData.role == 'Reconciler'">
+                <p> <b>*Enter details of those accounts which are being Approved/Reconciled by this Approver/Reconciler</b> </p>
                 <mat-form-field class="example-form">
-                  <input matInput placeholder="*Reconciler Name: " [(ngModel)]="pcard.reconcilerName">
-                </mat-form-field>
-
-                <mat-form-field class="example-form">
-                  <input matInput placeholder="*Reconciler SAP Number: " [(ngModel)]="pcard.reconcilerSapNm">
-                </mat-form-field>
+                  <textarea matInput placeholder="Type details here" [(ngModel)]="SubFormData.roleDetails" ></textarea>  
+                </mat-form-field> 
               </div>
+          </div> 
+  <!-- END of CEO Web Access Only reactive fields. --> 
 
-          <h3> Card Setup </h3>
-          <p> <b>*CardHolder Name</b> (as it is to appear on card--25 characters total):</p>
+  <!-- CODE BLOCK: ONLY for fields that appear with "New Credit Card Request" -->
+          <div *ngIf="SubFormData.requestFormType == 'New Credit Card Request'">
+            <p> <b>*Department Approver for this CardHolder(CH)</b> </p>
 
-          <mat-form-field class="example-form">
-            <input matInput placeholder="*First name" [(ngModel)]="pcard.chFirstName" >
-          </mat-form-field>
+            <mat-form-field class="example-form">
+              <input matInput placeholder="*Name" [(ngModel)]="SubFormData.deptAppChName">
+            </mat-form-field>
 
-          <mat-form-field class="example-form">
-            <input matInput placeholder="*Last name" [(ngModel)]="pcard.chLastName" >
-          </mat-form-field>
+            <mat-form-field class="example-form">
+              <input matInput placeholder="*SAP Nr:" [(ngModel)]="SubFormData.deptAppChSapNm" >
+            </mat-form-field>
 
-          <h3> <b>Accounting Codes </b> </h3>
-          <mat-form-field class="example-form">
-            <mat-select [(value)]="pcard.defCostType" placeholder="Default Cost Type ">
-              <mat-option value="CC - Cost Center">CC - Cost Center</mat-option>
-              <mat-option value="IO - Interal Order">IO - Interal Order</mat-option>
-              <mat-option value="WBS - WBS Element">WBS - WBS Element</mat-option>
-            </mat-select>
-          </mat-form-field>
+            <br>
+            <!-- whatever radioButton returns(True or False) = SubFormData.reconcilerBoolean-->
+            <mat-radio-group [(ngModel)]="SubFormData.reconcilerBoolean"> 
+              <label> Does CardHolder require a Reconciler? </label>
+              <mat-radio-button value=true> Yes </mat-radio-button>
+              <mat-radio-button value=false> No </mat-radio-button>
+            </mat-radio-group>
+            <br>
 
-          <mat-form-field class="example-form">
-            <input matInput placeholder="Default Code" [(ngModel)]="pcard.defCode" >
-          </mat-form-field>
-          
-          <mat-form-field class="example-form">
-            <input matInput placeholder="Description" [(ngModel)]="pcard.description">
-          </mat-form-field>
-
-          <h3> Set Cardholder Limits</h3>
-          <mat-form-field class="example-form">
-            <mat-select [(value)]="pcard.limitsRequested" placeholder="*Limits Request(if needed)">
-              <mat-option value="500(CL) / 200(STL)">500(CL) / 200(STL)</mat-option>
-              <mat-option value="1,000(CL) / 500(STL)">1,000(CL) / 500(STL)</mat-option>
-              <mat-option value="3,000(CL) / 1,000(STL)">3,000(CL) / 1,000(STL)</mat-option>
-              <mat-option value="5,000(CL) / 2,000(STL)">5,000(CL) / 2,000(STL)</mat-option>
-              <mat-option value="5,000(CL) / 3,000(STL)">5,000(CL) / 3,000(STL)</mat-option>
-              <mat-option value="10,000(CL) / 3,000(STL)">10,000(CL) / 3,000(STL)</mat-option>
-              <mat-option value="Other">Other</mat-option>
-            </mat-select>
-          </mat-form-field>
-             <!-- MUST add an explanation field for limits requested. I think only for 'Other'. -->
-                <div *ngIf="pcard.limitsRequested == 'Other'">
+              <!-- New Branch off. If CardHolder does require a Reconciler. New Fields. Weird boolean logic here. -->
+                <div *ngIf="SubFormData.reconcilerBoolean == 'true' ">
                   <mat-form-field class="example-form">
-                    <input placeholder="*Explanation" matInput [(ngModel)]="pcard.limitExplain" >
+                    <input matInput placeholder="*Reconciler Name: " [(ngModel)]="SubFormData.reconcilerName">
+                  </mat-form-field>
+
+                  <mat-form-field class="example-form">
+                    <input matInput placeholder="*Reconciler SAP Number: " [(ngModel)]="SubFormData.reconcilerSapNm">
                   </mat-form-field>
                 </div>
-        </div> 
-<!-- END CODE BLOCK for "New Credit Card Request" only fields. -->
 
-<!-- CODE BLOCK: for "CardHolder Maintenance" only fields -->
-        <div *ngIf="pcard.requestFormType == 'CardHolder Maintenance'">
-          <h3> <b> CardHolder / User Information Change </b> </h3>
+            <h3> Card Setup </h3>
+            <p> <b>*CardHolder Name</b> (as it is to appear on card--25 characters total):</p>
 
-          <mat-form-field class="example-form">
-            <input matInput placeholder="Last 4 Digits of Card Number" [(ngModel)]="pcard.chlastFourCardDigits">
-          </mat-form-field>
-          <br> <!-- new line for formating issues. -->
-
-          <mat-radio-group [(ngModel)]="pcard.chChange"> 
-            <label>*Change is:  </label>
-            <mat-radio-button value="Permanent"> Permanent</mat-radio-button>
-            <mat-radio-button value="Temporary / Return Date">Temporary / Return Date</mat-radio-button>
-          </mat-radio-group>
-
-    <!-- NOTE: Temporary change needs a date. So datepicker with a binding to a tempDate variable. -->
-          <div *ngIf="pcard.chChange=='Temporary / Return Date'" >
-            <mat-form-field>
-              <input matInput [matDatepicker]="picker" [(ngModel)]="pcard.tempDate" placeholder="Select date">
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
+            <mat-form-field class="example-form">
+              <input matInput placeholder="*First name" [(ngModel)]="SubFormData.chFirstName" >
             </mat-form-field>
-          </div>
 
-     <!-- IF change is Permant or Temporary. These fields appear. Datepicker is only for 'temporary' -->
-            <div *ngIf="pcard.chChange == 'Permanent' || pcard.chChange == 'Temporary / Return Date'">
-                <mat-checkbox class="example-form" [(ngModel)]="pcard.chTransLimits"> 
-                  <label>Change Profile Transaction Limits</label>  
-                </mat-checkbox>
-          <!-- NOTE: Reactive fields follow after each individual checkbox(see form example) -->
+            <mat-form-field class="example-form">
+              <input matInput placeholder="*Last name" [(ngModel)]="SubFormData.chLastName" >
+            </mat-form-field>
 
-        <!-- BEGIN "Change Profile Transaction Limits" only fields. INSIDE 'CardHolder Maintence' -->
-                   <div *ngIf="pcard.chTransLimits">
-                      <mat-form-field class="example-form">
-                        <mat-select [(value)]="pcard.limitsRequested" placeholder="*Limits Request(if needed)">
-                          <mat-option value="500(CL) / 200(STL)">500(CL) / 200(STL)</mat-option>
-                          <mat-option value="1,000(CL) / 500(STL)">1,000(CL) / 500(STL)</mat-option>
-                          <mat-option value="3,000(CL) / 1,000(STL)">3,000(CL) / 1,000(STL)</mat-option>
-                          <mat-option value="5,000(CL) / 2,000(STL)">5,000(CL) / 2,000(STL)</mat-option>
-                          <mat-option value="5,000(CL) / 3,000(STL)">5,000(CL) / 3,000(STL)</mat-option>
-                          <mat-option value="10,000(CL) / 3,000(STL)">10,000(CL) / 3,000(STL)</mat-option>
-                          <mat-option value="Other">Other</mat-option>
-                        </mat-select>
-                      </mat-form-field>
-                      <!-- MUST add an explanation field for limits requested. I think only for 'Other'. -->
-                          <div *ngIf="pcard.limitsRequested == 'Other'">
-                            <mat-form-field class="example-form">
-                              <input placeholder="*Explanation" matInput [(ngModel)]="pcard.limitExplain" >
-                            </mat-form-field>
-                          </div>
-                   </div> 
-        <!-- END CODE BLOCK for "Change Profile Transaction Limits" only fields. INSIDE 'CardHolder Maintence'  -->
+            <h3> <b>Accounting Codes </b> </h3>
+            <mat-form-field class="example-form">
+              <mat-select [(value)]="SubFormData.defCostType" placeholder="Default Cost Type ">
+                <mat-option value="CC - Cost Center">CC - Cost Center</mat-option>
+                <mat-option value="IO - Interal Order">IO - Interal Order</mat-option>
+                <mat-option value="WBS - WBS Element">WBS - WBS Element</mat-option>
+              </mat-select>
+            </mat-form-field>
 
-                <br>
-                <mat-checkbox class="example-margin" [(ngModel)]="pcard.chName"> 
-                  <label>CardHolder or User Name Change</label>  
-                </mat-checkbox>
-            <!--BEGIN CODE BLOCK FOR: "Cardholder or User Name Change" only fields. INSIDE 'CardHolder Maintence' -->
-                    <div *ngIf="pcard.chName">
-                      <p> Enter New <b>User</b> Name: </p>
-                      <mat-form-field class="example-form"> 
-                          <input matInput placeholder="(COSA Log on ID)" [(ngModel)]="pcard.newUserName"> 
-                        </mat-form-field>
+            <mat-form-field class="example-form">
+              <input matInput placeholder="Default Code" [(ngModel)]="SubFormData.defCode" >
+            </mat-form-field>
+            
+            <mat-form-field class="example-form">
+              <input matInput placeholder="Description" [(ngModel)]="SubFormData.description">
+            </mat-form-field>
 
-                        <!-- New Updated Card fields. BINDS to new variables instead of old personal info variables. -->
-                          <mat-form-field class="example-form">
-                            <input matInput placeholder="*Enter new first name" [(ngModel)]="pcard.newChFirstName">
-                          </mat-form-field>
-
-                          <mat-form-field class="example-form">
-                            <input matInput placeholder="*Enter new last name" [(ngModel)]="pcard.newChLastName">
-                          </mat-form-field>
-                         
-                          <mat-form-field class="example-form">
-                            <input matInput placeholder="Enter new middle name (optional)" [(ngModel)]="pcard.newChMiddleName">
-                          </mat-form-field> 
-
-                           <mat-form-field class="example-form">
-                            <input matInput placeholder="Enter new suffix (optional)" [(ngModel)]="pcard.newChSuffix">
-                          </mat-form-field>
-                    </div> 
-          <!-- END BLOCK for "Cardholder or User Name Change" only fields. INSIDE 'CardHolder Maintence' -->
-
-                <br>
-                <mat-checkbox class="example-margin" [(ngModel)]="pcard.chRoleChange"> 
-                  <label>CEO Role Changes:</label>  
-                </mat-checkbox>
-          <!--BEGIN CODE BLOCK for "CEO Role Changes" fields only. INSIDE 'CardHolder Maintence' -->
-                  <!-- Another Role Change section here. Reusing code for this part. -->
-                <div *ngIf="pcard.chRoleChange">
-                  <p> <u>Choose from roles listed:</u><br>
-                  <b>View Only</b> allow users to pull reports only(all departments).<br> 
-                      <b>Approver</b> allow users to allocate transactions and approve for the department.
-                  <br><b>Reconciler</b> allows users to allocate transactions and approve transactions and review statements(s)
-                   for assigned cardholder(s).  
-                  </p>
-
-                  <mat-form-field class="example-form">
-                    <mat-select [(value)]="pcard.role" placeholder="*Role ">
-                      <mat-option value="View Only">View Only</mat-option>
-                      <mat-option value="Approver">Approver</mat-option>
-                      <mat-option value="Reconciler">Reconciler</mat-option>
-                    </mat-select>
-                  </mat-form-field>
-
-            <!-- IF role is approver or reonciler, new field appears. -->
-                  <div *ngIf="pcard.role == 'Approver' || pcard.role == 'Reconciler'">
-                    <p> <b>*Enter details of those accounts which are being Approved/Reconciled by this Approver/Reconciler</b> </p>
+            <h3> Set Cardholder Limits</h3>
+            <mat-form-field class="example-form">
+              <mat-select [(value)]="SubFormData.limitsRequested" placeholder="*Limits Request(if needed)">
+                <mat-option value="500(CL) / 200(STL)">500(CL) / 200(STL)</mat-option>
+                <mat-option value="1,000(CL) / 500(STL)">1,000(CL) / 500(STL)</mat-option>
+                <mat-option value="3,000(CL) / 1,000(STL)">3,000(CL) / 1,000(STL)</mat-option>
+                <mat-option value="5,000(CL) / 2,000(STL)">5,000(CL) / 2,000(STL)</mat-option>
+                <mat-option value="5,000(CL) / 3,000(STL)">5,000(CL) / 3,000(STL)</mat-option>
+                <mat-option value="10,000(CL) / 3,000(STL)">10,000(CL) / 3,000(STL)</mat-option>
+                <mat-option value="Other">Other</mat-option>
+              </mat-select>
+            </mat-form-field>
+               <!-- MUST add an explanation field for limits requested. I think only for 'Other'. -->
+                  <div *ngIf="SubFormData.limitsRequested == 'Other'">
                     <mat-form-field class="example-form">
-                      <textarea matInput placeholder="Type details here" [(ngModel)]="pcard.roleDetails" ></textarea>  
-                    </mat-form-field> 
-                  </div> <!-- END for if statement for 'Approver' or 'Reconciler' -->
-                </div> <!-- END if statement for CEO Role Changes checkbox checked. -->
-            </div> <!-- End block for IF statement for card change Permanent or Temporary. -->
+                      <input placeholder="*Explanation" matInput [(ngModel)]="SubFormData.limitExplain" >
+                    </mat-form-field>
+                  </div>
+          </div> 
+  <!-- END CODE BLOCK for "New Credit Card Request" only fields. -->
 
-        </div> <!-- END code block for "CardHolder Maintenance" only fields. -->
-      
-  <!-- COMMENTS are for ALL three Form Types. ALL RADIOBUTTONS create these fields.  -->
-        <mat-form-field class="example-form">
-          <textarea matInput placeholder="Comments: "[(ngModel)]="pcard.formComments" ></textarea>  
-        </mat-form-field> 
+  <!-- CODE BLOCK: for "CardHolder Maintenance" only fields -->
+          <div *ngIf="SubFormData.requestFormType == 'CardHolder Maintenance'">
+            <h3> <b> CardHolder / User Information Change </b> </h3>
 
-    <!-- SIGNATURE is weird. The Same for "New Credit Card Request" and "CEO Website Access Only" -->
-    <!-- QUESTION for client: Is there ever a chance that all three checkboxes are selected.
-              I ask because of differences in the signature section of the form. 
-        -->
+            <mat-form-field class="example-form">
+              <input matInput placeholder="Last 4 Digits of Card Number" [(ngModel)]="SubFormData.chlastFourCardDigits">
+            </mat-form-field>
+            <br> <!-- new line for formating issues. -->
 
-      <h3> <b><i>Signature </i></b></h3>
+            <mat-radio-group [(ngModel)]="SubFormData.chChange"> 
+              <label>*Change is:  </label>
+              <mat-radio-button value="Permanent"> Permanent</mat-radio-button>
+              <mat-radio-button value="Temporary / Return Date">Temporary / Return Date</mat-radio-button>
+            </mat-radio-group>
 
-      <mat-checkbox class="example-form" [(ngModel)]="pcard.sigBox"> <p class="example-form"><i>By checking this box, I swear to affirm that the information contained on this form, to the <br>best of my knowledge and belief is true, and correct and complete.</i></p> 
-      </mat-checkbox>
+      <!-- NOTE: Temporary change needs a date. So datepicker with a binding to a tempDate variable. -->
+            <div *ngIf="SubFormData.chChange=='Temporary / Return Date'" >
+              <mat-form-field>
+                <input matInput [matDatepicker]="picker" [(ngModel)]="SubFormData.tempDate" placeholder="Select date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
 
-      <p>Enter your credential information and select the <b><i>Sign</i></b> button:</p>
+       <!-- IF change is Permant or Temporary. These fields appear. Datepicker is only for 'temporary' -->
+              <div *ngIf="SubFormData.chChange == 'Permanent' || SubFormData.chChange == 'Temporary / Return Date'">
+                  <mat-checkbox class="example-form" [(ngModel)]="SubFormData.chTransLimits"> 
+                    <label>Change Profile Transaction Limits</label>  
+                  </mat-checkbox>
+            <!-- NOTE: Reactive fields follow after each individual checkbox(see form example) -->
 
-      <mat-form-field class="example-form">      
-        <input matInput placeholder="*Enter User ID"[(ngModel)]="pcard.userID" >  
-      </mat-form-field>
+          <!-- BEGIN "Change Profile Transaction Limits" only fields. INSIDE 'CardHolder Maintence' -->
+                     <div *ngIf="SubFormData.chTransLimits">
+                        <mat-form-field class="example-form">
+                          <mat-select [(value)]="SubFormData.limitsRequested" placeholder="*Limits Request(if needed)">
+                            <mat-option value="500(CL) / 200(STL)">500(CL) / 200(STL)</mat-option>
+                            <mat-option value="1,000(CL) / 500(STL)">1,000(CL) / 500(STL)</mat-option>
+                            <mat-option value="3,000(CL) / 1,000(STL)">3,000(CL) / 1,000(STL)</mat-option>
+                            <mat-option value="5,000(CL) / 2,000(STL)">5,000(CL) / 2,000(STL)</mat-option>
+                            <mat-option value="5,000(CL) / 3,000(STL)">5,000(CL) / 3,000(STL)</mat-option>
+                            <mat-option value="10,000(CL) / 3,000(STL)">10,000(CL) / 3,000(STL)</mat-option>
+                            <mat-option value="Other">Other</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                        <!-- MUST add an explanation field for limits requested. I think only for 'Other'. -->
+                            <div *ngIf="SubFormData.limitsRequested == 'Other'">
+                              <mat-form-field class="example-form">
+                                <input placeholder="*Explanation" matInput [(ngModel)]="SubFormData.limitExplain" >
+                              </mat-form-field>
+                            </div>
+                     </div> 
+          <!-- END CODE BLOCK for "Change Profile Transaction Limits" only fields. INSIDE 'CardHolder Maintence'  -->
 
-      <mat-form-field class="example-form"> 
-        <input type="password" matInput placeholder="*Enter Password" [(ngModel)]="pcard.password"> 
-      </mat-form-field>   
+                  <br>
+                  <mat-checkbox class="example-margin" [(ngModel)]="SubFormData.chName"> 
+                    <label>CardHolder or User Name Change</label>  
+                  </mat-checkbox>
+              <!--BEGIN CODE BLOCK FOR: "Cardholder or User Name Change" only fields. INSIDE 'CardHolder Maintence' -->
+                      <div *ngIf="SubFormData.chName">
+                        <p> Enter New <b>User</b> Name: </p>
+                        <mat-form-field class="example-form"> 
+                            <input matInput placeholder="(COSA Log on ID)" [(ngModel)]="SubFormData.newUserName"> 
+                          </mat-form-field>
+
+                          <!-- New Updated Card fields. BINDS to new variables instead of old personal info variables. -->
+                            <mat-form-field class="example-form">
+                              <input matInput placeholder="*Enter new first name" [(ngModel)]="SubFormData.newChFirstName">
+                            </mat-form-field>
+
+                            <mat-form-field class="example-form">
+                              <input matInput placeholder="*Enter new last name" [(ngModel)]="SubFormData.newChLastName">
+                            </mat-form-field>
+                           
+                            <mat-form-field class="example-form">
+                              <input matInput placeholder="Enter new middle name (optional)" [(ngModel)]="SubFormData.newChMiddleName">
+                            </mat-form-field> 
+
+                             <mat-form-field class="example-form">
+                              <input matInput placeholder="Enter new suffix (optional)" [(ngModel)]="SubFormData.newChSuffix">
+                            </mat-form-field>
+                      </div> 
+            <!-- END BLOCK for "Cardholder or User Name Change" only fields. INSIDE 'CardHolder Maintence' -->
+
+                  <br>
+                  <mat-checkbox class="example-margin" [(ngModel)]="SubFormData.chRoleChange"> 
+                    <label>CEO Role Changes:</label>  
+                  </mat-checkbox>
+            <!--BEGIN CODE BLOCK for "CEO Role Changes" fields only. INSIDE 'CardHolder Maintence' -->
+                    <!-- Another Role Change section here. Reusing code for this part. -->
+                  <div *ngIf="SubFormData.chRoleChange">
+                    <p> <u>Choose from roles listed:</u><br>
+                    <b>View Only</b> allow users to pull reports only(all departments).<br> 
+                        <b>Approver</b> allow users to allocate transactions and approve for the department.
+                    <br><b>Reconciler</b> allows users to allocate transactions and approve transactions and review statements(s)
+                     for assigned cardholder(s).  
+                    </p>
+
+                    <mat-form-field class="example-form">
+                      <mat-select [(value)]="SubFormData.role" placeholder="*Role ">
+                        <mat-option value="View Only">View Only</mat-option>
+                        <mat-option value="Approver">Approver</mat-option>
+                        <mat-option value="Reconciler">Reconciler</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+
+              <!-- IF role is approver or reonciler, new field appears. -->
+                    <div *ngIf="SubFormData.role == 'Approver' || SubFormData.role == 'Reconciler'">
+                      <p> <b>*Enter details of those accounts which are being Approved/Reconciled by this Approver/Reconciler</b> </p>
+                      <mat-form-field class="example-form">
+                        <textarea matInput placeholder="Type details here" [(ngModel)]="SubFormData.roleDetails" ></textarea>  
+                      </mat-form-field> 
+                    </div> <!-- END for if statement for 'Approver' or 'Reconciler' -->
+                  </div> <!-- END if statement for CEO Role Changes checkbox checked. -->
+              </div> <!-- End block for IF statement for card change Permanent or Temporary. -->
+
+          </div> <!-- END code block for "CardHolder Maintenance" only fields. -->
         
-      <mat-form-field class="example-form"> 
-        <input matInput placeholder="*Department Approver/Site Adminstrator:" [(ngModel)]="pcard.deptAdmin" > 
-      </mat-form-field>
+    <!-- COMMENTS are for ALL three Form Types. ALL RADIOBUTTONS create these fields.  -->
+          <mat-form-field class="example-form">
+            <textarea matInput placeholder="Comments: "[(ngModel)]="SubFormData.formComments" ></textarea>  
+          </mat-form-field> 
 
-      <!-- fixed date. Solution: bind "picker" with ngModel to pcard value. -->  
-      <mat-form-field>
-        <input matInput [matDatepicker]="picker" [(ngModel)]="pcard.date" placeholder="Choose a date">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
 
-</div> <!-- END for block. Form Reactive fields.  -->
+  </div> <!-- END for block. Form Reactive fields.  -->
 
-<!-- BUTTON here for testing purposes. Used to print IO variables to the console and check data flow. -->
- <div class="buttonTest">
- 	<!-- we added this button for testing.-->
-  <!-- Just to prove we can pass data along to where ever -->
-  <button (click)="addToLog(pcard)"
-        class="ui positive right floated button"> <!-- button tags opens and closes. "Submit Link" is its text -->
-    Sign and Submit Test
+  <br>
+
+  <br>
+  <button mat-stroked-button color="warn" (click)="verifySubForm();" *ngIf="!SubFormData.Completed">
+    Verify SubForm
   </button>
- </div>
+  <button mat-stroked-button [style.color]="'forestgreen'" *ngIf="SubFormData.Completed" disabled>
+    SubForm Verified
+  </button>
 
+</div>

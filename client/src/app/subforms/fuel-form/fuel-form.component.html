@@ -1,48 +1,26 @@
-<p>
-	{{ fuel.department }}<br>
-		Department:<br>
-		<mat-form-field>
-		<input matInput [(ngModel)]="fuel.department" placeholder="Department">
-		</mat-form-field><br>
-		Division:<br>
-		<mat-form-field>
-		<input matInput [(ngModel)]="fuel.division" placeholder="Division">
-		</mat-form-field><br>
-		Cost Center:<br>
-		<mat-form-field>
-		<input matInput [(ngModel)]="fuel.costcenter" placeholder="Cost Center">
-		</mat-form-field><br>
-		Dept. Requester:<br>
-		<mat-form-field>
-		<input matInput [(ngModel)]="fuel.deptreq" placeholder="Name">
-		</mat-form-field><br>
-		Phone Ext.<br>
-		<mat-form-field>
-		<input matInput [(ngModel)]="fuel.phoneext" placeholder="5555">
-		</mat-form-field><br>
-			
-		Employee(s) Requesting Fueling Authorization<br>
-		Employee:<br>
-		<mat-form-field>
-		<input matInput [(ngModel)]="fuel.samemp.name" placeholder="Name">
-		</mat-form-field><br>
-		SAP#:<br>
-		<mat-form-field>
-		<input matInput [(ngModel)]="fuel.samemp.sap" placeholder="SAP#">
-		</mat-form-field>
-		<br>Work Phone:<br>
-		<mat-form-field>
-		<input matInput [(ngModel)]="fuel.samemp.phone" placeholder="(123)4567890">
-		</mat-form-field><br>
-		<button mat-raised-button ng-click="addEmployee()">
-		Add Employee</button><br>
-		<li *ngFor="let FuelEmployee of fuel.emparray ">
-		<span class="badge">{{samemp.name}}</span> {{samemp.sap}}
-		</li>
-			  
-		<mat-checkbox >I acknowledge that I have reviewed AD1.8 Vehicle Use with the above-listed employee(s).</mat-checkbox><br>
-		<mat-checkbox >I will ensure the above-listed employee(s) attend the City </mat-checkbox>
-		driving safety training course in accordance with AD 4.8 Driver Safety Program.<br>
-		{{ fuel.test}}
-</p>
+<div *ngIf="SubFormData != undefined">
+	<mat-form-field class="thirds">
+	<input matInput [(ngModel)]="SubFormData.costcenter" placeholder="Cost Center">
+	</mat-form-field>
+	<br>
 	
+	<h3>Fueling Authorization Request</h3>
+		  
+	<mat-checkbox [(ngModel)]="SubFormData.reviewedAD1" >
+		I acknowledge that I have reviewed AD1.8 Vehicle Use with the employee.
+	</mat-checkbox>
+	<br>
+	<mat-checkbox [(ngModel)]="SubFormData.trainingCourse">
+		I will ensure the above-listed employee will attend the City driving safety training course in accordance with AD 4.8 Driver Safety Program.
+	</mat-checkbox>
+	<br>
+
+	<br>
+	<button mat-stroked-button color="warn" (click)="verifySubForm();" *ngIf="!SubFormData.Completed">
+		Verify SubForm
+	</button>
+	<button mat-stroked-button [style.color]="'forestgreen'" *ngIf="SubFormData.Completed" disabled>
+		SubForm Verified
+	</button>
+</div>
+
