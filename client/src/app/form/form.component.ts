@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { APIService } from '../api.service';
 
 import { MasterForm, Approver } from '../MasterForm';
 
@@ -41,11 +42,19 @@ export class FormComponent implements OnInit {
 
 	}
 
+	postForm(){
+		this.apiService.postForm(this.masterForm);
+	}
+
+	getForms(){
+		this.apiService.getForms();
+	}
+
 
 	constructor(
 		private route: ActivatedRoute,
 		private location: Location,
-	) {
+		private apiService:APIService){
 		this.FID = +this.route.snapshot.paramMap.get('FID');
 
 		if(this.FID == 0){

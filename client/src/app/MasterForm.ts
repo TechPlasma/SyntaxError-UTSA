@@ -16,7 +16,7 @@ export class MasterForm{
 		this.SubForm4 = new SubForm4();
 		this.SubForm5 = new SubForm5();
 		this.SubForm6 = new SubForm6();
-		this.FID = "New Form";
+		this.FID = "";
 	}
 	SubForm0:SubForm0;
 	SubForm1:SubForm1;
@@ -26,7 +26,7 @@ export class MasterForm{
 	SubForm5:SubForm5;
 	SubForm6:SubForm6;
 
-	FID:string;
+	FID:any;
 }
 
 
@@ -57,7 +57,7 @@ class SubForm0{
 		this.FormName = "Common Infomation";
 		this.Completed = false;
 		this.Needed = true;
-		this.Fufillment = "Common Information";
+		this.Fulfillment = "Common Information";
 
 
 
@@ -79,7 +79,7 @@ class SubForm0{
 	FormName:string;
 	Completed:boolean;
 	Needed = true;
-	Fufillment:string;
+	Fulfillment:string;
 
 	//Common Fields Between All Forms
 	
@@ -108,7 +108,7 @@ class SubForm1{
 		this.Completed = false;
 		this.Needed = false;
 		this.ApprovalStatus = 'Pending';
-		this.Fufillment = 'ITSD';
+		this.Fulfillment = 'ITSD';
 		this.Approvers = [];
 
 		this.jobStatus = '';
@@ -139,7 +139,7 @@ class SubForm1{
 	Completed:boolean;
 	Needed:boolean;
 	ApprovalStatus:ApprovalStatus;
-	Fufillment:string;
+	Fulfillment:string;
 	Approvers:Approver[];
 
 	jobStatus:string;
@@ -175,7 +175,7 @@ class SubForm2{
 		this.Completed = false;
 		this.Needed = false;
 		this.ApprovalStatus = 'Pending';
-		this.Fufillment = 'ITSD';
+		this.Fulfillment = 'ITSD';
 		this.Approvers = [];
 
 		this.reqType = false;
@@ -204,7 +204,7 @@ class SubForm2{
 	Completed:boolean;
 	Needed:boolean;
 	ApprovalStatus:ApprovalStatus;
-	Fufillment:string;
+	Fulfillment:string;
 	Approvers:Approver[];
 
 	reqType:boolean;
@@ -236,7 +236,7 @@ class SubForm3{
 		this.Completed = false;
 		this.Needed = false;
 		this.ApprovalStatus = 'Pending';
-		this.Fufillment = 'ITSD';
+		this.Fulfillment = 'ITSD';
 		this.Approvers = [];
 
 
@@ -291,7 +291,7 @@ class SubForm3{
 	Completed:boolean;
 	Needed:boolean;
 	ApprovalStatus:ApprovalStatus;
-	Fufillment:string;
+	Fulfillment:string;
 	Approvers:Approver[];
 
 
@@ -351,7 +351,7 @@ class SubForm4{
 		this.Completed = false;
 		this.Needed = false;
 		this.ApprovalStatus = 'Pending';
-		this.Fufillment = 'ITSD';
+		this.Fulfillment = 'ITSD';
 		this.Approvers = [];
 
 		this.requestFormType = '';
@@ -404,7 +404,7 @@ class SubForm4{
 	Completed:boolean;
 	Needed:boolean;
 	ApprovalStatus:ApprovalStatus;
-	Fufillment:string;
+	Fulfillment:string;
 	Approvers:Approver[];
 
 	requestFormType: string;
@@ -469,7 +469,7 @@ class SubForm5{
 		this.Completed = false;
 		this.Needed = false;
 		this.ApprovalStatus = 'Pending';
-		this.Fufillment = 'BES';
+		this.Fulfillment = 'BES';
 		this.Approvers = [];
 
 		this.costCenter = '';
@@ -481,7 +481,7 @@ class SubForm5{
 	Completed:boolean;
 	Needed:boolean;
 	ApprovalStatus:ApprovalStatus;
-	Fufillment:string;
+	Fulfillment:string;
 	Approvers:Approver[];
 
 	costCenter:string;
@@ -497,7 +497,7 @@ class SubForm6{
 		this.Completed = false;
 		this.Needed = false;
 		this.ApprovalStatus = 'Pending';
-		this.Fufillment = 'SEC';
+		this.Fulfillment = 'SEC';
 		this.Approvers = [];
 
 		this.formReason = '';
@@ -557,7 +557,7 @@ class SubForm6{
 	Completed:boolean;
 	Needed:boolean;
 	ApprovalStatus:ApprovalStatus;
-	Fufillment:string;
+	Fulfillment:string;
 	Approvers:Approver[];
 
 	formReason:string;
