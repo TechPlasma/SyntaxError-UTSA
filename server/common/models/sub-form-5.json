@@ -1,0 +1,46 @@
+{
+  "name": "SubForm5",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "FormName": {
+      "type": "string"
+    },
+    "Completed": {
+      "type": "boolean",
+      "default": false
+    },
+    "Needed": {
+      "type": "boolean",
+      "default": false
+    },
+    "Fulfillment": {
+      "type": "string"
+    },
+    "ApprovalStatus": {
+      "type": "string"
+    },
+    "Approvers": {
+      "type": "array"
+    },
+    "costCenter": {
+      "type": "string"
+    },
+    "reviewedAD1": {
+      "type": "boolean",
+      "default": false
+    },
+    "trainingCourse": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

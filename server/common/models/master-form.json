@@ -1,0 +1,42 @@
+{
+  "name": "MasterForm",
+  "plural": "MasterForms",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "SubForm1": {
+      "type": "SubForm1"
+    },
+    "SubForm2": {
+      "type": "SubForm2"
+    },
+    "FID": {
+      "type": "string",
+      "id": true,
+      "required": false
+    },
+    "SubForm0": {
+      "type": "SubForm0",
+      "required": false
+    },
+    "SubForm3": {
+      "type": "SubForm3"
+    },
+    "SubForm4": {
+      "type": "SubForm4"
+    },
+    "SubForm5": {
+      "type": "SubForm5"
+    },
+    "SubForm6": {
+      "type": "SubForm6"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

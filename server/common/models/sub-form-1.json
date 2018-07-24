@@ -1,0 +1,92 @@
+{
+  "name": "SubForm1",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "FormName": {
+      "type": "string"
+    },
+    "Completed": {
+      "type": "boolean",
+      "default": false
+    },
+    "Needed": {
+      "type": "boolean",
+      "default": false
+    },
+    "ApprovalStatus": {
+      "type": "string"
+    },
+    "Fulfillment": {
+      "type": "string"
+    },
+    "Approvers": {
+      "type": "array"
+    },
+    "jobStatus": {
+      "type": "string"
+    },
+    "workPhone": {
+      "type": "string"
+    },
+    "contactPhone": {
+      "type": "string"
+    },
+    "companyName": {
+      "type": "string"
+    },
+    "pocName": {
+      "type": "string"
+    },
+    "contactNum": {
+      "type": "string"
+    },
+    "contractNum": {
+      "type": "string"
+    },
+    "contractExp": {
+      "type": "string"
+    },
+    "idCard": {
+      "type": "string"
+    },
+    "facilityAccess": {
+      "type": "string"
+    },
+    "cjis": {
+      "type": "string"
+    },
+    "addrChange": {
+      "type": "string"
+    },
+    "reIssueCard": {
+      "type": "string"
+    },
+    "facilityName": {
+      "type": "string"
+    },
+    "facilityAddr": {
+      "type": "string"
+    },
+    "suiteEntry": {
+      "type": "string"
+    },
+    "roomEntry": {
+      "type": "string"
+    },
+    "other": {
+      "type": "string"
+    },
+    "facilityEntry": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

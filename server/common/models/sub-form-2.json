@@ -1,0 +1,91 @@
+{
+  "name": "SubForm2",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "FormName": {
+      "type": "string"
+    },
+    "ApprovalStatus": {
+      "type": "string"
+    },
+    "Fulfillment": {
+      "type": "string"
+    },
+    "Completed": {
+      "type": "boolean",
+      "default": false
+    },
+    "Needed": {
+      "type": "boolean",
+      "default": false
+    },
+    "Approvers": {
+      "type": "array"
+    },
+    "reqType": {
+      "type": "boolean",
+      "default": false
+    },
+    "userType": {
+      "type": "string"
+    },
+    "dtOfHire": {
+      "type": "string"
+    },
+    "workLoc": {
+      "type": "string"
+    },
+    "deviceAssign": {
+      "type": "boolean",
+      "default": false
+    },
+    "deviceAssetNr": {
+      "type": "string"
+    },
+    "phoneAssign": {
+      "type": "boolean",
+      "default": false
+    },
+    "phoneAssign2": {
+      "type": "boolean",
+      "default": false
+    },
+    "homeDr": {
+      "type": "boolean",
+      "default": false
+    },
+    "deptShareDr": {
+      "type": "boolean",
+      "default": false
+    },
+    "email": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "addReq": {
+      "type": "boolean",
+      "default": false
+    },
+    "addReqText": {
+      "type": "string"
+    },
+    "mfAccess": {
+      "type": "boolean",
+      "default": false
+    },
+    "mfText": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

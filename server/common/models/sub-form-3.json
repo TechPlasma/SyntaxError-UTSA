@@ -1,0 +1,137 @@
+{
+  "name": "SubForm3",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "FormName": {
+      "type": "string"
+    },
+    "Completed": {
+      "type": "boolean",
+      "default": false
+    },
+    "Needed": {
+      "type": "boolean",
+      "default": false
+    },
+    "ApprovalStatus": {
+      "type": "string"
+    },
+    "Fulfillment": {
+      "type": "string"
+    },
+    "Approvers": {
+      "type": "array"
+    },
+    "provHardware": {
+      "type": "boolean",
+      "default": false
+    },
+    "provSoftware": {
+      "type": "boolean",
+      "default": false
+    },
+    "hardCostCenterIO": {
+      "type": "string"
+    },
+    "hardGlAcc": {
+      "type": "string"
+    },
+    "softCostCenterIO": {
+      "type": "string"
+    },
+    "softGlAcc": {
+      "type": "string"
+    },
+    "BldgLoc": {
+      "type": "string"
+    },
+    "floor": {
+      "type": "string"
+    },
+    "office": {
+      "type": "string"
+    },
+    "requestType": {
+      "type": "string"
+    },
+    "currentDeviceId": {
+      "type": "string"
+    },
+    "desktopBox": {
+      "type": "boolean",
+      "default": false
+    },
+    "desktopInput": {
+      "type": "string"
+    },
+    "laptopBox": {
+      "type": "boolean",
+      "default": false
+    },
+    "laptopInput": {
+      "type": "string"
+    },
+    "dockingStation": {
+      "type": "boolean",
+      "default": false
+    },
+    "keyMouse": {
+      "type": "boolean",
+      "default": false
+    },
+    "addMonitor": {
+      "type": "boolean",
+      "default": false
+    },
+    "monitorBox": {
+      "type": "boolean",
+      "default": false
+    },
+    "monitorInput": {
+      "type": "string"
+    },
+    "monitorMode": {
+      "type": "string"
+    },
+    "printerBox": {
+      "type": "boolean",
+      "default": false
+    },
+    "printerInput": {
+      "type": "string"
+    },
+    "ipDeskPhoneBox": {
+      "type": "boolean",
+      "default": false
+    },
+    "ipDeskPhoneInput": {
+      "type": "string"
+    },
+    "otherBox": {
+      "type": "boolean",
+      "default": false
+    },
+    "otherInput": {
+      "type": "string"
+    },
+    "softwareOtherBox": {
+      "type": "boolean",
+      "default": false
+    },
+    "softwareOtherInput": {
+      "type": "string"
+    },
+    "specialSoftware": {
+      "type": "array"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

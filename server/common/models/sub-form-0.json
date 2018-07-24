@@ -1,0 +1,64 @@
+{
+  "name": "SubForm0",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "FormName": {
+      "type": "string"
+    },
+    "Fufillment": {
+      "type": "string"
+    },
+    "requestingDepartment": {
+      "type": "string"
+    },
+    "division": {
+      "type": "string"
+    },
+    "departmentRequester": {
+      "type": "string"
+    },
+    "phoneExt": {
+      "type": "string"
+    },
+    "date": {
+      "type": "string"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "suffix": {
+      "type": "string"
+    },
+    "phoneNumber": {
+      "type": "string"
+    },
+    "jobTitle": {
+      "type": "string"
+    },
+    "sap": {
+      "type": "string"
+    },
+    "middleInitial": {
+      "type": "string"
+    },
+    "Needed": {
+      "type": "boolean"
+    },
+    "Completed": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

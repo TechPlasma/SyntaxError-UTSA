@@ -1,0 +1,135 @@
+{
+  "name": "SubForm4",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "FormName": {
+      "type": "string"
+    },
+    "Completed": {
+      "type": "boolean",
+      "default": false
+    },
+    "Needed": {
+      "type": "boolean",
+      "default": false
+    },
+    "ApprovalStatus": {
+      "type": "string"
+    },
+    "Fulfillment": {
+      "type": "string"
+    },
+    "Approvers": {
+      "type": "array"
+    },
+    "requestFormType": {
+      "type": "string"
+    },
+    "ceoWebAccessOnly": {
+      "type": "boolean",
+      "default": false
+    },
+    "newCardRequest": {
+      "type": "boolean",
+      "default": false
+    },
+    "chMaintenance": {
+      "type": "boolean",
+      "default": false
+    },
+    "cosaEmail": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    },
+    "roleDetails": {
+      "type": "string"
+    },
+    "deptAppChName": {
+      "type": "string"
+    },
+    "deptAppChSapNm": {
+      "type": "string"
+    },
+    "reconcilerBoolean": {
+      "type": "boolean",
+      "default": false
+    },
+    "reconcilerName": {
+      "type": "string"
+    },
+    "reconcilerSapNm": {
+      "type": "string"
+    },
+    "chFirstName": {
+      "type": "string"
+    },
+    "chLastName": {
+      "type": "string"
+    },
+    "tempDate": {
+      "type": "string"
+    },
+    "chChange": {
+      "type": "string"
+    },
+    "chTransLimits": {
+      "type": "boolean",
+      "default": false
+    },
+    "chName": {
+      "type": "boolean",
+      "default": false
+    },
+    "chRoleChange": {
+      "type": "boolean",
+      "default": false
+    },
+    "chlastFourCardDigits": {
+      "type": "string"
+    },
+    "newUserName": {
+      "type": "string"
+    },
+    "newChFirstName": {
+      "type": "string"
+    },
+    "newChMiddleName": {
+      "type": "string"
+    },
+    "newChLastName": {
+      "type": "string"
+    },
+    "newChSuffix": {
+      "type": "string"
+    },
+    "defCostType": {
+      "type": "string"
+    },
+    "defCode": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "limitsRequested": {
+      "type": "string"
+    },
+    "limitExplain": {
+      "type": "string"
+    },
+    "formComments": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
