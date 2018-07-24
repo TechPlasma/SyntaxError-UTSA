@@ -1,12 +1,115 @@
 
 <mat-card *ngIf="SubFormData != null">
 	<mat-card-title>
-		{{SubFormData.FormName}} Data View
+		{{SubFormData.FormName}} Data View 
 	</mat-card-title>
 	<mat-card-content>
 
-
 		Your Code Goes Here
+	  <!-- UNVERISAL: PERSONAL INFORMATION: Shows up when ANY form type is selected.  -->
+    <div *ngIf="SubFormData.requestFormType">
+
+      <!-- Basic Personal Information. Used in every single type of request. So universal fields. 
+         [(ngModel)]="SubFormData.cosaEmail" >
+         --> 
+         user choice.
+        <mat-card-content>
+         <table>
+         	<tr>
+				<td colspan="2" align="center">
+					<h4>
+						Requisition Information.
+					</h4>
+				</td>
+			</tr>
+
+			<tr>
+				<td> <!-- Form type(checkboxes) -->
+					<b>Requisition Type:</b> {{SubFormData.requestFormType}}
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<b>COSA Email:</b> {{SubFormData.cosaEmail}}
+				</td>
+			</tr>
+
+		<!-- STUFF for role in an if statement for CEO Website Access ONLY. As in the checkbox only-->
+          <div *ngIf="SubFormData.requestFormType == 'CEO Website Access'">
+          		
+          		<tr>
+          			<td>
+          				<b>Role:</b> {{SubFormData.role}}
+          			</td>
+          		</tr>
+          		          <!-- IF role is approver or reonciler, new field appears. -->
+              <div *ngIf="SubFormData.role == 'Approver' || SubFormData.role == 'Reconciler'">
+               <tr>
+               		<td>
+               			<b>Role Details:</b> {{SubFormData.roleDetails}}
+           			</td>
+           		</tr>
+              </div>
+          </div> <!--END CEO Website Access Only data. -->
+
+           <!-- CODE BLOCK: data ONLY for fields that appear with "New Credit Card Request" -->
+          <div *ngIf="SubFormData.requestFormType == 'New Credit Card Request'">
+          	<tr>
+          		<td>
+          			<b>Department Approver for this CardHolder:</b> {{SubFormData.deptAppChName}}
+          		</td>
+          	</tr>
+          	<tr>
+          		<td>
+          			<b>Department Approver Sap Number for this Cardholder:</b> {{SubFormData.deptAppChSapNm}}
+          		</td>
+          	</tr>
+
+          	<!-- "SubFormData.reconcilerBoolean" -->
+          		<div *ngIf="SubFormData.reconcilerBoolean == 'true'">
+          			<tr>
+          				<td>
+          					<b>Does CardHolder require a Reconciler? : </b> Yes.
+          				</td>
+          			</tr>
+
+          			<tr>
+          				<td>
+          					<b>Reconciler Name: </b> {{SubFormData.reconcilerName}}
+          				</td>	
+          			</tr>
+
+          			<tr>
+          				 <td>
+          					<b>Reconciler Sap Number: </b> {{SubFormData.reconcilerSapNm}}
+          				</td>
+          			</tr>
+
+          		</div>
+          			<tr>
+          				<td>
+          					<b>CardHolder First Name: </b>{{SubFormData.chFirstName}}
+          				</td>
+          			</tr>
+
+          			<tr>
+          				<td>
+          					<b>CardHolder Last Name: </b> {{SubFormData.chLastName}}
+          				</td>
+          			</tr>
+
+          </div>
+
+
+
+         </table>
+     </mat-card-content>
+        
+
+      </div>
+  <!-- END of department drop down menu. -->
+  <!-- END of PERSONAL INFORMATION section. This applies to all three major checkboxes. -->
 
 
 	</mat-card-content>
