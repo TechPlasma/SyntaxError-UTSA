@@ -1,0 +1,189 @@
+
+<mat-card *ngIf="SubFormData != null">
+	<mat-card-title>
+		{{SubFormData.FormName}} Data View
+	</mat-card-title>
+	<mat-card-content>
+		<table>
+		<tr>
+		<td colspan ="2" align="center">
+			<h4>
+				Request Type
+			</h4>
+		</td>
+		</tr>
+		<tr>
+			<td>
+				Provision User
+			</td>
+			<td>
+				{{SubFormData.reqType}}
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Disable User Account
+			</td>
+			<td>
+				 {{SubFormData.reqType}}
+			</td>
+		</tr>
+		<tr>
+			<td colspan = "2" align= "center">
+				<h4>
+					User Provisioning
+				</h4>
+			</td>
+    </tr>
+		<tr>
+			<td>
+				New
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Transfer
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Rehire
+			</td>
+		</tr>
+		<tr>
+			<td>
+				CoSA Temp/Inter
+			</td>
+		</tr>
+		<tr>
+			<td>
+				User Type
+			</td>
+		<td>
+		{{SubFormData.userType}}
+	</td>
+		</tr>
+		<tr>
+		<td>
+			Date of Hire
+		</td>
+		<td>
+			{{SubFormData.dtOfHire}}
+		</td>
+	</tr>
+			<tr>
+				<td>
+					Work Location
+				</td>
+				<td>
+					{{SubFormData.workLoc}}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Device Assignment
+				</td>
+				<td>
+					{{SubFormData.deviceAssign}}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Device Asset #
+				</td>
+				<td>
+					{{SubFormData.deviceAssetNr}}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Phone Assignment
+				</td>
+				<td>
+					{{SubFormData.phoneAssign}}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Employee Extension Setup
+				</td>
+				<td>
+					{{SubFormData.phoneAssign2}}
+				</td>
+			</tr>
+			<tr>
+				<td colspan ="2" align = "center">
+					<h4>
+						User Access
+					</h4>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Home Drive (H)
+				</td>
+				<td>
+					{{SubFormData.homeDr}}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Department Share Drive (K)
+				</td>
+				<td>
+					{{SubFormData.deptShareDr}}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Email
+				</td>
+				<td>
+					{{SubFormData.email}}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Name
+				</td>
+				<td>
+					{{SubFormData.name}}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Additional Requirements
+				</td>
+				<td>
+					{{SubFormData.addReq}}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Additional Requirements Input
+				</td>
+				<td>
+					{{SubFormData.addReqText}}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Mainframe Access
+				</td>
+				<td>
+					{{SubFormData.mfAccess}}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Mainframe Access Input
+				</td>
+				<td>
+					{{SubFormData.mfText}}
+				</td>
+			</tr>
+
+	</table>
+
+	</mat-card-content>
+</mat-card>
