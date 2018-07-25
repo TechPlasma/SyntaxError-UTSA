@@ -62,8 +62,14 @@ export class FuelFormComponent implements OnInit {
     }
 
     verifySubForm(){
+    	if( this.SubFormData.reviewedAD1 == true
+    	 && this.SubFormData.trainingCourse == true
+    	 /* && this.SubFormData.costCenter.match(/[A-Za-z]{1,20} ?[A-za-z]{1,20}/)*/)
+    	{
         this.SubFormData.Completed = true;
         console.log(this.SubFormData);
+      }else{
+      console.log(this.SubFormData);}
     }
 
 	

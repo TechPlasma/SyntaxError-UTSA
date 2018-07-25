@@ -4,10 +4,38 @@
 		{{SubFormData.FormName}} Data View
 	</mat-card-title>
 	<mat-card-content>
-
-
-		Your Code Goes Here
-
-
+	<table>
+		<tr>
+			<td colspan="2" align="center">
+				<h4>
+					Fueling Requisition Information
+				</h4>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Cost Center
+			</td>
+			<td>
+				{{SubFormData.costCenter}}
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Reviewed AD1
+			</td>
+			<td>
+				{{SubFormData.reviewedAD1}}
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Training Course Taken
+			</td>
+			<td>
+				{{SubFormData.trainingCourse}}
+			</td>
+		</tr>
+	</table>
 	</mat-card-content>
 </mat-card>
