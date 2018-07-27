@@ -168,14 +168,14 @@
 					{{findIncentives}}
 				</td>
 			</tr>
-				<tr *ngFor = "let Section2Purchase of SubFormData['Purchasing']">
-					<td>
-					  Purchasing(Section2)
-					</td>
-					<td>
-						{{Section2Purchase}}
-					</td>
-				</tr>
+       <tr *ngFor = "let Section2Purchase of SubFormData['Purchasing']">
+				<td>
+			   Purchasing(Section2)
+				</td>
+				<td>
+					{{Section2Purchase}}
+				</td>
+			</tr>
 				<tr *ngFor = "let findTime of SubFormData['Time']">
 					<td>
 						Time
@@ -208,12 +208,20 @@
 						{{findPermit}}
 					</td>
 				</tr>
-				<tr *ngFor = "let findCollections of SubFormData['Accounts Receivable/Sales & Distribution']">
+				<tr *ngFor = "let findCollections of SubFormData['Collections']">
 					<td>
 						Collections
 					</td>
 					<td>
 						{{findCollections}}
+					</td>
+				</tr>
+				<tr *ngFor = "let policeOff of SubFormData['Police']">
+					<td>
+						Police Department Off Duty
+					</td>
+					<td>
+						{{policeOff}}
 					</td>
 				</tr>
 				<tr *ngFor = "let findInventory of SubFormData['Inventory']">
@@ -224,7 +232,7 @@
 						{{findInventory}}
 					</td>
 				</tr>
-				<tr *ngFor = "let findAccountsPay of SubFormData['Accounts Payable/Travel']">
+				<tr *ngFor = "let findAccountsPay of SubFormData['Accounts Payable / Travel']">
 					<td>
 						Accounts Payable/Travel
 					</td>
@@ -280,7 +288,7 @@
 						{{findJobInfo}}
 					</td>
 				</tr>
-				<tr *ngFor = "let findAviation of SubFormData['Aviation Only-Airline Statistics']">
+				<tr *ngFor = "let findAviation of SubFormData['Aviation Only - Airline Statistics']">
 					<td>
 						Aviation Only-Airline Statistics
 					</td>
