@@ -69,7 +69,7 @@
 				[(ngModel)]="SubFormData.contactPhone">
 	</mat-form-field>
 
-	<div *ngIf="SubFormData.jobStatus == 'contractor' || SubFormData.jobStatus == 'vendor'">
+	<div *ngIf="SubFormData.jobStatus == 'contractor' || SubFormData.jobStatus == 'vendor' || SubFormData.jobStatus == 'tempcontract'">
 		<h4> Contractor/Vendor Information </h4>
 		<p> Note: Contractors requiring a CoSA ID Card must complete all fields applicable above, in addition to company detail information below </p>
 
@@ -99,7 +99,7 @@
 
 
 
-	<div *ngIf="SubFormData.facilityAccess">
+	<div *ngIf="SubFormData.facilityAccess || SubFormData.cjis || SubFormData.addrChange">
 		<h4> Facility Access Information </h4>
 
 		<mat-form-field class="full">
