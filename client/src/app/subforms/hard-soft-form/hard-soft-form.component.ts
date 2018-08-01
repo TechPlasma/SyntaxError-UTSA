@@ -7,19 +7,29 @@ const noop = () => {
 
         //array for validation. 
         //change to default to true, testing handles any switching. 
- let testValid: { isCorrect: boolean, name: string }[] = 
+ let testValidInput: { isCorrect: boolean, name: string }[] = 
      [
-    { "isCorrect": true, "name": "hardCostCenterIO" },     //[0]
-    { "isCorrect": true, "name": "hardGlAcc" },            //[1]
-    { "isCorrect": true, "name": "softCostCenterIO" },     //[2]
-    { "isCorrect": true, "name": "softGlAcc" },            //[3]
-    { "isCorrect": true, "name": "BldgLoc" },              //[4]
-    { "isCorrect": true, "name": "Floor" },                //[5]
-    { "isCorrect": true, "name": "office" },               //[6]
-    { "isCorrect": true, "name": "currentDeviceId" },      //[7]
-    { "isCorrect": true, "name": "otherInput" },           //[8]
-    { "isCorrect": true, "name": "softwareOtherInput" },   //[9]
-    { "isCorrect": true, "name": "SpecialSoftwareTable" }, //[10]
+    { "isCorrect": true, "name": "hardware CostCenterIO" },         //[0]
+    { "isCorrect": true, "name": "hardware GlAcc" },                //[1]
+    { "isCorrect": true, "name": "software CostCenterIO" },         //[2]
+    { "isCorrect": true, "name": "software GlAcc" },                //[3]
+    { "isCorrect": true, "name": "BldgLoc" },                       //[4]
+    { "isCorrect": true, "name": "Floor" },                         //[5]
+    { "isCorrect": true, "name": "Office" },                        //[6]
+    { "isCorrect": true, "name": "Current Device ID" },             //[7]
+    { "isCorrect": true, "name": "otherInput" },                    //[8]
+    { "isCorrect": true, "name": "softwareOtherInput" },            //[9]
+    { "isCorrect": true, "name": "SpecialSoftwareTable" },          //[10]
+    //left out fields. 
+    { "isCorrect": true, "name": "Empty Form. Select an option." }, //[11]
+    { "isCorrect": true, "name": "Desktop" },                       //[12]
+    { "isCorrect": true, "name": "Laptop" },                        //[13]
+    { "isCorrect": true, "name": "Monitor Mode" },                  //[14]
+    { "isCorrect": true, "name": "Monitor" },                       //[15]
+    { "isCorrect": true, "name": "IP Desk Phone" },                 //[16]
+    { "isCorrect": true, "name": "Hardware: Other" },               //[17]
+    { "isCorrect": true, "name": "Hardware: Request Type" },        //[18]
+
     ];
 
     //boolean for completed check/validation.
@@ -109,16 +119,40 @@ export class HardSoftFormComponent implements OnInit {
 
         if(this.SubFormData)
         {
+            //Simple check that denies an empty form.
+            if(this.SubFormData.provHardware == false && this.SubFormData.provSoftware == false)
+            {
+                testValidInput[11].isCorrect = false;
+            }else{
+                testValidInput[11].isCorrect = true;
+            }
+            /*ERROR HANDLING. 
+            A Reset option so User can check and uncheck main Form branches.
+            - Thus user can switch without trigger all the tests involved that branch that
+                was checked and then unchecked. 
+            - NOT SURE WHY: Only seems to be a problem when Hardware Provisioning is checked and then
+                unchecked. Weird behavior.
+            */
+            if(this.SubFormData.provHardware == false && this.SubFormData.provSoftware == true)
+            {
+                for(let i of testValidInput)
+                {
+                    i.isCorrect = true;
+                }
+            }
+
             /*
             TWO big if statements for Hardware and Software reactive fields.
                 Various testing(regex) for those reactive fields.
-            These test edit our testValid array and set isCorrect boolean to true or false
+            These test edit our testValidInput array and set isCorrect boolean to true or false
             as needed. 
             Final lines of function code check entire array, if any error is found, it sets a 
             completion boolean(finalCheck) to false and prints invalid input.
                 - else it is set to true and verfies the form. 
             */
-            if(this.SubFormData.provHardware)
+
+
+            if(this.SubFormData.provHardware == true)
             {
                 //Hardware Cost center / I/O[INDEX: 0] = 15 numeric characters
                 //    - check for 15 numbers, so /\d{15}/ for 15 digits 
@@ -127,9 +161,9 @@ export class HardSoftFormComponent implements OnInit {
                 &&  !this.SubFormData.hardCostCenterIO.match(/\D+/)
                 && this.SubFormData.hardCostCenterIO.length <= 15 ){
                      //Index value  is known, see above, so just reference it. :)
-                    testValid[0].isCorrect = true;                  
+                    testValidInput[0].isCorrect = true;                  
                     }else{
-                        testValid[0].isCorrect = false;
+                        testValidInput[0].isCorrect = false;
                     }
                     //end hardware cost center TESTING:
 
@@ -139,9 +173,9 @@ export class HardSoftFormComponent implements OnInit {
                 if(this.SubFormData.hardGlAcc.match(/\d{1,15}/)
                    &&  !this.SubFormData.hardGlAcc.match(/\D+/) 
                    && this.SubFormData.hardGlAcc.length <= 15){
-                            testValid[1].isCorrect = true;
+                            testValidInput[1].isCorrect = true;
                     }else{ 
-                        testValid[1].isCorrect = false; 
+                        testValidInput[1].isCorrect = false; 
                     }
                     //END hardware GlAcc testing:
 
@@ -165,9 +199,9 @@ export class HardSoftFormComponent implements OnInit {
                     */
                 if(this.SubFormData.BldgLoc.match(/^[a-zA-Z0-9\s.,!?]+$/)
                     && this.SubFormData.BldgLoc.length <= 35){
-                        testValid[4].isCorrect = true;
+                        testValidInput[4].isCorrect = true;
                     }else{ 
-                        testValid[4].isCorrect = false;
+                        testValidInput[4].isCorrect = false;
                     }//END Blgd TESTING. 
 
 
@@ -177,9 +211,9 @@ export class HardSoftFormComponent implements OnInit {
                 // use of ! functionality. So ONLY digits via using not((/\D+/).
                 if(this.SubFormData.floor.match(/\d{1,2}/) && !this.SubFormData.floor.match(/\D+/)
                             && this.SubFormData.floor.length <= 2 ){
-                            testValid[5].isCorrect = true;              
+                            testValidInput[5].isCorrect = true;              
                     }else{
-                        testValid[5].isCorrect = false; 
+                        testValidInput[5].isCorrect = false; 
                     }
                     //END Floor validation. 
 
@@ -189,30 +223,113 @@ export class HardSoftFormComponent implements OnInit {
                 if(this.SubFormData.office.match(/^[a-zA-Z0-9\s.]+$/)
                  && this.SubFormData.office.length <= 10)
                 {
-                    testValid[6].isCorrect = true;
+                    testValidInput[6].isCorrect = true;
                 }else{
-                    testValid[6].isCorrect = false;
+                    testValidInput[6].isCorrect = false;
                 }//END office validation TESTING.
+
+                //Request Type. 
+                //[INDEX: 18]
+                if(this.SubFormData.requestType.length > 1)
+                {
+                    testValidInput[18].isCorrect = true;
+                }else{
+                    testValidInput[18].isCorrect = false;
+                }
 
                 // Current Device('Asset' Tag)[INDEX: 7] = 12 numeric characters
                 if(this.SubFormData.currentDeviceId.match(/^[0-9]+$/)
                 && this.SubFormData.currentDeviceId.length <= 12)
                 {
-                    testValid[7].isCorrect = true;
+                    testValidInput[7].isCorrect = true;
                 }else{
-                    testValid[7].isCorrect = false;
+                    testValidInput[7].isCorrect = false;
                 }//END Current DeviceId TESTING.
 
                 // Other(from Hardware Provision) [INDEX: 8] = alphanumberic(guess).
-                if(this.SubFormData.otherBox){
-                    if(this.SubFormData.otherInput.match(/^[a-zA-Z0-9\s.,!?]+$/) )
-                    {
-                        testValid[8].isCorrect = true;
-                    }else{
-                        testValid[8].isCorrect = false;
-                    }
-                }//END other(from Hardware Provison) TESTING
+                //END other(from Hardware Provison) TESTING.
 
+                //Dropdown menus and checks for field existance(logic).
+
+                //DESKTOP
+                //[INDEX: 12] 
+                if(this.SubFormData.desktopBox)
+                {
+                    if(this.SubFormData.desktopInput.length > 1)
+                    {
+                        testValidInput[12].isCorrect = true;
+                    }else{
+                        testValidInput[12].isCorrect = false;
+                    }//end inner if to verify a Desktop option was chosen.
+                }else{
+                    testValidInput[12].isCorrect = true;//Option with no Desktop at all.
+                }//END verify Desktop and it's fields.
+
+                //LAPTOP
+                //[INDEX: 13]
+                if(this.SubFormData.laptopBox)
+                {
+                    if(this.SubFormData.laptopInput.length > 1)
+                    {
+                        testValidInput[13].isCorrect = true;
+                    }else{
+                        testValidInput[13].isCorrect = false;
+                    }//end verify for laptop input
+                }else{
+                    testValidInput[13].isCorrect = true;//Option where Laptop was never chosen.
+                }//END verify for Laptop 
+
+                //MONITOR
+                //[INDEX: 14]
+                if(this.SubFormData.monitorBox)
+                {
+                    if(this.SubFormData.monitorMode.length > 1)
+                    {
+                        testValidInput[14].isCorrect = true;
+                    }else{
+                        testValidInput[14].isCorrect = false;
+                    }
+
+                    if(this.SubFormData.monitorInput.length > 1)
+                    {
+                        testValidInput[15].isCorrect = true;
+                    }else{
+                        testValidInput[15].isCorrect = false;
+                    }
+                }else{
+                    testValidInput[14].isCorrect = true;//Option where Monitor was never chosen.
+                    testValidInput[15].isCorrect = true;
+                }//END verify for Monitor checkbox + fields.
+
+                //NOTE: PRINTER IS ONLY A CHECKBOX. Nothing to check. 
+
+                //IP Desk Phone
+                //[INDEX: 16]
+                if(this.SubFormData.ipDeskPhoneBox)
+                {
+                    if(this.SubFormData.ipDeskPhoneInput.length > 1)
+                    {
+                        testValidInput[16].isCorrect = true;
+                    }else{
+                        testValidInput[16].isCorrect = false;
+                    }//end inner if.
+                }else{
+                    testValidInput[16].isCorrect = true;//Option where IP Desk Phone was never chosen. 
+                }//END verify for IP Desk Phone
+
+                //HARDWARE specific Other field.
+                //[INDEX: 17]
+                if(this.SubFormData.otherBox)
+                {
+                    if(this.SubFormData.otherInput.match(/^[a-zA-Z0-9\s.,!?]+$/))
+                    {
+                        testValidInput[17].isCorrect = true;
+                    }else{
+                        testValidInput[17].isCorrect = false;
+                    }
+                }else{
+                    testValidInput[17].isCorrect = true;//Option where Hardware 'Other' was never chosen at all. 
+                }//END verify for Other
             }//END BIG IF : testing for Hardware Provisioning.
 
             //CODE BLOCK: testing for 'Other' field inbetween hadware and software tables.
@@ -224,9 +341,9 @@ export class HardSoftFormComponent implements OnInit {
                 {
                     // Software something other [INDEX: 9]
                     if(this.SubFormData.softwareOtherInput.match(/^[a-zA-Z0-9\s.,!?]+$/)){
-                        testValid[9].isCorrect = true;
+                        testValidInput[9].isCorrect = true;
                     }else{
-                        testValid[9].isCorrect = false;
+                        testValidInput[9].isCorrect = false;
                     }//end if else    
                 }//end test if 'Other' was selected.
             }//END 'Other' field testing.
@@ -240,19 +357,19 @@ export class HardSoftFormComponent implements OnInit {
                 if(this.SubFormData.softCostCenterIO.match(/\d{1,15}/)
                   &&  !this.SubFormData.softCostCenterIO.match(/\D+/) 
                   && this.SubFormData.softCostCenterIO.length <= 15){
-                    testValid[2].isCorrect = true;
+                    testValidInput[2].isCorrect = true;
                 } else {
-                    testValid[2].isCorrect = false;
+                    testValidInput[2].isCorrect = false;
                 }//END software cost center TESTING:
 
                //Software Gl Acc[INDEX : 3] = 15 numeric characters. 
-                if(this.SubFormData.softGlAcc.match(/\d{15}/)
+                if(this.SubFormData.softGlAcc.match(/\d{1,15}/)
                   && !this.SubFormData.softGlAcc.match(/\D+/) 
                   && this.SubFormData.softGlAcc.length <= 15 )
                 {
-                    testValid[3].isCorrect = true;
+                    testValidInput[3].isCorrect = true;
                 }else{
-                    testValid[3].isCorrect = false;
+                    testValidInput[3].isCorrect = false;
                 }//END software Gl Acc TESTING:
 
                 //Dynamic table inside of software testing.
@@ -267,25 +384,27 @@ export class HardSoftFormComponent implements OnInit {
                     {
                         if(s.softDesc != null && s.loginID.match(/^[a-zA-Z0-9]+$/)
                         && s.loginID.length <= 6){
-                            testValid[10].isCorrect = true;
+                            testValidInput[10].isCorrect = true;
                         }else{
-                            testValid[10].isCorrect = false;
+                            testValidInput[10].isCorrect = false;
                         break; //stop array surfing and trigger a mismatched input.
                         }//end inner if-else
                     }//end for loop
+                }else{
+                    testValidInput[10].isCorrect = false;
                 }//END software table TESTING. Works if the table is selected. 
 
             }//END BIG IF for software testing
 
-            //VALIDATION. Loop through testValid array and look for errors.
+            //VALIDATION. Loop through testValidInput array and look for errors.
             //If one is found, set fianlCheck to false. 
-            for(let e of testValid)
+            for(let e of testValidInput)
             {
                 if(e.isCorrect == false){
                     finalCheck = false;
                     console.log(`TESTING changes. ${e.name} is ${e.isCorrect}`);
                 }
-            }//END foor loop for testValid array.
+            }//END foor loop for testValidInput array.
 
         
             if(finalCheck == true)
