@@ -19,7 +19,7 @@ const noop = () => {
     { "isCorrect": true, "name": "currentDeviceId" },      //[7]
     { "isCorrect": true, "name": "otherInput" },           //[8]
     { "isCorrect": true, "name": "softwareOtherInput" },   //[9]
-    { "isCorrect": true, "name": "SpecialSoftwareTable" },   //[10]
+    { "isCorrect": true, "name": "SpecialSoftwareTable" }, //[10]
     ];
 
     //boolean for completed check/validation.
@@ -122,9 +122,10 @@ export class HardSoftFormComponent implements OnInit {
             {
                 //Hardware Cost center / I/O[INDEX: 0] = 15 numeric characters
                 //    - check for 15 numbers, so /\d{15}/ for 15 digits 
-                //        and no other characters so !(/\D+/).
+                //        and no other characters so !(/\D+/). 
                 if(this.SubFormData.hardCostCenterIO.match(/\d{1,15}/)
-                &&  !this.SubFormData.hardCostCenterIO.match(/\D+/) ){
+                &&  !this.SubFormData.hardCostCenterIO.match(/\D+/)
+                && this.SubFormData.hardCostCenterIO.length <= 15 ){
                      //Index value  is known, see above, so just reference it. :)
                     testValid[0].isCorrect = true;                  
                     }else{
@@ -136,7 +137,8 @@ export class HardSoftFormComponent implements OnInit {
                 //    - check for 15 numbers, so /\d{15}/ for 15 digits 
                 //        and no other characters so !(/\D+/).
                 if(this.SubFormData.hardGlAcc.match(/\d{1,15}/)
-                   &&  !this.SubFormData.hardGlAcc.match(/\D+/) ){
+                   &&  !this.SubFormData.hardGlAcc.match(/\D+/) 
+                   && this.SubFormData.hardGlAcc.length <= 15){
                             testValid[1].isCorrect = true;
                     }else{ 
                         testValid[1].isCorrect = false; 
@@ -218,7 +220,8 @@ export class HardSoftFormComponent implements OnInit {
             {   
                 //test the single field.
                 //alpha numberic. Software OTHER field. INBETWEEN hardware and software tables.
-                if(this.SubFormData.softwareOtherBox){
+                if(this.SubFormData.softwareOtherBox == true)
+                {
                     // Software something other [INDEX: 9]
                     if(this.SubFormData.softwareOtherInput.match(/^[a-zA-Z0-9\s.,!?]+$/)){
                         testValid[9].isCorrect = true;
@@ -234,8 +237,9 @@ export class HardSoftFormComponent implements OnInit {
                 //Software Cost center / I/O[INDEX: 2] = 15 numeric characters
                 //    - check for 15 numbers, so /\d{15}/ for 15 digits 
                 //        and no other characters so !(/\D+/).
-                if(this.SubFormData.softCostCenterIO.match(/\d{15}/)
-                  &&  !this.SubFormData.softCostCenterIO.match(/\D+/) ){
+                if(this.SubFormData.softCostCenterIO.match(/\d{1,15}/)
+                  &&  !this.SubFormData.softCostCenterIO.match(/\D+/) 
+                  && this.SubFormData.softCostCenterIO.length <= 15){
                     testValid[2].isCorrect = true;
                 } else {
                     testValid[2].isCorrect = false;
@@ -243,7 +247,9 @@ export class HardSoftFormComponent implements OnInit {
 
                //Software Gl Acc[INDEX : 3] = 15 numeric characters. 
                 if(this.SubFormData.softGlAcc.match(/\d{15}/)
-                  &&  !this.SubFormData.softGlAcc.match(/\D+/) ){
+                  && !this.SubFormData.softGlAcc.match(/\D+/) 
+                  && this.SubFormData.softGlAcc.length <= 15 )
+                {
                     testValid[3].isCorrect = true;
                 }else{
                     testValid[3].isCorrect = false;
@@ -270,8 +276,6 @@ export class HardSoftFormComponent implements OnInit {
                 }//END software table TESTING. Works if the table is selected. 
 
             }//END BIG IF for software testing
-
-            console.log(`Jesse, can you see this shit?`);
 
             //VALIDATION. Loop through testValid array and look for errors.
             //If one is found, set fianlCheck to false. 
