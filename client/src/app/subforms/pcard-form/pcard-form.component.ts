@@ -9,29 +9,31 @@ const noop = () => {
         //change to default to true, testing handles any switching. 
  let testValidInput: { isCorrect: boolean, name: string }[] = 
      [
-    { "isCorrect": true, "name": "CoSA Email" },                   //[0]
-    { "isCorrect": true, "name": "Role Details" },                 //[1]
-    { "isCorrect": true, "name": "Comments" },                     //[2]
-    { "isCorrect": true, "name": "Department Approver Name" },     //[3]
-    { "isCorrect": true, "name": "Department SAP Nr" },            //[4]
-    { "isCorrect": true, "name": "Reconciler Name" },              //[5]
-    { "isCorrect": true, "name": "Reconciler SAP Nr" },            //[6]
-    { "isCorrect": true, "name": "CardHolder First Name" },        //[7]
-    { "isCorrect": true, "name": "CardHolder Last Name" },         //[8]
-    { "isCorrect": true, "name": "Default Code" },                 //[9]
-    { "isCorrect": true, "name": "Description" },                  //[10]
-    { "isCorrect": true, "name": "Last Digits of Card Number" },   //[11]
-    { "isCorrect": true, "name": "New CoSA Log on ID" },           //[12]
-    { "isCorrect": true, "name": "New First Name" },               //[13]
-    { "isCorrect": true, "name": "New Middle Name" },              //[14]
-    { "isCorrect": true, "name": "New Last Name" },                //[15]
-    { "isCorrect": true, "name": "New Suffix" },                   //[16]
+    { "isCorrect": true, "name": "CoSA Email Error" },                   //[0]
+    { "isCorrect": true, "name": "Role Details Error" },                 //[1]
+    { "isCorrect": true, "name": "Comments Error" },                     //[2]
+    { "isCorrect": true, "name": "Department Approver Name Error" },     //[3]
+    { "isCorrect": true, "name": "Department SAP Nr Error" },            //[4]
+    { "isCorrect": true, "name": "Reconciler Name Error" },              //[5]
+    { "isCorrect": true, "name": "Reconciler SAP Nr Error" },            //[6]
+    { "isCorrect": true, "name": "CardHolder First Name Error" },        //[7]
+    { "isCorrect": true, "name": "CardHolder Last Name Error" },         //[8]
+    { "isCorrect": true, "name": "Default Code Error" },                 //[9]
+    { "isCorrect": true, "name": "Description Error" },                  //[10]
+    { "isCorrect": true, "name": "Last Digits of Card Number Error" },   //[11]
+    { "isCorrect": true, "name": "New CoSA Log on ID Error" },           //[12]
+    { "isCorrect": true, "name": "New First Name Error" },               //[13]
+    { "isCorrect": true, "name": "New Middle Name Error" },              //[14]
+    { "isCorrect": true, "name": "New Last Name Error" },                //[15]
+    { "isCorrect": true, "name": "New Suffix Error" },                   //[16]
 
     //dropdown menus. FORGOT about them. 
-    { "isCorrect": true, "name": "Limits Requested" },             //[17]
-    { "isCorrect": true, "name": "Temporary Date" },               //[18]
-    { "isCorrect": true, "name": "Role" },                         //[19]
-    { "isCorrect": true, "name": "Default Cost Type" },            //[20]
+    { "isCorrect": true, "name": "Limits Requested Error" },             //[17]
+    { "isCorrect": true, "name": "Temporary Date Error" },               //[18]
+    { "isCorrect": true, "name": "Role Error" },                         //[19]
+    { "isCorrect": true, "name": "Default Cost Type Error" },            //[20]
+    { "isCorrect": true, "name": "Error: No 'change' selected" },        //[21]
+    { "isCorrect": true, "name": "Limits Requested 'Explanation' Error" }, //[22]
     ];
 
 
@@ -155,7 +157,7 @@ export class PCardFormComponent implements OnInit {
                 if(this.SubFormData.role == 'Approver' || this.SubFormData.role == 'Reconciler')
                 {
                     if(this.SubFormData.roleDetails.match(/^[a-zA-Z0-9\s.,!?]+$/) 
-                          && this.SubFormData.roleDetails.length <= 35)
+                          && this.SubFormData.roleDetails.length <= 250)
                     {
                         testValidInput[1].isCorrect = true;
                     }else{
@@ -281,6 +283,19 @@ export class PCardFormComponent implements OnInit {
                     testValidInput[17].isCorrect = false;
                 }//end verify Limits Requested
 
+                //special case for Limits Requested == 'Other' + explanation field.
+                if(this.SubFormData.limitsRequested == 'Other')
+                { 
+                   if(this.SubFormData.limitExplain.match(/^[a-zA-Z0-9\s.,!?]+$/))
+                   {
+                       testValidInput[22].isCorrect = true;
+                   }else{
+                        testValidInput[22].isCorrect = false;
+                    }//end verify for Limits Requested 'Explanation' for Other.
+                }else{
+                    testValidInput[22].isCorrect = true;//if not 'Other', then set to true.
+                }//end SPECIAL limits requested case for 'Other' + explanation field.
+
                 //That should end all verified fields for new cardHolder.
 
             }//END verify 'New Credit Card Request' ONLY fields. 
@@ -319,6 +334,7 @@ export class PCardFormComponent implements OnInit {
                 if(this.SubFormData.chChange == 'Permanent' 
                     || this.SubFormData.chChange == 'Temporary / Return Date')
                 {
+                    testValidInput[21].isCorrect = true;//User picked a 'change'. 
                     //ALL REACTIVE FIELDS for changes.
 
                     //"Change Profile Transaction Limits"
@@ -331,7 +347,19 @@ export class PCardFormComponent implements OnInit {
                             testValidInput[17].isCorrect = true;
                         }else{
                             testValidInput[17].isCorrect = false;
-                        }//end inner if. Verify for limits
+                        }//end inner if. Verify for limits requested.
+
+                        if(this.SubFormData.limitsRequested == 'Other')
+                        { 
+                           if(this.SubFormData.limitExplain.match(/^[a-zA-Z0-9\s.,!?]+$/))
+                           {
+                               testValidInput[22].isCorrect = true;
+                           }else{
+                                testValidInput[22].isCorrect = false;
+                            }//end verify for Limits Requested 'Explanation' for Other.
+                        }else{
+                            testValidInput[22].isCorrect = true;//if not 'Other', then set to true.
+                        }//end SPECIAL limits requested case for 'Other' + explanation field.
                     }//end verify for Change Profile Transaction Limits.
 
                     //Cardholder or User Name Changes.
@@ -394,9 +422,12 @@ export class PCardFormComponent implements OnInit {
                         }else{
                             testValidInput[16].isCorrect = true;//Option with no suffix entered.
                         }//end optional verify New User Suffix
+
                     }//end CardHolder/User Name Change reactive field Verification. 
 
-                }//end reactive fields for Maintenance
+                }else{
+                    testValidInput[21].isCorrect = false;//User must pick a 'change'
+                }//end if-else for reactive fields for Maintenance. MUST have a 'change'
             }//CODE BLOCK for 'CardHolder Maintenance' fields.
 
         //VALIDATION. Loop through testValidInput array and look for errors.
@@ -406,7 +437,7 @@ export class PCardFormComponent implements OnInit {
             if(e.isCorrect == false)
             {
                     finalCheck = false;
-                    console.log(`TESTING changes. ${e.name} is ${e.isCorrect}`);
+                    console.log(`${e.name}`);
             }
         }//END foor loop for testValidInput array.
 

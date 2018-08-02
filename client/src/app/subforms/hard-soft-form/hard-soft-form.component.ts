@@ -9,26 +9,26 @@ const noop = () => {
         //change to default to true, testing handles any switching. 
  let testValidInput: { isCorrect: boolean, name: string }[] = 
      [
-    { "isCorrect": true, "name": "hardware CostCenterIO" },         //[0]
-    { "isCorrect": true, "name": "hardware GlAcc" },                //[1]
-    { "isCorrect": true, "name": "software CostCenterIO" },         //[2]
-    { "isCorrect": true, "name": "software GlAcc" },                //[3]
-    { "isCorrect": true, "name": "BldgLoc" },                       //[4]
-    { "isCorrect": true, "name": "Floor" },                         //[5]
-    { "isCorrect": true, "name": "Office" },                        //[6]
-    { "isCorrect": true, "name": "Current Device ID" },             //[7]
-    { "isCorrect": true, "name": "otherInput" },                    //[8]
-    { "isCorrect": true, "name": "softwareOtherInput" },            //[9]
-    { "isCorrect": true, "name": "SpecialSoftwareTable" },          //[10]
+    { "isCorrect": true, "name": "hardware CostCenterIO Error" },      //[0]
+    { "isCorrect": true, "name": "Hardware GlAcc Error" },             //[1]
+    { "isCorrect": true, "name": "Software CostCenterIO Error" },      //[2]
+    { "isCorrect": true, "name": "Software GlAcc Error" },             //[3]
+    { "isCorrect": true, "name": "BldgLoc Error" },                    //[4]
+    { "isCorrect": true, "name": "Floor Error" },                      //[5]
+    { "isCorrect": true, "name": "Office Error" },                     //[6]
+    { "isCorrect": true, "name": "Current Device ID Error" },          //[7]
+    { "isCorrect": true, "name": "'Other' Error" },                    //[8]
+    { "isCorrect": true, "name": "(SOMETHING) Other Error" },           //[9]
+    { "isCorrect": true, "name": "Special Software Table Error" },     //[10]
     //left out fields. 
-    { "isCorrect": true, "name": "Empty Form. Select an option." }, //[11]
-    { "isCorrect": true, "name": "Desktop" },                       //[12]
-    { "isCorrect": true, "name": "Laptop" },                        //[13]
-    { "isCorrect": true, "name": "Monitor Mode" },                  //[14]
-    { "isCorrect": true, "name": "Monitor" },                       //[15]
-    { "isCorrect": true, "name": "IP Desk Phone" },                 //[16]
-    { "isCorrect": true, "name": "Hardware: Other" },               //[17]
-    { "isCorrect": true, "name": "Hardware: Request Type" },        //[18]
+    { "isCorrect": true, "name": "Empty Form Error." },                //[11]
+    { "isCorrect": true, "name": "Desktop Error" },                    //[12]
+    { "isCorrect": true, "name": "Laptop Error" },                     //[13]
+    { "isCorrect": true, "name": "Monitor Mode Error" },               //[14]
+    { "isCorrect": true, "name": "Monitor Error" },                    //[15]
+    { "isCorrect": true, "name": "IP Desk Phone Error" },              //[16]
+    { "isCorrect": true, "name": "(Hardware) Other Error" },           //[17]
+    { "isCorrect": true, "name": "(Hardware) Request Type Error" },    //[18]
 
     ];
 
@@ -382,7 +382,7 @@ export class HardSoftFormComponent implements OnInit {
                 { 
                     for(let s of this.SubFormData.specialSoftware)
                     {
-                        if(s.softDesc != null && s.loginID.match(/^[a-zA-Z0-9]+$/)
+                        if(s.softDesc.length  != null && s.loginID.match(/^[a-zA-Z0-9]+$/)
                         && s.loginID.length <= 6){
                             testValidInput[10].isCorrect = true;
                         }else{
@@ -391,7 +391,7 @@ export class HardSoftFormComponent implements OnInit {
                         }//end inner if-else
                     }//end for loop
                 }else{
-                    testValidInput[10].isCorrect = false;
+                    testValidInput[10].isCorrect = true;//if no table, just true.
                 }//END software table TESTING. Works if the table is selected. 
 
             }//END BIG IF for software testing
@@ -402,7 +402,7 @@ export class HardSoftFormComponent implements OnInit {
             {
                 if(e.isCorrect == false){
                     finalCheck = false;
-                    console.log(`TESTING changes. ${e.name} is ${e.isCorrect}`);
+                    console.log(`${e.name}`);
                 }
             }//END foor loop for testValidInput array.
 
