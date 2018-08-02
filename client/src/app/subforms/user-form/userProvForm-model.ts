@@ -36,6 +36,4 @@ export class userProvForm{
 	deptHd_Designee: string;
 	dHdDt: string;
 
-	//missing fields:
-	phoneExt: string;
 }
