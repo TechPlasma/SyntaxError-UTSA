@@ -1,8 +1,10 @@
-<div *ngIf="SubFormData != undefined">
+	<div *ngIf="SubFormData != undefined">
 	<mat-form-field class="thirds">
-	<input matInput [(ngModel)]="SubFormData.costcenter" placeholder="Cost Center">
+	<input matInput [(ngModel)]="SubFormData.costCenter" placeholder="Cost Center">
 	</mat-form-field>
 	<br>
+
+
 	
 	<h3>Fueling Authorization Request</h3>
 		  
@@ -10,10 +12,12 @@
 		I acknowledge that I have reviewed AD1.8 Vehicle Use with the employee.
 	</mat-checkbox>
 	<br>
+
 	<mat-checkbox [(ngModel)]="SubFormData.trainingCourse">
-		I will ensure the above-listed employee will attend the City driving safety training course in accordance with AD 4.8 Driver Safety Program.
 	</mat-checkbox>
+	I will ensure the above-listed employee will attend the City driving safety training course in accordance with AD 4.8 Driver Safety Program.
 	<br>
+
 
 	<br>
 	<button mat-stroked-button color="warn" (click)="verifySubForm();" *ngIf="!SubFormData.Completed">

@@ -1,7 +1,7 @@
 <div *ngIf="SubFormData != undefined">
 	<mat-radio-group [(ngModel)]="SubFormData.reqType">
 		<p>
-			<b>Request Type</b>
+			<b>Request Type:</b>
 		</p>
 		<mat-radio-button value="1">Provision User</mat-radio-button>
 		<mat-radio-button value="2">Disable User Account</mat-radio-button>
@@ -112,6 +112,13 @@
 		<input matInput placeholder="Mainrame Information Here" [(ngModel)]="SubFormData.mfText">
 	</mat-form-field>
 
+	<!--
+	<mat-form-field>
+		<input matInput placeholder="Phone Ext:" [(ngModel)]="SubForm.phoneExt">
+	</mat-form-field>
+	<p> {{SubForm.phoneExt}} </p>
+-->
+	
 	<br>
 	<button mat-stroked-button color="warn" (click)="verifySubForm();" *ngIf="!SubFormData.Completed">
 		Verify SubForm
