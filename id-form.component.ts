@@ -81,22 +81,27 @@
         this.SubFormData.Completed = true;
         console.log(this.SubFormData);
       }
-
-
-      if(this.SubFormData.jobStatus == 'contractor'
-         || this.SubFormData.jobStatus == 'vendor'
+      if(this.SubFormData.idCard == true
+        || this.SubFormData.facilityAccess == true
+        || this.SubFormData.cjis == true
+        || this.SubFormData.addrChange == true
+        || this.SubFormData.reIssueCard == true)
+          if(this.SubFormData.jobStatus == 'contractor'
+           || this.SubFormData.jobStatus == 'vendor'
            || this.SubFormData.jobStatus == 'tempcontract')
             if(!this.SubFormData.companyName.match(/[a-zA-Z\s ]{1,30}/)
             ||!this.SubFormData.workPhone.match(/^\([0-9]{3}\)\s[0-9]{3}-[0-9]{4}$/)
             ||!this.SubFormData.contactPhone.match(/^\([0-9]{3}\)\s[0-9]{3}-[0-9]{4}$/)
             ||!this.SubFormData.pocName.match(/[a-zA-Z\s ]{1,30}/)
-              ||!this.SubFormData.contactNum.match(/^\([0-9]{3}\)\s[0-9]{3}-[0-9]{4}$/)
-                ||!this.SubFormData.contractNum.match(/^[0-9]+$/))
+            ||!this.SubFormData.contactNum.match(/^\([0-9]{3}\)\s[0-9]{3}-[0-9]{4}$/)
+            ||!this.SubFormData.contractNum.match(/^[0-9]+$/))
             {
-              alert('Please specify Contractor/Vendor info');
+              alert('Please specify Request Type or Contractor/Vendor info');
               this.SubFormData.Completed = false;
               console.log(this.SubFormData);
             }
+
+
     else{
       this.SubFormData.Completed = true;
       console.log(this.SubFormData);
@@ -111,11 +116,11 @@
             ||!this.SubFormData.workPhone.match(/^\([0-9]{3}\)\s[0-9]{3}-[0-9]{4}$/)
             ||!this.SubFormData.contactPhone.match(/^\([0-9]{3}\)\s[0-9]{3}-[0-9]{4}$/)
             || this.SubFormData.jobStatus == ''
-              ||!this.SubFormData.facilityAddr.match(/^[0-9]+\s[a-zA-Z\s,]+[0-9]+/)
-               || !this.SubFormData.facilityEntry.match(/[a-zA-Z0-9\s ]{1,8}/)
-                 || !this.SubFormData.suiteEntry.match(/[a-zA-Z0-9\s]{1,8}/)
-                  || !this.SubFormData.roomEntry.match(/^[a-zA-Z0-9\s ]{1,8}/)
-                    || !this.SubFormData.other.match(/^[a-zA-Z0-9\s ]{1,8}/))
+            ||!this.SubFormData.facilityAddr.match(/^[0-9]+\s[a-zA-Z\s,]+[0-9]+/)
+            ||!this.SubFormData.facilityEntry.match(/[a-zA-Z0-9\s ]{1,8}/)
+            ||!this.SubFormData.suiteEntry.match(/[a-zA-Z0-9\s]{1,8}/)
+            ||!this.SubFormData.roomEntry.match(/^[a-zA-Z0-9\s ]{1,8}/)
+            ||!this.SubFormData.other.match(/^[a-zA-Z0-9\s ]{1,8}/))
                     {
                       alert('Please enter a Valid Facility Name, Address, facilityEntry, suite Entry, Room Entry or Other');
                       this.SubFormData.Completed = false;
