@@ -17,3 +17,16 @@ mat-radio-button{
 mat-checkbox{
 	margin:5px;
 }
+
+.example-full-width {
+  width: 100%;
+}
+
+.example-margin {
+  margin: 0 10px;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  padding-right: 16px;
+  padding-left:  16px;
+}
