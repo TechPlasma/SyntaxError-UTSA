@@ -6,19 +6,83 @@
 <div *ngIf="isFulfilmentDepartment">
 	<mat-card>
 		<mat-card-title>
-			Pending Requisitions
+			Requisition Requests
 		</mat-card-title>
-		<mat-card-content>
-			
-		</mat-card-content>
-	</mat-card>
-	<mat-card>
-		<mat-card-title>
-			Completed Requisitions
-		</mat-card-title>
-		<mat-card-content>
-			
-		</mat-card-content>
+		<mat-expansion-panel expanded="true">
+			<mat-expansion-panel-header>
+				<h3>Pending</h3>
+			</mat-expansion-panel-header>
+			<br>
+			<table>
+				<tr>
+					<th align="left">
+						Requisition Information
+					</th>
+					<th align="right">
+						Actions&nbsp; 
+					</th>
+				</tr>
+				<tr>
+					<td>
+						<mat-expansion-panel>
+							<mat-expansion-panel-header>
+								<mat-panel-title>
+									Statuses
+								</mat-panel-title>
+							</mat-expansion-panel-header>
+						</mat-expansion-panel>
+					</td>
+					<td align="right">
+						<button mat-raised-button color="primary" >
+							Review
+						</button>
+						<button mat-raised-button color="accent" >
+							Mark In-Progress
+						</button>
+						<button mat-raised-button color="accent" >
+							Mark Fufilled
+						</button>
+					</td>							
+				</tr>
+			</table>
+			<br>
+		</mat-expansion-panel>
+
+		<mat-expansion-panel expanded="false">
+			<mat-expansion-panel-header>
+				<mat-panel-title>
+					<h3>Completed</h3>
+				</mat-panel-title>
+			</mat-expansion-panel-header>
+			<br>
+			<table>
+				<tr>
+					<th align="left">
+						Requisition Information
+					</th>
+					<th align="right">
+						Actions&nbsp; 
+					</th>
+				</tr>
+				<tr>
+					<td>
+						<mat-expansion-panel>
+							<mat-expansion-panel-header>
+								<mat-panel-title>
+									Status
+								</mat-panel-title>
+							</mat-expansion-panel-header>
+						</mat-expansion-panel>
+					</td>
+					<td align="right">
+						<button mat-raised-button color="primary" >
+							Review
+						</button>
+					</td>
+				</tr>
+			</table>
+			<br>
+		</mat-expansion-panel>
 	</mat-card>
 	<div class="newFormButtonFancy" align="right" valign="bottom">
 		<button mat-fab matTooltip="New Form" matTooltipPosition="left" [routerLink]="['/form/']" color="primary" >

@@ -5,6 +5,19 @@ import { Injectable } from '@angular/core';
 })
 export class APIService {
 
+	USEROBJECT;
+	MASTERFORMOBJECT;
+
+
+	getUser(username){
+
+	}
+
+	getMasterForm(formID){
+
+	}
+
+
 	postForm(form){
 		let postData = {
 			SampleString:"testing string",

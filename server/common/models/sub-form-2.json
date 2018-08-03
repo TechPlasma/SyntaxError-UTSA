@@ -82,6 +82,27 @@
     },
     "mfText": {
       "type": "string"
+    },
+    "phoneExt": {
+      "type": "string"
+    },
+    "logonID": {
+      "type": "string"
+    },
+    "assignPhoneExit": {
+      "type": "string"
+    },
+    "macAddr": {
+      "type": "string"
+    },
+    "serialNr": {
+      "type": "string"
+    },
+    "contactServiceName": {
+      "type": "string"
+    },
+    "separationDate": {
+      "type": "string"
     }
   },
   "validations": [],

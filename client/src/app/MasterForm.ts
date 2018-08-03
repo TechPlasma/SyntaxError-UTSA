@@ -189,6 +189,15 @@ class SubForm2{
 		this.phoneAssign = false;
 		this.phoneAssign2 = false;
 
+		//Extra Info
+		this.phoneExt = '';
+		this.logonID = '';
+		this.separationDate = '';
+		this.assignPhoneExit = '';
+		this.macAddr = '';
+		this.serialNr = '';
+		this.contactServiceName = '';
+
 		// User Access
 		this.homeDr = false;
 		this.deptShareDr = false;
@@ -217,6 +226,15 @@ class SubForm2{
 	deviceAssetNr: string;
 	phoneAssign: boolean;
 	phoneAssign2: boolean;
+
+	//Extra Info
+	phoneExt: string;
+	logonID: string;
+	separationDate: string;
+	assignPhoneExit: string;
+	macAddr: string;
+	serialNr: string;
+	contactServiceName: string;
 
 	// User Access
 	homeDr: boolean;

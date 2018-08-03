@@ -55,7 +55,9 @@
   },
   "SubForm2": {
     "dataSource": "db",
-    "public": true
+    "public": true,
+    "$promise": {},
+    "$resolved": true
   },
   "SubForm3": {
     "dataSource": "db",
@@ -78,5 +80,9 @@
     "public": true,
     "$promise": {},
     "$resolved": true
+  },
+  "Employee": {
+    "dataSource": "db",
+    "public": true
   }
 }
