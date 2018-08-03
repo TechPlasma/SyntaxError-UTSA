@@ -3,31 +3,45 @@
 		<p>
 			<b>Request Type</b>
 		</p>
-		<mat-radio-button value="1">Provision User</mat-radio-button>
-		<mat-radio-button value="2">Disable User Account</mat-radio-button>
+		<mat-radio-button value="Provision User">Provision User</mat-radio-button>
+		<mat-radio-button value="Disable User Account">Disable User Account</mat-radio-button>
 	</mat-radio-group>
 
-	<!--
-	User Provisioning
-	- User Type         : Radio Button
-	- Date of Hire      : Input (dependent on Usr. Type)
-	- User Name         : Input
-	- Emp SAP #         : Input
-	- Work Location     : Input
-	- Device Assignment : Radio Button
-	- Device Asset #    : Input (dependent on Dev. Assign.)
-	- Phone Assignment  : Radio Button x2
-	-->
-	<h3>User Provisioning</h3>
+	<!-- 'Provision User' ONLY fields. -->
+	<div *ngIf="SubFormData.reqType == 'Provision User'">
+		<!--
+		User Provisioning
+		- User Type         : Radio Button
+		- Date of Hire      : Input (dependent on Usr. Type)
+		- User Name         : Input
+		- Emp SAP #         : Input
+		- Work Location     : Input
+		- Device Assignment : Radio Button
+		- Device Asset #    : Input (dependent on Dev. Assign.)
+		- Phone Assignment  : Radio Button x2
+		-->
+		<h3>User Provisioning</h3>
 
-	<mat-radio-group [(ngModel)]="SubFormData.userType">
-		<mat-radio-button value="New">New</mat-radio-button>
-		<mat-radio-button value="Transfer">Transfer</mat-radio-button>
-		<mat-radio-button value="Rehire">Rehire</mat-radio-button>
-		<mat-radio-button value="CoSA Temp/Inter">CoSA Temp/Inter</mat-radio-button>
-	</mat-radio-group>
+		<mat-radio-group [(ngModel)]="SubFormData.userType">
+			<mat-radio-button value="New">New</mat-radio-button>
+			<mat-radio-button value="Transfer">Transfer</mat-radio-button>
+			<mat-radio-button value="Rehire">Rehire</mat-radio-button>
+			<mat-radio-button value="CoSA Temp/Inter">CoSA Temp/Inter</mat-radio-button>
+		</mat-radio-group>
+		<br>
+		<b><u>Device Assigntment:</u></b> *Is an existing device being assigned to this user?
+		<br>
+		<mat-radio-group [(ngModel)]="SubFormData.deviceAssign">
+			<mat-radio-button value=true>Yes</mat-radio-button>
+			<mat-radio-button value=false>No</mat-radio-button>
+		</mat-radio-group>
 
-	<br>
+		<mat-form-field class="thirds" *ngIf="SubFormData.deviceAssign == 'true'">
+		<input matInput placeholder="Device Asset #" [(ngModel)]="SubFormData.deviceAssetNr">
+		</mat-form-field>
+
+	</div>
+
 
 	<mat-form-field class="thirds">
 		<input matInput [matDatepicker]="picker" placeholder="Date of Hire"
@@ -38,27 +52,15 @@
 	<mat-form-field class="thirds">
 		<input matInput placeholder="Work Location" [(ngModel)]="SubFormData.workLoc">
 	</mat-form-field>
-	<br>
 
-	<b><u>Device Assigntment:</u></b> *Is an existing device being assigned to this user?
-	<br>
-	<mat-radio-group [(ngModel)]="SubFormData.deviceAssign">
-		<mat-radio-button value="true">Yes</mat-radio-button>
-		<mat-radio-button value="false">No</mat-radio-button>
-	</mat-radio-group>
 
-	<mat-form-field class="thirds">
-	<input matInput placeholder="Device Asset #" [(ngModel)]="SubFormData.deviceAssetNr">
-	</mat-form-field>
-	<br>
-	<br>
+	
 	<p><b><u>Phone Assigntment:</u></b> *Will you be assigning an existing Cisco IP phone and Extension?</p>
 	<mat-radio-group [(ngModel)]="SubFormData.phoneAssign">
 		<mat-radio-button value="true">Yes</mat-radio-button>
 		<mat-radio-button value="false">No</mat-radio-button>
 	</mat-radio-group>
-	<br>
-	<br>
+	
 	<p>*Does this employee extension need to be set up as a Service Center Agent or Supervisor?</p>
 	<mat-radio-group [(ngModel)]="SubFormData.phoneAssign2">
 		<mat-radio-button value="true">Yes</mat-radio-button>
