@@ -66,11 +66,50 @@ export class DefaultInfoComponent implements ControlValueAccessor {
     }
 
     verifySubForm(){
-        this.SubFormData.Completed = true;
-        console.log(this.SubFormData);
-    }
-
+    var verified = true;
+    var i = 0;
+    
+    //array of information fields
+    var arr_info = [ 
+    	this.SubFormData.requestingDepartment,
+		this.SubFormData.division,
+		this.SubFormData.departmentRequester,
+		this.SubFormData.phoneExt,
+		this.SubFormData.firstName,
+		this.SubFormData.middleInitial,
+		this.SubFormData.lastName,
+		this.SubFormData.suffix,
+		this.SubFormData.phoneNumber,
+		this.SubFormData.jobTitle,
+		this.SubFormData.sap];	
+		 
+	//array of regular expressions
+		var arr_check = [/^[a-zA-Z]{1,30}$/, /^[a-zA-Z]{1,30}$/, /^[a-zA-Z]{1,30}$/,
+		/^[0-9]{1,10}$/, /^[a-zA-Z]{1,30}$/, /^[a-zA-Z]{0,1}$/,
+		/^[a-zA-Z]{1,30}$/, /^[a-zA-Z]{1,10}$/, /^\(?[0-9]{3}\)?[0-9]{3}-?[0-9]{4}$/,
+		/^[a-zA-Z]{1,30}$/, /^[0-9]{6}$/];
 	
+		//Info Check
+		while(i < arr_info.length{
+		console.log("while loop");
+			if(!arr_check[i].test(arr_info[i])){
+			console.log(arr_info[i] "is incorrect!");
+			verified = false;
+			}//end if
+			i++;
+    	}//end while
+    	
+    	//Date Check
+    	if(!(this.SubFormData.date instanceof Date)){
+		console.log("Date format incorrect!");
+   		 verified = false;
+		}//end if
+		
+		console.log(this.SubFormData);
+		if(verified){
+        this.SubFormData.Completed = true;
+		}//end if
+	}//end method
 
 	constructor() {
 
