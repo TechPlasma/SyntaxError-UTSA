@@ -94,7 +94,8 @@
             ||!this.SubFormData.contactPhone.match(/^\([0-9]{3}\)\s[0-9]{3}-[0-9]{4}$/)
             ||!this.SubFormData.pocName.match(/[a-zA-Z\s ]{1,30}/)
             ||!this.SubFormData.contactNum.match(/^\([0-9]{3}\)\s[0-9]{3}-[0-9]{4}$/)
-            ||!this.SubFormData.contractNum.match(/^[0-9]+$/))
+            ||!this.SubFormData.contractNum.match(/^[0-9]+$/)
+            ||!this.SubFormData.contractExp.match(/^[a-zA-Z0-9\:\-\s]+\([a-zA-Z\s]+\)/))
             {
               alert('Please specify Request Type or Contractor/Vendor info');
               this.SubFormData.Completed = false;
