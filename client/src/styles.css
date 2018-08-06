@@ -3,3 +3,24 @@
 body{
 	margin:0;
 }
+
+.material-icons, .icon-text {
+	vertical-align: middle;
+}
+
+.scroll-section::-webkit-scrollbar {
+    height: 4px;
+    width: 4px;
+}
+.scroll-section::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.26);
+}
+.scroll-section::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,.26);
+}
+
+.fill-scroll{
+    overflow:auto;
+    height:100%;
+    /*border-radius: 50%;*/
+}

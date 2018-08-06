@@ -5,11 +5,47 @@ import { Injectable } from '@angular/core';
 })
 export class APIService {
 
-	USEROBJECT;
-	MASTERFORMOBJECT;
+	EMPLOYEE;
+	DEPARTMENT;
+	MASTERFORM;
+
+	EMPOLYEEFORMS;
+	DEPARTMENTINFORMS;
+	DEPARTMENTOUTFORMS;
+
+	//	Checks Password vs Usename of Database
+	//	Horribly insecure but not my problem
+	//	Gets Department and User Profiles
+	//	also 
+	signIn(SAP,password){
+		let baseURL = 'http://localhost:3000/api'
+		let api = `/Employees`
+		let filter = `?filter={where:{and:[{SAP:${SAP}},PWD:${password}]}}`;
+
+		let url = `${baseURL}${api}`;
+		let settings = {
+			method: 'GET',
+			headers:{
+				'Content-Type': 'application/json'
+			}
+		}
+
+		fetch(url,settings)
+		.then(res =>{
+			console.log(res);
+			res.json().then(thisData=>{console.log(thisData)});
+		})
+		.catch(err =>{
+			console.error(err);
+		})
+	}
 
 
-	getUser(username){
+	getUser(userID){
+
+	}
+
+	getDepartment(departmentID){
 
 	}
 
@@ -96,6 +132,10 @@ export class APIService {
 		.catch(err =>{
 			console.error(err);
 		})
+
+	}
+
+	pollingFunction(){
 
 	}
 

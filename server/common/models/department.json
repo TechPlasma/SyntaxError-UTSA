@@ -1,5 +1,5 @@
 {
-  "name": "Employee",
+  "name": "Department",
   "base": "PersistedModel",
   "strict": false,
   "idInjection": false,
@@ -7,25 +7,22 @@
     "validateUpsert": true
   },
   "properties": {
-    "PWD": {
+    "DEPTNAME": {
       "type": "string"
     },
-    "MI": {
+    "DEPTCODE": {
       "type": "string"
     },
-    "FIRSTNAME": {
+    "isFulfillment": {
       "type": "string"
     },
-    "LASTNAME": {
-      "type": "string"
-    },
-    "EMAIL": {
-      "type": "string"
-    },
-    "FORMS": {
+    "outMasterForms": {
       "type": "array"
     },
-    "SAP": {
+    "inMasterForms": {
+      "type": "array"
+    },
+    "dID": {
       "type": "string",
       "id": true
     }
