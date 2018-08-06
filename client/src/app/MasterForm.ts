@@ -16,7 +16,12 @@ export class MasterForm{
 		this.SubForm4 = new SubForm4();
 		this.SubForm5 = new SubForm5();
 		this.SubForm6 = new SubForm6();
+
 		this.FID = "";
+		this.Completed = false;
+		this.Status = 'Pending';
+		//this.SubForm1.Approvers.push(new Approver())
+
 	}
 	SubForm0:SubForm0;
 	SubForm1:SubForm1;
@@ -26,7 +31,10 @@ export class MasterForm{
 	SubForm5:SubForm5;
 	SubForm6:SubForm6;
 
+	
 	FID:any;
+	Completed:boolean;
+	Status:ApprovalStatus;
 }
 
 
@@ -35,18 +43,37 @@ export class Approver{
 	// Can call:
 	//  new Approver(id)
 	//  new Approver(id,dependantIDs)
-	constructor(private ID?:string,private DependantIDs?:string[]){
-		if(this.ID == undefined){
-			this.ID = '';
+	//constructor(private ID?:string,private DEPENDANTIDS?:string[])
+	constructor(private POSITION?:string,private DEPARTMENTCODE?:string,private DEPENDENTPOS?:any[]){
+		// if(this.ID == undefined){
+		// 	this.ID = '';
+		// }
+		// if(this.DEPENDANTIDS == undefined){
+		// 	this.DEPENDANTIDS = [];
+		// }
+		if(this.POSITION == undefined){
+			this.POSITION = '';
 		}
-		if(this.DependantIDs == undefined){
-			this.DependantIDs = [];
+		if(this.DEPARTMENTCODE = undefined){
+			this.DEPARTMENTCODE = '';
 		}
-		this.Approved = false;
+		if(this.DEPENDENTPOS = undefined){
+			this.DEPENDENTPOS = null;
+		}
+		this.ID = '';
+		this.DEPENDANTIDS = [];
+		this.APPROVED = false;
+		this.NAME = '';
+		// this.POSITION = '';
+		// this.DEPARTMENTCODE = '';
 	}
-	//ID:string;
-	//DependantIDs:string[];
-	Approved:boolean;
+	ID:string;
+	DEPENDANTIDS:string[];
+	NAME:string;
+	// POSITION:string;
+	// DEPARTMENTCODE:string;
+	// DEPENDENTPOS:any[];
+	APPROVED:boolean;
 }
 
 

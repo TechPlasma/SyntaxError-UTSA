@@ -1,0 +1,9 @@
+
+.flexy{
+	display: flex;
+	flex-direction: column;
+}
+
+.flexy > div{
+	flex: 1;
+}

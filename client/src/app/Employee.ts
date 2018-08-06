@@ -1,12 +1,12 @@
 
 
-export class User{
+export class Employee{
 	// Constructor Calls
-	// 		new User()
-	// 		new User(FirstName)
-	// 		new User(FirstName,LastName)
-	// 		new User(FirstName,LastName,DEPT)
-	// 		new User(FirstName,LastName,DEPT,POSIT)
+	// 		new Employee()
+	// 		new Employee(FirstName)
+	// 		new Employee(FirstName,LastName)
+	// 		new Employee(FirstName,LastName,DEPT)
+	// 		new Employee(FirstName,LastName,DEPT,POSIT)
 
 	constructor(private FIRSTNAME?:string,private LASTNAME?:string,private DEPT?:string,private POSIT?:string){
 		if(FIRSTNAME == undefined)
@@ -18,7 +18,7 @@ export class User{
 		if(POSIT == undefined)
 			this.POSIT = '';
 
-		this.UID = '';
+		this.SAP = '';
 		this.PWD = '';
 		this.MI = '';
 		this.EMAIL = '';
@@ -27,7 +27,7 @@ export class User{
 
 	//DEPT:string;
 	//POSIT:string;
-	UID:string;
+	SAP:string;
 	PWD:string;
 
 	// FIRSTNAME:string;

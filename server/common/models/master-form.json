@@ -33,6 +33,12 @@
     },
     "SubForm6": {
       "type": "SubForm6"
+    },
+    "Completed": {
+      "type": "boolean"
+    },
+    "Status": {
+      "type": "string"
     }
   },
   "validations": [],

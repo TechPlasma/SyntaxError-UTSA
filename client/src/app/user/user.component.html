@@ -1,8 +1,3 @@
-<p>
-  user works!<br>
-  User ID: {{UID}}
-</p>
-
 <table>
 	<tr>
 		<td width="30%" valign="top">
@@ -11,13 +6,25 @@
 					User Profile
 				</mat-card-title>
 				<mat-card-content>
-					
+					<table>
+						<tr>
+							<td align="left">
+								User ID: 
+							</td>
+							<td>
+								{{UID}}
+							</td>
+						</tr>
+						<tr>
+							
+						</tr>
+					</table>
 				</mat-card-content>
 			</mat-card>
 		</td>
 		<td>
 			<mat-card>
-					<mat-card-title>
+				<mat-card-title>
 					Requisition Requests
 				</mat-card-title>
 				<mat-expansion-panel expanded="true">
