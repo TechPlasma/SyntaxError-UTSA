@@ -94,7 +94,8 @@
             ||!this.SubFormData.contactPhone.match(/^\([0-9]{3}\)\s[0-9]{3}-[0-9]{4}$/)
             ||!this.SubFormData.pocName.match(/[a-zA-Z\s ]{1,30}/)
             ||!this.SubFormData.contactNum.match(/^\([0-9]{3}\)\s[0-9]{3}-[0-9]{4}$/)
-            ||!this.SubFormData.contractNum.match(/^[0-9]+$/)
+            ||!this.SubFormData.contractNum.match(/^[0-9\-\/]+$/)
+            /*||!this.SubFormData.contractExp.match(/\w+\s\w\w\w\s\d+\d\s\d+\s\d+\:\d+\:\d+\s\w+\-\d+\s\(\w+\s\w+\s\w+\)/))*/
             ||!this.SubFormData.contractExp.match(/^[a-zA-Z0-9\:\-\s]+\([a-zA-Z\s]+\)/))
             {
               alert('Please specify Request Type or Contractor/Vendor info');
@@ -117,7 +118,7 @@
             ||!this.SubFormData.workPhone.match(/^\([0-9]{3}\)\s[0-9]{3}-[0-9]{4}$/)
             ||!this.SubFormData.contactPhone.match(/^\([0-9]{3}\)\s[0-9]{3}-[0-9]{4}$/)
             || this.SubFormData.jobStatus == ''
-            ||!this.SubFormData.facilityAddr.match(/^[0-9]+\s[a-zA-Z\s,]+[0-9]+/)
+            ||!this.SubFormData.facilityAddr.match(/^[0-9]+\s[a-zA-Z0-9\#\s,]+[0-9]+/)
             ||!this.SubFormData.facilityEntry.match(/[a-zA-Z0-9\s ]{1,8}/)
             ||!this.SubFormData.suiteEntry.match(/[a-zA-Z0-9\s]{1,8}/)
             ||!this.SubFormData.roomEntry.match(/^[a-zA-Z0-9\s ]{1,8}/)
