@@ -1,69 +1,78 @@
+import { Component, forwardRef, OnInit } from '@angular/core';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
-
-import { Component, OnInit } from '@angular/core';
+const noop = () => {
+};
+ 
+export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => IDFormComponent),
+    multi: true
+};
 
 @Component({
-  selector: 'app-id-form',
-  templateUrl: './id-form.component.html',
-  styleUrls: ['./id-form.component.css']
+	selector: 'app-id-form',
+	templateUrl: './id-form.component.html',
+	styleUrls: ['./id-form.component.css'],
+	providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
 })
 export class IDFormComponent implements OnInit {
-  getUserID= ''
-  hide = true;
+	
+	//The internal data model
+    private innerValue: any = '';
 
-  IDForm = {
-    IDFormInfo:[],
-	requestType: {
-      IDCard:'CoSA ID Card',
-      facultyAccess: 'CoSA Faculty Access',
-      cjisAccess: "CJIS Faculty Access",
-      facultyAccChange: 'Faculty Access Change',
-      issueID: 'Re-Issue ID Card'
-    },
-    personnelInfo: {
-        First:'First Name:',
-        middleNm: 'Middle Initial:',
-        Last: 'Last Name:',
-        Suffix: 'Suffix:',
-        jobStatus:'Job Status:',
-        workPhone:'Work Telephone Number:',
-        jobTitle: 'Job Title:',
-        Department:' Department:',
-        hrSAP:'CoSA/HR SAP#:',
-        Division: 'Division:',
-        superNm: 'Supervisor/Manager Name:',
-        contactPhone: 'Contact Phone Number:',
-      },
-    contractorVendorInfo: {
-        companyName:'Company Name:',
-        pointOfContact: 'Point of Contact Name',
-        contactNum: 'Contact Number:',
-        ContractNum: 'Contract Number:',
-        contractExpr: 'Contract Expiration Date:',
-      },
-      facultyInfo: {
-        facultyNm:'Faculty Name:',
-        facultyAddr: 'Facility Address: ',
-        facultyEntry: 'Facility Entry: ',
-        suiteEntry: ' Suite Entry: ',
-        roomEntry: ' Room Entry: ',
-        other: 'Other: ',
-      },
-     departmentApprov: {
-     superSign: 'Supervisor/Manager Signature: ',
-     userID:"UserID:",
-     password:"password:",
-     date: ' Date:'
-   }
+    //Placeholders for the callbacks which are later provided
+    //by the Control Value Accessor
+    private onTouchedCallback: () => void = noop;
+    private onChangeCallback: (_: any) => void = noop;
 
- }
+    //get accessor
+    get SubFormData(): any {
+        return this.innerValue;
+    };
 
+    //set accessor including call the onchange callback
+    set SubFormData(v: any) {
+        if (v !== this.innerValue) {
+            this.innerValue = v;
+            this.onChangeCallback(v);
+        }
+    }
 
+    //Set touched on blur
+    onBlur() {
+        this.onTouchedCallback();
+    }
 
+    //From ControlValueAccessor interface
+    writeValue(value: any) {
+        if (value !== this.innerValue) {
+            this.innerValue = value;
+        }
+    }
 
-  constructor() { }
+    //From ControlValueAccessor interface
+    registerOnChange(fn: any) {
+        this.onChangeCallback = fn;
+    }
 
-  ngOnInit() {
-  }
+    //From ControlValueAccessor interface
+    registerOnTouched(fn: any) {
+        this.onTouchedCallback = fn;
+    }
 
+    verifySubForm(){
+        this.SubFormData.Completed = true;
+        console.log(this.SubFormData);
+    }
+
+	
+
+	constructor() {
+
+    }
+
+    ngOnInit(){
+
+    }
 }

@@ -1,165 +1,143 @@
-<div>
-	<h2>Section 1: General Info</h2>
-	<mat-radio-group [(ngModel)]="tempObject.section1.formReason">
-		<mat-radio-button value="AddUser">
-			Add New User
-		</mat-radio-button>
-		<mat-radio-button  value="ModUser">
-			Modify Existing User (Add Roles)
-		</mat-radio-button>
-		<mat-radio-button  value="DemRoles">
-			Delimit Roles
-		</mat-radio-button>
-		<mat-radio-button  value="DeactivateUser">
-			Deactivate User
-		</mat-radio-button>
-	</mat-radio-group>
-	<br>
-	<br>
-	<mat-form-field class="thirds">
-		<input matInput autocomplete="off" placeholder="User Name" 
-				[(ngModel)]="tempObject.section1.userName">
-	</mat-form-field>
-	&nbsp;
-	<mat-form-field class="thirds">
-		<input matInput autocomplete="off" placeholder="User's COSA Network ID" 
-				[(ngModel)]="tempObject.section1.userCOSAID">
-	</mat-form-field>
-	&nbsp;
-	<mat-form-field class="thirds">
-		<input matInput [matDatepicker]="picker" placeholder="Choose a date"
-				[(ngModel)]="tempObject.section1.date">
-		<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-		<mat-datepicker #picker></mat-datepicker>
-	</mat-form-field>
-	<br>
-	<mat-form-field class="thirds">
-		<input matInput autocomplete="off" placeholder="Department" 
-				[(ngModel)]="tempObject.section1.department">
-	</mat-form-field>
-	&nbsp;
-	<mat-form-field class="thirds">
-		<input matInput autocomplete="off" placeholder="User's SAP Employee Number" 
-				[(ngModel)]="tempObject.section1.userSAPNum">
-	</mat-form-field>
-	&nbsp;
-	<mat-form-field class="thirds">
-		<input matInput autocomplete="off" placeholder="Job Description" 
-				[(ngModel)]="tempObject.section1.jobDesc">
-	</mat-form-field>
-	<br>
-	<mat-form-field class="thirds">
-		<input matInput autocomplete="off" placeholder="Email Address" 
-				[(ngModel)]="tempObject.section1.emailAddr">
-	</mat-form-field>
-	&nbsp;
-	<mat-form-field class="thirds">
-		<input matInput autocomplete="off" placeholder="Manager's Name" 
-				[(ngModel)]="tempObject.section1.managerName">
-	</mat-form-field>
-	&nbsp;
-	<mat-form-field class="thirds">
-		<input matInput autocomplete="off" placeholder="Work Location" 
-				[(ngModel)]="tempObject.section1.workLocation">
-	</mat-form-field>
-	<br>
-	<mat-checkbox [(ngModel)]="tempObject.section1.tempEmp" > Temporary Employee? </mat-checkbox>
-	<div *ngIf="tempObject.section1.tempEmp">
-		<h4>User ID Expiration Date</h4>
-		<mat-form-field class="thirds">
-			<input matInput [matDatepicker]="picker2" placeholder="From"
-					[(ngModel)]="tempObject.section1.date">
-			<mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-			<mat-datepicker #picker2></mat-datepicker>
+<div *ngIf="SubFormData != undefined">
+	<div>
+		<h2>Section 1: General Info</h2>
+		<mat-radio-group [(ngModel)]="SubFormData.formReason">
+			<mat-radio-button value="AddUser">
+				Add New User
+			</mat-radio-button>
+			<mat-radio-button  value="ModUser">
+				Modify Existing User (Add Roles)
+			</mat-radio-button>
+			<mat-radio-button  value="DemRoles">
+				Delimit Roles
+			</mat-radio-button>
+			<mat-radio-button  value="DeactivateUser">
+				Deactivate User
+			</mat-radio-button>
+		</mat-radio-group>
+		<br>
+		<br>
+		<mat-form-field class="thirdsSelect">
+			<input matInput autocomplete="off" placeholder="User's COSA Network ID" 
+					[(ngModel)]="SubFormData.userCOSAID">
 		</mat-form-field>
-		&nbsp;
-		<mat-form-field class="thirds">
-			<input matInput [matDatepicker]="picker3" placeholder="To"
-					[(ngModel)]="tempObject.section1.IDExpEnd">
-			<mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
-			<mat-datepicker #picker3></mat-datepicker>
+		<mat-form-field class="thirdsSelect">
+			<input matInput autocomplete="off" placeholder="Email Address" 
+					[(ngModel)]="SubFormData.emailAddr">
 		</mat-form-field>
+		<mat-form-field class="thirdsSelect">
+			<input matInput autocomplete="off" placeholder="Work Location" 
+					[(ngModel)]="SubFormData.workLocation">
+		</mat-form-field>
+		<br>
+		<mat-checkbox [(ngModel)]="SubFormData.tempEmp" > Temporary Employee? </mat-checkbox>
+		<div *ngIf="SubFormData.tempEmp">
+			<h4>User ID Expiration Date</h4>
+			<mat-form-field class="thirdsSelect">
+				<input matInput [matDatepicker]="picker2" placeholder="From"
+						[(ngModel)]="SubFormData.date">
+				<mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+				<mat-datepicker #picker2></mat-datepicker>
+			</mat-form-field>
+			<mat-form-field class="thirdsSelect">
+				<input matInput [matDatepicker]="picker3" placeholder="To"
+						[(ngModel)]="SubFormData.IDExpEnd">
+				<mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+				<mat-datepicker #picker3></mat-datepicker>
+			</mat-form-field>
+		</div>
+		<br>
+		<mat-checkbox [(ngModel)]="SubFormData.tempRoleAssn" > Temporary Role Assignment? </mat-checkbox>
+		<div *ngIf="SubFormData.tempRoleAssn">
+			<h4>Temporary Role Expiration</h4>
+			<mat-form-field class="thirdsSelect">
+				<input matInput [matDatepicker]="picker4" placeholder="From"
+						[(ngModel)]="SubFormData.tempRoleExp">
+				<mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+				<mat-datepicker #picker4></mat-datepicker>
+			</mat-form-field>
+		</div>
 	</div>
 	<br>
-	<mat-checkbox [(ngModel)]="tempObject.section1.tempRoleAssn" > Temporary Role Assignment? </mat-checkbox>
-	<div *ngIf="tempObject.section1.tempRoleAssn">
-		<h4>Temporary Role Expiration</h4>
-		<mat-form-field class="thirds">
-			<input matInput [matDatepicker]="picker4" placeholder="From"
-					[(ngModel)]="tempObject.section1.tempRoleExp">
-			<mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
-			<mat-datepicker #picker4></mat-datepicker>
-		</mat-form-field>
-	</div>
-</div>
-<br>
-<div>
-	<h2>Section 2: Department Roles</h2>
-	<h4>
-		Department roles incude all departments except Police and Fire departments
-	</h4>
-	<h3>General Display</h3>
-	<table style="width:100%;">
-		<tr align="center">
-			<th>
-				Departmental
-			</th>
-			<th>
-				Central (Assigned w/ Central Function Roles)
-			</th>
-		</tr>
-		<tr align="center">
-			<td>
-				<mat-checkbox [(ngModel)]="tempObject.section2.DGD" matTooltip="also granted as Department Cost Center Manager">Department General Display</mat-checkbox>
-			</td>
-			<td>
-				<mat-checkbox [(ngModel)]="tempObject.section2.CGD">Central General Display(All Departments)</mat-checkbox>
-			</td>
-		</tr>
-	</table>
-	<h4>!!!! General Display includes Procurement/Sales/Project Systems/Finance/Controlling/Fixed Assets/Funds Mgmt !!!! </h4>
-	
-	
+	<div>
+		<h2>Section 2: Department Roles</h2>
+		<h4>
+			Department roles incude all departments except Police and Fire departments
+		</h4>
+		<h3>General Display</h3>
+		<table style="width:100%;">
+			<tr align="center">
+				<th>
+					Departmental
+				</th>
+				<th>
+					Central (Assigned w/ Central Function Roles)
+				</th>
+			</tr>
+			<tr align="center">
+				<td>
+					<mat-checkbox [(ngModel)]="SubFormData.DGD" matTooltip="also granted as Department Cost Center Manager">Department General Display</mat-checkbox>
+				</td>
+				<td>
+					<mat-checkbox [(ngModel)]="SubFormData.CGD">Central General Display(All Departments)</mat-checkbox>
+				</td>
+			</tr>
+		</table>
+		<h4>!!!! General Display includes Procurement/Sales/Project Systems/Finance/Controlling/Fixed Assets/Funds Mgmt !!!! </h4>
+		
+		
 
-	<br>
-	<h3>All Roles</h3>
-    <mat-form-field *ngFor="let departments of section2Choices" class="thirdsSelect">
-      <mat-select [(ngModel)]="tempObject.section2[departments.dept]" placeholder="{{departments.dept}}" multiple>
-        <mat-option *ngFor="let item of departments.items" [value]="item">{{ item }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <br>
-</div>
-<br>
-<div>
-	<h2>Section 3: Training Record</h2>
-	<h3>SAP Training Record</h3>
-	<mat-form-field *ngFor="let departments of section3Choices" class="thirdsSelect">
-      <mat-select [(ngModel)]="tempObject.section3[departments.dept]" placeholder="{{departments.dept}}" multiple>
-        <mat-option *ngFor="let item of departments.items" [value]="item">{{ item }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-	
-
-
-    <h2>Section 4: Non-Central Roles</h2>
-    <mat-form-field *ngFor="let departments of section4Choices" class="thirdsSelect">
-      <mat-select [(ngModel)]="tempObject.section4[departments.dept]" placeholder="{{departments.dept}}" multiple>
-        <mat-option *ngFor="let item of departments.items" [value]="item">{{ item }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <br>
-
-    <div *ngIf="this.tempObject.section4['Accounts Receivable'].indexOf('Credit Memo Sales Order Approver (Select option below)') != -1">
-    	<h4>Credit Memo Sales Order Approver (Select Option Below)</h4>
-    	<mat-form-field class="thirdsSelect">
-	      <mat-select [(ngModel)]="tempObject.section4.creditMemoChoice" placeholder="Please Select One" multiple>
-	        <mat-option [value]="Dept">Dept</mat-option>
-	        <mat-option [value]="Police">Police</mat-option>
-	        <mat-option [value]="Fire">Fire</mat-option>
-	        <mat-option [value]="Central">Central</mat-option>
+		<br>
+		<h3>All Roles</h3>
+	    <mat-form-field *ngFor="let departments of section2Choices" class="thirdsSelect">
+	      <mat-select [(ngModel)]="SubFormData[departments.dept]" placeholder="{{departments.dept}}" multiple>
+	        <mat-option *ngFor="let item of departments.items" [value]="item">{{ item }}</mat-option>
 	      </mat-select>
 	    </mat-form-field>
-    </div>
+	    <br>
+	</div>
+	<br>
+	<div>
+		<h2>Section 3: Training Record</h2>
+		<h3>SAP Training Record</h3>
+		<mat-form-field *ngFor="let departments of section3Choices" class="thirdsSelect">
+	      <mat-select [(ngModel)]="SubFormData[departments.dept]" placeholder="{{departments.dept}}" multiple>
+	        <mat-option *ngFor="let item of departments.items" [value]="item">{{ item }}</mat-option>
+	      </mat-select>
+	    </mat-form-field>
+		
+
+
+	    <h2>Section 4: Non-Central Roles</h2>
+	    <mat-form-field *ngFor="let departments of section4Choices" class="thirdsSelect">
+	      <mat-select [(ngModel)]="SubFormData[departments.dept]" placeholder="{{departments.dept}}" multiple>
+	        <mat-option *ngFor="let item of departments.items" [value]="item">{{ item }}</mat-option>
+	      </mat-select>
+	    </mat-form-field>
+
+	    <br>
+
+	    <div *ngIf="SubFormData['Accounts Receivable'].indexOf('Credit Memo Sales Order Approver (Select option below)') != -1">
+	    	<h4>Credit Memo Sales Order Approver (Select Option Below)</h4>
+	    	<mat-form-field class="thirdsSelect">
+		      <mat-select [(ngModel)]="SubFormData.creditMemoChoice" placeholder="Please Select One" multiple>
+		        <mat-option [value]="Dept">Dept</mat-option>
+		        <mat-option [value]="Police">Police</mat-option>
+		        <mat-option [value]="Fire">Fire</mat-option>
+		        <mat-option [value]="Central">Central</mat-option>
+		      </mat-select>
+		    </mat-form-field>
+	    </div>
+	</div>
+
+	<br>
+	<button mat-stroked-button color="warn" (click)="verifySubForm();" *ngIf="!SubFormData.Completed">
+		Verify SubForm
+	</button>
+	<button mat-stroked-button [style.color]="'forestgreen'" *ngIf="SubFormData.Completed" disabled>
+		SubForm Verified
+	</button>
 </div>
+
+
+

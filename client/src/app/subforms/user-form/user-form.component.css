@@ -5,23 +5,15 @@
 	margin-right: 2%;
 }
 
-.example-full-width {
-	width: 100%;
+.thirds{
+	margin:5px;
+	width:30%;
 }
 
-.example-margin {
-	margin: 0 10px;
+mat-radio-button{
+	margin:5px;
 }
 
-.mat-radio-button ~ .mat-radio-button {
-	padding-right: 16px;
-}
-
-.example-radio-group {
-  display: inline-flex;
-  flex-direction: column;
-}
-
-.example-radio-button {
-  margin: 5px;
+mat-checkbox{
+	margin:5px;
 }

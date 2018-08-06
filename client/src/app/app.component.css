@@ -8,3 +8,18 @@
 .spacer{
 	flex: 1 1 auto;
 }
+
+.sideNavContent{
+	width:100vw;
+	height:100vh;
+	/*background-color: blue;*/
+}
+
+.flexy{
+	display: flex;
+	flex-direction: column;
+}
+
+.flexy > div{
+	flex: 1;
+}

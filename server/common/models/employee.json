@@ -1,0 +1,37 @@
+{
+  "name": "Employee",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "PWD": {
+      "type": "string"
+    },
+    "MI": {
+      "type": "string"
+    },
+    "FIRSTNAME": {
+      "type": "string"
+    },
+    "LASTNAME": {
+      "type": "string"
+    },
+    "EMAIL": {
+      "type": "string"
+    },
+    "FORMS": {
+      "type": "array"
+    },
+    "SAP": {
+      "type": "string",
+      "id": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

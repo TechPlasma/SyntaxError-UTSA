@@ -1,0 +1,228 @@
+{
+  "name": "SubForm6",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "FormName": {
+      "type": "string"
+    },
+    "Completed": {
+      "type": "boolean",
+      "default": false
+    },
+    "Needed": {
+      "type": "boolean",
+      "default": false
+    },
+    "ApprovalStatus": {
+      "type": "string"
+    },
+    "Fulfillment": {
+      "type": "string"
+    },
+    "Approvers": {
+      "type": "array"
+    },
+    "formReason": {
+      "type": "string"
+    },
+    "userCOSAID": {
+      "type": "string"
+    },
+    "userSAPNum": {
+      "type": "string"
+    },
+    "emailAddr": {
+      "type": "string"
+    },
+    "workLocation": {
+      "type": "string"
+    },
+    "IDExpStart": {
+      "type": "string"
+    },
+    "IDExpEnd": {
+      "type": "string"
+    },
+    "tempRoleExp": {
+      "type": "string"
+    },
+    "tempRoleAssn": {
+      "type": "boolean",
+      "default": false
+    },
+    "tempEmp": {
+      "type": "boolean",
+      "default": false
+    },
+    "DGD": {
+      "type": "boolean",
+      "default": false
+    },
+    "CGD": {
+      "type": "boolean",
+      "default": false
+    },
+    "Risk": {
+      "type": [
+        "string"
+      ]
+    },
+    "Police/Fire Incentives": {
+      "type": [
+        "string"
+      ]
+    },
+    "Purchasing": {
+      "type": [
+        "string"
+      ]
+    },
+    "Time": {
+      "type": [
+        "string"
+      ]
+    },
+    "DHSI Only": {
+      "type": [
+        "string"
+      ]
+    },
+    "Accounts Receivable/Sales & Distribution": {
+      "type": [
+        "string"
+      ]
+    },
+    "Permit Printing (Dept)": {
+      "type": [
+        "string"
+      ]
+    },
+    "Collections": {
+      "type": [
+        "string"
+      ]
+    },
+    "Police Department Off Duty": {
+      "type": [
+        "string"
+      ]
+    },
+    "Inventory": {
+      "type": [
+        "string"
+      ]
+    },
+    "Accounts Payable/Travel": {
+      "type": [
+        "string"
+      ]
+    },
+    "Controlling (CO)": {
+      "type": [
+        "string"
+      ]
+    },
+    "Finance": {
+      "type": [
+        "string"
+      ]
+    },
+    "Fixed Assets": {
+      "type": [
+        "string"
+      ]
+    },
+    "Funds Management": {
+      "type": [
+        "string"
+      ]
+    },
+    "Projects": {
+      "type": [
+        "string"
+      ]
+    },
+    "Business Information Warehouse (BW)": {
+      "type": [
+        "string"
+      ]
+    },
+    "Aviation Only – Airline Statistics": {
+      "type": [
+        "string"
+      ]
+    },
+    "Plant Maintenance": {
+      "type": [
+        "string"
+      ]
+    },
+    "Grants Management": {
+      "type": [
+        "string"
+      ]
+    },
+    "Purchasing(Section3)": {
+      "type": [
+        "string"
+      ]
+    },
+    "Grants Management(Section3)": {
+      "type": [
+        "string"
+      ]
+    },
+    "creditMemoChoice": {
+      "type": "string"
+    },
+    "Human Resources / HR Designee Approval": {
+      "type": [
+        "string"
+      ]
+    },
+    "Department Roles Purchasing Designee Approval": {
+      "type": [
+        "string"
+      ]
+    },
+    "Emergency Operations": {
+      "type": [
+        "string"
+      ]
+    },
+    "Accounts Receivable": {
+      "type": [
+        "string"
+      ]
+    },
+    "Treasury": {
+      "type": [
+        "string"
+      ]
+    },
+    "Payroll": {
+      "type": [
+        "string"
+      ]
+    },
+    "Time and Attendance": {
+      "type": [
+        "string"
+      ]
+    },
+    "Budget Department (Funds Management)": {
+      "type": [
+        "string"
+      ]
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

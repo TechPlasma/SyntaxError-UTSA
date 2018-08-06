@@ -1,0 +1,34 @@
+{
+  "name": "Department",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "DEPTNAME": {
+      "type": "string"
+    },
+    "DEPTCODE": {
+      "type": "string"
+    },
+    "isFulfillment": {
+      "type": "string"
+    },
+    "outMasterForms": {
+      "type": "array"
+    },
+    "inMasterForms": {
+      "type": "array"
+    },
+    "dID": {
+      "type": "string",
+      "id": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

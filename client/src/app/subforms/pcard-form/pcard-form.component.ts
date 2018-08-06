@@ -1,107 +1,83 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, forwardRef, OnInit } from '@angular/core';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { pCard, limReq} from './pcard-formModel'; 
+
+const noop = () => {
+};
+ 
+export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => PCardFormComponent),
+    multi: true
+};
+
 //import pCard class from pcard-formModel. Holds all the data for fields. 
 
 //  NOTE: CHECKBOXES DO NOT CURRENTLY WORK. ASK TEAMMATES FOR IDEAS. 
 @Component({
   selector: 'app-pcard-form',
   templateUrl: './pcard-form.component.html',
-  styleUrls: ['./pcard-form.component.css']
+  styleUrls: ['./pcard-form.component.css'],
+  providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
 })
 export class PCardFormComponent implements OnInit {
-	//pcard object set with default value. 
-  pcard: pCard = {
-    requestFormType: ``,
-    ceoWebAccessOnly: false,
-    newCardRequest: false,
-    chMaintenance: false,
-    firstName: ``,
-    middleName: ``,
-    lastName: ``,
-    suffix: ``,
-    userName: ``,
-    cosaEmail: ``,
-    sapEmpId: ``,
-    dept: ``,
-    role: ``,
-    roleDetails: ``,
-    deptAppChName: ``,
-    deptAppChSapNm: ``,
-    reconcilerBoolean: false,
-    reconcilerName: ``,
-    reconcilerSapNm: ``,
-    chFirstName: ``,
-    chLastName: ``,
 
-    tempDate: ``,
-    chChange: ``,
-    chTransLimits: false,
-    chName: false,
-    chRoleChange: false,
-    chlastFourCardDigits: null,
+  //The internal data model
+    private innerValue: any = '';
 
-    // stuff for changing card holder fields.
-    newUserName: ``,
-    newChFirstName: ``,
-    newChMiddleName: ``,
-    newChLastName: ``,
-    newChSuffix: ``,
+    //Placeholders for the callbacks which are later provided
+    //by the Control Value Accessor
+    private onTouchedCallback: () => void = noop;
+    private onChangeCallback: (_: any) => void = noop;
 
-    defCostType: ``,
-    defCode: ``,
-    description: ``,
-    
-    limitsRequested:``,
-    limitExplain: ``,
+    //get accessor
+    get SubFormData(): any {
+        return this.innerValue;
+    };
 
-    formComments: ``,
-    sigBox: false,
-    userID: ``,
-    password: ``,
-    deptAdmin: ``,
-    date: ``,
-  };
+    //set accessor including call the onchange callback
+    set SubFormData(v: any) {
+        if (v !== this.innerValue) {
+            this.innerValue = v;
+            this.onChangeCallback(v);
+        }
+    }
 
-  constructor() {}//end constructor. 
-  	
-  	//fill out this constructor AND the pcard-formModel.ts constructor.
-  	//defaults to an empty string.  
+    //Set touched on blur
+    onBlur() {
+        this.onTouchedCallback();
+    }
 
-   ngOnInit() {
-   }
+    //From ControlValueAccessor interface
+    writeValue(value: any) {
+        if (value !== this.innerValue) {
+            this.innerValue = value;
+        }
+    }
 
-   /*
-        CHECKBOX FIXED.
-        - Checkbox can be set to [(ngModel)]="pcard.sigBox".
-        - this means that box is checked, it changes the default value
-          of the pcard.variable to true.
-        - If box is unchecked, then it returns to a false.
-        - I tested this via the console prints in "addToLog".
-        - it works!
-   */
-   addToLog(pcard: pCard){
-     console.log(`Hello there, from pcard-form. ${pcard.firstName}`);
-     console.log(`And last name is: ${pcard.lastName}`);
-     console.log(`email test is: ${pcard.cosaEmail}`);
-     
-     console.log(`CHECKBOX 1: CEO Website Access is ${pcard.ceoWebAccessOnly}`);
-     console.log(`CHECKBOX 2: New Card Request is ${pcard.newCardRequest}`);
-     console.log(`CHECKBOX 3: Cardholder Maintenance is ${pcard.chMaintenance}`);
+    //From ControlValueAccessor interface
+    registerOnChange(fn: any) {
+        this.onChangeCallback = fn;
+    }
 
-     console.log(`dropdown menu: Dept is.${pcard.dept} `);
+    //From ControlValueAccessor interface
+    registerOnTouched(fn: any) {
+        this.onTouchedCallback = fn;
+    }
 
-     console.log(`boolean test. Checkbox. Sig is ${pcard.sigBox}`);
+    verifySubForm(){
+        this.SubFormData.Completed = true;
+        console.log(this.SubFormData);
+    }
 
-     console.log(`RADIO button: testing. value is ${pcard.reconcilerBoolean}`);
+  
 
-     console.log(`User password is ${pcard.password} `);
+  constructor() {
 
-     console.log(`Date thing is: ${pcard.date}`);
+    }
 
-     console.log(`Temp Date is: ${pcard.tempDate}`);
+    ngOnInit(){
 
-
-     // console.log(`Limits Requested: is ${pcard.limitsRequested}`);
-   }
+    }
 
 }

@@ -1,35 +1,14 @@
-<!-- 
- Department Request
- 	- Department         : Input
- 	- Department Request : Input
- 	- Date				 : Input (for now)
- 	- Phone Ext.         : Input
- 	- Request Type       : Radio Button
--->
-<h3><b>Department Request</b></h3>
-<mat-form-field class = "example-form">
-    <input matInput placeholder = "Department" [(ngModel)] = "UPR.department">
-</mat-form-field>
-<mat-form-field class = "example-form">
-    <input matInput placeholder = "Date" [(ngModel)] = "UPR.deptDate">
-</mat-form-field>
-<br>
-<mat-form-field class = "example-form">
-    <input matInput placeholder = "Department Requester" [(ngModel)] = "UPR.deptRequester">
-</mat-form-field>
-<mat-form-field class = "example-form">
-    <input matInput placeholder = "Phone Ext." [(ngModel)] = "UPR.phoneExt">
-</mat-form-field>
-<br>
+<div *ngIf="SubFormData != undefined">
+	<mat-radio-group [(ngModel)]="SubFormData.reqType">
+		<p>
+			<b>Request Type</b>
+		</p>
+		<mat-radio-button value="1">Provision User</mat-radio-button>
+		<mat-radio-button value="2">Disable User Account</mat-radio-button>
+	</mat-radio-group>
 
-<mat-radio-group [(ngModel)] = "UPR.reqType">
-  <p><b>Request Type</b></p>
-  <mat-radio-button value = "1">Provision User</mat-radio-button>
-  <mat-radio-button value = "2">Disable User Account</mat-radio-button>
-</mat-radio-group>
-
-<!--
-User Provisioning
+	<!--
+	User Provisioning
 	- User Type         : Radio Button
 	- Date of Hire      : Input (dependent on Usr. Type)
 	- User Name         : Input
@@ -38,127 +17,108 @@ User Provisioning
 	- Device Assignment : Radio Button
 	- Device Asset #    : Input (dependent on Dev. Assign.)
 	- Phone Assignment  : Radio Button x2
--->
-<h3><b><br>User Provisioning</b></h3>
-<mat-radio-group [(ngModel)] = "UPR.userType">
-  <p><b>User Type</b></p>
-  <mat-radio-button value = "1">New</mat-radio-button>
-  <mat-radio-button value = "2">Transfer</mat-radio-button>
-  <mat-radio-button value = "3">Rehire</mat-radio-button>
-  <mat-radio-button value = "4">CoSA Temp/Inter</mat-radio-button>
-</mat-radio-group>
+	-->
+	<h3>User Provisioning</h3>
 
-<mat-form-field class = "example-form">
-    <input matInput placeholder = "Date of Hire" [(ngModel)] = "UPR.dtOfHire">
-</mat-form-field>
-<mat-form-field class = "example-form">
-    <input matInput placeholder = "User Name" [(ngModel)] = "UPR.userName">
-</mat-form-field>
-<mat-form-field class = "example-form">
-    <input matInput placeholder = "Employee SAP #" [(ngModel)] = "UPR.empSapNr">
-</mat-form-field>
-<mat-form-field class = "example-form">
-    <input matInput placeholder = "Work Location" [(ngModel)] = "UPR.workLoc">
-</mat-form-field>
-<br>
+	<mat-radio-group [(ngModel)]="SubFormData.userType">
+		<mat-radio-button value="New">New</mat-radio-button>
+		<mat-radio-button value="Transfer">Transfer</mat-radio-button>
+		<mat-radio-button value="Rehire">Rehire</mat-radio-button>
+		<mat-radio-button value="CoSA Temp/Inter">CoSA Temp/Inter</mat-radio-button>
+	</mat-radio-group>
 
-<p><b><u>Device Assigntment:</u></b> *Is an existing device being assigned to this user?</p>
-<mat-radio-group [(ngModel)] = "UPR.deviceAssign">
-  <mat-radio-button value = "true">Yes</mat-radio-button>
-  <mat-radio-button value = "false">No</mat-radio-button>
-</mat-radio-group>
+	<br>
 
-<mat-form-field class = "example-form">
-    <input matInput placeholder = "Device Asset #" [(ngModel)] = "UPR.deviceAssetNr">
-</mat-form-field>
+	<mat-form-field class="thirds">
+		<input matInput [matDatepicker]="picker" placeholder="Date of Hire"
+				[(ngModel)]="SubFormData.dtOfHire">
+		<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+		<mat-datepicker #picker></mat-datepicker>
+	</mat-form-field>
+	<mat-form-field class="thirds">
+		<input matInput placeholder="Work Location" [(ngModel)]="SubFormData.workLoc">
+	</mat-form-field>
+	<br>
 
-<p><b><u>Phone Assigntment:</u></b> *Will you be assigning an existing Cisco IP phone and Extension?</p>
-<mat-radio-group [(ngModel)] = "UPR.phoneAssign">
-  <mat-radio-button value = "true">Yes</mat-radio-button>
-  <mat-radio-button value = "false">No</mat-radio-button>
-</mat-radio-group>
+	<b><u>Device Assigntment:</u></b> *Is an existing device being assigned to this user?
+	<br>
+	<mat-radio-group [(ngModel)]="SubFormData.deviceAssign">
+		<mat-radio-button value="true">Yes</mat-radio-button>
+		<mat-radio-button value="false">No</mat-radio-button>
+	</mat-radio-group>
 
-<p>*Does this employee extension need to be set up as a Service Center Agent or Supervisor?</p>
-<mat-radio-group [(ngModel)] = "UPR.phoneAssign2">
-  <mat-radio-button value = "true">Yes</mat-radio-button>
-  <mat-radio-button value = "false">No</mat-radio-button>
-</mat-radio-group>
+	<mat-form-field class="thirds">
+	<input matInput placeholder="Device Asset #" [(ngModel)]="SubFormData.deviceAssetNr">
+	</mat-form-field>
+	<br>
+	<br>
+	<p><b><u>Phone Assigntment:</u></b> *Will you be assigning an existing Cisco IP phone and Extension?</p>
+	<mat-radio-group [(ngModel)]="SubFormData.phoneAssign">
+		<mat-radio-button value="true">Yes</mat-radio-button>
+		<mat-radio-button value="false">No</mat-radio-button>
+	</mat-radio-group>
+	<br>
+	<br>
+	<p>*Does this employee extension need to be set up as a Service Center Agent or Supervisor?</p>
+	<mat-radio-group [(ngModel)]="SubFormData.phoneAssign2">
+		<mat-radio-button value="true">Yes</mat-radio-button>
+		<mat-radio-button value="false">No</mat-radio-button>
+	</mat-radio-group>
 
-<!--
-User Access
- - Home Drive                 : Checkbox
- - Dept. Share Drive          : Checkbox
- - Email                      : Checkbox
- - Name                       : Input
- - SAP#                       : Input
- - Additional Requirements x2 : Checkbox x2 + Input
- - Mainframe Acces x 2        : Checkbox x2 + Input
--->
-<h3><b><br>User Access</b></h3>
+	<!--
+	User Access
+	- Home Drive                 : Checkbox
+	- Dept. Share Drive          : Checkbox
+	- Email                      : Checkbox
+	- Name                       : Input
+	- SAP#                       : Input
+	- Additional Requirements x2 : Checkbox x2 + Input
+	- Mainframe Acces x 2        : Checkbox x2 + Input
+	-->
+	<h3><b><br>User Access</b></h3>
 
-<mat-checkbox [(ngModel)] = "UPR.homeDr">Home Drive(H)</mat-checkbox>
-<br>
-<mat-checkbox [(ngModel)] = "UPR.deptShareDr">Department Share Drive(K)</mat-checkbox>
-<br>
-<mat-checkbox [(ngModel)] = "UPR.email">Email</mat-checkbox>
-<br>
+	<mat-checkbox [(ngModel)]="SubFormData.homeDr">Home Drive(H)</mat-checkbox>
+	<mat-checkbox [(ngModel)]="SubFormData.deptShareDr">Department Share Drive(K)</mat-checkbox>
+	<mat-checkbox [(ngModel)]="SubFormData.email">Email</mat-checkbox>
+	<br>
 
-<mat-form-field class = "example-form">
-    <input matInput placeholder = "Name" [(ngModel)] = "UPR.name">
-</mat-form-field>
-<mat-form-field class = "example-form">
-    <input matInput placeholder = "SAP #" [(ngModel)] = "UPR.sapNr">
-</mat-form-field>
-<p><b>
+	<mat-form-field class="thirds">
+	<input matInput placeholder="Name" [(ngModel)]="SubFormData.name">
+	</mat-form-field>
+	<mat-form-field class="thirds">
+	<input matInput placeholder="SAP #" [(ngModel)]="SubFormData.sapNr">
+	</mat-form-field>
+	<p><b>
 	Note: for SAP Roles, please coordinate those requirements with your <br>
 	designated Department Access Provision Specialist.
-</b></p>
+	</b></p>
 
-<mat-checkbox [(ngModel)] = "UPR.addReq">
-	Additional requirements (<i>Shared folders, Distributed Lists, etc.</i>)</mat-checkbox>
-<br>
-<mat-checkbox [(ngModel)] = "UPR.addReqList">
-	Additional requirements list is attatched</mat-checkbox>
-<br>
-<mat-form-field class = "example-form">
-    <input matInput placeholder = "requirements go here" [(ngModel)] = "UPR.addReqText">
-</mat-form-field>
+	<mat-checkbox [(ngModel)]="SubFormData.addReq">
+		Additional requirements (<i>Shared folders, Distributed Lists, etc.</i>)
+	</mat-checkbox>
+	<br>
 
-<mat-checkbox [(ngModel)] = "UPR.mfAccess">
-	Mainframe Access
-	(<i>Id needing access to an application within the mainframe, please list</i>)</mat-checkbox>
-<br>
-<mat-checkbox [(ngModel)] = "UPR.mfAccessList">
-	Mainframe application access list is attatched</mat-checkbox>
-<br>
-<mat-form-field class = "example-form">
-    <input matInput placeholder = "Mainrame Information Here" [(ngModel)] = "UPR.mfText">
-</mat-form-field>
+	<mat-form-field class="thirds">
+	<input matInput placeholder="requirements go here" [(ngModel)]="SubFormData.addReqText">
+	</mat-form-field>
 
-<!--
-	Signatures
-		- Requestor           : Input
-		- Date                : Input
-		- Dept. Head/Designee : Input
-		- Date                : Input
--->
-<h3><b><br>Signatures</b></h3>
-<mat-form-field class = "example-form">
-    <input matInput placeholder = "Requestor" [(ngModel)] = "UPR.requester">
-</mat-form-field>
-<mat-form-field class = "example-form">
-    <input matInput placeholder = "Date" [(ngModel)] = "UPR.requesterDt">
-</mat-form-field>
-<mat-form-field class = "example-form">
-    <input matInput placeholder = "Department Head / Designee" [(ngModel)] = "UPR.deptHd_Designee">
-</mat-form-field>
-<mat-form-field class = "example-form">
-    <input matInput placeholder = "Date" [(ngModel)] = "UPR.dHdDt">
-</mat-form-field>
+	<br>
+	<mat-checkbox [(ngModel)]="SubFormData.mfAccess">
+		Mainframe Access
+		(<i>Id needing access to an application within the mainframe, please list</i>)
+	</mat-checkbox>
+	<br>
+	<mat-form-field class="thirds">
+		<input matInput placeholder="Mainrame Information Here" [(ngModel)]="SubFormData.mfText">
+	</mat-form-field>
 
-<!-- Logging over here for testing purposes -->
-<div class = "testing">
-	<button (click) = "addToLog(UPR)">
-	Save and Log
+	<br>
+	<button mat-stroked-button color="warn" (click)="verifySubForm();" *ngIf="!SubFormData.Completed">
+		Verify SubForm
 	</button>
+	<button mat-stroked-button [style.color]="'forestgreen'" *ngIf="SubFormData.Completed" disabled>
+		SubForm Verified
+	</button>
+
 </div>
+

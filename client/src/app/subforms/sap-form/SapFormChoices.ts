@@ -10,7 +10,7 @@ export let Section2Choices = [
 			'Departmental Uniform Fire & Police Incentives Maintainer',
 			'Departmental Uniform Fire & Police Incentives Displayer'
 		]},
-	{dept:'Purchasing',
+	{dept:'Purchasing(Section2)',
 		items:[
 			'Departmental Requisitioner1',
 			'Departmental Purchase Contract Administrator (Expend)',
@@ -72,7 +72,7 @@ export let Section2Choices = [
 			'Warehouse Maintainer',
 			'Enter Inventory Counts'
 		]},
-	{dept:'Accounts Payable/Travel',
+	{dept:'Accounts Payable/Travel(Section2)',
 		items:[
 			'Departmental Non-PO Invoice Processor',
 			'Dept Non-PO Invoice Approver',
@@ -85,7 +85,7 @@ export let Section2Choices = [
 			'Departmental Performance Measures Maintainer',
 			'DPT Internal Order Master Data Maintainer Special Events'
 		]},
-	{dept:'Finance',
+	{dept:'Finance(Section2)',
 		items:[
 			'Departmental Accounting Transactions Initiator',
 			'Departmental Off Cycle Workbench',
@@ -100,7 +100,7 @@ export let Section2Choices = [
 		items:[
 			'Departmental Budget Specialist'
 		]},
-	{dept:'Projects',
+	{dept:'Projects(Section2)',
 		items:[
 			'Project Systems Department',
 			'Project Builder Display'
@@ -129,7 +129,7 @@ export let Section2Choices = [
 			'Departmental PM General Display',
 			'Departmental Analysis Reports'
 		]},
-	{dept:'Grants Management',
+	{dept:'Grants Management(Section2)',
 		items:[
 			'Display Departmental Grant Management'
 		]}
@@ -137,7 +137,7 @@ export let Section2Choices = [
 
 export let Section3Choices = [
 	{
-		dept:'Purchasing',
+		dept:'Purchasing(Section3)',
 		items:[
 			'SAePS Shopper',
 			'SAePS Departmental Approver',
@@ -151,7 +151,7 @@ export let Section3Choices = [
 		]
 	},
 	{
-		dept:'Grants Management',
+		dept:'Grants Management(Section3)',
 		items:[
 			'Departmental GM Billing Specialist',
 			'Departmental GM Budget Specialist'
@@ -247,7 +247,7 @@ export let Section4Choices = [
 		]
 	},
 	{
-		dept:'Accounts Payable/Travel',
+		dept:'Accounts Payable/Travel(Section4)',
 		items:[
 			'Central A/P Invoice Processor',
 			'Central A/P Clearing Coordinator',
@@ -262,7 +262,7 @@ export let Section4Choices = [
 		]
 	},
 	{
-		dept:'Finance',
+		dept:'Finance(Section4)',
 		items:[
 			'Central CO Closing Coordinator',
 			'Central Accounting Transactions Initiator',
@@ -297,7 +297,7 @@ export let Section4Choices = [
 		]
 	},
 	{
-		dept:'Grants Management',
+		dept:'Grants Management(Section4)',
 		items:[
 			'Central Grant Management Master Data Maintainer'
 		]
@@ -311,7 +311,7 @@ export let Section4Choices = [
 		]
 	},
 	{
-		dept:'Projects',
+		dept:'Projects(Section4)',
 		items:[
 			'Project Builder and Reports',
 			'Project Systems Finance'

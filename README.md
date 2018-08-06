@@ -18,7 +18,11 @@ Build Instructions
 `ng serve`
 
 ### Server
-`Not Yet Available`
+`cd SyntaxError-UTSA\server`\
+`npm install` <- First timme only\
+`npm start` <- Starts the Server\
+`slc arc`  <- GUI Model Editor and Database Connector
+(This can be done via Command Line too)
 
 How to Make Changes
 ------
