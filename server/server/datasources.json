@@ -2,5 +2,15 @@
   "db": {
     "name": "db",
     "connector": "memory"
+  },
+  "SyntaxErrorDB": {
+    "host": "35.185.64.38",
+    "port": 27017,
+    "url": "mongodb://35.185.64.38:27017/SynErrDB",
+    "database": "SynErrDB",
+    "password": "",
+    "name": "SyntaxErrorDB",
+    "user": "",
+    "connector": "mongodb"
   }
 }

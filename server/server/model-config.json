@@ -14,81 +14,81 @@
     ]
   },
   "User": {
-    "dataSource": "db"
+    "dataSource": "SyntaxErrorDB"
   },
   "AccessToken": {
-    "dataSource": "db",
+    "dataSource": "SyntaxErrorDB",
     "public": false
   },
   "ACL": {
-    "dataSource": "db",
+    "dataSource": "SyntaxErrorDB",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "db",
+    "dataSource": "SyntaxErrorDB",
     "public": false,
     "options": {
       "strictObjectIDCoercion": true
     }
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "SyntaxErrorDB",
     "public": false
   },
   "MasterForm": {
-    "dataSource": "db",
+    "dataSource": "SyntaxErrorDB",
     "public": true,
     "$promise": {},
     "$resolved": true
   },
   "SubForm0": {
-    "dataSource": "db",
+    "dataSource": "SyntaxErrorDB",
     "public": true,
     "$promise": {},
     "$resolved": true
   },
   "SubForm1": {
-    "dataSource": "db",
+    "dataSource": "SyntaxErrorDB",
     "public": true,
     "$promise": {},
     "$resolved": true
   },
   "SubForm2": {
-    "dataSource": "db",
+    "dataSource": "SyntaxErrorDB",
     "public": true,
     "$promise": {},
     "$resolved": true
   },
   "SubForm3": {
-    "dataSource": "db",
+    "dataSource": "SyntaxErrorDB",
     "public": true
   },
   "SubForm4": {
-    "dataSource": "db",
+    "dataSource": "SyntaxErrorDB",
     "public": true,
     "$promise": {},
     "$resolved": true
   },
   "SubForm5": {
-    "dataSource": "db",
+    "dataSource": "SyntaxErrorDB",
     "public": true,
     "$promise": {},
     "$resolved": true
   },
   "SubForm6": {
-    "dataSource": "db",
+    "dataSource": "SyntaxErrorDB",
     "public": true,
     "$promise": {},
     "$resolved": true
   },
   "Employee": {
-    "dataSource": "db",
+    "dataSource": "SyntaxErrorDB",
     "public": true,
     "$promise": {},
     "$resolved": true
   },
   "Department": {
-    "dataSource": "db",
+    "dataSource": "SyntaxErrorDB",
     "public": true,
     "$promise": {},
     "$resolved": true
