@@ -50,6 +50,8 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 })
 export class HardSoftFormComponent implements OnInit {
 
+    ERROR;
+
 
 	remove(array,element){
 		return array.filter(e => e !== element);
@@ -113,6 +115,8 @@ export class HardSoftFormComponent implements OnInit {
 
     verifySubForm()
     {
+        this.ERROR = [];
+
         //reset finalCheck boolean to true.
         //If any error is found in the inputs, it is set to false.
         finalCheck = true;
@@ -402,16 +406,16 @@ export class HardSoftFormComponent implements OnInit {
             {
                 if(e.isCorrect == false){
                     finalCheck = false;
-                    console.log(`${e.name}`);
+                    this.ERROR.push(`${e.name}`);
                 }
             }//END foor loop for testValidInput array.
 
         
             if(finalCheck == true)
             { 
-                console.log(`CLEARED. All valid inputs.`);
+                //console.log(`CLEARED. All valid inputs.`);
                 this.SubFormData.Completed = true;
-                console.log(this.SubFormData);
+                //console.log(this.SubFormData);
             }//end validation test.
 
         }//end if subform exists. 

@@ -62,6 +62,8 @@ export class SAPFormComponent implements OnInit {
     section3Choices: Object; 
     section4Choices: Object; 
 
+    ERROR;
+
 	checkCreditMemo(){
 		if('Credit Memo Sales Order Approver (Select option below)' in this.SubFormData['Accounts Receivable']){
 			return true;
@@ -121,6 +123,7 @@ export class SAPFormComponent implements OnInit {
 
     verifySubForm()
     {
+        this.ERROR = [];
         //reset finalCheck to true per call. 
         //This is for the user to have multiple attempts to verify the form.
         finalCheck = true;
@@ -262,14 +265,14 @@ export class SAPFormComponent implements OnInit {
             if(e.isCorrect == false)
             {
                 finalCheck = false;
-                console.log(`${e.name}`);
+                this.ERROR.push(`${e.name}`);
             }
         }//END foor loop for testValidInput array.
 
         if(finalCheck == true)
         {
             this.SubFormData.Completed = true;
-            console.log(this.SubFormData);
+            //console.log(this.SubFormData);
 
         }//end verify finalCheck.
 

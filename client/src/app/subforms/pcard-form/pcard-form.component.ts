@@ -58,6 +58,8 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 })
 export class PCardFormComponent implements OnInit {
 
+    ERROR;
+
   //The internal data model
     private innerValue: any = '';
 
@@ -103,6 +105,7 @@ export class PCardFormComponent implements OnInit {
 
     verifySubForm()
     {
+        this.ERROR = [];
         //Lots of reactive fields. Bif if statement blocks.
         if(this.SubFormData.requestFormType)
         {    
@@ -437,15 +440,15 @@ export class PCardFormComponent implements OnInit {
             if(e.isCorrect == false)
             {
                     finalCheck = false;
-                    console.log(`${e.name}`);
+                    this.ERROR.push(`${e.name}`);
             }
         }//END foor loop for testValidInput array.
 
         if(finalCheck == true)
         {
-            this.SubFormData.Completed = true;
+            //this.SubFormData.Completed = true;
             console.log(this.SubFormData);
-            console.log(`CLEARED. All valid inputs.`);
+            //console.log(`CLEARED. All valid inputs.`);
         }
 
         }//end BIG IF for if the Form even exist.     
