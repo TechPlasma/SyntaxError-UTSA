@@ -3,11 +3,201 @@
 	<mat-card-title>
 		{{SubFormData.FormName}} Data View
 	</mat-card-title>
+	
 	<mat-card-content>
+		<table>
+			<tr>
+				<td colspan="2" align="center">
+					<h4>
+						Request
+				       </h4>
+				</td>
+			</tr>
 
+			<tr *ngIf="SubFormData.provHardware">
+				<td> <b>Hardware Provision? </b> </td>
+				<td> Yes </td>
+			</tr>
 
-		Your Code Goes Here
+			<tr *ngIf="SubFormData.provHardware">
+				<td> <b> Hardware Cost Center IO: </b> </td>
+				<td> {{SubFormData.hardCostCenterIO}} </td>
+			</tr>
 
+			<tr *ngIf="SubFormData.provHardware">
+				<td> <b>Hardware GL Acct: </b> </td>
+				<td> {{SubFormData.hardGlAcc}} </td>
+			</tr>
+
+			<tr *ngIf="SubFormData.provSoftware">
+				<td> <b>Software Provison? </b> </td>
+				<td> Yes </td>
+			</tr>
+
+			<tr *ngIf="SubFormData.provSoftware">
+				<td> <b>Software Cost Center IO: </b> </td>
+				<td> {{SubFormData.softCostCenterIO}} </td>
+			</tr>
+
+			<tr *ngIf="SubFormData.provSoftware">
+				<td> <b>Software GL Acct: </b> </td>
+				<td> {{SubFormData.softGlAcc}} </td>
+			</tr>
+
+<!-- CODE BLOCK for hardware provisioning.  -->
+			<tr *ngIf="SubFormData.provHardware">
+				<td colspan="2" align="center">
+					<h4>
+						Hardware -- Provisioning (Assigned)
+				    </h4>
+				</td>
+			</tr>
+
+			<tr *ngIf="SubFormData.provHardware">
+				<td> <b>Bldg Location: </b> </td>
+				<td> {{SubFormData.BldgLoc}} </td>
+			</tr>
+
+			<tr *ngIf="SubFormData.provHardware">
+				<td> <b>Floor: </b> </td>
+				<td> {{SubFormData.floor}} </td>
+			</tr>
+
+			<tr *ngIf="SubFormData.provHardware">
+				<td> <b>Office #: </b> </td>
+				<td> {{SubFormData.office}} </td>
+			</tr>
+
+			<tr *ngIf="SubFormData.provHardware">
+				<td> <b>Request Type: </b> </td>
+				<td> {{SubFormData.requestType}} </td>
+			</tr>
+
+			<tr *ngIf="SubFormData.provHardware">
+				<td> <b>Current Device ID: </b> </td>
+				<td> {{SubFormData.currentDeviceId}} </td>
+			</tr>
+			<!-- Reactive fields for Desktop checkbox -->
+			<tr *ngIf="SubFormData.desktopBox">
+				<td> <b>Desktop? </b></td>
+				<td> Yes </td>
+			</tr>
+
+			<tr *ngIf="SubFormData.desktopBox">
+				<td> <b>Desktop Seleted: </b></td>
+				<td> {{SubFormData.desktopInput}} </td>
+			</tr>
+
+			<!-- Reactive fields for Laptop checkbox -->
+			<tr *ngIf="SubFormData.laptopBox">
+				<td> <b>Laptop? </b> </td>
+				<td> Yes </td>
+			</tr>
+
+			<tr *ngIf="SubFormData.laptopBox">
+				<td> <b>Laptop Selected: </b> </td>
+				<td> {{SubFormData.laptopInput}} </td>
+			</tr>
+			<!-- EXTRAS for Laptop checkbox. -->
+			<tr *ngIf="SubFormData.dockingStation || SubFormData.keyMouse || SubFormData.addMonitor">
+				<td> <b>Laptop Extras ? </b> </td>
+				<td> Yes </td>
+			</tr>
+
+			<tr *ngIf="SubFormData.dockingStation">
+				<td> <b>Laptop Docking Station? </b> </td>
+				<td> Yes </td>
+			</tr>
+
+			<tr *ngIf="SubFormData.keyMouse"> 
+				<td> <b>Laptop Keyboard/Mouse? </b> </td>
+				<td> Yes </td>
+			</tr>
+
+			<tr *ngIf="SubFormData.addMonitor">
+				<td> <b>Laptop Additoinal Monitor? </b> </td>
+				<td> Yes </td>
+			</tr>
+<!-- END Laptop + Extras fields. -->
+
+<!-- Monitor checkbox fields.    -->
+			<tr *ngIf="SubFormData.monitorBox">
+				<td><b>Monitor? </b> </td>
+				<td> Yes </td>
+			</tr>
+
+			<tr *ngIf="SubFormData.monitorBox">
+				<td><b>Monitor Mode: </b> </td>
+				<td> {{SubFormData.monitorMode}} </td>
+			</tr>
+
+			<tr *ngIf="SubFormData.monitorBox">
+				<td><b>Monitor Selected: </b> </td>
+				<td> {{SubFormData.monitorInput}} </td>
+			</tr>
+
+			<tr *ngIf="SubFormData.printerBox"> 
+				<td> <b>Printer? </b> </td>
+				<td> Yes </td>
+			</tr>
+
+			<tr *ngIf="SubFormData.ipDeskPhoneBox">
+				<td> <b>IP Desk Phone: </b>	</td>
+				<td> {{SubFormData.ipDeskPhoneInput}} </td>
+			</tr>
+
+			<tr *ngIf="SubFormData.otherBox">
+				<td> <b>Other: </b></td>
+				<td> {{SubFormData.otherInput}} </td> 
+			</tr>
+<!--END CODE BLOCK for Hardware Provisions.	 -->
+
+<!-- Middle paragraph in the form.-->
+			<tr *ngIf="SubFormData.softwareOtherBox">
+				<td><b>Other Image Details: </b></td>
+				<td> {{SubFormData.softwareOtherInput}} </td>
+			</tr>
+		</table>
+
+		<!-- idea: make new table for this. -->
+<!-- Software Provisioning Fields. Tricky, Object Oriented. -->
+	
+		<table *ngIf="SubFormData.provSoftware">
+			<tr>
+				<td colspan="2" align="center">
+					<h4> Software </h4>
+				</td>
+			</tr>
+
+			<tr>
+				<th>
+					Software Categoy
+				</th>
+
+				<th>
+					Software Descrpition
+				</th>
+
+				<th>
+					SAP/Logon ID
+				</th>
+
+				<th>
+					Qty
+				</th>
+
+				<th>
+			</tr>
+
+			<tr *ngFor="let softItem of SubFormData.specialSoftware">
+				<td> Specialized Software </td>
+
+				<td> {{softItem.softDesc}} </td>
+				<td> {{softItem.loginID}} </td>
+				<td> 1 </td>
+			</tr>
+		</table>
+	
 
 	</mat-card-content>
 </mat-card>

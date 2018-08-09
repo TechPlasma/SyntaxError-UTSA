@@ -1,12 +1,359 @@
 
 <mat-card *ngIf="SubFormData != null">
 	<mat-card-title>
-		{{SubFormData.FormName}} Data View
+		{{SubFormData.FormName}} Data View 
 	</mat-card-title>
 	<mat-card-content>
+	  <!-- UNVERISAL: PERSONAL INFORMATION: Shows up when ANY form type is selected.  -->
+    <div *ngIf="SubFormData.requestFormType">
+        <mat-card-content>
+         <table>
+         	<tr>
+			<td colspan="2" align="center">
+				<h4>
+					Requisition Information
+			       </h4>
+			</td>
+		</tr>
+
+			<tr>
+				<td> <!-- Form type(checkboxes) -->
+					<b>Requisition Type:</b> 
+				</td>
+
+				<td>
+					{{SubFormData.requestFormType}}
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<b>COSA Email:</b> 
+				</td>
+
+				<td>
+					{{SubFormData.cosaEmail}}
+				</td>
+			</tr>
+			
+		<!-- STUFF for role in an if statement for CEO Website Access ONLY. As in the checkbox only-->
+			<tr *ngIf="SubFormData.requestFormType == 'CEO Website Access'">
+          			<td>
+          				<b>Role:</b> 
+          			</td>
+          			<td>
+          				 {{SubFormData.role}}
+          			</td>
+          	</tr>
+
+          	<!-- IF role is approver or reonciler, new field appears. -->
+              <tr *ngIf="SubFormData.role== 'Approver' || SubFormData.role == 'Reconciler'">
+             	<td>
+               		<b>Role Details:</b> 
+           		</td>
+
+           		<td>
+           			{{SubFormData.roleDetails}}
+           		</td>
+           	</tr>
+
+           <!-- CODE BLOCK: data ONLY for fields that appear with "New Credit Card Request" -->
+          	<tr *ngIf="SubFormData.requestFormType == 'New Credit Card Request'">
+          		<td>
+          			<b>Department Approver for this CardHolder:</b> 
+          		</td>
+
+          		<td>
+          			{{SubFormData.deptAppChName}}
+          		</td>
+          	</tr>
+
+          	<tr *ngIf="SubFormData.requestFormType == 'New Credit Card Request'">
+          		<td>
+          			<b>Department Approver Sap Nr for this Cardholder:</b> 
+          		</td>
+
+          		<td>
+          			{{SubFormData.deptAppChSapNm}}
+          		</td>
+          	</tr>
+          	
+          	<tr *ngIf="SubFormData.requestFormType == 'New Credit Card Request' && SubFormData.reconcilerBoolean == 'true'">
+       			<td>
+          			<b>Does CardHolder require a Reconciler? : </b>
+          		</td>
+
+          		<td>
+          			Yes
+          		</td>
+          	</tr>
+
+          	<tr *ngIf="SubFormData.requestFormType == 'New Credit Card Request' && SubFormData.reconcilerBoolean == 'false'">
+       			<td>
+          			<b>Does CardHolder require a Reconciler? : </b>
+          		</td>
+
+          		<td>
+          			No
+          		</td>
+          	</tr>
+
+          	<tr *ngIf="SubFormData.requestFormType == 'New Credit Card Request' && SubFormData.reconcilerBoolean == 'true'">
+          		<td>
+          			<b>Reconciler Name: </b> 
+          		</td>	
+
+          		<td>
+          			{{SubFormData.reconcilerName}}
+          		</td>
+          	</tr>
+
+          	<tr *ngIf="SubFormData.requestFormType == 'New Credit Card Request' && SubFormData.reconcilerBoolean == 'true'">
+          		<td>
+          			<b>Reconciler Sap Number: </b>
+          		</td>
+
+          		<td>
+          			{{SubFormData.reconcilerSapNm}}
+          		</td>
+          	</tr>
+
+          	<tr *ngIf="SubFormData.requestFormType == 'New Credit Card Request'">
+				<td colspan="2" align="center">
+					<h4>
+						Card Setup
+					</h4>
+				</td>
+          	</tr>
+
+          	<tr *ngIf="SubFormData.requestFormType == 'New Credit Card Request'">
+          		<td>
+          			<b>CardHolder First Name: </b>
+          		</td>
+
+          		<td>
+          			{{SubFormData.chFirstName}}
+          		</td>
+          	</tr>
+
+          	<tr *ngIf="SubFormData.requestFormType == 'New Credit Card Request'">
+          		<td>
+          			<b>CardHolder Last Name: </b> 
+          		</td>
+
+          		<td>
+          			{{SubFormData.chLastName}}
+          		</td>
+          	</tr>
+
+           <tr *ngIf="SubFormData.requestFormType == 'New Credit Card Request'">
+				<td colspan="2" align="center">
+					<h4>
+						Accounting Codes
+					</h4>
+				</td>
+			</tr>
+          		
+          	<tr *ngIf="SubFormData.requestFormType == 'New Credit Card Request'">
+          			<td>
+          				<b>Default Cost Type: </b> 
+          			</td>
+
+          			<td>
+          				{{SubFormData.defCostType}}
+          			</td>
+          	</tr>
+
+          	<tr *ngIf="SubFormData.requestFormType == 'New Credit Card Request'"> 
+          		<td>
+          			<b>Default Code: </b>
+          		</td>
+          		<td>
+          			{{SubFormData.defCode}}
+          		<td>
+          	</tr>
+
+          <tr *ngIf="SubFormData.requestFormType == 'New Credit Card Request'"> 
+          		<td>
+          			<b>Description: </b>
+          		</td>
+          		<td>
+          			{{SubFormData.description}}
+          		<td>
+          </tr>
+
+          <tr *ngIf="SubFormData.requestFormType == 'New Credit Card Request'">
+          		<td colspan="2" align="center">
+					<h4>
+						Set Cardholder Limits
+					</h4>
+				</td>
+          </tr>
+
+          <tr *ngIf="SubFormData.requestFormType == 'New Credit Card Request'">
+          	<td>
+          		<b>Limits Requested: </b>
+          	</td>
+          	<td>
+          		{{SubFormData.limitsRequested}}
+          	</td>
+          </tr>
+
+          <tr *ngIf="SubFormData.requestFormType == 'New Credit Card Request' && SubFormData.limitsRequested == 'Other'">
+          	<td>
+          		<b>Explanation: </b>
+          	</td>
+          	<td>
+          		{{SubFormData.limitExplain}}
+          	</td>
+          </tr>
+          <!-- END CODE BLOCK for "New Credit Card Request" only fields. -->
+
+          <!-- CODE BLOCK for "Cardholder Maintence" -->
+           <tr *ngIf="SubFormData.requestFormType == 'CardHolder Maintenance'">
+				<td colspan="2" align="center">
+					<h4>
+						Cardholder / User Information Change
+					</h4>
+				</td>
+			</tr>
+
+			<tr *ngIf="SubFormData.requestFormType == 'CardHolder Maintenance'">
+				<td>
+					<b>Last 4 Digits of Card Number: </b>
+				</td>	
+
+				<td>
+					{{SubFormData.chlastFourCardDigits}}
+				</td>
+			</tr>
+
+			<tr *ngIf="SubFormData.requestFormType == 'CardHolder Maintenance'">
+				<td>
+					<b>Change is: </b>
+				</td>
+
+				<td> 
+					{{SubFormData.chChange}} 
+				</td>
+			</tr>
+
+			<!-- Change is Permenant/Temporary. Different fields, reactive. -->      
+          <tr *ngIf="SubFormData.requestFormType == 'CardHolder Maintenance' && SubFormData.chChange == 'Temporary / Return Date'">
+          	<td>
+          		<b>Temporary / Return Date: </b>
+          	</td>
+
+          	<td>
+          		{{SubFormData.tempDate}}
+          	</td>
+          </tr>   
+
+          <tr *ngIf="SubFormData.requestFormType == 'CardHolder Maintenance'
+          &&  SubFormData.chTransLimits == true">
+          	<td>
+          		<b>Change Profile Transaction Limit?</b>
+          	</td>
+          	<td>
+          		Yes
+            </td>
+          </tr>
+          <!-- Checkboxes and their reactive fields. -->
+          <tr *ngIf="SubFormData.requestFormType == 'CardHolder Maintenance'
+          && SubFormData.chTransLimits == true">
+	          <td>
+	          	<b>Limits Requested: </b>
+	          </td>
+
+	          <td>
+	          	{{SubFormData.limitsRequested}}
+	          </td>
+
+          </tr>
+          <!-- If limit requested is 'Other', an Explanation field appears. -->
+          <tr *ngIf="SubFormData.requestFormType == 'CardHolder Maintenance'
+          && SubFormData.chTransLimits == true 
+          && SubFormData.limitsRequested == 'Other'">
+          	<td>
+          		<b>Explanation: </b>
+          	</td>
+
+          	<td>
+          		{{SubFormData.limitExplain}}
+          	</td>
+          </tr>	
+          
+          <tr *ngIf="SubFormData.chName == true">
+          	<td>
+          		<b>COSA Log On ID: </b>
+          	</td>
+
+          	<td>
+          		{{SubFormData.newUserName}}
+          	</td>
+          </tr>
+
+          <tr *ngIf="SubFormData.chName == true">
+          	<td>
+          		<b>New User First Name: </b>
+          	</td>
+          	<td>
+          		{{SubFormData.newChFirstName}}
+          	</td>
+          </tr>
+
+           <tr *ngIf="SubFormData.chName == true">
+          	<td>
+          		<b>New User Middle Name: </b>
+          	</td>
+          	<td>
+          		{{SubFormData.newChMiddleName}}
+          	</td>
+          </tr>
+
+           <tr *ngIf="SubFormData.chName == true">
+          	<td>
+          		<b>New User Last Name: </b>
+          	</td>
+          	<td>
+          		{{SubFormData.newChLastName}}
+          	</td>
+          </tr>
+
+           <tr *ngIf="SubFormData.chName == true">
+          	<td>
+          		<b>New User Suffix: </b>
+          	</td>
+          	<td>
+          		{{SubFormData.newChSuffix}}
+          	</td>
+          </tr>
+
+          <tr *ngIf="SubFormData.chRoleChange == true">
+          	<td> <b>Role: </b> </td>
+          	<td> {{SubFormData.role}} </td>
+          </tr>
+
+          <tr *ngIf="SubFormData.role == 'Approver' || SubFormData.role == 'Reconciler'">
+          	<td> <b>Role Details: </b>  </td>
+          	<td> {{SubFormData.roleDetails}} </td>
+          </tr>
 
 
-		Your Code Goes Here
+          <!-- Comments field is for every possible path. Placed at the end always.-->
+          <tr>
+	          	<td>
+	          		<b>Comments</b>
+	          	</td>
+	          	<td> 
+	          		{{SubFormData.formComments}}
+	          	</td>
+          </tr>
+         </table>
+     </mat-card-content>
+        
+
+     </div>
 
 
 	</mat-card-content>

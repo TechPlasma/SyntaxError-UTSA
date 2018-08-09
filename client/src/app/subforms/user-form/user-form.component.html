@@ -1,7 +1,7 @@
 <div *ngIf="SubFormData != undefined">
 	<mat-radio-group [(ngModel)]="SubFormData.reqType">
 		<p>
-			<b>Request Type</b>
+			<b>Request Type:</b>
 		</p>
 		<mat-radio-button value="Provision User">Provision User</mat-radio-button>
 		<mat-radio-button value="Disable User Account">Disable User Account</mat-radio-button>
@@ -167,6 +167,13 @@
 			<mat-datepicker #picker2></mat-datepicker>
 		</mat-form-field>
 	</div><!--END reactive fields for 'Disable User Account ' -->
+	<!--
+	<mat-form-field>
+		<input matInput placeholder="Phone Ext:" [(ngModel)]="SubForm.phoneExt">
+	</mat-form-field>
+	<p> {{SubForm.phoneExt}} </p>
+-->
+	
 	<br>
 	<button mat-stroked-button color="warn" (click)="verifySubForm();" *ngIf="!SubFormData.Completed">
 		Verify SubForm
