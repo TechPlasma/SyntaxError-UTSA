@@ -137,6 +137,11 @@
 	<button mat-stroked-button [style.color]="'forestgreen'" *ngIf="SubFormData.Completed" disabled>
 		SubForm Verified
 	</button>
+	<br>
+	<div style="color:red;" *ngFor="let item of ERROR" >
+		{{item}}
+		<br>
+	</div>
 </div>
 
 

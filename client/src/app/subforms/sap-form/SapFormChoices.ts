@@ -1,6 +1,7 @@
 
 
-export let Section2Choices = [
+export let Section2Choices = 
+[
 	{dept:'Risk',
 		items:[
 			'Departmental Workers Compensation Maintainer'

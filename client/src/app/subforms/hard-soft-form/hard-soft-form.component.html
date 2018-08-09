@@ -62,7 +62,6 @@
 
 		<mat-form-field class="example-margin">
 		  <mat-select [(value)]="SubFormData.requestType" placeholder="*Request Type: ">
-		    <mat-option>None</mat-option>
 		    <mat-option value="New">New</mat-option>
 		    <mat-option value="Replacement">Replacement</mat-option>
 		    <mat-option value="Upgrade">Upgrade</mat-option>
@@ -181,20 +180,20 @@
 			<!-- Dropdown menu for Monitor itself. -->
 			<mat-form-field class="example-margin">
 			  <mat-select [(value)]="SubFormData.monitorInput" placeholder="Monitor">
-				    <mat-option value="option1">
+				    <mat-option value="Dell 24&quot; Monitor - U2417H/ w Display, Mini Display Cables">
 				    Dell 24" Monitor - U2417H/ w Display, Mini Display Cables
 					</mat-option>
 
-				    <mat-option value="option2">Qty 2 Dell U2414H Mon w/ 2 stands, mini display to display cable (mac Mini)
+				    <mat-option value="Qty 2 Dell U2414H Mon w/ 2 stands, mini display to display cable (mac Mini)">Qty 2 Dell U2414H Mon w/ 2 stands, mini display to display cable (mac Mini)
 				    </mat-option>
 
-				    <mat-option value="option3">Qty 2 Dell U2414H Mon w/ 2 stands (w/ display to mini display cables) for Dell
+				    <mat-option value="Qty 2 Dell U2414H Mon w/ 2 stands (w/ display to mini display cables) for Dell">Qty 2 Dell U2414H Mon w/ 2 stands (w/ display to mini display cables) for Dell
 				    </mat-option>
 
-				    <mat-option value="option4">Dual Dell U2414H Mon w/ 1 stand (cables display port to mini display) for Dell or (Ma
+				    <mat-option value="Dual Dell U2414H Mon w/ 1 stand (cables display port to mini display) for Dell or (Ma"> Dual Dell U2414H Mon w/ 1 stand (cables display port to mini display) for Dell or (Ma
 				    </mat-option>
 
-				    <mat-option value="option5">Dell 27" Monitor - U2717D / w Display, Mini Display cables
+				    <mat-option value="Dell 27&quot; Monitor - U2717D / w Display, Mini Display cables">Dell 27" Monitor - U2717D / w Display, Mini Display cables
 				    </mat-option>
 
 				  </mat-select>
@@ -277,11 +276,11 @@
 			<tr> 
 
 				<th>
-					Sotware Categoy
+					Software Categoy
 				</th>
 
 				<th>
-					Sotware Descrpition
+					Software Descrpition
 				</th>
 
 				<th>
@@ -307,11 +306,6 @@
 
 				<td>
 					<!-- software descirption is a DROPDOWN menu. -->
-					 <!-- 
-					 <mat-form-field>
-						<input matInput placeholder="Fill in description here. " [(ngModel)]="softItem.softDesc">
-					</mat-form-field> 
-					-->
 
 					<mat-form-field >
 					  <mat-select [(value)]="softItem.softDesc" placeholder="Choose software">
@@ -363,6 +357,12 @@
 	<button mat-stroked-button [style.color]="'forestgreen'" *ngIf="SubFormData.Completed" disabled>
 		SubForm Verified
 	</button>
+
+	<br>
+	<div style="color:red;" *ngFor="let item of ERROR" >
+		{{item}}
+		<br>
+	</div>
 
 </div> <!-- End main container. -->
 
