@@ -45,6 +45,8 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 })
 export class UserFormComponent implements OnInit {
 
+    ERROR;
+
 	//The internal data model
     private innerValue: any = '';
 
@@ -90,6 +92,8 @@ export class UserFormComponent implements OnInit {
 
     verifySubForm()
     {
+        this.ERROR = [];
+
         //reset finalCheck flat. This allows multiple verify attempts.
         finalCheck = true;
 
@@ -349,14 +353,14 @@ export class UserFormComponent implements OnInit {
         {
             if(e.isCorrect == false){
                 finalCheck = false;
-                console.log(`${e.name}`);
+                this.ERROR.push(`${e.name}`);
             }
         }//end for loop for validation.
 
         if(finalCheck == true)
         {
             this.SubFormData.Completed = true;
-            console.log(this.SubFormData);
+            //console.log(this.SubFormData);
         }//end finalCheck if.
         
     }//end verifySubForm function.
