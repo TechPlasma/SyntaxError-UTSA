@@ -20,7 +20,13 @@ export class MasterForm{
 		this.FID = "";
 		this.Completed = false;
 		this.Status = 'Pending';
-		//this.SubForm1.Approvers.push(new Approver())
+
+
+		//Assign Approvers
+		this.SubForm0.Approvers.push(new Approver('Requestor','ANY'));
+
+		
+		this.SubForm1.Approvers.push(new Approver());
 
 	}
 	SubForm0:SubForm0;
@@ -85,6 +91,7 @@ class SubForm0{
 		this.Completed = false;
 		this.Needed = true;
 		this.Fulfillment = "Common Information";
+		this.Approvers = [];
 
 
 
@@ -107,6 +114,7 @@ class SubForm0{
 	Completed:boolean;
 	Needed = true;
 	Fulfillment:string;
+	Approvers:Approver[];
 
 	//Common Fields Between All Forms
 	

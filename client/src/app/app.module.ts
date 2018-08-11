@@ -23,6 +23,8 @@ import { IDViewComponent } from './viewdata/id-view/id-view.component';
 import { PCardViewComponent } from './viewdata/pcard-view/pcard-view.component';
 import { SAPViewComponent } from './viewdata/sap-view/sap-view.component';
 import { UserViewComponent } from './viewdata/user-view/user-view.component';
+import { ViewDataComponent } from './viewdata/view-data/view-data.component';
+import { ViewStatusComponent } from './viewdata/view-status/view-status.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { UserViewComponent } from './viewdata/user-view/user-view.component';
     IDViewComponent,
     PCardViewComponent,
     SAPViewComponent,
-    UserViewComponent
+    UserViewComponent,
+    ViewDataComponent,
+    ViewStatusComponent
   ],
   imports: [
     BrowserModule,

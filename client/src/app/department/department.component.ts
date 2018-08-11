@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
+import { MasterForm } from '../MasterForm';
+
 @Component({
   selector: 'app-department',
   templateUrl: './department.component.html',
@@ -13,6 +15,9 @@ export class DepartmentComponent implements OnInit {
 	DID;
 	isFulfilmentDepartment:false;
 
+	tempMasterForm;
+
+
 	
 
 	constructor(
@@ -20,6 +25,8 @@ export class DepartmentComponent implements OnInit {
 		private location: Location
 	) {
 		this.DID = +this.route.snapshot.paramMap.get('DID');
+
+		this.tempMasterForm = new MasterForm();
 	}
 
 	ngOnInit() {

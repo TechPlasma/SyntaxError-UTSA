@@ -1,0 +1,32 @@
+<div *ngIf="FormData != null">
+	<div *ngIf="mode == 'DEPT'">
+		<table>
+			<tr>
+				<th align="left">
+					SubForms
+				</th>
+				<th align="left">
+					Approvers
+				</th>
+			</tr>
+			<tr align="left" *ngFor="let SubForm of getSubFormArray(FormData)">
+				<td *ngIf="SubForm.Needed">
+					<mat-icon [style.color]="'lightgreen'">radio_button_checked</mat-icon>
+					{{SubForm.FormName}} Form
+				</td>
+				<td *ngIf="SubForm.Needed">
+					<div *ngFor="let approver of SubForm.Approvers">
+						<mat-icon [style.color]="'lightgreen'">radio_button_checked</mat-icon>
+						APPROVER NAME: {{approver.POSITION}}
+						<br>
+					</div>
+				</td>
+			</tr>
+		</table>
+		
+	</div>
+	<div *ngIf="mode == 'USER'">
+		User Mode
+
+	</div>
+</div>

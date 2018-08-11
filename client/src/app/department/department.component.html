@@ -204,37 +204,8 @@
 									Status: STATUS
 								</mat-panel-title>
 							</mat-expansion-panel-header>
-							<table>
-								<tr>
-									<th align="left">
-										SubForms
-									</th>
-									<th align="left">
-										Approvers
-									</th>
-								</tr>
-								<tr align="left">
-									<td>
-										<mat-icon [style.color]="'lightgreen'">radio_button_checked</mat-icon>
-										SUBFORM NAME
-									</td>
-									<td>
-										<div>
-											<mat-icon [style.color]="'lightgreen'">radio_button_checked</mat-icon>
-											APPROVER NAME
-											<br>
-										</div>
-										<div>
-											<mat-icon [style.color]="'lightgreen'">radio_button_checked</mat-icon>
-											APPROVER NAME
-											<br>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									
-								</tr>
-							</table>
+
+							<app-view-status [FormData]="tempMasterForm" [mode]="'DEPT'"></app-view-status>
 
 						</mat-expansion-panel>
 					</td>
@@ -269,7 +240,8 @@
 						<mat-expansion-panel>
 							<mat-expansion-panel-header>
 								<mat-panel-title>
-									Status
+									Form: FORMID 
+									Status: STATUS
 								</mat-panel-title>
 							</mat-expansion-panel-header>
 						</mat-expansion-panel>

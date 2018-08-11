@@ -55,6 +55,9 @@
     "Completed": {
       "type": "boolean",
       "default": false
+    },
+    "Approvers": {
+      "type": "array"
     }
   },
   "validations": [],
