@@ -21,13 +21,6 @@ export class MasterForm{
 		this.Completed = false;
 		this.Status = 'Pending';
 
-
-		//Assign Approvers
-		this.SubForm0.Approvers.push(new Approver('Requestor','ANY'));
-
-
-		this.SubForm1.Approvers.push(new Approver());
-
 	}
 	SubForm0:SubForm0;
 	SubForm1:SubForm1;
@@ -50,7 +43,7 @@ export class Approver{
 	//  new Approver(id)
 	//  new Approver(id,dependantIDs)
 	//constructor(private ID?:string,private DEPENDANTIDS?:string[])
-	constructor(private POSITION?:string,private DEPARTMENTCODE?:string,private DEPENDENTPOS?:any[]){
+	constructor(public POSITION?:string,public DEPARTMENTCODE?:string,public DEPENDENTPOS?:any[]){
 		// if(this.ID == undefined){
 		// 	this.ID = '';
 		// }
@@ -60,15 +53,15 @@ export class Approver{
 		if(this.POSITION == undefined){
 			this.POSITION = '';
 		}
-		if(this.DEPARTMENTCODE = undefined){
+		if(this.DEPARTMENTCODE == undefined){
 			this.DEPARTMENTCODE = '';
 		}
-		if(this.DEPENDENTPOS = undefined){
-			this.DEPENDENTPOS = null;
+		if(this.DEPENDENTPOS == undefined){
+			this.DEPENDENTPOS = [];
 		}
 		this.ID = '';
-		this.DEPENDANTIDS = [];
-		this.APPROVED = false;
+		//this.DEPENDANTIDS = [];
+		this.APPROVED = 'Pending';
 		this.NAME = '';
 		// this.POSITION = '';
 		// this.DEPARTMENTCODE = '';
@@ -79,7 +72,7 @@ export class Approver{
 	// POSITION:string;
 	// DEPARTMENTCODE:string;
 	// DEPENDENTPOS:any[];
-	APPROVED:boolean;
+	APPROVED:ApprovalStatus;
 }
 
 
@@ -91,6 +84,7 @@ class SubForm0{
 		this.Completed = false;
 		this.Needed = true;
 		this.Fulfillment = "Common Information";
+		this.ApprovalStatus = 'Pending';
 		this.Approvers = [];
 
 
@@ -115,6 +109,7 @@ class SubForm0{
 	Needed = true;
 	Fulfillment:string;
 	Approvers:Approver[];
+	ApprovalStatus:ApprovalStatus;
 
 	//Common Fields Between All Forms
 	

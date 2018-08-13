@@ -42,23 +42,23 @@
 							Actions&nbsp; 
 						</th>
 					</tr>
-					<tr>
-						<td>
+					<tr *ngFor="let form of departmentIN">
+						<td *ngIf="form.Status == 'Approved' || form.Status == 'In-Progress'">
 							<mat-expansion-panel>
 								<mat-expansion-panel-header>
 									<mat-panel-title>
-										Statuses
+										Status: {{form.Status}}
 									</mat-panel-title>
 								</mat-expansion-panel-header>
-								<!-- SUBFORM Views Here -->
+								<app-view-status [FormData]="form" [mode]="'DEPTFUL'" [DEPT]="department.dID" [status]="Pending"></app-view-status>
 								
 							</mat-expansion-panel>
 						</td>
-						<td align="right" width="30%">
-							<button mat-raised-button color="accent" >
+						<td align="right" width="30%" *ngIf="form.Status == 'Approved' || form.Status == 'In-Progress'">
+							<button mat-raised-button color="accent" *ngIf="form.Status == 'Approved'" (click)="markInProgress(form);">
 								Mark In-Progress
 							</button>
-							<button mat-raised-button color="accent" >
+							<button mat-raised-button color="accent" *ngIf="form.Status == 'In-Progress'" (click)="markFulfilled(form);">
 								Mark Fufilled
 							</button>
 						</td>							
@@ -67,7 +67,7 @@
 				<br>
 			</mat-expansion-panel>
 
-			<mat-expansion-panel expanded="false">
+			<mat-expansion-panel>
 				<mat-expansion-panel-header>
 					<mat-panel-title>
 						<h3>Completed</h3>
@@ -79,34 +79,36 @@
 						<th align="left">
 							Requisition Information
 						</th>
-						<th align="right">
-							Actions&nbsp; 
-						</th>
 					</tr>
-					<tr>
-						<td>
+					<tr *ngFor="let form of departmentIN">
+						<td *ngIf="form.Status == 'Fulfilled'">
 							<mat-expansion-panel>
 								<mat-expansion-panel-header>
 									<mat-panel-title>
-										Status
+										Status: {{form.Status}}
 									</mat-panel-title>
 								</mat-expansion-panel-header>
-								<!-- SUBFORM Views Here -->
+								<app-view-status [FormData]="form" [mode]="'DEPTFUL'" [DEPT]="department.dID" [status]="OTHER"></app-view-status>
 
 							</mat-expansion-panel>
-						</td>
-						<td align="right" width="30%">
 						</td>
 					</tr>
 				</table>
 				<br>
 			</mat-expansion-panel>
 		</mat-card>
+
+
+
+
+
+
+
 		<mat-card>
 			<mat-card-title>
 				Requisition Requests
 			</mat-card-title>
-			<mat-expansion-panel expanded="false">
+			<mat-expansion-panel>
 				<mat-expansion-panel-header>
 					<h3>Pending</h3>
 				</mat-expansion-panel-header>
@@ -116,31 +118,26 @@
 						<th align="left">
 							Requisition Information
 						</th>
-						<th align="right">
-							Actions&nbsp; 
-						</th>
 					</tr>
-					<tr>
-						<td>
+					<tr *ngFor="let form of departmentOUT">
+						<td *ngIf="form.Status != 'FulFilled'">
 							<mat-expansion-panel>
 								<mat-expansion-panel-header>
 									<mat-panel-title>
-										Statuses
+										Status: {{form.Status}}
 									</mat-panel-title>
 								</mat-expansion-panel-header>
+
+								<app-view-status [FormData]="form" [mode]="'DEPTREQ'"></app-view-status>
+								<app-view-status [FormData]="form" [mode]="'DEPTFUL'"></app-view-status>
 							</mat-expansion-panel>
-						</td>
-						<td align="right" width="30%">
-							<button mat-raised-button color="primary" >
-								Review
-							</button>
-						</td>							
+						</td>				
 					</tr>
 				</table>
 				<br>
 			</mat-expansion-panel>
 
-			<mat-expansion-panel expanded="false">
+			<mat-expansion-panel>
 				<mat-expansion-panel-header>
 					<mat-panel-title>
 						<h3>Completed</h3>
@@ -152,24 +149,18 @@
 						<th align="left">
 							Requisition Information
 						</th>
-						<th align="right">
-							Actions&nbsp; 
-						</th>
 					</tr>
-					<tr>
-						<td>
+					<tr *ngFor="let form of departmentOUT">
+						<td *ngIf="form.Status == 'FulFilled'">
 							<mat-expansion-panel>
 								<mat-expansion-panel-header>
 									<mat-panel-title>
-										Status
+										Status: {{form.Status}}
 									</mat-panel-title>
 								</mat-expansion-panel-header>
+								<app-view-status [FormData]="form" [mode]="'DEPTREQ'"></app-view-status>
+								<app-view-status [FormData]="form" [mode]="'DEPTFUL'"></app-view-status>
 							</mat-expansion-panel>
-						</td>
-						<td align="right" width="30%">
-							<button mat-raised-button color="primary" >
-								Review
-							</button>
 						</td>
 					</tr>
 				</table>
@@ -183,7 +174,7 @@
 			<mat-card-title>
 				Requisition Requests
 			</mat-card-title>
-			<mat-expansion-panel expanded="true">
+			<mat-expansion-panel expanded="false">
 				<mat-expansion-panel-header>
 					<h3>Pending</h3>
 				</mat-expansion-panel-header>
@@ -193,29 +184,20 @@
 						<th align="left">
 							Requisition Information
 						</th>
-						<th align="right">
-							Actions&nbsp; 
-						</th>
 					</tr>
-					<tr>
-						<td>
+					<tr *ngFor="let form of departmentOUT">
+						<td *ngIf="form.Status != 'FulFilled'">
 							<mat-expansion-panel>
 								<mat-expansion-panel-header>
 									<mat-panel-title>
-										Form: FORMID 
-										Status: STATUS
+										Status: {{form.Status}}
 									</mat-panel-title>
 								</mat-expansion-panel-header>
 
-								<app-view-status [FormData]="tempMasterForm" [mode]="'DEPT'"></app-view-status>
-
+								<app-view-status [FormData]="form" [mode]="'DEPTREQ'"></app-view-status>
+								<app-view-status [FormData]="form" [mode]="'DEPTFUL'"></app-view-status>
 							</mat-expansion-panel>
-						</td>
-						<td align="right" width="30%">
-							<button mat-raised-button color="primary" >
-								Review
-							</button>
-						</td>							
+						</td>				
 					</tr>
 				</table>
 				<br>
@@ -233,25 +215,18 @@
 						<th align="left">
 							Requisition Information
 						</th>
-						<th align="right">
-							Actions&nbsp; 
-						</th>
 					</tr>
-					<tr>
-						<td>
+					<tr *ngFor="let form of departmentOUT">
+						<td *ngIf="form.Status == 'FulFilled'">
 							<mat-expansion-panel>
 								<mat-expansion-panel-header>
 									<mat-panel-title>
-										Form: FORMID 
-										Status: STATUS
+										Status: {{form.Status}}
 									</mat-panel-title>
 								</mat-expansion-panel-header>
+								<app-view-status [FormData]="form" [mode]="'DEPTREQ'"></app-view-status>
+								<app-view-status [FormData]="form" [mode]="'DEPTFUL'"></app-view-status>
 							</mat-expansion-panel>
-						</td>
-						<td align="right" width="30%">
-							<button mat-raised-button color="primary" >
-								Review
-							</button>
 						</td>
 					</tr>
 				</table>

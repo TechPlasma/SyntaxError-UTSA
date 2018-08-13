@@ -1,7 +1,6 @@
 <div align="center" *ngIf="masterForm != undefined">
 	<mat-card>
 		<mat-card-title>City of San Antonio Employee Requisition Form</mat-card-title>
-		<mat-card-subtitle>Form ID: {{masterForm.FID}} </mat-card-subtitle>
 		<mat-card-content>
 			Which Forms are needed?<br>
 			<table>
@@ -28,10 +27,6 @@
 					</td>
 				</tr>
 			</table>
-
-			<button mat-stroked-button color="warn" (click)="resetForms();">
-				Reset All Form Completions
-			</button>
 
 			<br>
 			<br>

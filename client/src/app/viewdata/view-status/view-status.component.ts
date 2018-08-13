@@ -11,8 +11,21 @@ export class ViewStatusComponent implements OnInit {
 	FormData:any = null;
 
 	@Input()
-	mode:string = "DEPT";
+	mode:string = "DEPTREQ";
 
+	/*
+	 * Modes:
+	 * DEPTFUL
+	 * DEPTREQ
+	 * USERDOTS
+	 * USERITEMS
+	 */
+	
+	@Input()
+	DEPT:string = "ALL";
+
+	@Input()
+	status:string = "Other";
 
 	getSubFormArray(formdata){
 		let tempArr = [];

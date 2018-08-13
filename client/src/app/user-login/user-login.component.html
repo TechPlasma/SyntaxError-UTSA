@@ -2,33 +2,29 @@
 	<mat-card>
 		<mat-card-title>Login</mat-card-title>
 		<mat-card-content>
-			
-			<mat-form-field class="thirds">
-				<input matInput autocomplete="off" placeholder="SAP ID" 
-				[(ngModel)]="username" focus>
-			</mat-form-field>
-			<br>
-			<mat-form-field class="thirds">
-				<input matInput autocomplete="off" placeholder="Password" type="password"
-				[(ngModel)]="password">
-			</mat-form-field>
-			<br>
-			<div style="color:red;" *ngFor="let item of ERROR" >
-				{{item}}
+			<form>
+				<mat-form-field class="thirds">
+					<input matInput autocomplete="off" placeholder="SAP ID" 
+					[(ngModel)]="username" focus name="SAPLOG">
+				</mat-form-field>
 				<br>
-			</div>
-			<div align="right"  class="thirds" >
-				<button mat-raised-button (click)="login()" color="primary">
-					Login
-				</button>
-			</div>
+				<mat-form-field class="thirds">
+					<input matInput autocomplete="off" placeholder="Password" type="password"
+					[(ngModel)]="password" name="PWDLOG">
+				</mat-form-field>
+				<br>
+				<div style="color:red;" *ngFor="let item of ERROR" >
+					{{item}}
+					<br>
+				</div>
+				<div align="right"  class="thirds" >
+					<button mat-raised-button (click)="login()" color="primary">
+						Login
+					</button>
+				</div>
+			</form>
 			
 			
-
-			
-			
-			
-
 			<p>
 				This is a tempoarary solution untill we have<br>
 				a proper Implememntation of a User Login page<br>

@@ -78,10 +78,6 @@ export class APIService {
 		});
 	}
 
-	getDepartmentID(departmentID){
-
-	}
-
 	getDepartmentCODE(DEPTCODE,LOGIN){
 		let baseURL = 'http://35.185.64.38:3000/api'
 		let api = `/Departments`
@@ -117,7 +113,83 @@ export class APIService {
 		});
 	}
 
-	getMasterForm(formID){
+	async putDepartmentForm(ARR,DID,inOut){
+		let baseURL = 'http://35.185.64.38:3000/api'
+		let api = `/Departments`
+		let filter = `/${DID}`;
+		console.log("Array To be PUT:");
+		console.log(ARR);
+		let obj;
+		if(inOut == 'in'){
+			obj = {"inMasterForms":ARR}
+		}else{
+			obj = {"outMasterForms":ARR}
+		}
+
+		let url = `${baseURL}${api}${filter}`;
+		let settings = {
+			method: 'PATCH',
+			body:JSON.stringify(obj),
+			headers:{
+				'Content-Type': 'application/json'
+			}
+		}
+		fetch(url,settings)
+		.then(res =>{
+			console.log(res);
+			res.json().then(thisData=>{console.log(thisData);});
+		})
+		.catch(err =>{
+			console.error(err);
+		})
+
+	}
+
+	async patchFulfillment(status,FID){
+		let baseURL = 'http://35.185.64.38:3000/api'
+		let api = `/MasterForms`
+		let filter = `/${FID}`;
+
+		let url = `${baseURL}${api}${filter}`;
+		let settings = {
+			method: 'PATCH',
+			body:JSON.stringify({"Status":status}),
+			headers:{
+				'Content-Type': 'application/json'
+			}
+		}
+		fetch(url,settings)
+		.then(res =>{
+			console.log(res);
+			res.json().then(thisData=>{console.log(thisData);});
+		})
+		.catch(err =>{
+			console.error(err);
+		})
+
+	}
+
+	async putEmployeeForm(ARR,SAP){
+		let baseURL = 'http://35.185.64.38:3000/api'
+		let api = `/Employees`
+		let filter = `/${SAP}`;
+
+		let url = `${baseURL}${api}${filter}`;
+		let settings = {
+			method: 'PATCH',
+			body:JSON.stringify({"FORMS":ARR}),
+			headers:{
+				'Content-Type': 'application/json'
+			}
+		}
+		fetch(url,settings)
+		.then(res =>{
+			console.log(res);
+			res.json().then(thisData=>{console.log(thisData);});
+		})
+		.catch(err =>{
+			console.error(err);
+		})
 
 	}
 
@@ -135,13 +207,46 @@ export class APIService {
 			body:JSON.stringify(form)
 		}
 
-		fetch(url,settings)
-		.then(res =>{
-			res.json().then(thisData=>{console.log(thisData)});
-		})
-		.catch(err =>{
-			console.error(err);
-		})
+		return new Promise(resolve => {
+			fetch(url,settings)
+			.then(res =>{
+				res.json().then(thisData=>{
+					resolve(thisData.FID);
+					console.log(thisData);
+				});
+			})
+			.catch(err =>{
+				console.error(err);
+			})
+		});
+	}
+
+	patchForm(form){
+		let baseURL = 'http://35.185.64.38:3000/api'
+		let api = `/MasterForms`
+		let id = `/${form.FID}`
+
+		let url = `${baseURL}${api}${id}`;
+		let settings = {
+			method: 'PATCH',
+			headers:{
+				'Content-Type': 'application/json'
+			},
+			body:JSON.stringify(form)
+		}
+
+		return new Promise(resolve => {
+			fetch(url,settings)
+			.then(res =>{
+				res.json().then(thisData=>{
+					resolve(thisData.FID);
+					console.log(thisData);
+				});
+			})
+			.catch(err =>{
+				console.error(err);
+			})
+		});
 	}
 
 	deleteForm(formID){
@@ -216,6 +321,8 @@ export class APIService {
 		})
 	}
 
+
+
 	getEmployees(){
 		let baseURL = 'http://35.185.64.38:3000/api'
 		let api = `/Employees`
@@ -242,6 +349,98 @@ export class APIService {
 		});
 	}
 
+	getMasterFormArr(ARR,mode){
+		//console.log("Array Items:");
+		//console.log(ARR);
+		let baseURL = 'http://35.185.64.38:3000/api'
+		let api = `/MasterForms`
+		let arrayItems;
+		for(let v in ARR){
+			if(arrayItems == null){
+				arrayItems = `%7B%22FID%22%3A%22${ARR[v]}%22%7D`;
+			}else{
+				arrayItems += `%2C%7B%22FID%22%3A%22${ARR[v]}%22%7D`;
+			}
+		}
+
+		if(arrayItems == null){
+			return new Promise( resolve =>{
+				resolve([[]]);
+			});
+		}
+
+		let filter = `?filter=%7B%22where%22%3A%7B%22or%22%3A%5B${arrayItems}%5D%7D%7D`;
+
+		let url = `${baseURL}${api}${filter}`;
+		//console.log(url);
+		let settings = {
+			method: 'GET',
+			headers:{
+				'Content-Type': 'application/json'
+			}
+		}
+		return new Promise( resolve => {
+			fetch(url,settings)
+			.then(res =>{
+				console.log(res);
+				res.json().then(thisData=>{
+					if(thisData.length == 1){
+						if(mode == "DEPTIN"){
+							this.DEPARTMENTINFORMS.next(thisData);
+						}
+						if(mode == "DEPTOUT"){
+							this.DEPARTMENTOUTFORMS.next(thisData);
+						}
+						if(mode == "EMP"){
+							this.EMPOLYEEFORMS.next(thisData);
+						}
+
+						console.log(thisData);
+						resolve([thisData,true]);
+					}else{
+						console.log(thisData);
+						resolve([thisData,false]);
+					}
+				});
+			})
+			.catch(err =>{
+				console.error(err);
+			})
+		});
+	}
+
+	getEmployeeID(SAPID){
+		let baseURL = 'http://35.185.64.38:3000/api'
+		let api = `/Employees`
+		let filter = `?filter=%7B%22where%22%3A%7B%22SAP%22%3A%22${SAPID}%22%7D%7D`;
+
+		let url = `${baseURL}${api}${filter}`;
+		let settings = {
+			method: 'GET',
+			headers:{
+				'Content-Type': 'application/json'
+			}
+		}
+		return new Promise( resolve => {
+			fetch(url,settings)
+			.then(res =>{
+				console.log(res);
+				res.json().then(thisData=>{
+					if(thisData.length == 1){
+						console.log(thisData);
+						resolve([thisData[0],true]);
+					}else{
+						console.log(thisData);
+						resolve([thisData,false]);
+					}
+				});
+			})
+			.catch(err =>{
+				console.error(err);
+			})
+		});
+	}
+
 	deleteEmployee(SAP){
 		console.log(`Deleteing Form '${SAP}'`);
 		let baseURL = 'http://35.185.64.38:3000/api'
@@ -250,7 +449,7 @@ export class APIService {
 
 		let url = `${baseURL}${api}${id}`;
 		let settings = {
-			method: 'delete'//,
+			method: 'DELETE'//,
 			// headers:{
 			// 	'Content-Type': 'application/json'
 			// }
@@ -322,7 +521,7 @@ export class APIService {
 
 		let url = `${baseURL}${api}${id}`;
 		let settings = {
-			method: 'delete'//,
+			method: 'DELETE'//,
 			// headers:{
 			// 	'Content-Type': 'application/json'
 			// }
@@ -338,11 +537,15 @@ export class APIService {
 		})
 	}
 
-	pollingFunction(){
+	async pollingFunction(){
 		console.log("Polling");
 		if(this.EMPLOYEE.value != null){
 			console.log(this.EMPLOYEE.value);
 			this.getDepartmentCODE(this.EMPLOYEE.value.DEPT,true);
+			let empforms = []; 
+			this.getMasterFormArr(this.EMPLOYEE.value.FORMS,"EMP");
+			this.getMasterFormArr(this.EMPLOYEE.value.FORMS,"DEPTIN");
+			this.getMasterFormArr(this.EMPLOYEE.value.FORMS,"DEPTOUT");
 		}
 	}
 

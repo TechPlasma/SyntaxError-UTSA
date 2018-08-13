@@ -25,12 +25,28 @@ export class DepartmentComponent implements OnInit {
 
 	tempMasterForm;
 
+	markInProgress(form){
+		this.apiService.patchFulfillment('In-Progress',form.FID);
+	}
+
+	markFulfilled(form){
+		this.apiService.patchFulfillment('Fulfilled',form.FID);
+	}
+
 	itsdDEPT(){
 		this.apiService.getDepartmentCODE("ITSD",true);
 	}
 
 	adminDEPT(){
 		this.apiService.getDepartmentCODE("ADMIN",true);
+	}
+
+	async getForms(){
+		if(this.department != null){
+			this.departmentIN =  await this.apiService.getMasterFormArr(this.department.inMasterForms,"DEPTIN")[0];
+			this.departmentOUT =  await this.apiService.getMasterFormArr(this.department.outMasterForms,"DEPTOUT")[0];
+		}
+		
 	}
 	
 
@@ -67,6 +83,10 @@ export class DepartmentComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		setInterval(()=>{
+			this.getForms();
+		},10000);
+		
 	}
 
 }

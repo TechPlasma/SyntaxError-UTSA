@@ -39,7 +39,8 @@
 							</mat-panel-title>
 						</mat-expansion-panel-header>
 
-						<app-view-status [FormData]="form" [mode]="'DEPT'"></app-view-status>
+						<app-view-status [FormData]="form" [mode]="'DEPTREQ'"></app-view-status>
+						<app-view-status [FormData]="form" [mode]="'DEPTFUL'"></app-view-status>
 
 					</mat-expansion-panel>
 				</td>
@@ -126,6 +127,7 @@
 							<tr><td><b>SAP ID:</b></td><td>{{emp.SAP}}</td></tr>
 							<tr><td><b>Password:</b></td><td>{{emp.PWD}}</td></tr>
 							<tr><td><b>Email:</b></td><td>{{emp.EMAIL}}</td></tr>
+							<tr><td><b>Forms:</b></td><td>{{emp.FORMS}}</td></tr>
 						</table>
 					</mat-expansion-panel>
 				</td>
