@@ -446,7 +446,7 @@ export class PCardFormComponent implements OnInit {
 
         if(finalCheck == true)
         {
-            //this.SubFormData.Completed = true;
+            this.SubFormData.Completed = true;
             console.log(this.SubFormData);
             //console.log(`CLEARED. All valid inputs.`);
         }

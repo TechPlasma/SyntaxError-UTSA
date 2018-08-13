@@ -107,11 +107,25 @@ export class DefaultInfoComponent implements ControlValueAccessor {
 			/^[0-9]{6}$/							//SAP
 	    ];
 
+	    var arr_names = [ 
+			"requestingDepartment",
+			"division",
+			"departmentRequester",
+			"phoneExt",
+			"firstName",
+			"middleInitial",
+			"lastName",
+			"suffix",
+			"phoneNumber",
+			"jobTitle",
+			"sap"
+		];	
+
 		//Info Check
 		while(i < arr_info.length){
 		//console.log("while loop");
 			if(!arr_check[i].test(arr_info[i])){
-				this.ERROR.push(arr_info[i] +"is incorrect!");
+				this.ERROR.push(arr_names[i] +" is incorrect!");
 				verified = false;
 			}//end if
 
