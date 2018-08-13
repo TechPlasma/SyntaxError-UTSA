@@ -49,6 +49,11 @@
 	</mat-form-field>
 	<br>
 
+	<h4>Signatures</h4>
+	<mat-form-field class="thirds">
+	    <input matInput placeholder="Supervisor's SAP-ID" [(ngModel)]="SUPERVISORID" autocomplete="off">
+	</mat-form-field>
+
 
 
 	<br>
@@ -58,7 +63,7 @@
 	<button mat-stroked-button [style.color]="'forestgreen'" *ngIf="SubFormData.Completed" disabled>
 		SubForm Verified
 	</button>
-
+	<br>
 	<div style="color:red;" *ngFor="let item of ERROR" >
 		{{item}}
 		<br>

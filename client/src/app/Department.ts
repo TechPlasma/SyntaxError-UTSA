@@ -4,7 +4,6 @@
 export class Department{
 	constructor(){
 		this.isFulfillment = false;
-		this.dID = '';
 		this.outMasterForms = [];
 		this.inMasterForms = [];
 

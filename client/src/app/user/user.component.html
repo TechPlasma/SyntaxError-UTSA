@@ -6,13 +6,13 @@
 					User Profile
 				</mat-card-title>
 				<mat-card-content>
-					<table>
+					<table *ngIf="employee != null">
 						<tr>
 							<td align="left">
 								User ID: 
 							</td>
 							<td align="right">
-								{{UID}}
+								{{employee.SAP}}
 							</td>
 						</tr>
 						<tr>&nbsp;</tr>
@@ -21,7 +21,7 @@
 								Name: 
 							</td>
 							<td align="right">
-								placeholder
+								{{employee.FIRSTNAME}} {{employee.MI}} {{employee.LASTNAME}}
 							</td>
 						</tr>
 						<tr>&nbsp;</tr>
@@ -30,7 +30,7 @@
 								Department: 
 							</td>
 							<td align="right">
-								placeholder
+								{{employee.DEPT}}
 							</td>
 						</tr>
 						<tr>&nbsp;</tr>
@@ -39,7 +39,7 @@
 								Position: 
 							</td>
 							<td align="right">
-								placeholder
+								{{employee.POSIT}}
 							</td>
 						</tr>
 						<tr>&nbsp;</tr>
@@ -48,7 +48,7 @@
 								E-Mail: 
 							</td>
 							<td align="right">
-								placeholder
+								{{employee.EMAIL}}
 							</td>
 						</tr>
 					</table>
@@ -69,7 +69,7 @@
 						Pending
 					</mat-expansion-panel-header>
 					<br>
-					<table>
+					<table *ngIf="empForms != null">
 						<tr>
 							<th align="left">
 								Requisition Information
@@ -78,22 +78,25 @@
 								Actions&nbsp; 
 							</th>
 						</tr>
-						<tr>
-							<td>
+						<tr *ngFor="let form of empForms">
+							<td *ngIf="form.Status == 'Pending'">
 								<mat-expansion-panel>
 									<mat-expansion-panel-header>
 										<mat-panel-title>
 											Statuses
 										</mat-panel-title>
 									</mat-expansion-panel-header>
+									<app-view-status [FormData]="form" [mode]="'USERDOTS'" [status]="Pending"></app-view-status>
+									<app-view-status [FormData]="form" [mode]="'USERITEMS'" [status]="Pending"></app-view-status>
+
 								</mat-expansion-panel>
 							</td>
-							<td align="right">
-								<button mat-raised-button color="primary" >
-									Review
-								</button>
-								<button mat-raised-button color="primary" >
+							<td align="right" width="10%" *ngIf="form.Status == 'Pending'">
+								<button mat-raised-button color="primary" (click)="sign(form,'Approved');">
 									Sign
+								</button>
+								<button mat-raised-button color="primary" (click)="sign(form,'Rejected');">
+									Reject
 								</button>
 							</td>							
 						</tr>
@@ -113,24 +116,19 @@
 							<th align="left">
 								Requisition Information
 							</th>
-							<th align="right">
-								Actions&nbsp; 
-							</th>
 						</tr>
-						<tr>
-							<td>
+						<tr *ngFor="let form of empForms">
+							<td *ngIf="form.Status != 'Pending'">
 								<mat-expansion-panel>
 									<mat-expansion-panel-header>
 										<mat-panel-title>
-											Status
+											Status: {{form.Status}}
 										</mat-panel-title>
 									</mat-expansion-panel-header>
+									<app-view-status [FormData]="form" [mode]="'USERDOTS'" [status]="OTHER"></app-view-status>
+									<app-view-status [FormData]="form" [mode]="'USERITEMS'" [status]="OTHER"></app-view-status>
+
 								</mat-expansion-panel>
-							</td>
-							<td align="right">
-								<button mat-raised-button color="primary" >
-									Review
-								</button>
 							</td>
 						</tr>
 					</table>

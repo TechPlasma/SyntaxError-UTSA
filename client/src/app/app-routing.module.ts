@@ -6,11 +6,14 @@ import { FormComponent } 		from './form/form.component';
 import { UserComponent }		from './user/user.component';
 import { UserLoginComponent }	from './user-login/user-login.component';
 import { ViewComponent }		from './view/view.component';
+import { AdminComponent }		from './admin/admin.component';
 
 const routes: Routes = [
 	{ path: '', component: UserLoginComponent },
 
 	{ path: 'view', component: ViewComponent },
+
+	{ path: 'admin', component: AdminComponent },
 
 	{ path: 'department/:DID', component: DepartmentComponent },
 	{ path: 'department', component: DepartmentComponent },

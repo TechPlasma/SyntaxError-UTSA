@@ -1,0 +1,202 @@
+<mat-card>
+	<mat-card-title>
+		Admin Console
+	</mat-card-title>
+	<mat-expansion-panel expanded="false">
+		<mat-expansion-panel-header>
+			<h3>Master Forms</h3>
+		</mat-expansion-panel-header>
+		<button mat-stroked-button style="color:forestgreen;" [routerLink]="['/form']">
+			New MasterForm
+		</button>
+		<button mat-stroked-button style="color:forestgreen;" (click)="getForms();">
+			Get Forms
+		</button>
+		<br>
+		<mat-form-field style="font-size: 16px;">
+			<input matInput placeholder="FormID" [(ngModel)]="DELFORM">
+		</mat-form-field>
+		<button mat-stroked-button style="color:forestgreen;" (click)="deleteForm(DELFORM);">
+			Delete Form
+		</button>
+		<br>
+		<table>
+			<tr>
+				<th align="left">
+					Requisition Information
+				</th>
+				<th align="right">
+					Actions&nbsp; 
+				</th>
+			</tr>
+			<tr *ngFor="let form of MASTERFORMARR">
+				<td>
+					<mat-expansion-panel>
+						<mat-expansion-panel-header>
+							<mat-panel-title>
+								Form: {{form.FID}} 
+								Status: {{form.Status}}
+							</mat-panel-title>
+						</mat-expansion-panel-header>
+
+						<app-view-status [FormData]="form" [mode]="'DEPTREQ'"></app-view-status>
+						<app-view-status [FormData]="form" [mode]="'DEPTFUL'"></app-view-status>
+
+					</mat-expansion-panel>
+				</td>
+				<td align="right" width="30%">
+					<button mat-stroked-button style="color:forestgreen;" (click)="deleteForm(form.FID);">
+						Delete Form
+					</button>
+				</td>							
+			</tr>
+		</table>
+		<br>
+	</mat-expansion-panel>
+
+	<mat-expansion-panel expanded="false">
+		<mat-expansion-panel-header>
+			<mat-panel-title>
+				<h3>Employees</h3>
+			</mat-panel-title>
+		</mat-expansion-panel-header>
+		<mat-form-field class="somespace">
+			<input matInput placeholder="First Name" [(ngModel)]="EMPfirstName">
+		</mat-form-field>
+		<mat-form-field class="somespace">
+			<input matInput placeholder="MI" [(ngModel)]="EMPmi">
+		</mat-form-field>
+		<mat-form-field class="somespace">
+			<input matInput placeholder="Last Name" [(ngModel)]="EMPlastName">
+		</mat-form-field>
+		<mat-form-field class="somespace">
+			<input matInput placeholder="DEPT Code" [(ngModel)]="EMPdeptCode">
+		</mat-form-field>
+		<mat-form-field class="somespace">
+			<input matInput placeholder="Position" [(ngModel)]="EMPposit">
+		</mat-form-field>
+		<mat-form-field class="somespace">
+			<input matInput placeholder="SAP ID" [(ngModel)]="EMPsap">
+		</mat-form-field>
+		<mat-form-field class="somespace">
+			<input matInput placeholder="Password" [(ngModel)]="EMPpwd">
+		</mat-form-field>
+		<mat-form-field class="somespace">
+			<input matInput placeholder="Email" [(ngModel)]="EMPemail">
+		</mat-form-field>
+		<button mat-stroked-button style="color:forestgreen;" (click)="addEmployee();">
+			Add Employee
+		</button>
+		<br>
+		<button mat-stroked-button style="color:forestgreen;" (click)="getEmployees();">
+			Get Employees
+		</button>
+		<mat-form-field style="font-size: 16px;">
+			<input matInput placeholder="SAP ID" [(ngModel)]="DELEMP">
+		</mat-form-field>
+		<button mat-stroked-button style="color:forestgreen;" (click)="deleteEmployee(DELEMP);">
+			Delete Employee
+		</button>
+
+
+		<br>
+		<table>
+			<tr>
+				<th align="left">
+					Requisition Information
+				</th>
+				<th align="right">
+					Actions&nbsp; 
+				</th>
+			</tr>
+			<tr *ngFor="let emp of EMPLOYEEARR">
+				<td>
+					<mat-expansion-panel>
+						<mat-expansion-panel-header>
+							<mat-panel-title>
+								<b>EMPLOYEE:</b>&nbsp; {{emp.FIRSTNAME}}{{emp.LASTNAME}}
+								<br><b>SAP-ID:</b>&nbsp; {{emp.SAP}}
+							</mat-panel-title>
+						</mat-expansion-panel-header>
+						<table>
+							<tr><td><b>First Name:</b></td><td>{{emp.FIRSTNAME}}</td></tr>
+							<tr><td><b>Middle Initial:</b></td><td>{{emp.MI}}</td></tr>
+							<tr><td><b>Last Name:</b></td><td>{{emp.LASTNAME}}</td></tr>
+							<tr><td><b>DEPT:</b></td><td>{{emp.DEPT}}</td></tr>
+							<tr><td><b>POSITION:</b></td><td>{{emp.POSIT}}</td></tr>
+							<tr><td><b>SAP ID:</b></td><td>{{emp.SAP}}</td></tr>
+							<tr><td><b>Password:</b></td><td>{{emp.PWD}}</td></tr>
+							<tr><td><b>Email:</b></td><td>{{emp.EMAIL}}</td></tr>
+							<tr><td><b>Forms:</b></td><td>{{emp.FORMS}}</td></tr>
+						</table>
+					</mat-expansion-panel>
+				</td>
+				<td align="right" width="30%">
+					<button mat-stroked-button style="color:forestgreen;" (click)="deleteEmployee(emp.SAP);">
+						Delete Employee
+					</button>
+				</td>
+			</tr>
+		</table>
+		<br>
+	</mat-expansion-panel>
+
+	<mat-expansion-panel expanded="false">
+		<mat-expansion-panel-header>
+			<h3>Departments</h3>
+		</mat-expansion-panel-header>
+		<mat-form-field class="somespace">
+			<input matInput placeholder="Department Code" [(ngModel)]="DEPcode">
+		</mat-form-field>
+		<mat-slide-toggle [(ngModel)]="DEPisFufil"> Is Fulfillment</mat-slide-toggle>
+		<button mat-stroked-button style="color:forestgreen;" (click)="addDepartment();">
+			Add Department
+		</button>
+		<br>
+		<button mat-stroked-button style="color:forestgreen;" (click)="getDepartments();">
+			Get Departments
+		</button>
+		<mat-form-field style="font-size: 16px;">
+			<input matInput placeholder="Department ID" [(ngModel)]="DELDEPT">
+		</mat-form-field>
+		<button mat-stroked-button style="color:forestgreen;" (click)="deleteDepartment(DELDEPT);">
+			Delete Department
+		</button>
+		<br>
+		<table>
+			<tr>
+				<th align="left">
+					Requisition Information
+				</th>
+				<th align="right">
+					Actions&nbsp; 
+				</th>
+			</tr>
+			<tr *ngFor="let dept of DEPARTMENTARR">
+				<td>
+					<mat-expansion-panel>
+						<mat-expansion-panel-header>
+							<mat-panel-title>
+								<b>Department:</b>&nbsp; {{dept.DEPTNAME}}
+							</mat-panel-title>
+						</mat-expansion-panel-header>
+						<table>
+							<tr><td><b>Department Name:</b></td><td>{{dept.DEPTNAME}}</td></tr>
+							<tr><td><b>DEPT CODE:</b></td><td>{{dept.DEPTCODE}}</td></tr>
+							<tr><td><b>DID:</b></td><td>{{dept.dID}}</td></tr>
+							<tr><td><b>IS FULFILLMENT:</b></td><td>{{dept.isFulfillment}}</td></tr>
+							<tr><td><b>OUT FORMS:</b></td><td>{{dept.outMasterForms}}</td></tr>
+							<tr><td><b>IN FORMS:</b></td><td>{{dept.inMasterForms}}</td></tr>
+						</table>
+					</mat-expansion-panel>
+				</td>
+				<td align="right" width="30%">
+					<button mat-stroked-button style="color:forestgreen;" (click)="deleteDepartment(dept.dID);">
+						Delete Department
+					</button>
+				</td>							
+			</tr>
+		</table>
+		<br>
+	</mat-expansion-panel>
+</mat-card>

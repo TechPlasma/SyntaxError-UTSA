@@ -1,5 +1,5 @@
 <div *ngIf="FormData != null">
-	<div *ngIf="mode == 'DEPT'">
+	<div *ngIf="mode == 'DEPTREQ'">
 		<table>
 			<tr>
 				<th align="left">
@@ -11,22 +11,154 @@
 			</tr>
 			<tr align="left" *ngFor="let SubForm of getSubFormArray(FormData)">
 				<td *ngIf="SubForm.Needed">
-					<mat-icon [style.color]="'lightgreen'">radio_button_checked</mat-icon>
-					{{SubForm.FormName}} Form
+					<div *ngIf="SubForm.FormName == 'Common Infomation'">
+						<mat-icon [style.color]="'lightgreen'" *ngIf="FormData.Status == 'Approved'">
+							radio_button_checked
+						</mat-icon>
+						<mat-icon [style.color]="'yellow'" *ngIf="FormData.Status == 'Pending'">
+							radio_button_checked
+						</mat-icon>
+						<mat-icon [style.color]="'red'" *ngIf="FormData.Status == 'Rejected'">
+							radio_button_checked
+						</mat-icon>
+						{{SubForm.FormName}} Form
+					</div>
+					<div *ngIf="SubForm.FormName != 'Common Infomation'">
+						<mat-icon [style.color]="'lightgreen'" *ngIf="SubForm.ApprovalStatus == 'Approved'">
+							radio_button_checked
+						</mat-icon>
+						<mat-icon [style.color]="'yellow'" *ngIf="SubForm.ApprovalStatus == 'Pending'">
+							radio_button_checked
+						</mat-icon>
+						<mat-icon [style.color]="'red'" *ngIf="SubForm.ApprovalStatus == 'Rejected'">
+							radio_button_checked
+						</mat-icon>
+						{{SubForm.FormName}} Form
+					</div>
 				</td>
 				<td *ngIf="SubForm.Needed">
 					<div *ngFor="let approver of SubForm.Approvers">
-						<mat-icon [style.color]="'lightgreen'">radio_button_checked</mat-icon>
-						APPROVER NAME: {{approver.POSITION}}
+						<mat-icon [style.color]="'lightgreen'" *ngIf="approver.APPROVED == 'Approved'">
+							radio_button_checked
+						</mat-icon>
+						<mat-icon [style.color]="'yellow'" *ngIf="approver.APPROVED == 'Pending'">
+							radio_button_checked
+						</mat-icon>
+						<mat-icon [style.color]="'red'" *ngIf="approver.APPROVED == 'Rejected'">
+							radio_button_checked
+						</mat-icon>
+						APPROVER NAME: {{approver.NAME}}
 						<br>
 					</div>
 				</td>
 			</tr>
 		</table>
+	</div>
+
+	<div *ngIf="mode == 'DEPTFUL'">
+		<mat-expansion-panel>
+			<mat-expansion-panel-header>
+				<mat-panel-title>
+					Review Form
+				</mat-panel-title>
+			</mat-expansion-panel-header>
+		<app-default-view [SubFormData]="FormData.SubForm0"></app-default-view>
+		<div *ngIf="DEPT == FormData.SubForm1.DEPT || DEPT == 'ALL'">
+			<app-id-view [SubFormData]="FormData.SubForm1" *ngIf="FormData.SubForm1.Needed"></app-id-view>
+			<app-user-view [SubFormData]="FormData.SubForm2" *ngIf="FormData.SubForm2.Needed"></app-user-view>
+			<app-hard-soft-view [SubFormData]="FormData.SubForm3" *ngIf="FormData.SubForm3.Needed"></app-hard-soft-view>
+			<app-pcard-view [SubFormData]="FormData.SubForm4" *ngIf="FormData.SubForm4.Needed"></app-pcard-view>
+		</div>
+		<div *ngIf="DEPT == FormData.SubForm5.DEPT || DEPT == 'ALL'">
+			<app-fuel-view [SubFormData]="FormData.SubForm5" *ngIf="FormData.SubForm5.Needed"></app-fuel-view>
+		</div>
+		<div *ngIf="DEPT == FormData.SubForm6.DEPT || DEPT == 'ALL'">
+			<app-sap-view [SubFormData]="FormData.SubForm6" *ngIf="FormData.SubForm6.Needed"></app-sap-view>
+		</div>
+
+		</mat-expansion-panel>
+	</div>
+
+	<div *ngIf="mode == 'USERDOTS'">
+		<table>
+			<tr>
+				<th align="left">
+					SubForms
+				</th>
+				<th align="left">
+					Approvers
+				</th>
+			</tr>
+			<tr align="left" *ngFor="let SubForm of getSubFormArray(FormData)">
+				<td *ngIf="SubForm.Needed">
+					<div *ngIf="SubForm.FormName == 'Common Infomation'">
+						<mat-icon [style.color]="'lightgreen'" *ngIf="FormData.Status == 'Approved'">
+							radio_button_checked
+						</mat-icon>
+						<mat-icon [style.color]="'yellow'" *ngIf="FormData.Status == 'Pending'">
+							radio_button_checked
+						</mat-icon>
+						<mat-icon [style.color]="'red'" *ngIf="FormData.Status == 'Rejected'">
+							radio_button_checked
+						</mat-icon>
+						{{SubForm.FormName}} Form
+					</div>
+					<div *ngIf="SubForm.FormName != 'Common Infomation'">
+						<mat-icon [style.color]="'lightgreen'" *ngIf="SubForm.ApprovalStatus == 'Approved'">
+							radio_button_checked
+						</mat-icon>
+						<mat-icon [style.color]="'yellow'" *ngIf="SubForm.ApprovalStatus == 'Pending'">
+							radio_button_checked
+						</mat-icon>
+						<mat-icon [style.color]="'red'" *ngIf="SubForm.ApprovalStatus == 'Rejected'">
+							radio_button_checked
+						</mat-icon>
+						{{SubForm.FormName}} Form
+					</div>
+				</td>
+				<td *ngIf="SubForm.Needed">
+					<div *ngFor="let approver of SubForm.Approvers">
+						<mat-icon [style.color]="'lightgreen'" *ngIf="approver.APPROVED == 'Approved'">
+							radio_button_checked
+						</mat-icon>
+						<mat-icon [style.color]="'yellow'" *ngIf="approver.APPROVED == 'Pending'">
+							radio_button_checked
+						</mat-icon>
+						<mat-icon [style.color]="'red'" *ngIf="approver.APPROVED == 'Rejected'">
+							radio_button_checked
+						</mat-icon>
+						APPROVER NAME: {{approver.NAME}}
+						<br>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<div *ngIf="mode == 'USERITEMS'">
+		<mat-expansion-panel>
+			<mat-expansion-panel-header>
+				<mat-panel-title>
+					Review Form
+				</mat-panel-title>
+			</mat-expansion-panel-header>
+		<app-default-view [SubFormData]="FormData.SubForm0"></app-default-view>
+		<div *ngIf="DEPT == FormData.SubForm1.DEPT || DEPT == 'ALL'">
+			<app-id-view [SubFormData]="FormData.SubForm1" *ngIf="FormData.SubForm1.Needed"></app-id-view>
+			<app-user-view [SubFormData]="FormData.SubForm2" *ngIf="FormData.SubForm2.Needed"></app-user-view>
+			<app-hard-soft-view [SubFormData]="FormData.SubForm3" *ngIf="FormData.SubForm3.Needed"></app-hard-soft-view>
+			<app-pcard-view [SubFormData]="FormData.SubForm4" *ngIf="FormData.SubForm4.Needed"></app-pcard-view>
+		</div>
+		<div *ngIf="DEPT == FormData.SubForm5.DEPT || DEPT == 'ALL'">
+			<app-fuel-view [SubFormData]="FormData.SubForm5" *ngIf="FormData.SubForm5.Needed"></app-fuel-view>
+		</div>
+		<div *ngIf="DEPT == FormData.SubForm6.DEPT || DEPT == 'ALL'">
+			<app-sap-view [SubFormData]="FormData.SubForm6" *ngIf="FormData.SubForm6.Needed"></app-sap-view>
+		</div>
+
+		</mat-expansion-panel>
+
 		
 	</div>
-	<div *ngIf="mode == 'USER'">
-		User Mode
 
-	</div>
 </div>

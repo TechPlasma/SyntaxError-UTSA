@@ -2,7 +2,8 @@ import { Component, forwardRef, OnInit } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 import { departments } from '../../Departments';
-
+import { APIService } from '../../api.service';
+import { Approver } from '../../MasterForm';	
 const noop = () => {
 };
 
@@ -21,6 +22,8 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 export class DefaultInfoComponent implements ControlValueAccessor {
 
 	ERROR;
+
+	SUPERVISORID;
 
 	departments = departments;
 
@@ -67,7 +70,7 @@ export class DefaultInfoComponent implements ControlValueAccessor {
 		this.onTouchedCallback = fn;
 	}
 
-	verifySubForm(){
+	async verifySubForm(){
 
 		this.ERROR = [];
 
@@ -120,14 +123,41 @@ export class DefaultInfoComponent implements ControlValueAccessor {
 			this.ERROR.push("Date format incorrect!");
 			verified = false;
 		}//end if
+
+		let employee = this.apiService.EMPLOYEE.getValue();
+		let approver1;
+		if(employee != null){
+			approver1 = new Approver('Requester',employee.DEPT);
+			approver1.ID = employee.SAP;
+			approver1.NAME = employee.FIRSTNAME+" "+employee.LASTNAME;
+			approver1.APPROVED = 'Approved';
+		}
 		
+		//console.log(approver1);
+
+
+		let supervisorexits = await this.apiService.getEmployeeID(this.SUPERVISORID);
+
+		let approver2 = new Approver('Department Head/Supervisor','ANY');
+		
+		if(supervisorexits[1] == true){
+			approver2.DEPARTMENTCODE = supervisorexits[0].DEPT;
+			approver2.ID = supervisorexits[0].SAP;
+			approver2.NAME = supervisorexits[0].FIRSTNAME+" "+supervisorexits[0].LASTNAME;
+			//console.log(approver2);
+		}else{
+			this.ERROR.push("INVALID SUPERVISOR SAP ID");
+		}
+
 		//console.log(this.SubFormData);
-		if(verified){
+		if(verified && supervisorexits[1]){
+			this.SubFormData.Approvers.push(approver1);
+			this.SubFormData.Approvers.push(approver2);
 			this.SubFormData.Completed = true;
 		}//end if
 	}//end method
 
-	constructor() {
+	constructor(private apiService:APIService) {
 
 	}
 

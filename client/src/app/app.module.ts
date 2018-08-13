@@ -25,6 +25,8 @@ import { SAPViewComponent } from './viewdata/sap-view/sap-view.component';
 import { UserViewComponent } from './viewdata/user-view/user-view.component';
 import { ViewDataComponent } from './viewdata/view-data/view-data.component';
 import { ViewStatusComponent } from './viewdata/view-status/view-status.component';
+import { AdminComponent } from './admin/admin.component';
+import { APIService } from './api.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,8 @@ import { ViewStatusComponent } from './viewdata/view-status/view-status.componen
     SAPViewComponent,
     UserViewComponent,
     ViewDataComponent,
-    ViewStatusComponent
+    ViewStatusComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +60,7 @@ import { ViewStatusComponent } from './viewdata/view-status/view-status.componen
     FormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [APIService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

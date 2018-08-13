@@ -2,28 +2,29 @@
 	<mat-card>
 		<mat-card-title>Login</mat-card-title>
 		<mat-card-content>
+			<form>
+				<mat-form-field class="thirds">
+					<input matInput autocomplete="off" placeholder="SAP ID" 
+					[(ngModel)]="username" focus name="SAPLOG">
+				</mat-form-field>
+				<br>
+				<mat-form-field class="thirds">
+					<input matInput autocomplete="off" placeholder="Password" type="password"
+					[(ngModel)]="password" name="PWDLOG">
+				</mat-form-field>
+				<br>
+				<div style="color:red;" *ngFor="let item of ERROR" >
+					{{item}}
+					<br>
+				</div>
+				<div align="right"  class="thirds" >
+					<button mat-raised-button (click)="login()" color="primary">
+						Login
+					</button>
+				</div>
+			</form>
 			
-			<mat-form-field class="thirds">
-				<input matInput autocomplete="off" placeholder="SAP ID" 
-				[(ngModel)]="username" focus>
-			</mat-form-field>
-			<br>
-			<mat-form-field class="thirds">
-				<input matInput autocomplete="off" placeholder="Password" type="password"
-				[(ngModel)]="password">
-			</mat-form-field>
-			<br>
-			<div align="right"  class="thirds" >
-				<button mat-raised-button (click)="login()" color="primary">
-					Login
-				</button>
-			</div>	
 			
-
-			
-			
-			
-
 			<p>
 				This is a tempoarary solution untill we have<br>
 				a proper Implememntation of a User Login page<br>
@@ -31,14 +32,11 @@
 		</mat-card-content>
 		<mat-card-footer>
 			<h2>Backup Buttons</h2>
-			<button mat-raised-button [routerLink]="['/department/0']" color="primary" matTooltip="Avoid Using This">
-				Department Page
-			</button>
 			<button mat-raised-button [routerLink]="['/form']" color="primary">
 				The Master Form Page
 			</button>
-			<button mat-raised-button  [routerLink]="['/user/0']" color="primary" matTooltip="Avoid Using This">
-				User Page
+			<button mat-raised-button  [routerLink]="['/admin']" color="primary" matTooltip="Admins Only">
+				Admin Console
 			</button>
 			<br>
 			<button mat-raised-button  [routerLink]="['/view/']" color="primary">
