@@ -205,6 +205,7 @@ export let deptLookup = {
 	TRICEN:'Tricentennial & Capital Improvements',
 	WH:'World Heritage',
 	SEC:'Multi-Department',
+	ADMIN:'Administrator'
 }
 
 

@@ -66,7 +66,7 @@
 						{{masterForm.SubForm1.FormName}}
 					</mat-panel-title>
 					<mat-panel-description>
-						Fufillment By: {{masterForm.SubForm1.Fufillment}}
+						Fulfillment By: {{masterForm.SubForm1.Fulfillment}}
 					</mat-panel-description>
 				</mat-expansion-panel-header>
 				<div>
@@ -84,7 +84,7 @@
 						{{masterForm.SubForm2.FormName}}
 					</mat-panel-title>
 					<mat-panel-description>
-						Fufillment By: {{masterForm.SubForm2.Fufillment}}
+						Fulfillment By: {{masterForm.SubForm2.Fulfillment}}
 					</mat-panel-description>
 				</mat-expansion-panel-header>
 				<div>
@@ -102,7 +102,7 @@
 						{{masterForm.SubForm3.FormName}}
 					</mat-panel-title>
 					<mat-panel-description>
-						Fufillment By: {{masterForm.SubForm3.Fufillment}}
+						Fulfillment By: {{masterForm.SubForm3.Fulfillment}}
 					</mat-panel-description>
 				</mat-expansion-panel-header>
 				<div>
@@ -120,7 +120,7 @@
 						{{masterForm.SubForm4.FormName}}
 					</mat-panel-title>
 					<mat-panel-description>
-						Fufillment By: {{masterForm.SubForm4.Fufillment}}
+						Fulfillment By: {{masterForm.SubForm4.Fulfillment}}
 					</mat-panel-description>
 				</mat-expansion-panel-header>
 				<div>
@@ -138,7 +138,7 @@
 						{{masterForm.SubForm5.FormName}}
 					</mat-panel-title>
 					<mat-panel-description>
-						Fufillment By: {{masterForm.SubForm5.Fufillment}}
+						Fulfillment By: {{masterForm.SubForm5.Fulfillment}}
 					</mat-panel-description>
 				</mat-expansion-panel-header>
 				<div>
@@ -156,7 +156,7 @@
 						{{masterForm.SubForm6.FormName}}
 					</mat-panel-title>
 					<mat-panel-description>
-						Fufillment By: {{masterForm.SubForm6.Fufillment}}
+						Fulfillment By: {{masterForm.SubForm6.Fulfillment}}
 					</mat-panel-description>
 				</mat-expansion-panel-header>
 				<div>
@@ -167,14 +167,11 @@
 			<br>
 			<br>
 
-			<button mat-stroked-button style="color:forestgreen;" (click)="postForm();">
-				Post Form
-			</button>
-			<button mat-stroked-button style="color:forestgreen;" (click)="getForms();">
-				Get Forms
+			<button mat-stroked-button style="color:forestgreen;" (click)="submitForm();">
+				Submit Form
 			</button>
 
-			<br>
+			<!-- <br>
 			<br>
 
 			<mat-expansion-panel>
@@ -195,8 +192,8 @@
 					<app-fuel-view [SubFormData]="masterForm.SubForm5"></app-fuel-view>
 					<app-sap-view [SubFormData]="masterForm.SubForm6"></app-sap-view>
 				</div>
-			</mat-expansion-panel>
-		</mat-card-content>
+			</mat-expansion-panel>-->
+		</mat-card-content> 
 	</mat-card>
 </div>
 

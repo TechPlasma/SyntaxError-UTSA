@@ -6,13 +6,13 @@
 					User Profile
 				</mat-card-title>
 				<mat-card-content>
-					<table>
+					<table *ngIf="employee != null">
 						<tr>
 							<td align="left">
 								User ID: 
 							</td>
 							<td align="right">
-								{{UID}}
+								{{employee.SAP}}
 							</td>
 						</tr>
 						<tr>&nbsp;</tr>
@@ -21,7 +21,7 @@
 								Name: 
 							</td>
 							<td align="right">
-								placeholder
+								{{employee.FIRSTNAME}} {{employee.MI}} {{employee.LASTNAME}}
 							</td>
 						</tr>
 						<tr>&nbsp;</tr>
@@ -30,7 +30,7 @@
 								Department: 
 							</td>
 							<td align="right">
-								placeholder
+								{{employee.DEPT}}
 							</td>
 						</tr>
 						<tr>&nbsp;</tr>
@@ -39,7 +39,7 @@
 								Position: 
 							</td>
 							<td align="right">
-								placeholder
+								{{employee.POSIT}}
 							</td>
 						</tr>
 						<tr>&nbsp;</tr>
@@ -48,7 +48,7 @@
 								E-Mail: 
 							</td>
 							<td align="right">
-								placeholder
+								{{employee.EMAIL}}
 							</td>
 						</tr>
 					</table>

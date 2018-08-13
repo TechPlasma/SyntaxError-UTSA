@@ -1,12 +1,20 @@
+<!-- <button mat-raised-button (click)="itsdDEPT();" color="primary">
+	ITSD
+</button>
+<button mat-raised-button (click)="adminDEPT();" color="primary">
+	ADMIN
+</button> -->
 
-<div align="center">
+<div align="center" *ngIf="department != null">
 	<mat-card style="min-width:500px;max-width:25%;">
 		<mat-card-title>
-			THIS Department
+			{{department.DEPTNAME}} Department
 		</mat-card-title>
 		<p>
-		  Department ID: {{DID}}<br>
-		  <mat-slide-toggle [(ngModel)]="isFulfilmentDepartment"> Is this a Fulfilment Department</mat-slide-toggle>
+		  Department ID: {{department.dID}}<br>
+		  Department Code: {{department.DEPTCODE}}<br>
+		 <!--  <mat-slide-toggle  [(ngModel)]="department.isFulfillment" [checked]="department.isFulfillment"> Is this a Fulfilment Department</mat-slide-toggle> -->
+		  {{department.isFulfillment}}
 		</p>
 		<button mat-raised-button [routerLink]="['/form/']" color="primary">
 			New Requisition Form
@@ -14,253 +22,244 @@
 	</mat-card>
 </div>
 
+<div *ngIf="department != null">
+	<div *ngIf="department.isFulfillment">
+		<mat-card>
+			<mat-card-title>
+				Fullfillment Requests
+			</mat-card-title>
+			<mat-expansion-panel expanded="true">
+				<mat-expansion-panel-header>
+					<h3>Pending</h3>
+				</mat-expansion-panel-header>
+				<br>
+				<table>
+					<tr>
+						<th align="left">
+							Requisition Information
+						</th>
+						<th align="right">
+							Actions&nbsp; 
+						</th>
+					</tr>
+					<tr>
+						<td>
+							<mat-expansion-panel>
+								<mat-expansion-panel-header>
+									<mat-panel-title>
+										Statuses
+									</mat-panel-title>
+								</mat-expansion-panel-header>
+								<!-- SUBFORM Views Here -->
+								
+							</mat-expansion-panel>
+						</td>
+						<td align="right" width="30%">
+							<button mat-raised-button color="accent" >
+								Mark In-Progress
+							</button>
+							<button mat-raised-button color="accent" >
+								Mark Fufilled
+							</button>
+						</td>							
+					</tr>
+				</table>
+				<br>
+			</mat-expansion-panel>
 
-<div *ngIf="isFulfilmentDepartment">
-	<mat-card>
-		<mat-card-title>
-			Fullfillment Requests
-		</mat-card-title>
-		<mat-expansion-panel expanded="true">
-			<mat-expansion-panel-header>
-				<h3>Pending</h3>
-			</mat-expansion-panel-header>
-			<br>
-			<table>
-				<tr>
-					<th align="left">
-						Requisition Information
-					</th>
-					<th align="right">
-						Actions&nbsp; 
-					</th>
-				</tr>
-				<tr>
-					<td>
-						<mat-expansion-panel>
-							<mat-expansion-panel-header>
-								<mat-panel-title>
-									Statuses
-								</mat-panel-title>
-							</mat-expansion-panel-header>
-							<!-- SUBFORM Views Here -->
-							
-						</mat-expansion-panel>
-					</td>
-					<td align="right" width="30%">
-						<button mat-raised-button color="accent" >
-							Mark In-Progress
-						</button>
-						<button mat-raised-button color="accent" >
-							Mark Fufilled
-						</button>
-					</td>							
-				</tr>
-			</table>
-			<br>
-		</mat-expansion-panel>
+			<mat-expansion-panel expanded="false">
+				<mat-expansion-panel-header>
+					<mat-panel-title>
+						<h3>Completed</h3>
+					</mat-panel-title>
+				</mat-expansion-panel-header>
+				<br>
+				<table>
+					<tr>
+						<th align="left">
+							Requisition Information
+						</th>
+						<th align="right">
+							Actions&nbsp; 
+						</th>
+					</tr>
+					<tr>
+						<td>
+							<mat-expansion-panel>
+								<mat-expansion-panel-header>
+									<mat-panel-title>
+										Status
+									</mat-panel-title>
+								</mat-expansion-panel-header>
+								<!-- SUBFORM Views Here -->
 
-		<mat-expansion-panel expanded="false">
-			<mat-expansion-panel-header>
-				<mat-panel-title>
-					<h3>Completed</h3>
-				</mat-panel-title>
-			</mat-expansion-panel-header>
-			<br>
-			<table>
-				<tr>
-					<th align="left">
-						Requisition Information
-					</th>
-					<th align="right">
-						Actions&nbsp; 
-					</th>
-				</tr>
-				<tr>
-					<td>
-						<mat-expansion-panel>
-							<mat-expansion-panel-header>
-								<mat-panel-title>
-									Status
-								</mat-panel-title>
-							</mat-expansion-panel-header>
-							<!-- SUBFORM Views Here -->
+							</mat-expansion-panel>
+						</td>
+						<td align="right" width="30%">
+						</td>
+					</tr>
+				</table>
+				<br>
+			</mat-expansion-panel>
+		</mat-card>
+		<mat-card>
+			<mat-card-title>
+				Requisition Requests
+			</mat-card-title>
+			<mat-expansion-panel expanded="false">
+				<mat-expansion-panel-header>
+					<h3>Pending</h3>
+				</mat-expansion-panel-header>
+				<br>
+				<table>
+					<tr>
+						<th align="left">
+							Requisition Information
+						</th>
+						<th align="right">
+							Actions&nbsp; 
+						</th>
+					</tr>
+					<tr>
+						<td>
+							<mat-expansion-panel>
+								<mat-expansion-panel-header>
+									<mat-panel-title>
+										Statuses
+									</mat-panel-title>
+								</mat-expansion-panel-header>
+							</mat-expansion-panel>
+						</td>
+						<td align="right" width="30%">
+							<button mat-raised-button color="primary" >
+								Review
+							</button>
+						</td>							
+					</tr>
+				</table>
+				<br>
+			</mat-expansion-panel>
 
-						</mat-expansion-panel>
-					</td>
-					<td align="right" width="30%">
-					</td>
-				</tr>
-			</table>
-			<br>
-		</mat-expansion-panel>
-	</mat-card>
-	<mat-card>
-		<mat-card-title>
-			Requisition Requests
-		</mat-card-title>
-		<mat-expansion-panel expanded="false">
-			<mat-expansion-panel-header>
-				<h3>Pending</h3>
-			</mat-expansion-panel-header>
-			<br>
-			<table>
-				<tr>
-					<th align="left">
-						Requisition Information
-					</th>
-					<th align="right">
-						Actions&nbsp; 
-					</th>
-				</tr>
-				<tr>
-					<td>
-						<mat-expansion-panel>
-							<mat-expansion-panel-header>
-								<mat-panel-title>
-									Statuses
-								</mat-panel-title>
-							</mat-expansion-panel-header>
-						</mat-expansion-panel>
-					</td>
-					<td align="right" width="30%">
-						<button mat-raised-button color="primary" >
-							Review
-						</button>
-					</td>							
-				</tr>
-			</table>
-			<br>
-		</mat-expansion-panel>
+			<mat-expansion-panel expanded="false">
+				<mat-expansion-panel-header>
+					<mat-panel-title>
+						<h3>Completed</h3>
+					</mat-panel-title>
+				</mat-expansion-panel-header>
+				<br>
+				<table>
+					<tr>
+						<th align="left">
+							Requisition Information
+						</th>
+						<th align="right">
+							Actions&nbsp; 
+						</th>
+					</tr>
+					<tr>
+						<td>
+							<mat-expansion-panel>
+								<mat-expansion-panel-header>
+									<mat-panel-title>
+										Status
+									</mat-panel-title>
+								</mat-expansion-panel-header>
+							</mat-expansion-panel>
+						</td>
+						<td align="right" width="30%">
+							<button mat-raised-button color="primary" >
+								Review
+							</button>
+						</td>
+					</tr>
+				</table>
+				<br>
+			</mat-expansion-panel>
+		</mat-card>
+	</div>
 
-		<mat-expansion-panel expanded="false">
-			<mat-expansion-panel-header>
-				<mat-panel-title>
-					<h3>Completed</h3>
-				</mat-panel-title>
-			</mat-expansion-panel-header>
-			<br>
-			<table>
-				<tr>
-					<th align="left">
-						Requisition Information
-					</th>
-					<th align="right">
-						Actions&nbsp; 
-					</th>
-				</tr>
-				<tr>
-					<td>
-						<mat-expansion-panel>
-							<mat-expansion-panel-header>
-								<mat-panel-title>
-									Status
-								</mat-panel-title>
-							</mat-expansion-panel-header>
-						</mat-expansion-panel>
-					</td>
-					<td align="right" width="30%">
-						<button mat-raised-button color="primary" >
-							Review
-						</button>
-					</td>
-				</tr>
-			</table>
-			<br>
-		</mat-expansion-panel>
-	</mat-card>
-	<!-- <div class="newFormButtonFancy" align="right" valign="bottom">
-		<button mat-fab matTooltip="New Form" matTooltipPosition="left" [routerLink]="['/form/']" color="primary" >
-			<mat-icon>add</mat-icon>
-		</button>
-	</div> -->
+	<div *ngIf="!department.isFulfillment">
+		<mat-card>
+			<mat-card-title>
+				Requisition Requests
+			</mat-card-title>
+			<mat-expansion-panel expanded="true">
+				<mat-expansion-panel-header>
+					<h3>Pending</h3>
+				</mat-expansion-panel-header>
+				<br>
+				<table>
+					<tr>
+						<th align="left">
+							Requisition Information
+						</th>
+						<th align="right">
+							Actions&nbsp; 
+						</th>
+					</tr>
+					<tr>
+						<td>
+							<mat-expansion-panel>
+								<mat-expansion-panel-header>
+									<mat-panel-title>
+										Form: FORMID 
+										Status: STATUS
+									</mat-panel-title>
+								</mat-expansion-panel-header>
 
+								<app-view-status [FormData]="tempMasterForm" [mode]="'DEPT'"></app-view-status>
+
+							</mat-expansion-panel>
+						</td>
+						<td align="right" width="30%">
+							<button mat-raised-button color="primary" >
+								Review
+							</button>
+						</td>							
+					</tr>
+				</table>
+				<br>
+			</mat-expansion-panel>
+
+			<mat-expansion-panel expanded="false">
+				<mat-expansion-panel-header>
+					<mat-panel-title>
+						<h3>Completed</h3>
+					</mat-panel-title>
+				</mat-expansion-panel-header>
+				<br>
+				<table>
+					<tr>
+						<th align="left">
+							Requisition Information
+						</th>
+						<th align="right">
+							Actions&nbsp; 
+						</th>
+					</tr>
+					<tr>
+						<td>
+							<mat-expansion-panel>
+								<mat-expansion-panel-header>
+									<mat-panel-title>
+										Form: FORMID 
+										Status: STATUS
+									</mat-panel-title>
+								</mat-expansion-panel-header>
+							</mat-expansion-panel>
+						</td>
+						<td align="right" width="30%">
+							<button mat-raised-button color="primary" >
+								Review
+							</button>
+						</td>
+					</tr>
+				</table>
+				<br>
+			</mat-expansion-panel>
+		</mat-card>
+	</div>
 </div>
 
-<div *ngIf="!isFulfilmentDepartment">
-	<mat-card>
-		<mat-card-title>
-			Requisition Requests
-		</mat-card-title>
-		<mat-expansion-panel expanded="true">
-			<mat-expansion-panel-header>
-				<h3>Pending</h3>
-			</mat-expansion-panel-header>
-			<br>
-			<table>
-				<tr>
-					<th align="left">
-						Requisition Information
-					</th>
-					<th align="right">
-						Actions&nbsp; 
-					</th>
-				</tr>
-				<tr>
-					<td>
-						<mat-expansion-panel>
-							<mat-expansion-panel-header>
-								<mat-panel-title>
-									Form: FORMID 
-									Status: STATUS
-								</mat-panel-title>
-							</mat-expansion-panel-header>
 
-							<app-view-status [FormData]="tempMasterForm" [mode]="'DEPT'"></app-view-status>
-
-						</mat-expansion-panel>
-					</td>
-					<td align="right" width="30%">
-						<button mat-raised-button color="primary" >
-							Review
-						</button>
-					</td>							
-				</tr>
-			</table>
-			<br>
-		</mat-expansion-panel>
-
-		<mat-expansion-panel expanded="false">
-			<mat-expansion-panel-header>
-				<mat-panel-title>
-					<h3>Completed</h3>
-				</mat-panel-title>
-			</mat-expansion-panel-header>
-			<br>
-			<table>
-				<tr>
-					<th align="left">
-						Requisition Information
-					</th>
-					<th align="right">
-						Actions&nbsp; 
-					</th>
-				</tr>
-				<tr>
-					<td>
-						<mat-expansion-panel>
-							<mat-expansion-panel-header>
-								<mat-panel-title>
-									Form: FORMID 
-									Status: STATUS
-								</mat-panel-title>
-							</mat-expansion-panel-header>
-						</mat-expansion-panel>
-					</td>
-					<td align="right" width="30%">
-						<button mat-raised-button color="primary" >
-							Review
-						</button>
-					</td>
-				</tr>
-			</table>
-			<br>
-		</mat-expansion-panel>
-	</mat-card>
-	<!-- <div class="newFormButtonFancy" align="right" valign="bottom">
-		<button mat-fab matTooltip="New Form" matTooltipPosition="left" [routerLink]="['/form/']" color="primary" >
-			<mat-icon>add</mat-icon>
-		</button>
-	</div> -->
-
-</div>
 

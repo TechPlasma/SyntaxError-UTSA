@@ -21,12 +21,12 @@ export class FormComponent implements OnInit {
 
 	newForm(){
 		this.masterForm = new MasterForm();
-		this.masterForm.SubForm1.Approvers.push(new Approver("8273982673"));
-		for(let subForm in this.masterForm){
-			if(/SubForm\d/.test(subForm)){
-				this.masterForm[subForm].Needed = true;
-			}
-		}
+		//this.masterForm.SubForm1.Approvers.push(new Approver("8273982673"));
+		// for(let subForm in this.masterForm){
+		// 	if(/SubForm\d/.test(subForm)){
+		// 		this.masterForm[subForm].Needed = true;
+		// 	}
+		// }
 		console.log(this.masterForm);
 	}
 
@@ -42,12 +42,31 @@ export class FormComponent implements OnInit {
 
 	}
 
-	postForm(){
-		this.apiService.postForm(this.masterForm);
-	}
+	submitForm(){
+		let allCompleted = true;
+		let minSelected = false;
 
-	getForms(){
-		this.apiService.getForms();
+		for(let subForm in this.masterForm){
+			if(/SubForm[1-9]/.test(subForm)){
+				if(this.masterForm[subForm].Needed){
+					minSelected = true;
+					if(!this.masterForm[subForm].Completed){
+						allCompleted = false;
+					}
+				}
+			}
+			if(/SubForm0/.test(subForm)){
+				if(!this.masterForm[subForm].Completed){
+					allCompleted = false;
+				}
+			}
+		}
+
+		console.log("All Completed: "+allCompleted);
+		console.log("Min Selected:  "+minSelected);
+
+
+		//this.apiService.postForm(this.masterForm);
 	}
 
 

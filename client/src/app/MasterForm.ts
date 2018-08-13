@@ -17,7 +17,7 @@ export class MasterForm{
 		this.SubForm5 = new SubForm5();
 		this.SubForm6 = new SubForm6();
 
-		this.FID = "";
+		//this.FID = "";
 		this.Completed = false;
 		this.Status = 'Pending';
 
@@ -25,7 +25,7 @@ export class MasterForm{
 		//Assign Approvers
 		this.SubForm0.Approvers.push(new Approver('Requestor','ANY'));
 
-		
+
 		this.SubForm1.Approvers.push(new Approver());
 
 	}
